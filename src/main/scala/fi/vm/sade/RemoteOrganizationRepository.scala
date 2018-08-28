@@ -47,14 +47,14 @@ case class Http(client: Client) {
   }
 
   private def processRequest[ResultType](request: Request)(decoder: (Int, String, Request) => ResultType): Task[ResultType] = {
-    client.fetch(addCommonHeaders(request)) { response =>
+    client.fetch(addTrackingHeader(request)) { response =>
       response.as[String].map { text => // Might be able to optimize by not turning into String here
         decoder(response.status.code, text, request)
       }
     }
   }
 
-  private def addCommonHeaders(request: Request) = request.copy(headers = request.headers.put(
+  private def addTrackingHeader(request: Request) = request.copy(headers = request.headers.put(
     Header("clientSubSystemCode", AuditLogParserSubSystemCode.code)
   ))
 
