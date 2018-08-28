@@ -24,6 +24,33 @@
   </properties>
 
   <dependencies>
+
+    <!-- Internal dependencies -->
+    <dependency>
+      <groupId>com.github.Opetushallitus.scala-utils</groupId>
+      <artifactId>scala-cas_2.12</artifactId>
+      <version>70ac2329ebd153e69bad53eb3ea187e7335c8968</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.http4s</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.http4s</groupId>
+      <artifactId>http4s-blaze-client_2.12</artifactId>
+      <version>0.15.16</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.http4s</groupId>
+      <artifactId>http4s-dsl_2.12</artifactId>
+      <version>0.15.16</version>
+    </dependency>
+
+    <!-- External dependencies -->
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
@@ -56,6 +83,17 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>http://repo1.maven.org/maven2</url>
+    </repository>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
 
   <build>
     <sourceDirectory>src/main/scala</sourceDirectory>
