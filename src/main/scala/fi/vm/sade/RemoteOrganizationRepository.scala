@@ -1,10 +1,8 @@
 package fi.vm.sade
 
 import fi.vm.sade.utils.cas.{CasAuthenticatingClient, CasClient, CasParams}
-import org.http4s.{Header, Request, Uri}
-import org.http4s.client.{Client, blaze}
-import scalaz.{-\/, \/-}
-import scalaz.concurrent.Task
+import org.http4s.{Request}
+import org.http4s.client.{blaze}
 
 import org.json4s._
 import org.json4s.jackson.JsonMethods._
@@ -31,6 +29,10 @@ class RemoteOrganizationRepository {
 
   def userOrganizationsURL(oid: String) = s"${scheme_authority}${käyttöoikeus_service}/kayttooikeus/kayttaja?oidHenkilo=${oid}"
 
+  val organisaatio = "https://virkailija.opintopolku.fi/organisaatio-service/rest/organisaatio/v3/1.2.246.562.10.00000000001?includeImage=false"
+
+  val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = maxHttpRequestThreads)
+
   def getOrganization(organizationOid: String) = {
 
     val client = Http(casClient)
@@ -45,7 +47,6 @@ class RemoteOrganizationRepository {
   }
 
   private val casClient = {
-    val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = maxHttpRequestThreads)
     val casClient = new CasClient(scheme_authority, blazeHttpClient)
 
     CasAuthenticatingClient(
@@ -61,37 +62,9 @@ class RemoteOrganizationRepository {
     // TODO: Error handling
     parse(body).extract[T]
   }
-
 }
 
-case class Http(client: Client) {
 
-  def get[ResultType](uri: String)(decode: Decode[ResultType]): Task[ResultType] = {
-    processRequest(Request(uri = uriFromString(uri)))(decode)
-  }
-
-  private def processRequest[ResultType](request: Request)(decoder: (Int, String, Request) => ResultType): Task[ResultType] = {
-    client.fetch(addTrackingHeader(request)) { response =>
-      response.as[String].map { text => // Might be able to optimize by not turning into String here
-        decoder(response.status.code, text, request)
-      }
-    }
-  }
-
-  private def addTrackingHeader(request: Request) = request.copy(headers = request.headers.put(
-    Header("clientSubSystemCode", AuditLogParserSubSystemCode.code)
-  ))
-
-  type Decode[ResultType] = (Int, String, Request) => ResultType
-
-  def uriFromString(uri: String): Uri = {
-    Uri.fromString(uri) match {
-      case \/-(result) => result
-      case -\/(failure) =>
-        throw new IllegalArgumentException("Cannot create URI: " + uri + ": " + failure)
-    }
-  }
-}
 
 object AuditLogParserSubSystemCode {
   val code = "auditlog"
