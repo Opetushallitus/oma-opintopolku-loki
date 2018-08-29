@@ -26,29 +26,36 @@ class RemoteOrganizationRepository {
   def heikki_testaa = "1.2.246.562.24.36742098962"
   def auditlog = "1.2.246.562.24.27696726056"
 
+  val scheme_authority = "https://virkailija.testiopintopolku.fi"
+  val käyttöoikeus_service = "/kayttooikeus-service"
+
+  def userOrganizationsURL(oid: String) = s"${scheme_authority}${käyttöoikeus_service}/kayttooikeus/kayttaja?oidHenkilo=${oid}"
+
   def getOrganization(organizationOid: String) = {
 
-    val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = maxHttpRequestThreads)
-    val casClient = new CasClient("https://virkailija.testiopintopolku.fi", blazeHttpClient)
-
-    val httpClient = CasAuthenticatingClient(
-      casClient,
-      CasParams("/kayttooikeus-service", username, password),
-      blazeHttpClient,
-      Some(AuditLogParserSubSystemCode.code),
-      sessionCookieName
-    )
-
-    val client = Http(httpClient)
+    val client = Http(getCasClient)
 
     val users: Array[User] =
-     client.get(s"https://virkailija.testiopintopolku.fi/kayttooikeus-service/kayttooikeus/kayttaja?oidHenkilo=${heikki_testaa}")(parseResponse[Array[User]])
-      .runFor(Duration(30, "seconds"))
+     client.get(userOrganizationsURL(heikki_testaa))(parseResponse[Array[User]]).runFor(Duration(30, "seconds"))
 
     val organisaatiot: Array[Organization] = users.flatMap(user => user.organisaatiot)
 
     organisaatiot.map(o => println(s"Found organization ${o.organisaatioOid}"))
 
+  }
+
+  private def getCasClient = {
+    val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = maxHttpRequestThreads)
+    val casClient = new CasClient(scheme_authority, blazeHttpClient)
+
+    val httpClient = CasAuthenticatingClient(
+      casClient,
+      CasParams(käyttöoikeus_service, username, password),
+      blazeHttpClient,
+      Some(AuditLogParserSubSystemCode.code),
+      sessionCookieName
+    )
+    httpClient
   }
 
   def parseResponse[T](status: Int, body: String, request: Request)(implicit m: Manifest[T]): T = {
