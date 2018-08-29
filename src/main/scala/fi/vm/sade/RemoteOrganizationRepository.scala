@@ -6,7 +6,15 @@ import org.http4s.client.{Client, blaze}
 import scalaz.{-\/, \/-}
 import scalaz.concurrent.Task
 
+import org.json4s._
+import org.json4s.jackson.JsonMethods._
+
+import scala.concurrent.duration.Duration
+
+
 class RemoteOrganizationRepository {
+
+  implicit val formats = DefaultFormats
 
   val sessionCookieName = "JSESSIONID"
 
@@ -14,6 +22,9 @@ class RemoteOrganizationRepository {
 
   def username = sys.env("username")
   def password = sys.env("password")
+
+  def heikki_testaa = "1.2.246.562.24.36742098962"
+  def auditlog = "1.2.246.562.24.27696726056"
 
   def getOrganization(organizationOid: String) = {
 
@@ -30,12 +41,19 @@ class RemoteOrganizationRepository {
 
     val client = Http(httpClient)
 
+    val users: Array[User] =
+     client.get(s"https://virkailija.testiopintopolku.fi/kayttooikeus-service/kayttooikeus/kayttaja?oidHenkilo=${heikki_testaa}")(parseResponse[Array[User]])
+      .runFor(Duration(30, "seconds"))
 
-    client.get("https://virkailija.testiopintopolku.fi/kayttooikeus-service/kayttooikeus/kayttaja?username=heikki_testaa")(printResult).runFor(200000)
+    val organisaatiot: Array[Organization] = users.flatMap(user => user.organisaatiot)
+
+    organisaatiot.map(o => println(s"Found organization ${o.organisaatioOid}"))
+
   }
 
-  def printResult(status: Int, text: String, request: Request) = {
-    println(s"Received response code ${status} with body ${text}")
+  def parseResponse[T](status: Int, body: String, request: Request)(implicit m: Manifest[T]): T = {
+    // TODO: Error handling
+    parse(body).extract[T]
   }
 
 }
@@ -73,3 +91,7 @@ case class Http(client: Client) {
 object AuditLogParserSubSystemCode {
   val code = "auditlog"
 }
+
+case class User(oidHenkilo: String, username: String, kayttajaTyyppi: String, organisaatiot: Array[Organization])
+case class Organization(organisaatioOid: String, kayttooikeudet: Array[Permission])
+case class Permission(palvelu: String, oikeus: String)
