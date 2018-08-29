@@ -34,23 +34,23 @@ class RemoteOrganizationRepository {
 
   def getOrganization(organizationOid: String) = {
 
-    val client = Http(permissionsCasClient)
+    val permissionClient = Http(casClient(Params.permission))
 
     val users: Array[User] =
-     client.get(userOrganizationsURL(heikki_testaa))(parseResponse[Array[User]]).runFor(Duration(30, "seconds"))
+     permissionClient.get(userOrganizationsURL(heikki_testaa))(parseResponse[Array[User]]).runFor(Duration(30, "seconds"))
 
     val organisaatiot: Array[Organization] = users.flatMap(user => user.organisaatiot)
 
     organisaatiot.map(o => println(s"Found organization ${o.organisaatioOid}"))
 
-    client.get(organisaatio)(printResponse).runFor(Duration(30, "seconds"))
+    permissionClient.get(organisaatio)(printResponse).runFor(Duration(30, "seconds"))
 
   }
 
-  private val permissionsCasClient = {
+  private def casClient(casParams: CasParams) = {
     CasAuthenticatingClient(
       casClient,
-      Params.permission,
+      casParams,
       blazeHttpClient,
       Some(AuditLogParserSubSystemCode.code),
       sessionCookieName
@@ -73,11 +73,13 @@ object AuditLogParserSubSystemCode {
 
 object Params {
   private val permission_path = "/kayttooikeus-service"
+  private val organization_path = "/organisaatio-service"
 
   private def username = sys.env("username")
   private def password = sys.env("password")
 
   def permission: CasParams = CasParams(permission_path, username, password)
+  def organization: CasParams = CasParams(organization_path, username, password)
 }
 
 case class User(oidHenkilo: String, username: String, kayttajaTyyppi: String, organisaatiot: Array[Organization])
