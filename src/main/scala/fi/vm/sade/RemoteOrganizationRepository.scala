@@ -34,14 +34,15 @@ class RemoteOrganizationRepository {
     users.flatMap(user => user.organisaatiot)
   }
 
-  def getOrganizationsForUser(oid: String) = {
+  def getOrganizationsForUser(oid: String): Array[Organization] = {
 
     val organizationClient = Http(blazeHttpClient)
 
-    val organization =
-    organizationClient.get(organizationDetailsURL("1.2.246.562.10.00000000001"))(parseResponse[Organization]).runFor(max_api_call_duration)
+    val organizations = getOrganizationIdsForUser(oid)
 
-    println(organization.nimi.fi.get)
+    organizations.map(org => {
+      organizationClient.get(organizationDetailsURL(org.organisaatioOid))(parseResponse[Organization]).runFor(max_api_call_duration)
+    })
   }
 
   private def casAuthenticatingClient(casParams: CasParams) = {

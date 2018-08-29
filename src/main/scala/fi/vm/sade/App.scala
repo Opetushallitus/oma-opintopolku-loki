@@ -23,7 +23,11 @@ object App {
 
     organisaatiot.map(o => println(s"Found organization ${o.organisaatioOid}"))
 
-    repository.getOrganizationsForUser(heikki_testaa)
+    val organizations = repository.getOrganizationsForUser(heikki_testaa)
+
+    organizations.map(o => {
+      println(o.nimi.fi.get)
+    })
 
   }
 
