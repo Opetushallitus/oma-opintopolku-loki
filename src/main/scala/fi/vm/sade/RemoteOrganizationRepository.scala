@@ -23,20 +23,25 @@ class RemoteOrganizationRepository {
   val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = maxHttpRequestThreads)
   val casClient = new CasClient(scheme_authority, blazeHttpClient)
 
-  def getOrganizationIdsForUser(oid: String): Array[Organization] = {
+  val max_api_call_duration = Duration(30, "seconds")
+
+  def getOrganizationIdsForUser(oid: String): Array[OrganizationPermission] = {
 
     val permissionClient = Http(casAuthenticatingClient(Params.permission))
-
-    permissionClient.get(organizationDetailsURL("1.2.246.562.10.00000000001"))(printResponse).runFor(Duration(30, "seconds"))
-
     val users: Array[User] =
-     permissionClient.get(userOrganizationsURL(oid))(parseResponse[Array[User]]).runFor(Duration(30, "seconds"))
+     permissionClient.get(userOrganizationsURL(oid))(parseResponse[Array[User]]).runFor(max_api_call_duration)
 
     users.flatMap(user => user.organisaatiot)
   }
 
   def getOrganizationsForUser(oid: String) = {
 
+    val organizationClient = Http(blazeHttpClient)
+
+    val organization =
+    organizationClient.get(organizationDetailsURL("1.2.246.562.10.00000000001"))(parseResponse[Organization]).runFor(max_api_call_duration)
+
+    println(organization.nimi.fi.get)
   }
 
   private def casAuthenticatingClient(casParams: CasParams) = {
@@ -65,15 +70,16 @@ object AuditLogParserSubSystemCode {
 
 object Params {
   private val permission_path = "/kayttooikeus-service"
-  private val organization_path = "/organisaatio-service"
 
   private def username = sys.env("username")
   private def password = sys.env("password")
 
   def permission: CasParams = CasParams(permission_path, username, password)
-  def organization: CasParams = CasParams(organization_path, username, password)
 }
 
-case class User(oidHenkilo: String, username: String, kayttajaTyyppi: String, organisaatiot: Array[Organization])
-case class Organization(organisaatioOid: String, kayttooikeudet: Array[Permission])
+case class User(oidHenkilo: String, username: String, kayttajaTyyppi: String, organisaatiot: Array[OrganizationPermission])
+case class OrganizationPermission(organisaatioOid: String, kayttooikeudet: Array[Permission])
 case class Permission(palvelu: String, oikeus: String)
+
+case class Organization(oid: String, nimi: OrganizationName)
+case class OrganizationName(fi: Option[String], sv: Option[String], en: Option[String])
