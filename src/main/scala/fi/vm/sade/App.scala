@@ -13,7 +13,7 @@ object App {
     def repository = new RemoteOrganizationRepository()
 
     logger.info("Application started")
-    repository.getOrganization("1.2.3.4.1000")
+    repository.getOrganizationIdsForUser("1.2.3.4.1000")
   }
 
 }
