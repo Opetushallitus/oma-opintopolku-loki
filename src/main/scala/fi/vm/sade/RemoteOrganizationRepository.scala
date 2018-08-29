@@ -33,7 +33,7 @@ class RemoteOrganizationRepository {
 
   def getOrganization(organizationOid: String) = {
 
-    val client = Http(getCasClient)
+    val client = Http(casClient)
 
     val users: Array[User] =
      client.get(userOrganizationsURL(heikki_testaa))(parseResponse[Array[User]]).runFor(Duration(30, "seconds"))
@@ -44,18 +44,17 @@ class RemoteOrganizationRepository {
 
   }
 
-  private def getCasClient = {
+  private val casClient = {
     val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = maxHttpRequestThreads)
     val casClient = new CasClient(scheme_authority, blazeHttpClient)
 
-    val httpClient = CasAuthenticatingClient(
+    CasAuthenticatingClient(
       casClient,
       CasParams(käyttöoikeus_service, username, password),
       blazeHttpClient,
       Some(AuditLogParserSubSystemCode.code),
       sessionCookieName
     )
-    httpClient
   }
 
   def parseResponse[T](status: Int, body: String, request: Request)(implicit m: Manifest[T]): T = {
@@ -92,7 +91,6 @@ case class Http(client: Client) {
         throw new IllegalArgumentException("Cannot create URI: " + uri + ": " + failure)
     }
   }
-
 }
 
 object AuditLogParserSubSystemCode {
