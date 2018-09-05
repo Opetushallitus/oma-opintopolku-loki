@@ -1,11 +1,30 @@
 package fi.vm.sade
 
 import org.http4s.{Header, Request, Uri}
-import org.http4s.client.Client
+import org.http4s.client.{Client, blaze}
 import scalaz.{-\/, \/-}
 import scalaz.concurrent.Task
+import Configuration._
 
-case class Http(client: Client) {
+trait HttpClient {
+  type Decode[ResultType] = (Int, String, Request) => ResultType
+
+  def get[ResultType](uri: String)(decode: Decode[ResultType]): Task[ResultType]
+}
+
+object Http {
+  val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = maxHttpRequestThreads)
+
+  def apply(useCas: Boolean = false): HttpClient = {
+    if (useCas) {
+      new Http(CasHttpClient(blazeHttpClient, scheme_authority))
+    } else {
+      new Http(blazeHttpClient)
+    }
+  }
+}
+
+private class Http(client: Client) extends HttpClient {
 
   def get[ResultType](uri: String)(decode: Decode[ResultType]): Task[ResultType] = {
     processRequest(Request(uri = uriFromString(uri)))(decode)
@@ -22,8 +41,6 @@ case class Http(client: Client) {
   private def addTrackingHeader(request: Request) = request.copy(headers = request.headers.put(
     Header("clientSubSystemCode", AuditLogParserSubSystemCode.code)
   ))
-
-  type Decode[ResultType] = (Int, String, Request) => ResultType
 
   def uriFromString(uri: String): Uri = {
     Uri.fromString(uri) match {
