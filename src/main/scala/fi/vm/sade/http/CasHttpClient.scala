@@ -1,5 +1,6 @@
-package fi.vm.sade
+package fi.vm.sade.http
 
+import fi.vm.sade.AuditLogParserSubSystemCode
 import fi.vm.sade.utils.cas.{CasAuthenticatingClient, CasClient, CasParams}
 import org.http4s.client._
 

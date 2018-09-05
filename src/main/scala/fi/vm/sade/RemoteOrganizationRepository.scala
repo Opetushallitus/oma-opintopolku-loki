@@ -1,9 +1,10 @@
 package fi.vm.sade
 
-import org.http4s.{Request}
+import org.http4s.Request
 import org.json4s._
 import org.json4s.jackson.JsonMethods._
 import Configuration._
+import fi.vm.sade.http.Http
 
 class RemoteOrganizationRepository {
 

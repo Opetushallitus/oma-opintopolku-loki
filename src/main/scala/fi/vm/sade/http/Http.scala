@@ -1,10 +1,11 @@
-package fi.vm.sade
+package fi.vm.sade.http
 
-import org.http4s.{Header, Request, Uri}
+import fi.vm.sade.AuditLogParserSubSystemCode
+import fi.vm.sade.Configuration.{maxHttpRequestThreads, scheme_authority}
 import org.http4s.client.{Client, blaze}
-import scalaz.{-\/, \/-}
+import org.http4s.{Header, Request, Uri}
 import scalaz.concurrent.Task
-import Configuration._
+import scalaz.{-\/, \/-}
 
 trait HttpClient {
   type Decode[ResultType] = (Int, String, Request) => ResultType
