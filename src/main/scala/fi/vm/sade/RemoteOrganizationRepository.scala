@@ -5,12 +5,19 @@ import org.json4s._
 import org.json4s.jackson.JsonMethods._
 import Configuration._
 import fi.vm.sade.http.Http
+import scalacache._
+import scalacache.redis._
+import scalacache.serialization.binary._
+import scalacache.modes.sync._
+import scalacache.memoization._
 
 class RemoteOrganizationRepository {
 
+  implicit val permissionCache: Cache[Array[OrganizationPermission]] = RedisCache(cacheHost, cachePort)
+  implicit val organizationCache: Cache[Array[Organization]] = RedisCache(cacheHost, cachePort)
   implicit val formats: Formats = DefaultFormats
 
-  def getOrganizationIdsForUser(oid: String): Array[OrganizationPermission] = {
+  def getOrganizationIdsForUser(oid: String): Array[OrganizationPermission] = memoizeSync(Some(cacheTTL)) {
 
     val httpClient = Http(useCas = true)
     val users: Array[User] = httpClient.get(userOrganizationsURL(oid))(parseResponse[Array[User]])
@@ -19,7 +26,7 @@ class RemoteOrganizationRepository {
     users.flatMap(user => user.organisaatiot)
   }
 
-  def getOrganizationsForUser(oid: String): Array[Organization] = {
+  def getOrganizationsForUser(oid: String): Array[Organization] = memoizeSync(Some(cacheTTL)) {
 
     val httpClient = Http()
     val organizations = getOrganizationIdsForUser(oid)

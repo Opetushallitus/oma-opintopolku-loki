@@ -83,6 +83,12 @@
       <artifactId>redisclient_2.12</artifactId>
       <version>3.7</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.github.cb372/scalacache-redis -->
+    <dependency>
+      <groupId>com.github.cb372</groupId>
+      <artifactId>scalacache-redis_2.12</artifactId>
+      <version>0.24.3</version>
+    </dependency>
 
     <!-- External dependencies -->
     <dependency>
