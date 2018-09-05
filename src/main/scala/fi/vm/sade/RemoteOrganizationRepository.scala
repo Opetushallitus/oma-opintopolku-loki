@@ -8,7 +8,7 @@ import scala.concurrent.duration.Duration
 
 class RemoteOrganizationRepository {
 
-  implicit val formats = DefaultFormats
+  implicit val formats: Formats = DefaultFormats
 
   val maxHttpRequestThreads = 10
 
