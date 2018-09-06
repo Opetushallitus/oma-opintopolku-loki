@@ -4,6 +4,7 @@ import org.http4s.Request
 import org.json4s._
 import org.json4s.jackson.JsonMethods._
 import Configuration._
+import com.typesafe.config.Config
 import fi.vm.sade.http.Http
 import scalacache._
 import scalacache.redis._
@@ -11,7 +12,15 @@ import scalacache.serialization.binary._
 import scalacache.modes.sync._
 import scalacache.memoization._
 
-class RemoteOrganizationRepository {
+import scala.concurrent.duration.{Duration, FiniteDuration}
+
+class RemoteOrganizationRepository(config: Config) {
+
+  implicit def toFiniteDuration(d: java.time.Duration): FiniteDuration = Duration.fromNanos(d.toNanos)
+
+  private val cacheHost = config.getString("auditlog.cache.host")
+  private val cachePort = config.getInt("auditlog.cache.port")
+  private val cacheTTL: Duration = config.getDuration("auditlog.cache.ttl")
 
   implicit val permissionCache: Cache[Array[OrganizationPermission]] = RedisCache(cacheHost, cachePort)
   implicit val organizationCache: Cache[Array[Organization]] = RedisCache(cacheHost, cachePort)
@@ -19,7 +28,7 @@ class RemoteOrganizationRepository {
 
   def getOrganizationIdsForUser(oid: String): Array[OrganizationPermission] = memoizeSync(Some(cacheTTL)) {
 
-    val httpClient = Http(useCas = true)
+    val httpClient = Http(useCas = true, config)
     val users: Array[User] = httpClient.get(userOrganizationsURL(oid))(parseResponse[Array[User]])
        .runFor(max_api_call_duration)
 
@@ -28,7 +37,7 @@ class RemoteOrganizationRepository {
 
   def getOrganizationsForUser(oid: String): Array[Organization] = memoizeSync(Some(cacheTTL)) {
 
-    val httpClient = Http()
+    val httpClient = Http(config = config)
     val organizations = getOrganizationIdsForUser(oid)
 
     organizations.map(org => httpClient.get(organizationDetailsURL(org.organisaatioOid))(parseResponse[Organization])

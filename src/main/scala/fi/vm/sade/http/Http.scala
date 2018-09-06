@@ -1,7 +1,8 @@
 package fi.vm.sade.http
 
+import com.typesafe.config.Config
 import fi.vm.sade.AuditLogParserSubSystemCode
-import fi.vm.sade.Configuration.{maxHttpRequestThreads, scheme_authority}
+import fi.vm.sade.Configuration.{scheme_authority}
 import org.http4s.client.{Client, blaze}
 import org.http4s.{Header, Request, Uri}
 import scalaz.concurrent.Task
@@ -14,9 +15,9 @@ trait HttpClient {
 }
 
 object Http {
-  val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = maxHttpRequestThreads)
+  def apply(useCas: Boolean = false, config: Config): HttpClient = {
+    val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = config.getInt("auditlog.http.maxRequestThreads"))
 
-  def apply(useCas: Boolean = false): HttpClient = {
     if (useCas) {
       new Http(CasHttpClient(blazeHttpClient, scheme_authority))
     } else {
