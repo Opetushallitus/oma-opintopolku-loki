@@ -1,5 +1,7 @@
 package fi.vm.sade
 
+import com.amazonaws.regions.Regions
+
 import scala.concurrent.duration.Duration
 
 object Configuration {
@@ -14,6 +16,9 @@ object Configuration {
   val cacheHost = "localhost"
   val cachePort = 6379
   val cacheTTL = Duration(1, "hour")
+
+  val dynamodbEndpoint = "http://localhost:8000"
+  val dynamodbRegion = Regions.EU_WEST_1
 
 }
 

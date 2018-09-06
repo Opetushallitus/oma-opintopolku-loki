@@ -17,6 +17,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput
 
+import Configuration._
 
 /**
  * @author ${user.name}
@@ -30,10 +31,11 @@ object App {
 
   val dynamo =
   AmazonDynamoDBClientBuilder.standard()
-    .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://localhost:8000", Regions.EU_WEST_1.getName))
+    .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(dynamodbEndpoint, dynamodbRegion.getName))
     .build()
 
   val mapper = new DynamoDBMapper(dynamo)
+
 
   def createTable = {
     val req = mapper.generateCreateTableRequest(classOf[LogEntry])
@@ -44,7 +46,7 @@ object App {
   def main(args : Array[String]) {
     def repository = new RemoteOrganizationRepository()
 
-    createTable
+    // createTable
 
     logger.info("Application started")
 
