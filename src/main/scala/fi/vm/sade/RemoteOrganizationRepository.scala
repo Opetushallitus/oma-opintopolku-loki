@@ -22,6 +22,8 @@ class RemoteOrganizationRepository(config: Config) {
   private val cachePort = config.getInt("auditlog.cache.port")
   private val cacheTTL: Duration = config.getDuration("auditlog.cache.ttl")
 
+  private val requestTimeout: Duration = config.getDuration("auditlog.http.timeout")
+
   implicit val permissionCache: Cache[Array[OrganizationPermission]] = RedisCache(cacheHost, cachePort)
   implicit val organizationCache: Cache[Array[Organization]] = RedisCache(cacheHost, cachePort)
   implicit val formats: Formats = DefaultFormats
@@ -30,7 +32,7 @@ class RemoteOrganizationRepository(config: Config) {
 
     val httpClient = Http(useCas = true, config)
     val users: Array[User] = httpClient.get(userOrganizationsURL(oid))(parseResponse[Array[User]])
-       .runFor(max_api_call_duration)
+       .runFor(requestTimeout)
 
     users.flatMap(user => user.organisaatiot)
   }
@@ -41,7 +43,7 @@ class RemoteOrganizationRepository(config: Config) {
     val organizations = getOrganizationIdsForUser(oid)
 
     organizations.map(org => httpClient.get(organizationDetailsURL(org.organisaatioOid))(parseResponse[Organization])
-      .runFor(max_api_call_duration)
+      .runFor(requestTimeout)
     )
   }
 

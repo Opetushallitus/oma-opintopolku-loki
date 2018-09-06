@@ -1,8 +1,10 @@
 package fi.vm.sade
 
-import org.slf4j.LoggerFactory
+import java.util.Date
 
+import org.slf4j.LoggerFactory
 import com.typesafe.config.ConfigFactory
+import fi.vm.sade.db.{DB, LogEntry}
 
 /**
  * @author ${user.name}
@@ -16,6 +18,8 @@ object App {
   val heikki_testaa = "1.2.246.562.24.36742098962"
   val auditlog = "1.2.246.562.24.27696726056"
 
+  val db = DB.apply(config)
+
   def main(args : Array[String]) {
     def repository = new RemoteOrganizationRepository(config)
 
@@ -28,7 +32,7 @@ object App {
     val organizations = repository.getOrganizationsForUser(heikki_testaa)
 
     organizations.map(o => {
-      //DB.save(new LogEntry(new Date(), "123", o.oid))
+      db.save(new LogEntry(new Date(), "123", o.oid))
       println(o.nimi.fi.get)
     })
   }
