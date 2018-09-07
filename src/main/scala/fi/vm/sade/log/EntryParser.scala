@@ -13,6 +13,15 @@ object EntryParser {
 }
 
 
-case class Entry(timestamp: String, serviceName: String, applicationType: String, operation: String, user: User, target: Student)
+case class Entry(timestamp: String,
+                 serviceName: String,
+                 applicationType: String,
+                 operation: Option[String],
+                 user: Option[User],
+                 target: Option[Student]) {
+
+  lazy val shouldStore: Boolean = target.nonEmpty && user.nonEmpty && operation.nonEmpty
+}
+
 case class User(oid: String)
 case class Student(oppijaHenkiloOid: String)

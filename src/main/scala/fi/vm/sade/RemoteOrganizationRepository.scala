@@ -10,6 +10,7 @@ import scalacache.serialization.binary._
 import scalacache.modes.sync._
 import fi.vm.sade.conf.Configuration._
 import scalacache.memoization._
+import scala.language.implicitConversions
 
 class RemoteOrganizationRepository {
 

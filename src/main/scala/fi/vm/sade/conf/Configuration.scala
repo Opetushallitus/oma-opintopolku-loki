@@ -6,6 +6,7 @@ import org.http4s.Uri.{Authority, RegName}
 import org.http4s.util.CaseInsensitiveString
 
 import scala.concurrent.duration.{Duration, FiniteDuration}
+import scala.language.implicitConversions
 
 object Configuration {
   private lazy val config = ConfigFactory.load
