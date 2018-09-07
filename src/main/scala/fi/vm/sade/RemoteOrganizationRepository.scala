@@ -23,10 +23,12 @@ class RemoteOrganizationRepository {
   private def organizationURL(oid: String): Uri = baseURI.copy(path = organization_path + oid, query = Map("includeImage" -> "false"))
   private def permissionURL(oid: String): Uri = baseURI.copy(path = permissions_path, query = Map("oidHenkilo" -> oid))
 
+  private val casHttpClient = Http(useCas = true)
+  private val httpClient = Http()
+
   def getOrganizationIdsForUser(oid: String): Array[OrganizationPermission] = memoizeSync(Some(cacheTTL)) {
 
-    val httpClient = Http(useCas = true)
-    val users: Array[User] = httpClient.get(permissionURL(oid))(parseResponse[Array[User]])
+    val users: Array[User] = casHttpClient.get(permissionURL(oid))(parseResponse[Array[User]])
        .runFor(requestTimeout)
 
     users.flatMap(user => user.organisaatiot)
@@ -34,7 +36,6 @@ class RemoteOrganizationRepository {
 
   def getOrganizationsForUser(oid: String): Array[Organization] = memoizeSync(Some(cacheTTL)) {
 
-    val httpClient = Http()
     val organizations = getOrganizationIdsForUser(oid)
 
     organizations.map(org => httpClient.get(organizationURL(org.organisaatioOid))(parseResponse[Organization])
