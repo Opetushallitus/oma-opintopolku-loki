@@ -4,7 +4,6 @@ import fi.vm.sade.conf.Configuration._
 import org.http4s.client.{Client, blaze}
 import org.http4s.{Header, Request, Uri}
 import scalaz.concurrent.Task
-import scalaz.{-\/, \/-}
 
 trait HttpClient {
   type Decode[ResultType] = (Int, String, Request) => ResultType
@@ -41,12 +40,4 @@ private class Http(client: Client) extends HttpClient {
   private def addTrackingHeader(request: Request) = request.copy(headers = request.headers.put(
     Header("clientSubSystemCode", AuditLogParserSubsystemCode.code)
   ))
-
-  def uriFromString(uri: String): Uri = {
-    Uri.fromString(uri) match {
-      case \/-(result) => result
-      case -\/(failure) =>
-        throw new IllegalArgumentException("Cannot create URI: " + uri + ": " + failure)
-    }
-  }
 }
