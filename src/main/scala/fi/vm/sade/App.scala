@@ -16,7 +16,7 @@ object App {
   val auditlog = "1.2.246.562.24.27696726056"
 
   def main(args : Array[String]) {
-    def repository = new RemoteOrganizationRepository
+    val repository = new RemoteOrganizationRepository
 
     logger.info("Application started")
 
