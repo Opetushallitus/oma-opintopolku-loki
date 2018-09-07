@@ -1,37 +1,31 @@
 package fi.vm.sade
 
-import org.http4s.Request
+import org.http4s.{Query, Request, Uri}
 import org.json4s._
 import org.json4s.jackson.JsonMethods._
-import Configuration._
-import com.typesafe.config.Config
 import fi.vm.sade.http.Http
 import scalacache._
 import scalacache.redis._
 import scalacache.serialization.binary._
 import scalacache.modes.sync._
+import fi.vm.sade.conf.Configuration._
 import scalacache.memoization._
 
-import scala.concurrent.duration.{Duration, FiniteDuration}
+class RemoteOrganizationRepository {
 
-class RemoteOrganizationRepository(config: Config) {
-
-  implicit def toFiniteDuration(d: java.time.Duration): FiniteDuration = Duration.fromNanos(d.toNanos)
-
-  private val cacheHost = config.getString("auditlog.cache.host")
-  private val cachePort = config.getInt("auditlog.cache.port")
-  private val cacheTTL: Duration = config.getDuration("auditlog.cache.ttl")
-
-  private val requestTimeout: Duration = config.getDuration("auditlog.http.timeout")
+  implicit def toQuery(params: Map[String, String]): Query = Query.fromMap(params.map{ case (k,v) => (k, Seq(v)) })
 
   implicit val permissionCache: Cache[Array[OrganizationPermission]] = RedisCache(cacheHost, cachePort)
   implicit val organizationCache: Cache[Array[Organization]] = RedisCache(cacheHost, cachePort)
   implicit val formats: Formats = DefaultFormats
 
+  private def organizationURL(oid: String): Uri = baseURI.copy(path = organization_path + oid, query = Map("includeImage" -> "false"))
+  private def permissionURL(oid: String): Uri = baseURI.copy(path = permissions_path, query = Map("oidHenkilo" -> oid))
+
   def getOrganizationIdsForUser(oid: String): Array[OrganizationPermission] = memoizeSync(Some(cacheTTL)) {
 
-    val httpClient = Http(useCas = true, config)
-    val users: Array[User] = httpClient.get(userOrganizationsURL(oid))(parseResponse[Array[User]])
+    val httpClient = Http(useCas = true)
+    val users: Array[User] = httpClient.get(permissionURL(oid))(parseResponse[Array[User]])
        .runFor(requestTimeout)
 
     users.flatMap(user => user.organisaatiot)
@@ -39,10 +33,10 @@ class RemoteOrganizationRepository(config: Config) {
 
   def getOrganizationsForUser(oid: String): Array[Organization] = memoizeSync(Some(cacheTTL)) {
 
-    val httpClient = Http(config = config)
+    val httpClient = Http()
     val organizations = getOrganizationIdsForUser(oid)
 
-    organizations.map(org => httpClient.get(organizationDetailsURL(org.organisaatioOid))(parseResponse[Organization])
+    organizations.map(org => httpClient.get(organizationURL(org.organisaatioOid))(parseResponse[Organization])
       .runFor(requestTimeout)
     )
   }

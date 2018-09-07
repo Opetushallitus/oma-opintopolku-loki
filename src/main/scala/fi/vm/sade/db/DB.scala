@@ -7,28 +7,14 @@ import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder
 import com.amazonaws.services.dynamodbv2.datamodeling.{DynamoDBHashKey, DynamoDBMapper, DynamoDBTable}
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput
-import com.typesafe.config.Config
+import fi.vm.sade.conf.Configuration._
 
 import scala.annotation.meta.beanGetter
 import scala.beans.BeanProperty
 
 
 object DB {
-  var config: Option[Config] = None
-
-  def apply(_config: Config) = {
-    if (config.isEmpty) config = Some(_config)
-    this
-  }
-
-  private def endpointConfiguration: EndpointConfiguration = {
-    if (config.isEmpty) throw new RuntimeException("Database needs to be configured before being used")
-
-    new AwsClientBuilder.EndpointConfiguration(
-      config.get.getString("auditlog.db.host"),
-      config.get.getString("auditlog.db.region")
-    )
-  }
+  private def endpointConfiguration: EndpointConfiguration = new AwsClientBuilder.EndpointConfiguration(dbHost, dbRegion)
 
   private lazy val dynamo =
     AmazonDynamoDBClientBuilder.standard()

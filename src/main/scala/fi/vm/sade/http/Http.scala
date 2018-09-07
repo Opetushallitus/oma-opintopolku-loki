@@ -1,8 +1,6 @@
 package fi.vm.sade.http
 
-import com.typesafe.config.Config
-import fi.vm.sade.AuditLogParserSubSystemCode
-import fi.vm.sade.Configuration.{scheme_authority}
+import fi.vm.sade.conf.Configuration._
 import org.http4s.client.{Client, blaze}
 import org.http4s.{Header, Request, Uri}
 import scalaz.concurrent.Task
@@ -11,15 +9,15 @@ import scalaz.{-\/, \/-}
 trait HttpClient {
   type Decode[ResultType] = (Int, String, Request) => ResultType
 
-  def get[ResultType](uri: String)(decode: Decode[ResultType]): Task[ResultType]
+  def get[ResultType](uri: Uri)(decode: Decode[ResultType]): Task[ResultType]
 }
 
 object Http {
-  def apply(useCas: Boolean = false, config: Config): HttpClient = {
-    val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = config.getInt("auditlog.http.maxRequestThreads"))
+  def apply(useCas: Boolean = false): HttpClient = {
+    val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = maxRequestThreads)
 
     if (useCas) {
-      new Http(CasHttpClient(blazeHttpClient, scheme_authority))
+      new Http(CasHttpClient(blazeHttpClient, baseURI.renderString))
     } else {
       new Http(blazeHttpClient)
     }
@@ -28,8 +26,8 @@ object Http {
 
 private class Http(client: Client) extends HttpClient {
 
-  def get[ResultType](uri: String)(decode: Decode[ResultType]): Task[ResultType] = {
-    processRequest(Request(uri = uriFromString(uri)))(decode)
+  def get[ResultType](uri: Uri)(decode: Decode[ResultType]): Task[ResultType] = {
+    processRequest(Request(uri = uri))(decode)
   }
 
   private def processRequest[ResultType](request: Request)(decoder: (Int, String, Request) => ResultType): Task[ResultType] = {
@@ -41,7 +39,7 @@ private class Http(client: Client) extends HttpClient {
   }
 
   private def addTrackingHeader(request: Request) = request.copy(headers = request.headers.put(
-    Header("clientSubSystemCode", AuditLogParserSubSystemCode.code)
+    Header("clientSubSystemCode", AuditLogParserSubsystemCode.code)
   ))
 
   def uriFromString(uri: String): Uri = {

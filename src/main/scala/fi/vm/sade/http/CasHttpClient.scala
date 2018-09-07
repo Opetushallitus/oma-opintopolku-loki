@@ -1,6 +1,5 @@
 package fi.vm.sade.http
 
-import fi.vm.sade.AuditLogParserSubSystemCode
 import fi.vm.sade.utils.cas.{CasAuthenticatingClient, CasClient, CasParams}
 import org.http4s.client._
 
@@ -14,7 +13,7 @@ object CasHttpClient {
       new CasClient(scheme_authority, httpClient),
       params,
       httpClient,
-      Some(AuditLogParserSubSystemCode.code),
+      Some(AuditLogParserSubsystemCode.code),
       sessionCookieName
     )
   }
