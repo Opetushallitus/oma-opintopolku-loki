@@ -173,7 +173,7 @@
         <version>2.21.0</version>
         <configuration>
           <!-- Tests will be run with scalatest-maven-plugin instead -->
-          <skipTests>true</skipTests>
+          <!-- <skipTests>true</skipTests> -->
         </configuration>
       </plugin>
       <plugin>
@@ -185,7 +185,7 @@
           <junitxml>.</junitxml>
           <filereports>TestSuiteReport.txt</filereports>
           <!-- Comma separated list of JUnit test class names to execute -->
-          <jUnitClasses>samples.AppTest</jUnitClasses>
+          <!-- <jUnitClasses>samples.AppTest</jUnitClasses> -->
         </configuration>
         <executions>
           <execution>
