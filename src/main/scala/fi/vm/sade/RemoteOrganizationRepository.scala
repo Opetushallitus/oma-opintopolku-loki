@@ -16,15 +16,15 @@ class RemoteOrganizationRepository {
 
   implicit def toQuery(params: Map[String, String]): Query = Query.fromMap(params.map{ case (k,v) => (k, Seq(v)) })
 
-  implicit val permissionCache: Cache[Array[OrganizationPermission]] = RedisCache(cacheHost, cachePort)
-  implicit val organizationCache: Cache[Array[Organization]] = RedisCache(cacheHost, cachePort)
-  implicit val formats: Formats = DefaultFormats
+  implicit private val permissionCache: Cache[Array[OrganizationPermission]] = RedisCache(cacheHost, cachePort)
+  implicit private val organizationCache: Cache[Array[Organization]] = RedisCache(cacheHost, cachePort)
+  implicit private val formats: Formats = DefaultFormats
 
   private def organizationURL(oid: String): Uri = baseURI.copy(path = organization_path + oid, query = Map("includeImage" -> "false"))
   private def permissionURL(oid: String): Uri = baseURI.copy(path = permissions_path, query = Map("oidHenkilo" -> oid))
 
-  private val casHttpClient = Http(useCas = true)
-  private val httpClient = Http()
+  protected lazy val casHttpClient = Http(useCas = true)
+  protected lazy val httpClient = Http()
 
   def getOrganizationIdsForUser(oid: String): Array[OrganizationPermission] = memoizeSync(Some(cacheTTL)) {
 
