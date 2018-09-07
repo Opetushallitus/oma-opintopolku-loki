@@ -130,6 +130,12 @@
       <version>${spec2.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.scalamock</groupId>
+      <artifactId>scalamock_2.12</artifactId>
+      <version>4.1.0</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <repositories>
