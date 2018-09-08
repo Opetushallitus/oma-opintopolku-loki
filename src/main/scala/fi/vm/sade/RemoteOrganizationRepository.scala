@@ -2,14 +2,16 @@ package fi.vm.sade
 
 import org.http4s.{Query, Request, Uri}
 import org.json4s._
-import org.json4s.jackson.JsonMethods._
+import org.json4s.jackson.JsonMethods.{parse, _}
 import fi.vm.sade.http.Http
 import scalacache._
 import scalacache.redis._
 import scalacache.serialization.binary._
 import scalacache.modes.sync._
 import fi.vm.sade.conf.Configuration._
+import org.slf4j.LoggerFactory
 import scalacache.memoization._
+
 import scala.language.implicitConversions
 
 class RemoteOrganizationRepository {
@@ -25,6 +27,8 @@ class RemoteOrganizationRepository {
 
   protected lazy val casHttpClient = Http(useCas = true)
   protected lazy val httpClient = Http()
+
+  private val logger = LoggerFactory.getLogger(this.getClass)
 
   def getOrganizationIdsForUser(oid: String)(implicit flags: Flags): Array[OrganizationPermission] = memoizeSync(Some(cacheTTL)) {
 
@@ -44,7 +48,10 @@ class RemoteOrganizationRepository {
   }
 
   def parseResponse[T](status: Int, body: String, request: Request)(implicit m: Manifest[T]): T = {
-    // TODO: Error handling
+    if (status != 200) {
+      logger.warn(s"Request ${request.uri.renderString} failed with with status ${status}: ${body}")
+    }
+
     parse(body).extract[T]
   }
 }
