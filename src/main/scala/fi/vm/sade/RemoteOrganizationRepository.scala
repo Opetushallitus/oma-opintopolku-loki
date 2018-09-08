@@ -26,7 +26,7 @@ class RemoteOrganizationRepository {
   protected lazy val casHttpClient = Http(useCas = true)
   protected lazy val httpClient = Http()
 
-  def getOrganizationIdsForUser(oid: String): Array[OrganizationPermission] = memoizeSync(Some(cacheTTL)) {
+  def getOrganizationIdsForUser(oid: String)(implicit flags: Flags): Array[OrganizationPermission] = memoizeSync(Some(cacheTTL)) {
 
     val users: Array[User] = casHttpClient.get(permissionURL(oid))(parseResponse[Array[User]])
        .runFor(requestTimeout)
@@ -34,7 +34,7 @@ class RemoteOrganizationRepository {
     users.flatMap(user => user.organisaatiot)
   }
 
-  def getOrganizationsForUser(oid: String): Array[Organization] = memoizeSync(Some(cacheTTL)) {
+  def getOrganizationsForUser(oid: String)(implicit flags: Flags): Array[Organization] = memoizeSync(Some(cacheTTL)) {
 
     val organizations = getOrganizationIdsForUser(oid)
 

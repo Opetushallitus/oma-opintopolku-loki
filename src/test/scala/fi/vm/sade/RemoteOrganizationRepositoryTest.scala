@@ -4,16 +4,19 @@ import fi.vm.sade.http.HttpClient
 import org.http4s.{Request, Uri}
 import org.scalatest.{FunSpec, Matchers}
 import org.scalamock.scalatest.MockFactory
+import scalacache.Flags
 import scalaz.concurrent.Task
 
 import scala.io.Source
 
 
 class RemoteOrganizationRepositoryTest extends FunSpec with Matchers with MockFactory {
+
+  implicit val flags: Flags = Flags(readsEnabled = false, writesEnabled = false) // no cache for tests
+
   describe("A RemoteOrganizationRepository") {
 
     it("Should be able to get organizations for user") {
-
       val repository = new RemoteOrganizationRepository {
         override protected lazy val casHttpClient: HttpClient = new HttpClient {
           override def get[ResultType](uri: Uri)(decode: Decode[ResultType]): Task[ResultType] = {
