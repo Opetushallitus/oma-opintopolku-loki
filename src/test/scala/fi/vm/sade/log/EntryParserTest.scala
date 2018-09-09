@@ -15,15 +15,25 @@ class EntryParserTest extends FunSpec with Matchers {
       assume(entry.timestamp == "2018-08-24T13:18:38.439+03", "Timestamp parsed correctly")
       assume(entry.applicationType == "backend", "Application type parsed correctly")
       assume(entry.operation.get == "OPISKELUOIKEUS_KATSOMINEN", "Operation parsed correctly")
+      assume(entry.`type` == "log", "Type parsed correctly")
       assume(entry.shouldStore , "Valid entry should be stored to database")
     }
 
     it("Should not fail when parsing oppija haku entry") {
-      noException should be thrownBy EntryParser(Source.fromResource("oppija-haku-entry.log").mkString)
+      noException should be thrownBy {
+        val entry = EntryParser(Source.fromResource("oppija-haku-entry.log").mkString)
+
+        assume(entry.`type` == "log", "Type was parsed correctly")
+        assume(entry.operation.get == "OPPIJA_HAKU", "Operation was parsed correctly")
+      }
     }
 
     it("Should not fail when parsing health check entry") {
-      noException should be thrownBy EntryParser(Source.fromResource("healthcheck-entry.log").mkString)
+      noException should be thrownBy  {
+        val entry = EntryParser(Source.fromResource("healthcheck-entry.log").mkString)
+
+        assume(entry.`type` == "alive", "Type was parsed correctly")
+      }
     }
   }
 }

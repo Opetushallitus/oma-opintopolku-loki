@@ -1,7 +1,5 @@
 package fi.vm.sade.log
 
-import java.util.Date
-
 import org.json4s.{DefaultFormats, Formats}
 import org.json4s.jackson.JsonMethods.parse
 
@@ -15,6 +13,7 @@ object EntryParser {
 
 case class Entry(timestamp: String,
                  serviceName: String,
+                 `type`: String,
                  applicationType: String,
                  operation: Option[String],
                  user: Option[User],
