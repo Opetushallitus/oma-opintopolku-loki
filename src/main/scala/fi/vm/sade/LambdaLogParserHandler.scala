@@ -5,18 +5,17 @@ import com.amazonaws.services.lambda.runtime.RequestHandler
 import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.lambda.runtime.events.SQSEvent
 import fi.vm.sade.db.{DB, LogEntry}
-import fi.vm.sade.log.EntryParser
-import org.slf4j.Marker
-import org.slf4j.MarkerFactory
+import fi.vm.sade.log.{Entry, EntryParser}
 
 import scala.collection.JavaConverters._
 
 class LambdaLogParserHandler extends RequestHandler[SQSEvent, Int] {
   private val logger = LoggerFactory.getLogger(this.getClass)
-  private val fatal: Marker = MarkerFactory.getMarker("FATAL")
 
   logger.info("Log parser created")
 
+  protected val sqsRepository: RemoteSQSRepository.type = RemoteSQSRepository
+  protected val remoteOrganizationRepository = new RemoteOrganizationRepository
 
   /**
     * Code execution starting point, called by AWS Lambda when new log entries have been stored to Cloudwatch & SQS.
@@ -30,41 +29,38 @@ class LambdaLogParserHandler extends RequestHandler[SQSEvent, Int] {
   def handleRequest(sqsEvent: SQSEvent, context: Context): Int = {
     logger.info(s"Received SQS event")
 
-    try {
-      var failureCount = 0
-      val sqsRepository = RemoteSQSRepository
-      val remoteOrganizationRepository = new RemoteOrganizationRepository
+    var failureCount = 0
 
-      sqsRepository.getMessages.asScala.foreach(message => {
-        try {
-          val logMessage = EntryParser(message.getBody)
+    sqsRepository.getMessages.asScala.foreach(message => {
+      try {
+        storeLogEntry(EntryParser(message.getBody))
+        sqsRepository.deleteMessage(message.getReceiptHandle)
+      } catch {
+        case t: Throwable => logger.error(s"Failed to process SQS message ${message.getBody}", t) ; failureCount += 1
+      }
+    })
 
-          if (logMessage.shouldStore) {
-            val studentOid = logMessage.target.getOrElse(throw new RuntimeException("No valid student oid for log entry")).oppijaHenkiloOid
-            val viewerOid = logMessage.user.getOrElse(throw new RuntimeException("No valid viewer oid for log entry")).oid
+    failureCount
+  }
 
-            val viewerOrganizations = remoteOrganizationRepository.
-              getOrganizationIdsForUser(viewerOid).map(permission => permission.organisaatioOid).toList
+  private def storeLogEntry(entry: Entry) = {
 
-            DB.save(new LogEntry(
-              logMessage.timestamp,
-              studentOid,
-              viewerOrganizations
-            ))
-          } else {
-            logger.debug(s"Skipping log entry ${logMessage.operation.getOrElse(logMessage.`type`)}")
-          }
+    if (entry.shouldStore) {
+      val studentOid = entry.target.getOrElse(throw new RuntimeException("No student oid found for log entry")).oppijaHenkiloOid
+      val viewerOid = entry.user.getOrElse(throw new RuntimeException("No viewer oid found for log entry")).oid
 
-          sqsRepository.deleteMessage(message.getReceiptHandle)
-        } catch {
-          case t: Throwable => logger.error(s"Failed to process SQS message ${message.getBody}", t) ; failureCount += 1
-        }
-      })
+      val viewerOrganizations = remoteOrganizationRepository.
+        getOrganizationIdsForUser(viewerOid).map(permission => permission.organisaatioOid).toList
 
+      if(viewerOrganizations.isEmpty) throw new RuntimeException(s"Failed to get organizations for ${viewerOid}")
 
-      failureCount
-    } catch {
-      case t: Throwable => logger.error(fatal, "Failed to parse SQS events", t) ; -1
+      DB.save(new LogEntry(
+        entry.timestamp,
+        studentOid,
+        viewerOrganizations
+      ))
+    } else {
+      logger.debug(s"Skipping log entry ${entry.operation.getOrElse(entry.`type`)}")
     }
   }
 }
