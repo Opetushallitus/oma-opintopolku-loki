@@ -1,7 +1,5 @@
 package fi.vm.sade.db
 
-import java.util.Date
-
 import com.amazonaws.client.builder.AwsClientBuilder
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder
@@ -36,15 +34,15 @@ object DB {
 @DynamoDBTable(tableName="LogEntry")
 case class LogEntry(  @(DynamoDBHashKey @beanGetter)
                       @BeanProperty var id: String,
-                      @BeanProperty var time: Date,
+                      @BeanProperty var time: String,
                       @BeanProperty var userOid: String,
                       @BeanProperty var organizationOid: String
                    ) {
 
   def this() = this(null, null, null, null)
 
-  def this(time: Date, userOid: String, organizationOid: String) = this(
-    time.getTime + userOid + organizationOid,
+  def this(time: String, userOid: String, organizationOid: String) = this(
+    time + ";" + userOid + ";" + organizationOid,
     time,
     userOid,
     organizationOid
