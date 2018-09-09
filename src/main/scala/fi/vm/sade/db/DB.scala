@@ -14,7 +14,7 @@ import scala.beans.BeanProperty
 
 
 object DB {
-  private def endpointConfiguration: EndpointConfiguration = new AwsClientBuilder.EndpointConfiguration(dbHost, dbRegion)
+  private def endpointConfiguration: EndpointConfiguration = new AwsClientBuilder.EndpointConfiguration(dbHost, awsRegion)
 
   private lazy val dynamo =
     AmazonDynamoDBClientBuilder.standard()

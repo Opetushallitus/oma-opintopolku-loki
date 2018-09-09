@@ -28,6 +28,10 @@ object Configuration {
   lazy val maxRequestThreads: Int = config.getInt("auditlog.http.maxRequestThreads")
   lazy val requestTimeout: Duration = config.getDuration("auditlog.http.timeout")
 
+  lazy val awsRegion: String = config.getString("auditlog.aws.region")
+
   lazy val dbHost: String = config.getString("auditlog.db.host")
-  lazy val dbRegion: String = config.getString("auditlog.db.region")
+
+  lazy val SQSHost: String = config.getString("auditlog.sqs.host")
+  lazy val SQSQueueName: String = config.getString("auditlog.sqs.queuename")
 }
