@@ -1,11 +1,11 @@
-package fi.vm.sade
+package fi.vm.sade.repository
 
 import java.util
 
 import com.amazonaws.client.builder.AwsClientBuilder
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
-import com.amazonaws.services.sqs.model.{DeleteMessageRequest, DeleteMessageResult, Message}
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder
+import com.amazonaws.services.sqs.model.{DeleteMessageRequest, DeleteMessageResult, Message}
 import fi.vm.sade.conf.Configuration._
 
 object RemoteSQSRepository {

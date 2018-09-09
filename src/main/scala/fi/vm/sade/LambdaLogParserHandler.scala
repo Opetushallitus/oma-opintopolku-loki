@@ -6,6 +6,7 @@ import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.lambda.runtime.events.SQSEvent
 import fi.vm.sade.db.{DB, LogEntry}
 import fi.vm.sade.log.{Entry, EntryParser}
+import fi.vm.sade.repository.{RemoteOrganizationRepository, RemoteSQSRepository}
 
 import scala.collection.JavaConverters._
 

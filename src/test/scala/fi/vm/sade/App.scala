@@ -1,5 +1,6 @@
 package fi.vm.sade
 
+import fi.vm.sade.repository.RemoteSQSRepository
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{FunSpec, Matchers}
 

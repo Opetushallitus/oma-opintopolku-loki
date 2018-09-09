@@ -1,6 +1,7 @@
 package fi.vm.sade
 
 import fi.vm.sade.http.HttpClient
+import fi.vm.sade.repository.{OrganizationPermission, RemoteOrganizationRepository}
 import org.http4s.{Request, Uri}
 import org.scalatest.{FunSpec, Matchers}
 import org.scalamock.scalatest.MockFactory

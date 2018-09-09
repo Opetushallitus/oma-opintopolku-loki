@@ -4,6 +4,7 @@ import java.util.Date
 
 import org.slf4j.LoggerFactory
 import fi.vm.sade.db.{DB, LogEntry}
+import fi.vm.sade.repository.RemoteOrganizationRepository
 
 /**
  * @author ${user.name}

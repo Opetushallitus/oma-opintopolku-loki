@@ -1,16 +1,16 @@
-package fi.vm.sade
+package fi.vm.sade.repository
 
+import fi.vm.sade.conf.Configuration._
+import fi.vm.sade.http.Http
 import org.http4s.{Query, Request, Uri}
 import org.json4s._
-import org.json4s.jackson.JsonMethods.{parse, _}
-import fi.vm.sade.http.Http
+import org.json4s.jackson.JsonMethods.parse
+import org.slf4j.LoggerFactory
 import scalacache._
+import scalacache.memoization._
+import scalacache.modes.sync._
 import scalacache.redis._
 import scalacache.serialization.binary._
-import scalacache.modes.sync._
-import fi.vm.sade.conf.Configuration._
-import org.slf4j.LoggerFactory
-import scalacache.memoization._
 
 import scala.language.implicitConversions
 
