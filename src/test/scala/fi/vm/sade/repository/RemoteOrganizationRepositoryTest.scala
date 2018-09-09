@@ -1,10 +1,9 @@
-package fi.vm.sade
+package fi.vm.sade.repository
 
 import fi.vm.sade.http.HttpClient
-import fi.vm.sade.repository.{OrganizationPermission, RemoteOrganizationRepository}
-import org.http4s.{Request, Uri}
-import org.scalatest.{FunSpec, Matchers}
+import org.http4s.Uri
 import org.scalamock.scalatest.MockFactory
+import org.scalatest.{FunSpec, Matchers}
 import scalacache.Flags
 import scalaz.concurrent.Task
 
