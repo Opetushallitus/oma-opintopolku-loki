@@ -27,7 +27,7 @@ object App {
     val organizations = repository.getOrganizationsForUser(heikki_testaa)
 
     organizations.map(o => {
-      DB.save(new LogEntry("tänään", "123", o.oid))
+      DB.save(new LogEntry("tänään", "123", List(o.oid)))
       println(o.nimi.fi.get)
     })
   }

@@ -32,19 +32,19 @@ object DB {
 
 
 @DynamoDBTable(tableName="LogEntry")
-case class LogEntry(  @(DynamoDBHashKey @beanGetter)
-                      @BeanProperty var id: String,
-                      @BeanProperty var time: String,
-                      @BeanProperty var userOid: String,
-                      @BeanProperty var organizationOid: String
+case class LogEntry(@(DynamoDBHashKey @beanGetter)
+                    @BeanProperty var id: String,
+                    @BeanProperty var time: String,
+                    @BeanProperty var studentOid: String, // Student whose information was being viewed
+                    @BeanProperty var organizationOid: List[String] // List of organizations the viewer belongs to
                    ) {
 
   def this() = this(null, null, null, null)
 
-  def this(time: String, userOid: String, organizationOid: String) = this(
-    time + ";" + userOid + ";" + organizationOid,
+  def this(time: String, studentOid: String, organizationOid: List[String]) = this(
+    time + ";" + studentOid + ";" + organizationOid,
     time,
-    userOid,
+    studentOid,
     organizationOid
   )
 }
