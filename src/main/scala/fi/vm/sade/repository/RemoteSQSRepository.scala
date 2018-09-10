@@ -27,12 +27,15 @@ object RemoteSQSRepository {
     sqs.deleteMessage(new DeleteMessageRequest(queueUrl, receiptHandle))
   }
 
-  def hasMessages: Boolean = {
+  def hasMessages: Boolean = getApproximateNumberOfMessages > 0
+
+  def getApproximateNumberOfMessages: Int = {
     sqs.getQueueAttributes(queueUrl, List(approximateNumberOfMessages).asJava)
-      .getAttributes.get(approximateNumberOfMessages).toInt > 0
+      .getAttributes.get(approximateNumberOfMessages).toInt
   }
 
-  private def sendMessage(message: String) = {
-    sqs.sendMessage(new SendMessageRequest(queueUrl, message))
-  }
+  // Methods for facilitating testing
+  private def sendMessage(message: String) = sqs.sendMessage(new SendMessageRequest(queueUrl, message))
+  private def purgeQueue = sqs.purgeQueue(new PurgeQueueRequest(queueUrl))
+
 }
