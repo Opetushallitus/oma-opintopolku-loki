@@ -3,8 +3,8 @@ package fi.vm.sade.db
 import com.amazonaws.client.builder.AwsClientBuilder
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder
-import com.amazonaws.services.dynamodbv2.datamodeling.{DynamoDBHashKey, DynamoDBMapper, DynamoDBTable}
-import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput
+import com.amazonaws.services.dynamodbv2.datamodeling._
+import com.amazonaws.services.dynamodbv2.model.{DeleteTableRequest, ProvisionedThroughput}
 import fi.vm.sade.conf.Configuration._
 
 import scala.annotation.meta.beanGetter
@@ -21,13 +21,17 @@ object DB {
 
   private lazy val mapper = new DynamoDBMapper(dynamo)
 
-  private def createTable = { // you can use this to create a local table if you wish
+  def save(logEntry: LogEntry): Unit = mapper.save(logEntry)
+
+  // Methods for facilitating testing
+  private def createTable = {
     val req = mapper.generateCreateTableRequest(classOf[LogEntry])
     req.setProvisionedThroughput(new ProvisionedThroughput(5L, 5L))
     dynamo.createTable(req)
   }
 
-  def save(logEntry: LogEntry): Unit = { println(s"Saving item: ${logEntry}") ;mapper.save(logEntry)  }
+  private def deleteTable() = dynamo.deleteTable(new DeleteTableRequest("LogEntry"))
+  def getAllItems: PaginatedScanList[LogEntry] = mapper.scan[LogEntry](classOf[LogEntry], new DynamoDBScanExpression)
 }
 
 
