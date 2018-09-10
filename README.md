@@ -52,3 +52,4 @@ mvn test
 
    * Read logs from SQS
    * Create fat jar
+   * Check if failures are cached (redis) or not
