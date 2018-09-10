@@ -2,45 +2,81 @@ package fi.vm.sade
 
 import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.lambda.runtime.events.SQSEvent
+import fi.vm.sade.db.{DB}
 import fi.vm.sade.repository.{OrganizationPermission, Permission, RemoteOrganizationRepository, RemoteSQSRepository}
 import org.scalamock.scalatest.MockFactory
-import org.scalatest.{FunSpec, Matchers, PrivateMethodTester}
+import org.scalatest.{BeforeAndAfter, FunSpec, Matchers, PrivateMethodTester}
 import scalacache.Flags
 
 import scala.io.Source
 
-class LambdaLogParserHandlerTest extends FunSpec with Matchers with MockFactory with PrivateMethodTester {
+class LambdaLogParserHandlerTest extends FunSpec with Matchers with MockFactory with PrivateMethodTester with BeforeAndAfter {
+
+  private val sendMessage = PrivateMethod[Unit]('sendMessage)
+  private val purgeQueue = PrivateMethod[Unit]('purgeQueue)
+  private val createTable = PrivateMethod[Unit]('createTable)
+  private val deleteTable = PrivateMethod[Unit]('deleteTable)
+
+  private def purge(): Unit = {
+    // Remove all previous entries from SQS
+    RemoteSQSRepository invokePrivate purgeQueue()
+    // And wait for queue to be empty
+    while (RemoteSQSRepository.hasMessages) Thread.sleep(1000)
+
+    // Purge the database
+    DB invokePrivate deleteTable()
+    DB invokePrivate createTable()
+  }
+
+  before { purge() }
+  after { purge() }
 
   describe("LambdaLogParserHandler") {
 
     it("Should store logs from SQS to database") {
 
-      // First store some logs to SQS
-      val entryFiles = List("opiskeluoikeus-katsominen-entry.log", "oppija-haku-entry.log", "healthcheck-entry.log")
+      val katsominenEntry = Source.fromResource("opiskeluoikeus-katsominen-entry.log").mkString
+      val healthcheckEntry = Source.fromResource("healthcheck-entry.log").mkString
+      val hakuEntry = Source.fromResource("oppija-haku-entry.log").mkString
 
-      val sendMessage = PrivateMethod[Unit]('sendMessage)
+      val viewerOid = "1.2.345.678.90.11122233344" // same viewer oid as in katsominenEntry
+      val studentOid = "1.2.123.456.78.99999999999" // same student oid as in katsominenEntry
+      val mockOrganizationOid = "1.2.3"
 
-      /*
-      entryFiles.foreach(file => {
-        val logEntry = Source.fromResource(file).mkString
-        RemoteSQSRepository invokePrivate sendMessage(logEntry)
-      })
-      */
+      val amountOfValidEntries = 5 // create 5 valid entries to the queue
+
+      // First insert non-interesting data to SQS
+      RemoteSQSRepository invokePrivate sendMessage(healthcheckEntry) // health checks should not be stored
+      RemoteSQSRepository invokePrivate sendMessage(hakuEntry) // search entries should not be stored
+      // Then insert some non-parsable data
+      RemoteSQSRepository invokePrivate sendMessage("Hello world!") // app should not fail if we encounter random log entries
+      // Then insert audit logs we are interested in
+      (1 to amountOfValidEntries) foreach(_ => RemoteSQSRepository invokePrivate sendMessage(katsominenEntry))
+
+      // And wait for the items to show up on queue
+      while (!RemoteSQSRepository.hasMessages) Thread.sleep(1000)
 
       val remoteOrganizationRepository: RemoteOrganizationRepository = mock[RemoteOrganizationRepository]
-      val mockResponse = List(OrganizationPermission("1.2.3", List(Permission("ATARU_HAKEMUS", "READ")).toArray)).toArray
+      val mockResponse = List(OrganizationPermission(mockOrganizationOid, List(Permission("ATARU_HAKEMUS", "READ")).toArray)).toArray
       val flags = Flags(readsEnabled = true, writesEnabled = true)
 
       (remoteOrganizationRepository.getOrganizationIdsForUser (_ : String)(_ : Flags))
-        .expects("1.2.345.678.90.11122233344", flags)
+        .expects(viewerOid, flags)
         .returning(mockResponse)
-        .repeat(5)
-
+        .repeat(amountOfValidEntries)
 
       val parser = new LambdaLogParserHandler(remoteOrganizationRepository)
       val result = parser.handleRequest(mock[SQSEvent], mock[Context])
 
-      println(result)
+      assume(result.success == 7, "Processed correct amount of log entries")
+      assume(result.failed == 1, "Non-parsable entries reported as failed")
+
+      val dbEntries = DB.getAllItems
+      assume(dbEntries.size() == 1, "No duplicate entries were stored to DB") // All 5 of our valid entries were identical
+
+      val dbEntry = dbEntries.get(0)
+      assume(dbEntry.organizationOid.get(0) == mockOrganizationOid, "Correct organization oid was stored to DB")
+      assume(dbEntry.studentOid == studentOid, "Correct student oid was stored to DB")
     }
   }
 
