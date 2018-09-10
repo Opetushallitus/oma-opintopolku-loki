@@ -10,7 +10,7 @@ import fi.vm.sade.repository.{RemoteOrganizationRepository, RemoteSQSRepository}
 
 import scala.collection.JavaConverters._
 
-class LambdaLogParserHandler extends RequestHandler[SQSEvent, Int] {
+class LambdaLogParserHandler extends RequestHandler[SQSEvent, ProcessResult] {
   private val logger = LoggerFactory.getLogger(this.getClass)
 
   logger.info("Log parser created")
@@ -27,21 +27,25 @@ class LambdaLogParserHandler extends RequestHandler[SQSEvent, Int] {
     * @param context Triggering context
     * @return 0 if whole SQS queue was processed or != 0 otherwise
     */
-  def handleRequest(sqsEvent: SQSEvent, context: Context): Int = {
+  def handleRequest(sqsEvent: SQSEvent, context: Context): ProcessResult = {
     logger.info(s"Received SQS event")
 
     var failureCount = 0
+    var successCount = 0
 
-    sqsRepository.getMessages.asScala.foreach(message => {
-      try {
-        storeLogEntry(EntryParser(message.getBody))
-        sqsRepository.deleteMessage(message.getReceiptHandle)
-      } catch {
-        case t: Throwable => logger.error(s"Failed to process SQS message ${message.getBody}", t) ; failureCount += 1
-      }
-    })
+    do {
+      sqsRepository.getMessages.asScala.foreach(message => {
+        try {
+          storeLogEntry(EntryParser(message.getBody))
+          // sqsRepository.deleteMessage(message.getReceiptHandle)
+          successCount += 1
+        } catch {
+          case t: Throwable => logger.error(s"Failed to process SQS message ${message.getBody}", t) ; failureCount += 1
+        }
+      })
+    } while (sqsRepository.hasMessages)
 
-    failureCount
+    ProcessResult(successCount, failureCount)
   }
 
   private def storeLogEntry(entry: Entry) = {
@@ -65,3 +69,5 @@ class LambdaLogParserHandler extends RequestHandler[SQSEvent, Int] {
     }
   }
 }
+
+case class ProcessResult(success: Int, failed: Int)
