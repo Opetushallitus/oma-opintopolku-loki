@@ -10,13 +10,15 @@ import fi.vm.sade.repository.{RemoteOrganizationRepository, RemoteSQSRepository}
 
 import scala.collection.JavaConverters._
 
-class LambdaLogParserHandler extends RequestHandler[SQSEvent, ProcessResult] {
+class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrganizationRepository: RemoteOrganizationRepository)
+  extends RequestHandler[SQSEvent, ProcessResult] {
+
   private val logger = LoggerFactory.getLogger(this.getClass)
 
   logger.info("Log parser created")
 
-  protected val sqsRepository: RemoteSQSRepository.type = RemoteSQSRepository
-  protected val remoteOrganizationRepository = new RemoteOrganizationRepository
+  def this(remoteOrganizationRepository: RemoteOrganizationRepository) = this(RemoteSQSRepository, remoteOrganizationRepository)
+  def this() = this(RemoteSQSRepository, new RemoteOrganizationRepository)
 
   /**
     * Code execution starting point, called by AWS Lambda when new log entries have been stored to Cloudwatch & SQS.
@@ -37,7 +39,7 @@ class LambdaLogParserHandler extends RequestHandler[SQSEvent, ProcessResult] {
       sqsRepository.getMessages.asScala.foreach(message => {
         try {
           storeLogEntry(EntryParser(message.getBody))
-          // sqsRepository.deleteMessage(message.getReceiptHandle)
+          sqsRepository.deleteMessage(message.getReceiptHandle)
           successCount += 1
         } catch {
           case t: Throwable => logger.error(s"Failed to process SQS message ${message.getBody}", t) ; failureCount += 1
