@@ -27,7 +27,7 @@ object DB {
     dynamo.createTable(req)
   }
 
-  def save(logEntry: LogEntry): Unit = mapper.save(logEntry)
+  def save(logEntry: LogEntry): Unit = { println(s"Saving item: ${logEntry}") ;mapper.save(logEntry)  }
 }
 
 
@@ -36,13 +36,13 @@ case class LogEntry(@(DynamoDBHashKey @beanGetter)
                     @BeanProperty var id: String,
                     @BeanProperty var time: String,
                     @BeanProperty var studentOid: String, // Student whose information was being viewed
-                    @BeanProperty var organizationOid: List[String] // List of organizations the viewer belongs to
+                    @BeanProperty var organizationOid: java.util.List[String] // List of organizations the viewer belongs to
                    ) {
 
   def this() = this(null, null, null, null)
 
-  def this(time: String, studentOid: String, organizationOid: List[String]) = this(
-    time + ";" + studentOid + ";" + organizationOid,
+  def this(time: String, studentOid: String, organizationOid: java.util.List[String]) = this(
+    time + ";" + studentOid + ";" + organizationOid.toString(),
     time,
     studentOid,
     organizationOid

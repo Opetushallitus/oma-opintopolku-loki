@@ -64,7 +64,7 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
       DB.save(new LogEntry(
         entry.timestamp,
         studentOid,
-        viewerOrganizations
+        viewerOrganizations.asJava
       ))
     } else {
       logger.debug(s"Skipping log entry ${entry.operation.getOrElse(entry.`type`)}")

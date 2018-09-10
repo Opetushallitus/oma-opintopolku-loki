@@ -5,6 +5,8 @@ import java.util.Date
 import org.slf4j.LoggerFactory
 import fi.vm.sade.db.{DB, LogEntry}
 import fi.vm.sade.repository.RemoteOrganizationRepository
+import scala.collection.JavaConverters._
+
 
 /**
  * @author ${user.name}
@@ -28,7 +30,7 @@ object App {
     val organizations = repository.getOrganizationsForUser(heikki_testaa)
 
     organizations.map(o => {
-      DB.save(new LogEntry("tänään", "123", List(o.oid)))
+      DB.save(new LogEntry("tänään", "123", List(o.oid).asJava))
       println(o.nimi.fi.get)
     })
   }
