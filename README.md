@@ -19,6 +19,12 @@ resolves corresponding organizations and stores the information to a DB
 
 After which you can access it from http://localhost:8000/shell/
 
+List tables:
+`aws dynamodb list-tables --endpoint-url http://localhost:8000 --region eu-west-1`
+
+List items:
+ `aws dynamodb scan --table-name LogEntry --endpoint-url http://localhost:8000 --region eu-west-1`
+
 ### Manually interacting with the queue
 
 Write to default queue:
