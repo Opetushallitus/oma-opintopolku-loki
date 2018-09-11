@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>fi.vm.sade</groupId>
-  <artifactId>auditlog-parser</artifactId>
+  <groupId>fi.oph</groupId>
+  <artifactId>omaopintopolkuloki</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>${project.artifactId}</name>
-  <description>My wonderfull scala app</description>
+  <description>Lambda function which reads Opintopolku audit log entries from SQS and stores them to DynamoDB</description>
   <inceptionYear>2018</inceptionYear>
   <licenses>
     <license>
