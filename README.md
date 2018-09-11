@@ -73,11 +73,9 @@ List keys:
 
 # TODO:
 
-   * Create fat jar
+   * Scalastyle
    * Check if failures are cached (redis) or not
    * Start Docker containers & Redis before running tests
-   * Verify package name
    * Implement an integration test for organization repository
    * Code to Github, repo name "oma-opintopolku-loki"
-   * Change package name to fi.oph.omaopintopolkuloki
 
