@@ -10,16 +10,20 @@ object EntryParser {
   def apply(entry: String): Entry = parse(entry).extract[Entry]
 }
 
-
 case class Entry(timestamp: String,
                  serviceName: String,
                  `type`: String,
+                 logSeq: String,
+                 bootTime: String,
+                 hostname: String,
                  applicationType: String,
                  operation: Option[String],
                  user: Option[User],
-                 target: Option[Student]) {
+                 target: Option[Student] ){
 
   lazy val shouldStore: Boolean = target.nonEmpty && user.nonEmpty && operation.nonEmpty
+
+  lazy val getKey: String = bootTime + ";" + logSeq + ";" + hostname // this makes the log entry unique
 }
 
 case class User(oid: String)

@@ -77,6 +77,8 @@ class LambdaLogParserHandlerTest extends FunSpec with Matchers with MockFactory 
       val dbEntry = dbEntries.get(0)
       assume(dbEntry.organizationOid.get(0) == mockOrganizationOid, "Correct organization oid was stored to DB")
       assume(dbEntry.studentOid == studentOid, "Correct student oid was stored to DB")
+      assume(dbEntry.id == "2018-08-24T13:18:32.667+03;3;", "Correct ID was stored to DB")
+      assume(dbEntry.raw.length > 100, "Raw log entry data stored to DB")
     }
   }
 

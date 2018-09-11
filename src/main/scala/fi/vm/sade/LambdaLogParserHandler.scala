@@ -38,7 +38,7 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
     do {
       sqsRepository.getMessages.asScala.foreach(message => {
         try {
-          storeLogEntry(EntryParser(message.getBody))
+          storeLogEntry(message.getBody)
           sqsRepository.deleteMessage(message.getReceiptHandle)
           successCount += 1
         } catch {
@@ -50,7 +50,9 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
     ProcessResult(successCount, failureCount)
   }
 
-  private def storeLogEntry(entry: Entry) = {
+  private def storeLogEntry(entryBody: String) = {
+
+    val entry = EntryParser(entryBody)
 
     if (entry.shouldStore) {
       val studentOid = entry.target.getOrElse(throw new RuntimeException("No student oid found for log entry")).oppijaHenkiloOid
@@ -61,10 +63,12 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
 
       if(viewerOrganizations.isEmpty) throw new RuntimeException(s"Failed to get organizations for ${viewerOid}")
 
-      DB.save(new LogEntry(
+      DB.save(LogEntry(
+        entry.getKey,
         entry.timestamp,
         studentOid,
-        viewerOrganizations.asJava
+        viewerOrganizations.asJava,
+        entryBody
       ))
     } else {
       logger.debug(s"Skipping log entry ${entry.operation.getOrElse(entry.`type`)}")

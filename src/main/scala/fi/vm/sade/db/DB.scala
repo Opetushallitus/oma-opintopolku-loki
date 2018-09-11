@@ -40,15 +40,9 @@ case class LogEntry(@(DynamoDBHashKey @beanGetter)
                     @BeanProperty var id: String,
                     @BeanProperty var time: String,
                     @BeanProperty var studentOid: String, // Student whose information was being viewed
-                    @BeanProperty var organizationOid: java.util.List[String] // List of organizations the viewer belongs to
+                    @BeanProperty var organizationOid: java.util.List[String], // List of organizations the viewer belongs to
+                    @BeanProperty var raw: String // Raw log entry
                    ) {
 
-  def this() = this(null, null, null, null)
-
-  def this(time: String, studentOid: String, organizationOid: java.util.List[String]) = this(
-    time + ";" + studentOid + ";" + organizationOid.toString(),
-    time,
-    studentOid,
-    organizationOid
-  )
+  def this() = this(null, null, null, null, null)
 }
