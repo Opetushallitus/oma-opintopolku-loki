@@ -5,6 +5,8 @@
   <version>1.0-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Lambda function which reads Opintopolku audit log entries from SQS and stores them to DynamoDB</description>
+  <url>https://github.com/Opetushallitus/oma-opintopolku-loki</url>
+
   <inceptionYear>2018</inceptionYear>
   <licenses>
     <license>
