@@ -18,14 +18,34 @@ resolves corresponding organizations and stores the information to a DB
 `docker run --name alpine-sqs -p 9324:9324 -p 9325:9325 -d roribio16/alpine-sqs:latest`
 
 After which you can access it from http://localhost:8000/shell/
+   
+# Running tests
 
-List tables:
-`aws dynamodb list-tables --endpoint-url http://localhost:8000 --region eu-west-1`
+Start Redis and run Docker DynamoDB and SQS containers, 
 
-List items:
- `aws dynamodb scan --table-name LogEntry --endpoint-url http://localhost:8000 --region eu-west-1`
+and run :
 
-### Manually interacting with the queue
+```
+mvn test
+```
+
+# Running the application
+
+Override default configurations from application.conf with environment specific variables.
+
+Set the following environment variables: 
+```
+username=username
+password=password
+```
+
+# Compiling
+
+`mvn package`
+
+# Interacting with services
+
+## SQS
 
 Write to default queue:
 
@@ -34,28 +54,25 @@ Write to default queue:
 Read from default queue:
 
 `aws --region eu-west-1 --endpoint-url http://localhost:9324 sqs receive-message --queue-url http://localhost:9324/queue/default --wait-time-seconds 10`
-   
-# Running tests
 
-Set the following environment variables:
 
-```
-username=username
-password=password
-```
+## DynamoDB
 
-and run :
+List tables:
+`aws dynamodb list-tables --endpoint-url http://localhost:8000 --region eu-west-1`
 
-```
-mvn test
-```
+List items:
+ `aws dynamodb scan --table-name LogEntry --endpoint-url http://localhost:8000 --region eu-west-1`
 
-# Compiling
 
-`mvn package`
+## Redis
+
+List keys:
+
+`echo "keys *" | redis-cli`
 
 # TODO:
 
-   * Read logs from SQS
    * Create fat jar
    * Check if failures are cached (redis) or not
+   * Start Docker containers & Redis before running tests
