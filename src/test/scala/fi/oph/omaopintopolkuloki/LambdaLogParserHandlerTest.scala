@@ -2,8 +2,9 @@ package fi.vm.sade
 
 import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.lambda.runtime.events.SQSEvent
-import fi.vm.sade.db.{DB}
-import fi.vm.sade.repository.{OrganizationPermission, Permission, RemoteOrganizationRepository, RemoteSQSRepository}
+import fi.oph.omaopintopolkuloki.LambdaLogParserHandler
+import fi.oph.omaopintopolkuloki.db.DB
+import fi.oph.omaopintopolkuloki.repository.{OrganizationPermission, Permission, RemoteOrganizationRepository, RemoteSQSRepository}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{BeforeAndAfter, FunSpec, Matchers, PrivateMethodTester}
 import scalacache.Flags

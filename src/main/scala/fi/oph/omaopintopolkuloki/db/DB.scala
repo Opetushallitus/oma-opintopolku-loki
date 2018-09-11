@@ -5,7 +5,7 @@ import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder
 import com.amazonaws.services.dynamodbv2.datamodeling._
 import com.amazonaws.services.dynamodbv2.model.{DeleteTableRequest, ProvisionedThroughput}
-import fi.vm.sade.conf.Configuration._
+import fi.oph.omaopintopolkuloki.conf.Configuration._
 
 import scala.annotation.meta.beanGetter
 import scala.beans.BeanProperty

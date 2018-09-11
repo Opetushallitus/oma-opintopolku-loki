@@ -6,7 +6,7 @@ import com.amazonaws.client.builder.AwsClientBuilder
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
 import com.amazonaws.services.sqs.{AmazonSQS, AmazonSQSClientBuilder}
 import com.amazonaws.services.sqs.model._
-import fi.vm.sade.conf.Configuration._
+import fi.oph.omaopintopolkuloki.conf.Configuration._
 import scala.collection.JavaConverters._
 import com.amazonaws.services.sqs.model.ReceiveMessageRequest
 

@@ -1,6 +1,6 @@
 package fi.vm.sade.repository
 
-import fi.vm.sade.conf.Configuration._
+import fi.oph.omaopintopolkuloki.conf.Configuration._
 import fi.vm.sade.http.Http
 import org.http4s.{Query, Request, Uri}
 import org.json4s._

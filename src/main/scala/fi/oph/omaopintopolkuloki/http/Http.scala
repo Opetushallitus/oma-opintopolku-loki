@@ -1,6 +1,6 @@
 package fi.vm.sade.http
 
-import fi.vm.sade.conf.Configuration._
+import fi.oph.omaopintopolkuloki.conf.Configuration._
 import org.http4s.client.{Client, blaze}
 import org.http4s.{Header, Request, Uri}
 import scalaz.concurrent.Task
