@@ -1,4 +1,4 @@
-package fi.vm.sade.http
+package fi.oph.omaopintopolkuloki.http
 
 import fi.vm.sade.utils.cas.{CasAuthenticatingClient, CasClient, CasParams}
 import org.http4s.client._

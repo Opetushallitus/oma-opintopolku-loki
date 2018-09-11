@@ -1,8 +1,7 @@
-package fi.vm.sade
+package fi.oph.omaopintopolkuloki
 
 import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.lambda.runtime.events.SQSEvent
-import fi.oph.omaopintopolkuloki.LambdaLogParserHandler
 import fi.oph.omaopintopolkuloki.db.DB
 import fi.oph.omaopintopolkuloki.repository.{OrganizationPermission, Permission, RemoteOrganizationRepository, RemoteSQSRepository}
 import org.scalamock.scalatest.MockFactory

@@ -1,4 +1,4 @@
-package fi.vm.sade.http
+package fi.oph.omaopintopolkuloki.http
 
 import fi.oph.omaopintopolkuloki.conf.Configuration._
 import org.http4s.client.{Client, blaze}

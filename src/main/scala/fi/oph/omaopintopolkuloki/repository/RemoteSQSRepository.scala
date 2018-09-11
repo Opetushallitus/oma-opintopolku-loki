@@ -1,4 +1,4 @@
-package fi.vm.sade.repository
+package fi.oph.omaopintopolkuloki.repository
 
 import java.util
 

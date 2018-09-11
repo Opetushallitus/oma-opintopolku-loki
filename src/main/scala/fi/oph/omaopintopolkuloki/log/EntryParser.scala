@@ -1,4 +1,4 @@
-package fi.vm.sade.log
+package fi.oph.omaopintopolkuloki.log
 
 import org.json4s.{DefaultFormats, Formats}
 import org.json4s.jackson.JsonMethods.parse

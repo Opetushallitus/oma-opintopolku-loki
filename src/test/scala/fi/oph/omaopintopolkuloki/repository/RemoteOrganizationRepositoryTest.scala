@@ -1,6 +1,6 @@
-package fi.vm.sade.repository
+package fi.oph.omaopintopolkuloki.repository
 
-import fi.vm.sade.http.HttpClient
+import fi.oph.omaopintopolkuloki.http.HttpClient
 import org.http4s.Uri
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{FunSpec, Matchers}

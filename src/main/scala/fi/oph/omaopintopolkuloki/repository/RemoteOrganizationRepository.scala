@@ -1,7 +1,7 @@
-package fi.vm.sade.repository
+package fi.oph.omaopintopolkuloki.repository
 
 import fi.oph.omaopintopolkuloki.conf.Configuration._
-import fi.vm.sade.http.Http
+import fi.oph.omaopintopolkuloki.http.Http
 import org.http4s.{Query, Request, Uri}
 import org.json4s._
 import org.json4s.jackson.JsonMethods.parse

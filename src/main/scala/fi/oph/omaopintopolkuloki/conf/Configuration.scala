@@ -1,4 +1,4 @@
-package fi.vm.sade.conf
+package fi.oph.omaopintopolkuloki.conf
 
 import com.typesafe.config.ConfigFactory
 import org.http4s.Uri

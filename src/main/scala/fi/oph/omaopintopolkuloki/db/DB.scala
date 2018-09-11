@@ -1,4 +1,4 @@
-package fi.vm.sade.db
+package fi.oph.omaopintopolkuloki.db
 
 import com.amazonaws.client.builder.AwsClientBuilder
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration

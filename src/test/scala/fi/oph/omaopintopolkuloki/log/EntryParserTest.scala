@@ -1,4 +1,4 @@
-package fi.vm.sade.log
+package fi.oph.omaopintopolkuloki.log
 
 import org.scalatest.{FunSpec, Matchers}
 
