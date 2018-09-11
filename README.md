@@ -41,7 +41,13 @@ password=password
 
 # Compiling
 
+Packaging:
+
 `mvn package`
+
+Code style:
+
+`mvn scalastyle:check`
 
 # Interacting with services
 
@@ -78,4 +84,5 @@ List keys:
    * Start Docker containers & Redis before running tests
    * Implement an integration test for organization repository
    * Code to Github, repo name "oma-opintopolku-loki"
+   * `mvn deploy` task (e.g. https://github.com/SeanRoy/lambda-maven-plugin)
 
