@@ -79,7 +79,6 @@ List keys:
 
 # TODO:
 
-   * Scalastyle
    * Check if failures are cached (redis) or not
    * Start Docker containers & Redis before running tests
    * Implement an integration test for organization repository
