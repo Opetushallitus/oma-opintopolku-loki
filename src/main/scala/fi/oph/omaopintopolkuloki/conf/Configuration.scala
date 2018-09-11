@@ -18,7 +18,7 @@ object Configuration {
 
   lazy val baseURI = new Uri(
     scheme = Some(CaseInsensitiveString(config.getString("auditlog.backend.scheme"))),
-    authority = Some(Authority(host = RegName(config.getString("auditlog.backend.authority")))),
+    authority = Some(Authority(host = RegName(config.getString("auditlog.backend.authority"))))
   )
 
   lazy val cacheHost: String = config.getString("auditlog.cache.host")

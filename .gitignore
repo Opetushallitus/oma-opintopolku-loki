@@ -4,3 +4,4 @@ target/
 *.iml
 
 dependency-reduced-pom.xml
+scalastyle-output.xml
