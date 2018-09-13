@@ -16,6 +16,7 @@ functions:
       - https:
         method: get
         path: auditlogs/{oid}
+        authrozier: aws_iam
         request:
           parameters:
             paths:
