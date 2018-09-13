@@ -16,7 +16,8 @@ import scala.language.implicitConversions
 
 
 object Configuration {
-  private lazy val config = ConfigFactory.load
+  // We need the classloader to find application.conf within a jar-file, i.e. when running in AWS Lambda
+  private lazy val config = ConfigFactory.load(getClass.getClassLoader, "application.conf").resolve
 
   implicit def toFiniteDuration(d: java.time.Duration): FiniteDuration = Duration.fromNanos(d.toNanos)
 

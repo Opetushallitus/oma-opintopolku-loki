@@ -33,10 +33,11 @@ mvn test
 
 Override default configurations from application.conf with environment specific variables.
 
-Set the following environment variables: 
-```
-username=username
-password=password
+#### Serverless
+```shell
+cd $NVM_DIR/versions/node/v9.5.0/lib/node_modules/serverless/lib/plugins/aws/invokeLocal/java
+mvn package
+serverless invoke local --function parsequeue --data "" --log true
 ```
 
 ### Compiling
@@ -84,6 +85,7 @@ List keys:
    * Implement an integration test for organization repository
    * Code to Github, repo name "oma-opintopolku-loki"
    * `mvn deploy` task (e.g. https://github.com/SeanRoy/lambda-maven-plugin)
+   * Currently no way for setting backend credentials when running locally
 
 ## User interface
 
