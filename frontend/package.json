@@ -1,0 +1,25 @@
+{
+  "name": "oma-opintopolku-loki",
+  "version": "0.0.1",
+  "description": "Audit log view for Opintopolku audit logs",
+  "license": "EUPL-1.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Opetushallitus/oma-opintopolku-loki.git"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/webpack"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "webpack": "^4.18.0",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0"
+  }
+}

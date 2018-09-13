@@ -5,3 +5,7 @@ target/
 
 dependency-reduced-pom.xml
 scalastyle-output.xml
+
+# frontend
+frontend/node_modules
+frontend/dist/
