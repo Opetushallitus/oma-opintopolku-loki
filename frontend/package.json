@@ -8,7 +8,8 @@
     "url": "git+https://github.com/Opetushallitus/oma-opintopolku-loki.git"
   },
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
+    "build": "npm run lint && npm run build:bundle",
+    "build:bundle": "./node_modules/.bin/webpack",
     "lint": "./node_modules/.bin/eslint ./src/*"
   },
   "devDependencies": {
