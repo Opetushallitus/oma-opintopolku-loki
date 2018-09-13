@@ -1,105 +1,111 @@
 # Oma Opintopolku -loki
 
-## Audit log parser for Opintopolku audit logs
+Tarjoaa näkyvyyttä siihen kuka on katsonut käyttäjän omia tietoja.
 
-This application reads audit log entries from AWS SQS, 
-resolves corresponding organizations and stores the information to a DB
+## Kansiohierarkia
 
-### Requirements
+- `frontend/` - Sisältää palvelun frontend-koodin.
+- `parser/` - Sisältää parser-työkalun, joka parsii audit-lokieventit järjestelmistä palvelun tietokantaan.
+- `tools/` - Sisältää hyödyllisiä työkaluja kehitystyöhön.
 
-#### Redis
+## Esivaatimukset
 
-`apt-get install redis`
+### Työkalut
 
-#### DynamoDB
+Infrastruktuuriin hallinnoimiseen tarvitset seuraavat työkalut:
 
-`docker run -p 8000:8000 amazon/dynamodb-local`
+- [awscli](https://aws.amazon.com/cli/)
+- [Terraform](https://www.terraform.io/)
 
-#### SQS
+Näiden asennuksen voit hoitaa helposti esim. MacOS:lla näin:
 
-`docker run --name alpine-sqs -p 9324:9324 -p 9325:9325 -d roribio16/alpine-sqs:latest`
-
-After which you can access it from http://localhost:8000/shell/
-   
-### Running tests
-
-Start Redis and run Docker DynamoDB and SQS containers, 
-
-and run :
-
-```
-mvn test
+```shell
+brew install awscli terraform packer
 ```
 
-### Running the application
+### AWS-kredentiaalit
 
-Override default configurations from application.conf with environment specific variables.
+#### 1. MFA:n päällekytkeminen ja API-avaimet
 
-Set the following environment variables: 
+Pyydä infratiimiä luomaan itsellesi IAM-käyttäjätunnus. Kun saat tunnuksen:
+
+**Kirjaudu [AWS Web-konsoliin](https://vlt-oph-federation.signin.aws.amazon.com/console):** Klikkaa omaa nimeä oikeasta yläkulmasta, sen alta "My Security Credentials" > "Users" > Etsi nimesi listasta > "Security Credentials"
+
+**Kytke MFA päälle** ja ota "Assigned MFA device" ylös (joka on muotoa arn:aws:iam::1234567890:mfa/first.last@company.com).
+
+**Luo itsellesi API-avain**: yllämainitulla välilehdellä "Create access key"-nappi. Ota "Access key ID" ja "Secret access key" talteen.
+
+#### 2. API-avaimien ja tilien asennus
+
+Jotta voit tehdä API-kutsuja AWS-tileille, pitää AWS API-avaimet ja tiliprofiilit säätää ensiksi kuntoon.
+
+Tarkista, että vain omalla käyttäjätunnuksellasi on oikeus lukea tiedostoja `~/.aws/config` ja `~/.aws/credentials`:
+
+    ls -l ~/.aws
+    -rw-------  1 username  group  631 Aug 29 10:11 config
+    -rw-------  1 username  group  123 Aug 29 10:10 credentials
+
+##### ~/.aws/config
+
+Tämä tiedosto sisältää kaikki awscli:n konfiguraatiot, jotka eivät ole salaisia. Varmista, että sen sisältö on vähintään tämänlainen:
+
 ```
-username=username
-password=password
+[profile oph-federation]
+region = eu-west-1
+output = json
+
+[profile oph-utility]
+region = eu-west-1
+output = json
+
+[profile oph-koski-dev]
+region = eu-west-1
+output = json
+
+[profile oph-koski-qa]
+region = eu-west-1
+output = json
+
+[profile oph-koski-prod]
+region = eu-west-1
+output = json
 ```
 
-### Compiling
+##### ~/.aws/credentials
 
-Packaging:
+Tämä tiedosto sisältää itse API-avaimet AWS-tileille. Varmista, että sen sisältö näyttää vähintään tältä:
 
-`mvn package`
+```shell
+[oph-federation-default] <-- aws_mfa.py -skriptiä varten pysyvät kredentiaalit tallennetaan tähän "default" -profiiliin.
+aws_access_key_id = <Talteen ottamasi Access Key ID>
+aws_secret_access_key = <Talteen ottamasi Secret Access Key>
 
-Code style:
+[oph-federation]
+aws_arn_mfa = arn:aws:iam::1234567890:mfa/first.last@company.com <MFA device, jonka otit talteen>
 
-`mvn scalastyle:check`
+[oph-utility]
+role_arn = arn:aws:iam::190073735177:role/CustomerCloudAdmin
+source_profile = oph-federation
 
-### Interacting with services
+[oph-koski-dev]
+role_arn = arn:aws:iam::500150530292:role/oph-koski-cross-account-access
+source_profile = oph-federation
 
-#### SQS
+[oph-koski-qa]
+role_arn = arn:aws:iam::692437769085:role/oph-koski-cross-account-access
+source_profile = oph-federation
 
-Write to default queue:
+[oph-koski-prod]
+role_arn = arn:aws:iam::508832528142:role/oph-koski-cross-account-access
+source_profile = oph-federation
+```
 
-`aws --region eu-west-1 --endpoint-url http://localhost:9324 sqs send-message --queue-url http://localhost:9324/queue/default --message-body "Hello world"`
+#### 3. MFA-istunnon päivittäminen ja ./tools/aws_mfa.py -skripti
 
-Read from default queue:
+Tähän repositorioon on tallennettu python-skripti, jolla voit päivittää MFA-istunnon koneellesi, jotta AWS API-kutsut toimivat. Voit päivittää istunnon ajamalla:
 
-`aws --region eu-west-1 --endpoint-url http://localhost:9324 sqs receive-message --queue-url http://localhost:9324/queue/default --wait-time-seconds 10`
+```shell
+./tools/aws_mfa.py --profile oph-federation <MFA-koodi>
+```
 
-
-#### DynamoDB
-
-List tables:
-`aws dynamodb list-tables --endpoint-url http://localhost:8000 --region eu-west-1`
-
-List items:
- `aws dynamodb scan --table-name LogEntry --endpoint-url http://localhost:8000 --region eu-west-1`
-
-
-#### Redis
-
-List keys:
-
-`echo "keys *" | redis-cli`
-
-### TODO:
-
-   * Check if failures are cached (redis) or not
-   * Start Docker containers & Redis before running tests
-   * Implement an integration test for organization repository
-   * Code to Github, repo name "oma-opintopolku-loki"
-   * `mvn deploy` task (e.g. https://github.com/SeanRoy/lambda-maven-plugin)
-
-## User interface
-
-The user interface (UI) source code can be found under `frontend` directory.
-The UI is a *React* app, its dependencies are managed with *NPM*, and build is handled using *webpack* and *Babel*.
-
-### Development
-
-First, setup dependencies by running:
-
-`npm i`
-
-Then, start the local hot-reloaded development server by running:
-
-`npm run start:dev`
-
-Or, build the development build by running `npm run build:dev` and serve the files from `dist` directory with some other development server.
+Tämän jälkeen skripti tallentaa AWS STS-palvelusta haetut väliaikaiset kredentiaalit `~/.aws/credentials`-tiedostoon.
