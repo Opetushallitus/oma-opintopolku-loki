@@ -43,13 +43,19 @@ object Configuration {
 
   lazy val dbHost: String = config.getString("auditlog.db.host")
 
-  lazy val SQSHost: String = config.getString("auditlog.sqs.host")
+  lazy val SQSHost: String = if (config.hasPath("auditlog.sqs.host")) {
+    config.getString("auditlog.sqs.host")
+  } else {
+    s"https://sqs.${awsRegion}.amazonaws.com/${accountId}"
+  }
+
   lazy val SQSQueueName: String = config.getString("auditlog.sqs.queuename")
 
   lazy val secretsEndpoint: String = config.getString("auditlog.secrets.endpoint")
   lazy val secretsKey: String = config.getString("auditlog.secrets.key")
   private lazy val secretsClient: SecretsClient = new SecretsClient
-  def getBackendCredentials: Credentials = secretsClient.getCredentials
+  def getSecrets: Credentials = secretsClient.getSecrets
+  lazy val accountId: String = getSecrets.accountId
 
 }
 
@@ -59,9 +65,9 @@ class SecretsClient {
   lazy val secretsManagerClient: AWSSecretsManager = AWSSecretsManagerClientBuilder.standard()
     .withEndpointConfiguration(new EndpointConfiguration(secretsEndpoint, awsRegion)).build()
 
-  def getCredentials: Credentials = parse(
+  def getSecrets: Credentials = parse(
     secretsManagerClient.getSecretValue(new GetSecretValueRequest().withSecretId(secretsKey)).getSecretString
   ).extract[Credentials]
 }
 
-case class Credentials(username: String, password: String)
+case class Credentials(accountId: String, username: String, password: String)

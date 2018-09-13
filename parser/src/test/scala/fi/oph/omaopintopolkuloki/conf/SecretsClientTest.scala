@@ -19,16 +19,18 @@ class SecretsClientTest extends FunSpec with Matchers with MockFactory {
       (mockSecretsManager.getSecretValue _).expects(*).returning(new GetSecretValueResult().withSecretString(
         """
           {
+            "accountId": "1234567890",
             "username" : "azurediamond",
             "password" : "hunter2"
           }
         """
       ))
 
-      val credentials = secretsClient.getCredentials
+      val credentials = secretsClient.getSecrets
 
       assume(credentials.username == "azurediamond")
       assume(credentials.password == "hunter2")
+      assume(credentials.accountId == "1234567890")
 
     }
   }
