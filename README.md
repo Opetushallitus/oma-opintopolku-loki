@@ -20,7 +20,7 @@ Infrastruktuuriin hallinnoimiseen tarvitset seuraavat työkalut:
 Näiden asennuksen voit hoitaa helposti esim. MacOS:lla näin:
 
 ```shell
-brew install awscli terraform packer
+brew install awscli terraform
 ```
 
 ### AWS-kredentiaalit
