@@ -1,0 +1,18 @@
+service: api
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  auditlog:
+    handler: auditlog/src/handler.auditlog
+    events:
+      - https:
+        method: get
+        path: auditlogs/{oid}
+        request:
+          parameters:
+            paths:
+              oid: true
+
