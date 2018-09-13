@@ -1,4 +1,4 @@
-service: parser # NOTE: update this with your service name
+service: auditlog
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -7,6 +7,11 @@ service: parser # NOTE: update this with your service name
 provider:
   name: aws
   runtime: java8
+  stage: ${opt:stage, 'dev'}
+  environment:
+#    "auditlog.sqs.host":  "localhost:1234"
+    env: ${self:provider.stage}
+
 
 # you can overwrite defaults here
 #  stage: dev
@@ -37,7 +42,7 @@ package:
   artifact: target/omaopintopolkuloki-1.0-SNAPSHOT.jar
 
 functions:
-  parsequeue:
+  parser:
     handler: fi.oph.omaopintopolkuloki.LambdaLogParserHandler
 
 #    The following are a few example events you can configure

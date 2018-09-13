@@ -50,6 +50,13 @@ Code style:
 
 `mvn scalastyle:check`
 
+Deploy to AWS dev environment:
+
+```shell
+export AWS_PROFILE=oph-koski-dev
+serverless deploy --stage dev
+```
+
 ### Interacting with services
 
 #### SQS
