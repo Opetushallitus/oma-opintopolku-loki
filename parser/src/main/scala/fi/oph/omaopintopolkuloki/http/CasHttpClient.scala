@@ -1,5 +1,6 @@
 package fi.oph.omaopintopolkuloki.http
 
+import fi.oph.omaopintopolkuloki.conf.Configuration
 import fi.vm.sade.utils.cas.{CasAuthenticatingClient, CasClient, CasParams}
 import org.http4s.client._
 
@@ -23,9 +24,8 @@ object CasHttpClient {
 object Params {
   private val permission_path = "/kayttooikeus-service"
 
-  private def username = sys.env("username")
-  private def password = sys.env("password")
+  private val credentials = Configuration.getBackendCredentials
 
-  def permission: CasParams = CasParams(permission_path, username, password)
+  def permission: CasParams = CasParams(permission_path, credentials.username, credentials.password)
 }
 
