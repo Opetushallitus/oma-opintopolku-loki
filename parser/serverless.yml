@@ -8,8 +8,8 @@ provider:
   name: aws
   runtime: java8
   stage: ${opt:stage, 'dev'}
+  region: eu-west-1
   environment:
-#    "auditlog.sqs.host":  "localhost:1234"
     env: ${self:provider.stage}
 
 
