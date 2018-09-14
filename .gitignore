@@ -3,6 +3,9 @@ target/
 
 *.iml
 
+.terraform/
+*.zip
+
 dependency-reduced-pom.xml
 scalastyle-output.xml
 
