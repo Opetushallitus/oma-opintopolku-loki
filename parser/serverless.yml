@@ -9,6 +9,7 @@ provider:
   runtime: java8
   stage: ${opt:stage, 'dev'}
   region: eu-west-1
+  role: arn:aws:iam::500150530292:role/oph/omaopintopolkuloki/dev/lambda/parser/oma-opintopolku-loki-dev-parser-role
   environment:
     env: ${self:provider.stage}
 
