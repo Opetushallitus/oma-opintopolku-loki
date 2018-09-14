@@ -10,7 +10,7 @@ logger.setLevel(logging.INFO)
 
 def decode_event_data(event_data):
     """Decode the data coming from a CloudWatch log event
-    The Data is bas64 encoded and gzip decompressed JSON in string format.
+    The Data is base64 encoded and gzip decompressed JSON in string format.
     """
     b64_decoded_data = base64.b64decode(bytes(event_data, 'utf-8'))
     decompressed_data = gzip.decompress(b64_decoded_data)
