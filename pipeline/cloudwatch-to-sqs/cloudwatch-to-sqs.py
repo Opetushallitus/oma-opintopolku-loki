@@ -18,6 +18,8 @@ def decode_event_data(event_data):
 
 
 def create_entries(log_events):
+    """Create entries for SQS.send_message_batch()
+    """
     entries = []
     for log_event in log_events:
         entries.append({
