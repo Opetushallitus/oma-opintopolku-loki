@@ -8,10 +8,11 @@
     "url": "git+https://github.com/Opetushallitus/oma-opintopolku-loki.git"
   },
   "scripts": {
+    "build:prod": "NODE_ENV=production ./node_modules/.bin/webpack",
     "build:dev": "./node_modules/.bin/webpack",
     "start:dev": "./node_modules/.bin/webpack-dev-server",
     "lint": "./node_modules/.bin/eslint ./src/*",
-    "test": "./node_modules/.bin/jest"
+    "test": "npm run build:prod & ./node_modules/.bin/jest"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
@@ -28,6 +29,7 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-standard": "^4.0.0",
+    "http-server": "^0.11.1",
     "jest": "^23.6.0",
     "jest-puppeteer": "^3.3.1",
     "puppeteer": "^1.8.0",
@@ -36,6 +38,7 @@
     "webpack-dev-server": "^3.1.8"
   },
   "dependencies": {
+    "dotenv": "^6.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0"

@@ -1,4 +1,4 @@
-const BaseUrl = 'http://localhost:8080/'
+const BaseUrl = `http://localhost:${process.env.TEST_PORT}/`
 
 describe('Oma Opintopolku -loki', () => {
   beforeAll(async () => {
