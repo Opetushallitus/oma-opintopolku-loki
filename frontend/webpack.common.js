@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
   resolve: {
@@ -16,11 +14,5 @@ module.exports = {
         ]
       }
     ]
-  },
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 8080
-  },
-  devtool: 'eval-source-map'
+  }
 }
