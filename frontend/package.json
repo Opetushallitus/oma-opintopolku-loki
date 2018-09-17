@@ -9,8 +9,9 @@
   },
   "scripts": {
     "build:dev": "./node_modules/.bin/webpack",
+    "start:dev": "./node_modules/.bin/webpack-dev-server",
     "lint": "./node_modules/.bin/eslint ./src/*",
-    "start:dev": "./node_modules/.bin/webpack-dev-server"
+    "test": "./node_modules/.bin/jest"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
@@ -21,10 +22,14 @@
     "eslint-config-standard": "^12.0.0",
     "eslint-loader": "^2.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-standard": "^4.0.0",
+    "jest": "^23.6.0",
+    "jest-puppeteer": "^3.3.1",
+    "puppeteer": "^1.8.0",
     "webpack": "^4.18.0",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8"
