@@ -8,7 +8,7 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   font-size: ${theme.font.size.xxl};
-  line-height: ${1.4};
+  line-height: 1.4;
   font-weight: 600;
 `
 
