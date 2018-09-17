@@ -15,3 +15,20 @@ Then, start the local hot-reloaded development server by running:
 
 Or, build the development build by running `npm run build:dev` and serve the files from `dist` directory with some other development server.
 
+### Tests
+
+Tests use *Jest* and *Puppeteer*.
+
+To run tests:
+
+`npm test`
+
+### Code style
+
+The code base uses *JavaScript Standard Style*. *ESLint* is used for linting.
+
+To lint both application code and tests:
+
+`npm run lint`
+
+In addition to JavaScript Standard Style, ESLint uses the recommended configs for React and Jest.
