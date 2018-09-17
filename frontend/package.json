@@ -12,7 +12,7 @@
     "build:dev": "./node_modules/.bin/webpack --config webpack.dev.js",
     "start:dev": "./node_modules/.bin/webpack-dev-server --config webpack.dev.js",
     "lint": "./node_modules/.bin/eslint ./src/**/* ./test/**/*",
-    "test": "npm run build:prod & ./node_modules/.bin/jest"
+    "test": "npm run build:prod && ./node_modules/.bin/jest"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
