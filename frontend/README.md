@@ -1,13 +1,14 @@
 # User interface
 
-The user interface (UI) source code can be found under `frontend` directory.
-The UI is a **React** (https://reactjs.org/) app, its dependencies are managed with **NPM** (https://www.npmjs.com/), and build is handled using **webpack** (https://webpack.js.org/) and **Babel** (https://babeljs.io/).
+The Oma Opintopolku -loki user interface is a **React** (https://reactjs.org/) app, its dependencies are managed with **NPM** (https://www.npmjs.com/), and build is handled using **webpack** (https://webpack.js.org/) and **Babel** (https://babeljs.io/).
 
 ## Development
 
 First, setup dependencies by running:
 
 `npm i`
+
+Next, copy `.env-example` to `.env`.
 
 Then, start the local hot-reloaded development server by running:
 
