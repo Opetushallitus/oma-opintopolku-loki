@@ -1,6 +1,11 @@
 # User interface
 
-The Oma Opintopolku -loki user interface is a **React** (https://reactjs.org/) app, its dependencies are managed with **NPM** (https://www.npmjs.com/), and build is handled using **webpack** (https://webpack.js.org/) and **Babel** (https://babeljs.io/).
+The Oma Opintopolku -loki user interface is a
+
+- **React** (https://reactjs.org/) app,
+- styled using **styled components** (https://www.styled-components.com/),
+- dependencies managed using **NPM** (https://www.npmjs.com/), and
+- build handled with **webpack** (https://webpack.js.org/) and **Babel** (https://babeljs.io/).
 
 ## Development
 
