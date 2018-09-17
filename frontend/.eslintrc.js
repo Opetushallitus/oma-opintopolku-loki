@@ -1,15 +1,15 @@
-{
-  "extends": [
+module.exports = {
+  extends: [
     "standard",
     "plugin:react/recommended",
     "plugin:jest/recommended"
   ],
-  "settings": {
+  settings: {
     "react": {
       "version": "16.5"
     }
   },
-  "globals": {
+  globals: {
     "page": true,
     "browser": true,
     "jestPuppeteer": true
