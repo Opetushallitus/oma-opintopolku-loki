@@ -1,7 +1,7 @@
 # User interface
 
 The user interface (UI) source code can be found under `frontend` directory.
-The UI is a *React* app, its dependencies are managed with *NPM*, and build is handled using *webpack* and *Babel*.
+The UI is a **React** (https://reactjs.org/) app, its dependencies are managed with **NPM** (https://www.npmjs.com/), and build is handled using **webpack** (https://webpack.js.org/) and **Babel** (https://babeljs.io/).
 
 ## Development
 
@@ -17,7 +17,7 @@ Or, build the development build by running `npm run build:dev` and serve the fil
 
 ### Tests
 
-Tests use *Jest* and *Puppeteer*.
+Tests use **Jest** (https://jestjs.io/) and **Puppeteer** (https://pptr.dev/).
 
 To run tests:
 
@@ -25,7 +25,7 @@ To run tests:
 
 ### Code style
 
-The code base uses *JavaScript Standard Style*. *ESLint* is used for linting.
+The code base uses **JavaScript Standard Style** (https://standardjs.com/). **ESLint** (https://eslint.org/) is used for linting.
 
 To lint both application code and tests:
 
