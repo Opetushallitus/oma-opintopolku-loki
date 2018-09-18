@@ -21,6 +21,10 @@ Then, start the local hot-reloaded development server by running:
 
 Or, build the development build by running `npm run build:dev` and serve the files from `dist` directory with some other development server.
 
+To include Oppija-raamit (https://github.com/Opetushallitus/oppija-raamit), add `proxy-oppija-raamit=true` argument by running:
+
+`npm run start:dev -- --proxy-oppija-raamit=true`
+
 ### Tests
 
 Tests use **Jest** (https://jestjs.io/) and **Puppeteer** (https://pptr.dev/).
