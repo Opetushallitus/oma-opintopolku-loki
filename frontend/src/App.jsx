@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import theme from './ui/theme'
 import Header from './component/Header'
 
+/**
+ * Root style wrapper.
+ * Applies base CSS properties.
+ */
 const Content = styled.article`
   font-family: ${theme.font.family};
 `

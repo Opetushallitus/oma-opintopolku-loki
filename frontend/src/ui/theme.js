@@ -1,3 +1,7 @@
+/**
+ * App-wide style constants based on Oma Opintopolku style guide.
+ * Use these instead of ad-hoc values when possible.
+ */
 export default {
   color: {
     primaryLight: '#149ecb',
