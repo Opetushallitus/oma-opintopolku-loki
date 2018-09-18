@@ -15,6 +15,7 @@ package:
 
 functions:
   parser:
+    description: Function that reads Koski audit log entries from SQS, processes them and stores to DynamoDB
     memorySize: 512
     timeout: 60
     handler: fi.oph.omaopintopolkuloki.LambdaLogParserHandler
