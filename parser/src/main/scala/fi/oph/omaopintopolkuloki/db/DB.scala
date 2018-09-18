@@ -36,10 +36,10 @@ object DB {
 
 
 @DynamoDBTable(tableName="AuditLog")
-case class LogEntry(@(DynamoDBHashKey @beanGetter)
-                    @BeanProperty var id: String,
+case class LogEntry(
+                    @(DynamoDBRangeKey @beanGetter) @BeanProperty var id: String,
                     @BeanProperty var time: String,
-                    @BeanProperty var studentOid: String, // Student whose information was being viewed
+                    @(DynamoDBHashKey @beanGetter)  @BeanProperty var studentOid: String, // Student whose information was being viewed
                     @BeanProperty var organizationOid: java.util.List[String], // List of organizations the viewer belongs to
                     @BeanProperty var raw: String // Raw log entry
                    ) {
