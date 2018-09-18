@@ -30,12 +30,12 @@ object DB {
     dynamo.createTable(req)
   }
 
-  private def deleteTable() = dynamo.deleteTable(new DeleteTableRequest("LogEntry"))
+  private def deleteTable() = dynamo.deleteTable(new DeleteTableRequest("AuditLog"))
   def getAllItems: PaginatedScanList[LogEntry] = mapper.scan[LogEntry](classOf[LogEntry], new DynamoDBScanExpression)
 }
 
 
-@DynamoDBTable(tableName="LogEntry")
+@DynamoDBTable(tableName="AuditLog")
 case class LogEntry(@(DynamoDBHashKey @beanGetter)
                     @BeanProperty var id: String,
                     @BeanProperty var time: String,
