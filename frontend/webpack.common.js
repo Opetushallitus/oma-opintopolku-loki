@@ -1,5 +1,4 @@
 module.exports = {
-  mode: process.env.NODE_ENV || 'development',
   resolve: {
     extensions: ['.js', '.jsx', '.json']
   },
