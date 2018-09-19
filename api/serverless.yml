@@ -1,0 +1,16 @@
+service: api
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-west-1
+  stage: ${opt:stage, 'dev'}
+
+functions:
+  auditlog:
+    handler: auditlog/src/entrypoint.handler
+    timeout: 12
+    events:
+      - http:
+          path: auditlog/{oid}
+          method: get
