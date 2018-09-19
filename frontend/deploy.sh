@@ -3,15 +3,17 @@
 PROJECT_ROOT="$(pwd)"
 AWS_CLI="$(which aws)"
 S3_BUCKET_PREFIX="oma-opintopolku-loki-frontend"
+DOCKER_IMAGE_NAME="oma-opintopolku-loki-frontend-build"
 ENV="${1:-"dev"}"
 
 build() {
   local project_dir="$1"
   local env="$2"
+  local docker_image_name="oma-opintopolku-loki-frontend-build"
   echo "Building project $project_dir (environment: $env)"
   cd "$project_dir"
-  docker build -t oma-opintopolku-loki-frontend-build .
-  docker run oma-opintopolku-loki-frontend-build -v dist:/opt/app/dist "npm run build:$env"
+  docker build -t "$docker_image_name" .
+  docker run -v "$project_dir/dist:/opt/app/dist" "$docker_image_name" "build:$env"
   echo "Done!"
   cd -
 }
