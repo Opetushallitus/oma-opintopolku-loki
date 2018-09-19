@@ -3,9 +3,12 @@ const AWS = require('aws-sdk')
 const config = require('config');
 
 const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
-const cacheMaxAge = 600
+const SecretManager = require('../auth/SecretManager')
 
 const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers.oid
+const awsSecretManager = new AWS.SecretsManager()
+
+const secretManager = new secretManager(awsSecretManager, null)
 
 module.exports = async (event, context) => {
   try {
@@ -24,6 +27,15 @@ module.exports = async (event, context) => {
     }
 
     const { oid, secret } = event.headers
+
+    const isAuthenticated = await secretManager.authenticateRequest(secret)
+
+    if (!isAuthenticated) {
+      return {
+        statusCode: 401,
+        body: { message: 'unauthorized request' }
+      }
+    }
 
     return {
       statusCode: 200,
