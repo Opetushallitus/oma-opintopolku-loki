@@ -26,7 +26,7 @@ class AuditLogs {
 
   getAllForOid(oid) {
     const params = {
-      TableName: "LogEntry",
+      TableName: "AuditLog",
       KeyConditionExpression: "studentOid = :sOid",
       ExpressionAttributeValues: {
         ":sOid": oid
