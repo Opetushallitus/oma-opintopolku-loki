@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk')
-const AuditLogs = require('../src/AuditLogs')
+const AuditLogs = require('../../src/model/AuditLogs')
 const { setup, teardown } = require('./__mocks__/mockDynamo')
 const { queryResult } = require('./__mocks__/mockQueryResult')
 
@@ -22,6 +22,11 @@ beforeAll(() => {
 
 afterAll(() => {
   return teardown(dynamodb)
+})
+
+test('grouping empty items should return empty object', () => {
+  const grouped = AuditLog._groupByOrganization([])
+  expect(grouped).toEqual({})
 })
 
 test('should group organizations by their oid', () => {
@@ -52,15 +57,21 @@ test('should return auditlogs for given oid', async () => {
   const logsForOid = await AuditLog.getAllForOid('testoid')
   expect(logsForOid)
     .toEqual(
-      {
-        'aa': [
-          '11:11',
-          '22:22',
-          '33:33'
-        ],
-        'bb': [
-          '22:22'
-        ]
-      }
+      [
+        {
+          organizationOid: 'aa',
+          timestamps: [
+            '11:11',
+            '22:22',
+            '33:33'
+          ]
+        },
+        {
+          organizationOid: 'bb',
+          timestamps: [
+            '22:22'
+          ]
+        }
+      ]
     )
 })
