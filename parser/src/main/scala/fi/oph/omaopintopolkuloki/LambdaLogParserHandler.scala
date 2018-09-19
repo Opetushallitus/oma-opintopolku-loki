@@ -29,7 +29,7 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
     * @return 0 if whole SQS queue was processed or != 0 otherwise
     */
   def handleRequest(sqsEvent: SQSEvent, context: Context): ProcessResult = {
-    logger.info(s"Received SQS event")
+    logger.info(s"Starting to process SQS queue")
 
     var failureCount = 0
     var successCount = 0
@@ -46,6 +46,7 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
       })
     } while (sqsRepository.hasMessages)
 
+    logger.info(s"Processed ${successCount} events, failed to process ${failureCount} events")
     ProcessResult(successCount, failureCount)
   }
 
