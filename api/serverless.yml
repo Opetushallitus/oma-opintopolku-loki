@@ -3,22 +3,14 @@ service: api
 provider:
   name: aws
   runtime: nodejs8.10
-
-iamRoleStatements:
-  - Effect: Allow
-  Action:
-    - dynamodb:Scan
+  region: eu-west-1
+  stage: ${opt:stage, 'dev'}
 
 functions:
   auditlog:
-    handler: auditlog/src/handler.auditlog
+    handler: auditlog/src/entrypoint.handler
+    timeout: 12
     events:
-      - https:
-        method: get
-        path: auditlogs/{oid}
-        authrozier: aws_iam
-        request:
-          parameters:
-            paths:
-              oid: true
-
+      - http:
+          path: auditlog/{oid}
+          method: get
