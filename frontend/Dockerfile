@@ -4,4 +4,4 @@ COPY package*.json /opt/app/
 WORKDIR /opt/app
 RUN npm install
 COPY . /opt/app
-ENTRYPOINT ["npm"]
+ENTRYPOINT ["npm", "run"]
