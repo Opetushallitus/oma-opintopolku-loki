@@ -19,9 +19,15 @@ functions:
     memorySize: 512
     timeout: 60
     handler: fi.oph.omaopintopolkuloki.LambdaLogParserHandler
+    events:
+        - schedule:
+            name: scheduled-parser-execution-event
+            description: 'Trigger log parser automatically every 5 minutes'
+            rate: rate(5 minutes)
+            enabled:  true
     vpc:
       securityGroupIds:
-        - sg-0fbfe78308aad5200
+        - sg-0728f94ef46d7a53b
       subnetIds:
         - subnet-045f164770dfc03c1
         - subnet-0e51f3ad382ac5551
