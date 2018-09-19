@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json']
@@ -13,5 +15,10 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.EnvironmentPlugin([
+      'API_BASE_URL'
+    ])
+  ]
 }
