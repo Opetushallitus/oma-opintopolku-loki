@@ -21,6 +21,8 @@ functions:
     handler: fi.oph.omaopintopolkuloki.LambdaLogParserHandler
     vpc:
       securityGroupIds:
-        - sg-0dae2d83c027a4faf
+        - sg-0fbfe78308aad5200
       subnetIds:
         - subnet-045f164770dfc03c1
+        - subnet-0e51f3ad382ac5551
+        - subnet-0fdbe9dc651818e2c
