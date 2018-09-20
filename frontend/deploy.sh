@@ -8,8 +8,8 @@ ENV="${1:-"dev"}"
 
 build() {
   local project_dir="$1"
-  local env="$2"
-  local docker_image_name="oma-opintopolku-loki-frontend-build"
+  local docker_image_name="$2"
+  local env="$3"
   echo "Building project $project_dir (environment: $env)"
   cd "$project_dir"
   docker build -t "$docker_image_name" .
@@ -27,5 +27,5 @@ deploy() {
   echo "Done!"
 }
 
-build "$PROJECT_ROOT" "$ENV"
+build "$PROJECT_ROOT" "$DOCKER_IMAGE_NAME" "$ENV"
 deploy "$PROJECT_ROOT" "$S3_BUCKET_PREFIX-$ENV" "$ENV"
