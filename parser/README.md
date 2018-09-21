@@ -33,10 +33,11 @@ mvn test
 
 Override default configurations from application.conf with environment specific variables.
 
-Set the following environment variables: 
-```
-username=username
-password=password
+### Serverless
+```shell
+cd $NVM_DIR/versions/node/v9.5.0/lib/node_modules/serverless/lib/plugins/aws/invokeLocal/java
+mvn package
+serverless invoke local --function parsequeue --data "" --log true
 ```
 
 ## Compiling
@@ -48,6 +49,13 @@ Packaging:
 Code style:
 
 `mvn scalastyle:check`
+
+Deploy to AWS dev environment:
+
+```shell
+export AWS_PROFILE=oph-koski-dev
+serverless deploy --stage dev
+```
 
 ## Interacting with services
 
@@ -84,4 +92,21 @@ List keys:
    * Implement an integration test for organization repository
    * Code to Github, repo name "oma-opintopolku-loki"
    * `mvn deploy` task (e.g. https://github.com/SeanRoy/lambda-maven-plugin)
+   * Currently no way for setting backend credentials when running locally
 
+## User interface
+
+The user interface (UI) source code can be found under `frontend` directory.
+The UI is a *React* app, its dependencies are managed with *NPM*, and build is handled using *webpack* and *Babel*.
+
+### Development
+
+First, setup dependencies by running:
+
+`npm i`
+
+Then, start the local hot-reloaded development server by running:
+
+`npm run start:dev`
+
+Or, build the development build by running `npm run build:dev` and serve the files from `dist` directory with some other development server.

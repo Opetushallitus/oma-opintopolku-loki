@@ -1,0 +1,31 @@
+service: auditlog
+
+provider:
+  name: aws
+  runtime: java8
+  stage: ${opt:stage, 'dev'}
+  region: eu-west-1
+  environment:
+    env: ${self:provider.stage}
+
+
+package:
+  artifact: target/omaopintopolkuloki-1.0-SNAPSHOT.jar
+
+functions:
+  parser:
+    description: Function that reads Koski audit log entries from SQS, processes them and stores to DynamoDB
+    role: ${ssm:/oma-opintopolku-loki/parser/role/arn}
+    memorySize: 512
+    timeout: 60
+    handler: fi.oph.omaopintopolkuloki.LambdaLogParserHandler
+    events:
+        - schedule:
+            name: scheduled-parser-execution-event
+            description: 'Trigger log parser automatically every 5 minutes'
+            rate: rate(5 minutes)
+            enabled:  true
+    vpc:
+      securityGroupIds:
+        - ${ssm:/oma-opintopolku-loki/parser/security_group/id}
+      subnetIds: { 'Fn::Split': [ ",", "${ssm:/oma-opintopolku-loki/parser/subnet/id}" ] }

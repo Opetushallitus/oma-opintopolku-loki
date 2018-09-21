@@ -24,7 +24,7 @@ object CasHttpClient {
 object Params {
   private val permission_path = "/kayttooikeus-service"
 
-  private val credentials = Configuration.getBackendCredentials
+  private val credentials = Configuration.getSecrets
 
   def permission: CasParams = CasParams(permission_path, credentials.username, credentials.password)
 }

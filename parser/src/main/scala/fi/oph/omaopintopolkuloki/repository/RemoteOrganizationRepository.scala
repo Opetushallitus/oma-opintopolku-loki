@@ -57,7 +57,7 @@ class RemoteOrganizationRepository {
 }
 
 
-case class User(oidHenkilo: String, username: String, kayttajaTyyppi: String, organisaatiot: Array[OrganizationPermission])
+case class User(oidHenkilo: String, username: Option[String], kayttajaTyyppi: Option[String], organisaatiot: Array[OrganizationPermission])
 case class OrganizationPermission(organisaatioOid: String, kayttooikeudet: Array[Permission])
 case class Permission(palvelu: String, oikeus: String)
 

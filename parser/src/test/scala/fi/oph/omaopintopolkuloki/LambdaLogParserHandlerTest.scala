@@ -60,7 +60,7 @@ class LambdaLogParserHandlerTest extends FunSpec with Matchers with MockFactory 
       val mockResponse = List(OrganizationPermission(mockOrganizationOid, List(Permission("ATARU_HAKEMUS", "READ")).toArray)).toArray
       val flags = Flags(readsEnabled = true, writesEnabled = true)
 
-      (remoteOrganizationRepository.getOrganizationIdsForUser (_ : String)(_ : Flags))
+      (remoteOrganizationRepository.getOrganizationIdsForUser(_: String)(_: Flags))
         .expects(viewerOid, flags)
         .returning(mockResponse)
         .repeat(amountOfValidEntries)
@@ -80,6 +80,26 @@ class LambdaLogParserHandlerTest extends FunSpec with Matchers with MockFactory 
       assume(dbEntry.id == "2018-08-24T13:18:32.667+03;3;", "Correct ID was stored to DB")
       assume(dbEntry.raw.length > 100, "Raw log entry data stored to DB")
     }
+
+    it("Should store logs when student viewed own data") {
+      val selfEntry = Source.fromResource("opiskeluoikeus-katsominen-self.log").mkString
+      RemoteSQSRepository invokePrivate sendMessage(selfEntry)
+
+      while (!RemoteSQSRepository.hasMessages) Thread.sleep(1000)
+
+      val parser = new LambdaLogParserHandler
+      val result = parser.handleRequest(mock[SQSEvent], mock[Context])
+
+      assume(result.success == 1, "Was able to process self view entry")
+      assume(result.failed == 0, "No failed entries was found")
+
+      val dbEntries = DB.getAllItems
+      assume(dbEntries.size() == 1, "Entry was stored to DB") // All 5 of our valid entries were identical
+
+      val dbEntry = dbEntries.get(0)
+      assume(dbEntry.organizationOid.get(0) == "self", "Organization is 'self' when user viewed own data")
+    }
+
   }
 
 }
