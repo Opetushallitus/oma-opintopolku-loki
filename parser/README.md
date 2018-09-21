@@ -1,25 +1,25 @@
-## Audit log parser for Opintopolku audit logs
+# Audit log parser for Opintopolku audit logs
 
 This application reads audit log entries from AWS SQS, 
 resolves corresponding organizations and stores the information to a DB
 
-### Requirements
+## Requirements
 
-#### Redis
+### Redis
 
 `apt-get install redis`
 
-#### DynamoDB
+### DynamoDB
 
 `docker run -p 8000:8000 amazon/dynamodb-local`
 
-#### SQS
+### SQS
 
 `docker run --name alpine-sqs -p 9324:9324 -p 9325:9325 -d roribio16/alpine-sqs:latest`
 
 After which you can access it from http://localhost:8000/shell/
    
-### Running tests
+## Running tests
 
 Start Redis and run Docker DynamoDB and SQS containers, 
 
@@ -29,18 +29,18 @@ and run :
 mvn test
 ```
 
-### Running the application
+## Running the application
 
 Override default configurations from application.conf with environment specific variables.
 
-#### Serverless
+### Serverless
 ```shell
 cd $NVM_DIR/versions/node/v9.5.0/lib/node_modules/serverless/lib/plugins/aws/invokeLocal/java
 mvn package
 serverless invoke local --function parsequeue --data "" --log true
 ```
 
-### Compiling
+## Compiling
 
 Packaging:
 
@@ -57,9 +57,9 @@ export AWS_PROFILE=oph-koski-dev
 serverless deploy --stage dev
 ```
 
-### Interacting with services
+## Interacting with services
 
-#### SQS
+### SQS
 
 Write to default queue:
 
@@ -70,7 +70,7 @@ Read from default queue:
 `aws --region eu-west-1 --endpoint-url http://localhost:9324 sqs receive-message --queue-url http://localhost:9324/queue/default --wait-time-seconds 10`
 
 
-#### DynamoDB
+### DynamoDB
 
 List tables:
 `aws dynamodb list-tables --endpoint-url http://localhost:8000 --region eu-west-1`
@@ -79,13 +79,13 @@ List items:
  `aws dynamodb scan --table-name LogEntry --endpoint-url http://localhost:8000 --region eu-west-1`
 
 
-#### Redis
+### Redis
 
 List keys:
 
 `echo "keys *" | redis-cli`
 
-### TODO:
+## TODO:
 
    * Check if failures are cached (redis) or not
    * Start Docker containers & Redis before running tests

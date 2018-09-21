@@ -1,9 +1,8 @@
-const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
-  mode: 'development',
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.json']
   },
   module: {
     rules: [
@@ -17,9 +16,9 @@ module.exports = {
       }
     ]
   },
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 8080
-  }
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      API_BASE_URL: ''
+    })
+  ]
 }

@@ -8,6 +8,7 @@ scalastyle-output.xml
 
 # frontend
 frontend/node_modules
+frontend/.env
 frontend/dist/*
 !frontend/dist/index.html
 
