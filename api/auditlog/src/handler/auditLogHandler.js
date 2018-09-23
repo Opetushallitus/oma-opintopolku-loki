@@ -6,17 +6,19 @@ const cacheMaxAge = 600
 
 const hasRequiredHeaders = ({ header }) => header && header.secret && header.oid
 
-module.exports = async (event) => {
-  if (!hasRequiredHeaders(event)) {
-    return {
-      statusCode: 400,
-      message: 'missing headers'
-    }
-  }
-
-  const { oid, secret } = event.header
-
+module.exports = async (event, context) => {
   try {
+
+    console.log(`Received audit log request ${JSON.stringify(event)} with context ${JSON.stringify(context)}`)
+
+    if (!hasRequiredHeaders(event)) {
+      return {
+        statusCode: 400,
+        body: 'missing headers'
+      }
+    }
+
+    const { oid, secret } = event.header
 
     return {
       statusCode: 200,
@@ -32,7 +34,7 @@ module.exports = async (event) => {
 
     return {
       statusCode: 500,
-      message: 'internal server error'
+      body: 'internal server error'
     }
   }
 }
