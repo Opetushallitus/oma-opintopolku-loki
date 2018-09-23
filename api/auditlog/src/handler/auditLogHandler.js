@@ -4,7 +4,7 @@ const AWS = require('aws-sdk')
 const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
 const cacheMaxAge = 600
 
-const hasRequiredHeaders = ({ header }) => header && header.secret && header.oid
+const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers.oid
 
 module.exports = async (event, context) => {
   try {
@@ -18,7 +18,7 @@ module.exports = async (event, context) => {
       }
     }
 
-    const { oid, secret } = event.header
+    const { oid, secret } = event.headers
 
     return {
       statusCode: 200,
