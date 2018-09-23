@@ -26,7 +26,7 @@ class AuditLogs {
 
   getAllForOid(oid) {
     const params = {
-      TableName: "LogEntry",
+      TableName: "AuditLog",
       KeyConditionExpression: "studentOid = :sOid",
       ExpressionAttributeValues: {
         ":sOid": oid
@@ -36,7 +36,8 @@ class AuditLogs {
     return new Promise(
       (resolve, reject) => {
         this.db.query(params, (error, data) => {
-          if (error) reject(error)
+          if (error) return reject(error)
+          if (data === null || typeof data === 'undefined') return resolve([])
 
           const { Items } = data
           const grouped = this._groupByOrganization(Items)
