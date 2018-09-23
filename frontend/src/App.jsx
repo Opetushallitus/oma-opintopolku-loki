@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import theme from './ui/theme'
 import Header from './component/Header'
+import LogEntries from './component/LogEntries'
 
 /**
  * Root style wrapper.
@@ -14,6 +15,7 @@ const Content = styled.article`
 const App = () => (
   <Content>
     <Header/>
+    <LogEntries/>
   </Content>
 )
 
