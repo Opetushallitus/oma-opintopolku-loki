@@ -1,4 +1,21 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
-  "plugins": ["styled-components"]
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "browsers": [
+          "> 0.5%",
+          "last 3 versions",
+          "IE >= 11",
+          "not dead"
+        ]
+      }
+    }],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    ["@babel/plugin-transform-runtime", {
+      "regenerator": true
+    }],
+    "styled-components"
+  ]
 }
