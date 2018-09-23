@@ -8,8 +8,11 @@ provider:
 
 functions:
   auditlog:
+    description: Function for reading audit log entries from DynamoDB and returning them
+    role: ${ssm:/oma-opintopolku-loki/auditlog-api/role/arn}
+    memorySize: 256
+    timeout: 60
     handler: auditlog/src/entrypoint.handler
-    timeout: 12
     events:
       - http:
           path: auditlog/{oid}
