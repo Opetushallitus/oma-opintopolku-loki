@@ -1,4 +1,4 @@
-import { lang } from './preferences'
+import { lang } from 'util/preferences'
 
 /**
  * Translates given key to the language currently in use.

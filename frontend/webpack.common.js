@@ -1,8 +1,13 @@
 const webpack = require('webpack')
+const path = require('path')
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'],
+    modules: [
+      'node_modules',
+      path.resolve('./src')
+    ]
   },
   module: {
     rules: [

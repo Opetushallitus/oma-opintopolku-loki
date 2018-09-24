@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import http from './http'
+import http from 'http/http'
 
 class Query extends React.Component {
   constructor (props) {

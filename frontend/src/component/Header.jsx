@@ -1,6 +1,6 @@
 import React from 'react'
-import { H1, Lead } from '../ui/typography'
-import t from '../util/translate'
+import { H1, Lead } from 'ui/typography'
+import t from 'util/translate'
 
 const Header = () => (
   <header>

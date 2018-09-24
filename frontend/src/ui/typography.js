@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import constants from './constants'
+import constants from 'ui/constants'
 
 export const H1 = styled.h1`
   font-size: ${constants.font.size.xxxl};

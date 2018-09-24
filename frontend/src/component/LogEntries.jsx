@@ -1,8 +1,8 @@
 import React from 'react'
 import { uniq } from 'ramda'
-import Query from '../http/Query'
-import LogEntry from './LogEntry'
-import { lang } from '../util/preferences'
+import Query from 'http/Query'
+import LogEntry from 'component/LogEntry'
+import { lang } from 'util/preferences'
 
 const getTranslatedName = organizationName => organizationName[lang] || ''
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import constants from './ui/constants'
-import Header from './component/Header'
-import LogEntries from './component/LogEntries'
+import constants from 'ui/constants'
+import Header from 'component/Header'
+import LogEntries from 'component/LogEntries'
 
 /**
  * Root style wrapper.
