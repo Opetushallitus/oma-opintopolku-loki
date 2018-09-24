@@ -42,8 +42,8 @@ class AuditLogs {
       return response.data.nimi
     } catch (e) {
       console.log(JSON.stringify({
-        error: e.message,
-        message: 'Failed to get organization names'
+        error: e,
+        message: `Failed to get organization names: ${e.message}`
       }))
       return null
     }

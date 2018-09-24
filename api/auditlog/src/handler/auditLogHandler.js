@@ -9,7 +9,11 @@ const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers
 module.exports = async (event, context) => {
   try {
 
-    console.log(`Received audit log request ${JSON.stringify(event)} with context ${JSON.stringify(context)}`)
+    console.log(JSON.stringify({
+      message: 'Received an audit log request',
+      event,
+      context
+    }))
 
     if (!hasRequiredHeaders(event)) {
       return {
@@ -30,7 +34,12 @@ module.exports = async (event, context) => {
 
   } catch (e) {
 
-    console.log(e)
+    console.log(JSON.stringify({
+      message: `Failed to serve audit log request: ${e.message}`,
+      error: e,
+      event,
+      context
+    }))
 
     return {
       statusCode: 500,
