@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Expander from 'component/generic/Expander'
+import Expander from 'component/generic/widget/Expander'
 
 const LogEntry = ({ organizationName }) => (
   <Expander title={organizationName}>

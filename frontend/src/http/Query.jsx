@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import http from 'http/http'
+import { withErrorBoundary } from 'component/generic/enhance/ErrorBoundary'
 
 class Query extends React.Component {
   constructor (props) {
@@ -49,4 +50,4 @@ Query.propTypes = {
   children: PropTypes.func.isRequired
 }
 
-export default Query
+export default withErrorBoundary(Query)

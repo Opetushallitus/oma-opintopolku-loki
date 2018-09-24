@@ -21,3 +21,8 @@ export const Lead = styled.p`
   font-size: ${constants.font.size.xl};
   font-weight: 300;
 `
+
+export const Strong = styled.strong`
+  font-size: ${constants.font.size.xl};
+  font-weight: 600;
+`

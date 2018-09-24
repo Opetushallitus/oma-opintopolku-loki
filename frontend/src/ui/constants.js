@@ -7,6 +7,7 @@ export default {
     primaryLight: '#a2d8e9',
     primary: '#149ecb',
     primaryDark: '#00526c',
+    alert: '#b90400',
     white: '#ffffff',
     black: '#000000',
     background: {
