@@ -13,7 +13,7 @@ class SecretManger {
             reject(error)
           } else {
             const secret = JSON.parse(data.SecretString)
-            resolve(secret)
+            resolve(secret.shibbolethSecret)
           }
         })
       }

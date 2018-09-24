@@ -8,7 +8,7 @@ const SecretManager = require('../auth/SecretManager')
 const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers.oid
 const awsSecretManager = new AWS.SecretsManager()
 
-const secretManager = new secretManager(awsSecretManager, null)
+const secretManager = new SecretManager(awsSecretManager, config.get('secret.name'))
 
 module.exports = async (event, context) => {
   try {
