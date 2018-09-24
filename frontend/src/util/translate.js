@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie'
+import { lang } from './preferences'
 
 /**
  * Translates given key to the language currently in use.
@@ -9,7 +9,6 @@ import Cookies from 'js-cookie'
  * @returns {string} Translated text if translation found, else key
  */
 export default key => {
-  const lang = Cookies.get('lang') || 'fi'
   const translations = window.translationsMap || {}
   const versions = translations[key] || {}
   const translated = versions[lang]
