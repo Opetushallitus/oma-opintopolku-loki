@@ -26,3 +26,12 @@ export const AlertText = styled.strong`
   font-size: ${constants.font.size.xl};
   font-weight: 600;
 `
+
+export const Link = styled.a`
+  text-decoration: underline;
+  color: black;
+`
+
+export const Bold = styled.b`
+  font-weight: 600;
+`
