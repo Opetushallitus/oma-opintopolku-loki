@@ -6,7 +6,8 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
     modules: [
       'node_modules',
-      path.resolve('./src')
+      path.resolve('./src'),
+      path.resolve('./resources')
     ]
   },
   module: {
@@ -17,6 +18,17 @@ module.exports = {
         use: [
           'babel-loader',
           'eslint-loader'
+        ]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              icon: true
+            }
+          }
         ]
       }
     ]
