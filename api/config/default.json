@@ -2,5 +2,8 @@
   "backend": {
     "url" : "https://dev.koski.opintopolku.fi",
     "timeout" : 5000
+  },
+  "cache": {
+    "max-age" : 600
   }
 }

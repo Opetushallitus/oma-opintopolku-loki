@@ -1,5 +1,6 @@
 const AuditLogs = require('../model/AuditLogs')
 const AWS = require('aws-sdk')
+const config = require('config');
 
 const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
 const cacheMaxAge = 600
@@ -27,7 +28,7 @@ module.exports = async (event, context) => {
     return {
       statusCode: 200,
       headers: {
-        'Cache-Control': `max-age=${cacheMaxAge}`
+        'Cache-Control': `max-age=${config.get('cache.max-age')}`
       },
       body: JSON.stringify(await AuditLog.getAllForOid(oid))
     }
