@@ -4,10 +4,15 @@
  */
 export default {
   color: {
-    primaryLight: '#149ecb',
+    primaryLight: '#a2d8e9',
+    primary: '#149ecb',
     primaryDark: '#00526c',
     white: '#ffffff',
-    black: '#000000'
+    black: '#000000',
+    background: {
+      neutralLight: '#f5f5f5',
+      primaryTintedLight: '#eaf8fb'
+    }
   },
   font: {
     family: `'Source Sans Pro', sans-serif`,

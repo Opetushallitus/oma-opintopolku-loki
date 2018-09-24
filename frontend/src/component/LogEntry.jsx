@@ -1,10 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Expander from 'component/generic/Expander'
 
-const LogEntry = ({ organizationName }) => <div>{organizationName}</div>
+const LogEntry = ({ organizationName }) => (
+  <Expander title={organizationName}>
+    <div>{'contents'}</div>
+  </Expander>
+)
 
 LogEntry.propTypes = {
-  organizationName: PropTypes.string
+  organizationName: PropTypes.string.isRequired
 }
 
 export default LogEntry
