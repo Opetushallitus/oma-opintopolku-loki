@@ -17,3 +17,14 @@
 ## Funktion ajaminen lokaalisti:
 
 sls invoke local --function auditlog --data '{ "headers": {"secret":"shibbosecret", "oid": "1.2.3.4"}}'
+
+# Deploying
+
+sls create_domain (this only needs to be run once, and most likely it has already been created)
+sls deploy --stage dev --aws-profile oph-koski-dev
+
+# TODO
+
+   * Verify Shibboleth secret
+   * Unit tests
+   * Deploy to be proxied through Apache Shibbo
