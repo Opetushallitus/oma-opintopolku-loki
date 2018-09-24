@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "aws-sdk": "2.320.0",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "config": "^2.0.1"
   },
   "devDependencies": {
     "jest": "^23.6.0",
