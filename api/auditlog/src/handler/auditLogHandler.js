@@ -33,7 +33,7 @@ module.exports = async (event, context) => {
     if (!isAuthenticated) {
       return {
         statusCode: 401,
-        body: { message: 'unauthorized request' }
+        body: 'unauthorized request'
       }
     }
 
