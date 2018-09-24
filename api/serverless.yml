@@ -5,6 +5,15 @@ provider:
   runtime: nodejs8.10
   region: eu-west-1
   stage: ${opt:stage, 'dev'}
+  environment:
+    NODE_ENV: PRODUCTION
+    NODE_CONFIG_ENV: ${opt:stage, 'dev'}
+
+package:
+  exclude:
+    - .idea/**
+  include:
+    - config
 
 plugins:
   localPath: './auditlog/node_modules'

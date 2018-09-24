@@ -1,12 +1,13 @@
 const axios = require('axios');
+const config = require('config');
 
 class AuditLogs {
   constructor(db) {
     this.db = db
 
     this.http = axios.create({
-      baseURL: 'https://dev.koski.opintopolku.fi',
-      timeout: 5000
+      baseURL: config.get('backend.url'),
+      timeout: config.get('backend.timeout'),
     });
   }
 
