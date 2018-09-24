@@ -20,7 +20,7 @@ functions:
     handler: auditlog/src/entrypoint.handler
     events:
       - http:
-          path: auditlog/{oid}
+          path: auditlog
           method: get
           cors: true
 
@@ -29,4 +29,4 @@ custom:
     domainName: oma-opintopolku-loki-dev.testiopintopolku.fi
     stage: ${opt:stage, 'dev'}
     createRoute53Record: true
-    endpointType: 'regional'
+    endpointType: 'edge'
