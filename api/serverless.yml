@@ -6,6 +6,11 @@ provider:
   region: eu-west-1
   stage: ${opt:stage, 'dev'}
 
+plugins:
+  localPath: './auditlog/node_modules'
+  modules:
+    - serverless-domain-manager
+
 functions:
   auditlog:
     description: Function for reading audit log entries from DynamoDB and returning them
@@ -18,3 +23,10 @@ functions:
           path: auditlog/{oid}
           method: get
           cors: true
+
+custom:
+  customDomain:
+    domainName: oma-opintopolku-loki-dev.testiopintopolku.fi
+    stage: ${opt:stage, 'dev'}
+    createRoute53Record: true
+    endpointType: 'regional'
