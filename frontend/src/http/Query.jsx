@@ -18,11 +18,13 @@ class Query extends React.Component {
   }
 
   async doQuery () {
-    try {
-      const { data } = await http.get(this.props.url)
+    const { url, method, body } = this.props
 
+    try {
+      const { data } = await http.request(url, method, body)
       this.setState({ data, pending: false })
     } catch (error) {
+      console.error(error)
       this.setState({ error, pending: false })
     }
   }
@@ -32,9 +34,19 @@ class Query extends React.Component {
   }
 }
 
-export default Query
+Query.defaultProps = {
+  method: 'get',
+  body: {}
+}
 
 Query.propTypes = {
   url: PropTypes.string.isRequired,
+  method: PropTypes.string,
+  body: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
   children: PropTypes.func.isRequired
 }
+
+export default Query
