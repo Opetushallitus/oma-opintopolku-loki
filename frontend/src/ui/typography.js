@@ -22,7 +22,7 @@ export const Lead = styled.p`
   font-weight: 300;
 `
 
-export const Strong = styled.strong`
+export const AlertText = styled.strong`
   font-size: ${constants.font.size.xl};
   font-weight: 600;
 `

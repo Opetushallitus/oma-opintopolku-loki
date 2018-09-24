@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import t from 'util/translate'
-import { Strong } from '../../../ui/typography'
+import { AlertText } from '../../../ui/typography'
 
 const getDisplayName = Component => Component.displayName || Component.name || 'Component'
 
 const Alert = () => (
   <div>
-    <Strong>{t`Tapahtui odottamaton virhe`}</Strong>
+    <AlertText>{t`Tapahtui odottamaton virhe`}</AlertText>
   </div>
 )
 
