@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import theme from './ui/theme'
+import constants from './ui/constants'
 import Header from './component/Header'
 import LogEntries from './component/LogEntries'
 
@@ -9,7 +9,7 @@ import LogEntries from './component/LogEntries'
  * Applies base CSS properties.
  */
 const Content = styled.article`
-  font-family: ${theme.font.family};
+  font-family: ${constants.font.family};
 `
 
 const App = () => (
