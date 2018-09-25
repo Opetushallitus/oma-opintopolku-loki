@@ -7,7 +7,7 @@ const getDisplayName = Component => Component.displayName || Component.name || '
 
 const Alert = () => (
   <div>
-    <AlertText>{t`Tapahtui odottamaton virhe`}</AlertText>
+    <AlertText>{t`Tapahtui odottamaton virhe.`}</AlertText>
   </div>
 )
 
