@@ -43,8 +43,7 @@ module.exports = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({
-      API_BASE_URL: '',
-      ORGANISAATIO_SERVICE_BASE_URL: ''
+      API_BASE_URL: ''
     })
   ]
 }
