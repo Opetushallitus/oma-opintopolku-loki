@@ -6,9 +6,17 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
     modules: [
       'node_modules',
-      path.resolve('./src'),
-      path.resolve('./resources')
-    ]
+      path.resolve(__dirname, 'src'),
+      path.resolve(__dirname, 'resources')
+    ],
+    alias: {
+      /*
+      This alias is overridden per environment to conditionally use mocks instead of actual resources.
+      I.e. when importing a resource, use this alias if build-time dependency injection is wanted,
+      otherwise use the actual module.
+       */
+      Resources: path.resolve(__dirname, 'resources')
+    }
   },
   module: {
     rules: [
