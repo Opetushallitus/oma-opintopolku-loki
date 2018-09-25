@@ -10,5 +10,11 @@
   },
   "Tietojen käyttölupa": {
     "fi": "Tietojen käyttölupa"
+  },
+  "Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.": {
+    "fi": "Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi."
+  },
+  "Lakiin perustuva tiedonkäyttölupa.": {
+    "fi": "Lakiin perustuva tiedonkäyttölupa."
   }
 }
