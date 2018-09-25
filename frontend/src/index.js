@@ -1,9 +1,12 @@
+import 'util/polyfill'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import App from './App'
-import translations from '../resources/translations'
-import './service/raamitSupport'
+import translations from 'mapping/translations'
+
+import App from 'App'
+import 'service/raamitSupport'
 
 window.translationsMap = translations
 
