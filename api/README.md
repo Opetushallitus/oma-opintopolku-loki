@@ -25,7 +25,6 @@ sls deploy --stage dev --aws-profile oph-koski-dev
 
 # TODO
 
-   * Verify Shibboleth secret
    * Unit tests
    * Deploy to be proxied through Apache Shibbo
    * Don't log shibbo secret
