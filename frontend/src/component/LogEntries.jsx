@@ -18,7 +18,11 @@ const LogEntries = () => (
         .map(over(nameLens, getTranslatedName)))
 
       return organizations.map(({ organizationOid, organizationName }) =>
-        <LogEntry key={organizationOid} organizationName={organizationName} />
+        <LogEntry
+          key={organizationOid}
+          organizationOid={organizationOid}
+          organizationName={organizationName}
+        />
       )
     }}
   </Query>
