@@ -8,7 +8,7 @@
     "url": "git+https://github.com/Opetushallitus/oma-opintopolku-loki.git"
   },
   "scripts": {
-    "test": "jest"
+    "test": "NODE_CONFIG_DIR=../config NODE_CONFIG_ENV=dev jest"
   },
   "dependencies": {
     "aws-sdk": "2.320.0",
