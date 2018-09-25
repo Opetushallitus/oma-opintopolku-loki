@@ -1,6 +1,16 @@
 const webpack = require('webpack')
 const path = require('path')
 
+const assertEnvVariableIsDefined = variable => {
+  const v = process.env[variable]
+
+  if (v === undefined) {
+    throw new Error(`${variable} environment variable is undefined.`)
+  }
+
+  return v
+}
+
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
@@ -42,8 +52,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.EnvironmentPlugin({
-      API_BASE_URL: ''
+    new webpack.DefinePlugin({
+      'process.env.API_BASE_URL': JSON.stringify(assertEnvVariableIsDefined('API_BASE_URL'))
     })
   ]
 }
