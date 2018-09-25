@@ -3,7 +3,6 @@ const AWS = require('aws-sdk')
 const config = require('config');
 
 const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
-const cacheMaxAge = 600
 
 const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers.oid
 
