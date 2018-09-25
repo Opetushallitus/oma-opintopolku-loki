@@ -13,3 +13,7 @@
 ## Juokse testit
 > Muista käynnistää lokaali dynamo ennen testejä
 `npm test`
+
+## Funktion ajaminen lokaalisti:
+
+sls invoke local --function auditlog --data '{ "headers": {"secret":"shibbosecret", "oid": "1.2.3.4"}}'

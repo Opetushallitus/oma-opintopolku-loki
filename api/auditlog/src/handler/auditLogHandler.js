@@ -1,27 +1,49 @@
 const AuditLogs = require('../model/AuditLogs')
+const AWS = require('aws-sdk')
+const config = require('config');
 
-const AuditLog = new AuditLogs(null)
+const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
 
-const hasRequiredHeaders = ({ header }) => header && header.secret && header.oid
+const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers.oid
 
-module.exports = async (event) => {
-  if (!hasRequiredHeaders(event)) {
-    return {
-      statusCode: 400,
-      message: 'missing headers'
-    }
-  }
-
-  const { oid, secret } = event.header
-
+module.exports = async (event, context) => {
   try {
 
-    const auditLogs = await AuditLog.getAllForOid(oid)
+    console.log(JSON.stringify({
+      message: 'Received an audit log request',
+      event,
+      context
+    }))
+
+    if (!hasRequiredHeaders(event)) {
+      return {
+        statusCode: 400,
+        body: 'missing headers'
+      }
+    }
+
+    const { oid, secret } = event.headers
+
+    return {
+      statusCode: 200,
+      headers: {
+        'Cache-Control': `max-age=${config.get('cache.max-age')}`
+      },
+      body: JSON.stringify(await AuditLog.getAllForOid(oid))
+    }
 
   } catch (e) {
+
+    console.log(JSON.stringify({
+      message: `Failed to serve audit log request: ${e.message}`,
+      error: e,
+      event,
+      context
+    }))
+
     return {
       statusCode: 500,
-      message: 'internal server error'
+      body: 'internal server error'
     }
   }
 }

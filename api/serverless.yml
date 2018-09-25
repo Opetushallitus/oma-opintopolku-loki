@@ -5,12 +5,37 @@ provider:
   runtime: nodejs8.10
   region: eu-west-1
   stage: ${opt:stage, 'dev'}
+  environment:
+    NODE_ENV: PRODUCTION
+    NODE_CONFIG_ENV: ${opt:stage, 'dev'}
+
+package:
+  exclude:
+    - .idea/**
+  include:
+    - config
+
+plugins:
+  localPath: './auditlog/node_modules'
+  modules:
+    - serverless-domain-manager
 
 functions:
   auditlog:
+    description: Function for reading audit log entries from DynamoDB and returning them
+    role: ${ssm:/oma-opintopolku-loki/auditlog-api/role/arn}
+    memorySize: 256
+    timeout: 30
     handler: auditlog/src/entrypoint.handler
-    timeout: 12
     events:
       - http:
-          path: auditlog/{oid}
+          path: auditlog
           method: get
+          cors: true
+
+custom:
+  customDomain:
+    domainName: oma-opintopolku-loki-dev.testiopintopolku.fi
+    stage: ${opt:stage, 'dev'}
+    createRoute53Record: true
+    endpointType: 'edge'
