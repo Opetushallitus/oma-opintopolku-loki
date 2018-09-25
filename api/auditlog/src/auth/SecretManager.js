@@ -22,6 +22,10 @@ class SecretManger {
 
   async authenticateRequest(actualSecret) {
     const expectedSecret = await this._getSecretValue()
+
+    if (actualSecret === null || typeof actualSecret === 'undefined') return false
+    if (expectedSecret === null || typeof expectedSecret === 'undefined') return false
+
     return expectedSecret === actualSecret
   }
 }
