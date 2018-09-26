@@ -14,7 +14,8 @@
     "aws-sdk": "2.320.0",
     "axios": "^0.18.0",
     "config": "^2.0.1",
-    "lambda-log": "^2.0.0"
+    "lambda-log": "^2.0.0",
+    "omit-deep-lodash": "^1.1.2"
   },
   "devDependencies": {
     "jest": "^23.6.0",
