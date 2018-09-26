@@ -45,7 +45,7 @@ module.exports = async (event, context) => {
     }
 
   } catch (error) {
-    log.error(`Failed to serve audit log request: ${error.message}`, { error })
+    log.error('Failed to serve auditlog request', { error })
 
     return {
       statusCode: 500,

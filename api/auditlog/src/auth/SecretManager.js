@@ -12,7 +12,7 @@ class SecretManger {
         const params = { SecretId: this.secretId }
         this.manager.getSecretValue(params, (error, data) => {
           if (error) {
-            log.error(`Failed to get secret: ${error.message}`, { error })
+            log.error('Failed to get secret value', { error })
             reject(error)
           } else {
             const secret = JSON.parse(data.SecretString)

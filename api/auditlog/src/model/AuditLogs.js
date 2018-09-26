@@ -42,7 +42,7 @@ class AuditLogs {
       const response = await this.http.get(`/organisaatio-service/rest/organisaatio/v3/${oid}`)
       return response.data.nimi
     } catch (error) {
-      log.error(`Failed to get organization names: ${error.message}`, { error })
+      log.error(`Failed to get organization names for ${oid}`, { error })
       return null
     }
   }
