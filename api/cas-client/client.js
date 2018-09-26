@@ -10,19 +10,14 @@ const client = axios.create({
 const url = (hetu) => `/oppijanumerorekisteri-service/henkilo/henkiloPerusByHetu/${hetu}`
 const getCookieValue = (cookie) => cookie.match(/JSESSIONID=(\w*)/)[1]
 
-const getOid = async (hetu, session) => {
-  const response = await client.get(url(hetu), {
+const getOid = (hetu, session) => {
+  return client.get(url(hetu), {
     headers: { Cookie: `JSESSIONID=${session};` }
   })
-
-  console.log(response)
-  return response
 }
 
-
 const getCasCookie = (credentials) => {
-  return new Promise((resolve, reject) => {
-    try {
+  return new Promise((resolve) => {
       cas.withCookie({
         username: credentials.username,
         password: credentials.password,
@@ -31,9 +26,6 @@ const getCasCookie = (credentials) => {
       }, (resp) => {
         resolve(getCookieValue(resp))
       })
-    } catch (err) {
-      reject(err)
-    }
   })
 }
 
@@ -41,8 +33,9 @@ const getUser = async (credentials, hetu) => {
   try {
     const session = await getCasCookie(credentials)
     return getOid(hetu, session)
-  } finally {
-    console.log('Failed to get oid for student')
+  } catch (err) {
+    console.log('Failed to get oid for student', err)
+    throw err
   }
 }
 
