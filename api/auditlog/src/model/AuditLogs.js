@@ -1,5 +1,6 @@
 const axios = require('axios')
 const config = require('config')
+const log = require('lambda-log')
 
 class AuditLogs {
   constructor(db) {
@@ -36,15 +37,12 @@ class AuditLogs {
   async _getOrganizationNames(oid) {
     try {
       if (oid === null || typeof oid === 'undefined' || oid === "self") return null
-      console.log(JSON.stringify({message: `Getting organization name for ${oid}`}))
+      log.info(`Getting organization name for ${oid}`)
 
       const response = await this.http.get(`/organisaatio-service/rest/organisaatio/v3/${oid}`)
       return response.data.nimi
-    } catch (e) {
-      console.log(JSON.stringify({
-        error: e,
-        message: `Failed to get organization names: ${e.message}`
-      }))
+    } catch (error) {
+      log.error(`Failed to get organization names: ${error.message}`, { error })
       return null
     }
   }
