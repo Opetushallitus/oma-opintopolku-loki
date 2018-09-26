@@ -30,5 +30,25 @@
   },
   "Tietoja haetaan": {
     "fi": "Tietoja haetaan"
+  },
+  "Tietojeni käyttö": {
+    "fi": "Tietojeni käyttö",
+    "sv": "Hur används uppgifterna?"
+  },
+  "Annetut käyttöluvat": {
+    "fi": "Annetut käyttöluvat",
+    "sv": "Tillstånd att använda uppgifterna"
+  },
+  "Tietojani käyttäneet toimijat": {
+    "fi": "Tietojani käyttäneet toimijat",
+    "sv": "Aktörer som använt mina uppgifter"
+  },
+  "Tietojen käyttäjä": {
+    "fi": "Tietojen käyttäjä",
+    "sv": "Uppgiftsanvändare"
+  },
+  "Tarkempi kuvaus lähetetyistä tiedoista": {
+    "fi": "Tarkempi kuvaus lähetetyistä tiedoista",
+    "sv": "En närmare beskrivning av uppgifterna som skickats"
   }
 }
