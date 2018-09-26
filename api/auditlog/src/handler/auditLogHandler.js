@@ -12,10 +12,8 @@ const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers
 
 module.exports = async (event, context) => {
   try {
-    log.config = {
-      meta: { event: { ...context, ...deepOmit(event, 'secret') } },
-      debug: true
-    }
+    log.options.meta = { event: { ...context, ...deepOmit(event, 'secret') } }
+    log.options.debug = true
 
     log.info('Received an audit log request')
 
