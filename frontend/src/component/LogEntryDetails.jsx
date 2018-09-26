@@ -11,7 +11,7 @@ const Details = styled.div`
   justify-content: space-between;
 `
 
-const LogEntryDetails = ({ organizationOid }) => (
+const LogEntryDetails = ({ organizationOid, timestamps }) => (
   <Details>
     <div>
       <Bold>{t`Tietojen käyttölupa`}:</Bold> {getTranslatedUsagePermissionDescription(organizationOid)}
@@ -22,7 +22,8 @@ const LogEntryDetails = ({ organizationOid }) => (
 )
 
 LogEntryDetails.propTypes = {
-  organizationOid: PropTypes.string.isRequired
+  organizationOid: PropTypes.string.isRequired,
+  timestamps: PropTypes.array.isRequired
 }
 
 export default LogEntryDetails
