@@ -1,14 +1,12 @@
 const AuditLogs = require('../model/AuditLogs')
 const AWS = require('aws-sdk')
 const config = require('config');
-
-const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
 const SecretManager = require('../auth/SecretManager')
 
-const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers.oid
-const awsSecretManager = new AWS.SecretsManager()
+const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
+const secretManager = new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
 
-const secretManager = new SecretManager(awsSecretManager, config.get('secret.name'))
+const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers.oid
 
 module.exports = async (event, context) => {
   try {

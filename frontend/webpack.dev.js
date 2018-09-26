@@ -14,8 +14,13 @@ const proxy = {
 
 module.exports = merge(common, {
   mode: 'development',
+  resolve: {
+    alias: {
+      Resources: path.resolve(__dirname, 'mock') // dependency-inject mocks to the aliased resources module
+    }
+  },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.resolve(__dirname, 'dist'),
     compress: true,
     port: 8080,
     proxy: argv.proxyOppijaRaamit === 'true' ? proxy : {}

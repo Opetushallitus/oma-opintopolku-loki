@@ -11,7 +11,7 @@ class AuditLogs {
     });
   }
 
-  _objectToArray(obj) {
+  _toOrganizationArray(obj) {
     return Promise.all(Object.keys(obj)
       .map(async key => ({
         organizationOid: key,
@@ -66,7 +66,7 @@ class AuditLogs {
 
           const { Items } = data
           const grouped = this._groupByOrganization(Items)
-          const asArray = await this._objectToArray(grouped)
+          const asArray = await this._toOrganizationArray(grouped)
           resolve(asArray)
         })
       }
