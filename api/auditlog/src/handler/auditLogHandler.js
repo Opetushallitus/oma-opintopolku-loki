@@ -2,6 +2,8 @@ const AuditLogs = require('../model/AuditLogs')
 const AWS = require('aws-sdk')
 const config = require('config')
 const SecretManager = require('../auth/SecretManager')
+const log = require('lambda-log')
+const deepOmit = require('omit-deep-lodash')
 
 const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
 const secretManager = new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
@@ -10,12 +12,12 @@ const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers
 
 module.exports = async (event, context) => {
   try {
+    log.config = {
+      meta: { event: { ...context, ...deepOmit(event, 'secret') } },
+      debug: true
+    }
 
-    console.log(JSON.stringify({
-      message: 'Received an audit log request',
-      event,
-      context
-    }))
+    log.info('Received an audit log request')
 
     if (!hasRequiredHeaders(event)) {
       return {
@@ -29,6 +31,7 @@ module.exports = async (event, context) => {
     const isAuthenticated = await secretManager.authenticateRequest(secret)
 
     if (!isAuthenticated) {
+      log.debug(`Unauthorized request`)
       return {
         statusCode: 401,
         body: 'unauthorized request'
@@ -43,14 +46,8 @@ module.exports = async (event, context) => {
       body: JSON.stringify(await AuditLog.getAllForOid(oid))
     }
 
-  } catch (e) {
-
-    console.log(JSON.stringify({
-      message: `Failed to serve audit log request: ${e.message}`,
-      error: e,
-      event,
-      context
-    }))
+  } catch (error) {
+    log.error(`Failed to serve audit log request: ${error.message}`, { error })
 
     return {
       statusCode: 500,
