@@ -3,19 +3,19 @@
     "fi": "Oma Opintopolku -loki"
   },
   "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.": {
-    "fi": "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi."
+    "fi": "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.",
     "sv": "På den här sidan kan du granska och administrera de tillstånd du har givit om dina uppgifter. Du ser här dessutom vilka aktörer, t.ex. myndigheter, som har använt dina studieuppgifter."
   },
   "Taulukko tietojen käyttökerroista": {
-    "fi": "Taulukko tietojen käyttökerroista"
+    "fi": "Taulukko tietojen käyttökerroista",
     "sv": "En tabell över antalet gånger som uppgifterna har använts"
   },
   "Tietojen käyttölupa": {
-    "fi": "Tietojen käyttölupa"
+    "fi": "Tietojen käyttölupa",
     "sv": "Rätt att använda uppgifter"
   },
   "Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.": {
-    "fi": "Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi."
+    "fi": "Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.",
     "sv": "Du har gett tillstånd till denna tjänsterbjudare att använda dina uppgifter."
   },
   "Lakiin perustuva tiedonkäyttölupa.": {
