@@ -20,7 +20,7 @@ const createLogTable = (db) => {
         KeyType: 'RANGE'
       }
     ],
-    TableName: 'LogEntry',
+    TableName: 'AuditLog',
     ProvisionedThroughput: {
       ReadCapacityUnits: 1,
       WriteCapacityUnits: 1
@@ -39,7 +39,7 @@ const createLogTable = (db) => {
 
 const deleteLogTable = (db) => {
   const params = {
-    TableName: 'LogEntry'
+    TableName: 'AuditLog'
   }
 
   return new Promise(
@@ -55,7 +55,7 @@ const deleteLogTable = (db) => {
 const insertMockData = (db) => {
   params = {
     RequestItems: {
-      'LogEntry': [
+      'AuditLog': [
         {
           PutRequest: {
             Item: {
@@ -67,7 +67,7 @@ const insertMockData = (db) => {
               },
               'organizationOid': {
                 L: [
-                  { S: 'aa' }
+                  { S: 'organisaatio1' }
                 ]
               },
               'id': {
@@ -87,8 +87,8 @@ const insertMockData = (db) => {
               },
               'organizationOid': {
                 L: [
-                  { S: 'aa' },
-                  { S: 'bb' }
+                  { S: 'organisaatio1' },
+                  { S: 'organisaatio2' }
                 ]
               },
               'id': {
@@ -108,7 +108,7 @@ const insertMockData = (db) => {
               },
               'organizationOid': {
                 L: [
-                  { S: 'aa' }
+                  { S: 'organisaatio3' }
                 ]
               },
               'id': {
