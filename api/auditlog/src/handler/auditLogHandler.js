@@ -1,6 +1,6 @@
 const AuditLogs = require('../model/AuditLogs')
 const AWS = require('aws-sdk')
-const config = require('config');
+const config = require('config')
 const SecretManager = require('../auth/SecretManager')
 
 const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
