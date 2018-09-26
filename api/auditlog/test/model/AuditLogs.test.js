@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk')
 const AuditLogs = require('../../src/model/AuditLogs')
 const { setup, teardown } = require('./__mocks__/mockDynamo')
-const { queryResult } = require('./__mocks__/mockQueryResult')
+const { queryResult, queryresult_2 } = require('./__mocks__/mockQueryResult')
 
 AWS.config.update({
   credentials: new AWS.Credentials({
@@ -12,9 +12,14 @@ AWS.config.update({
   region: 'localregion'
 })
 
-const dynamodb = new AWS.DynamoDB() //for writing mocks
-const client = new AWS.DynamoDB.DocumentClient() //actual db client
-const AuditLog = new AuditLogs(client)
+const dynamodb = new AWS.DynamoDB() //for initing mock data to db
+const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
+
+//mock auditlog http request
+AuditLog._getOrganizationNames = (oid) => {
+  if (oid === null || typeof oid === 'undefined' || oid === "self") return { oid, name: null }
+  return { oid, name: { fi: '' } }
+}
 
 beforeAll(() => {
   return setup(dynamodb)
@@ -24,54 +29,69 @@ afterAll(() => {
   return teardown(dynamodb)
 })
 
-test('grouping empty items should return empty object', () => {
-  const grouped = AuditLog._groupByOrganization([])
-  expect(grouped).toEqual({})
-})
-
 test('should group organizations by their oid', () => {
-  const grouped = AuditLog._groupByOrganization(queryResult)
+  const grouped = AuditLog._groupByOrganizationOids(queryresult_2)
   expect(grouped).toEqual(
     {
-      '666': [
-        '11:11',
-        '22:22'
-      ],
-      '322': [
-        '22:22',
-        '33:33'
-      ],
-      '420': [
-        '11:11',
-        '33:33'
-      ],
-      '999': [
-        '44:44',
-        '55:55'
-      ]
+      [[
+        'organisaatio1',
+        'organisaatio2'
+      ]]: [
+          '22:22',
+          '23:23'
+        ]
+      ,
+      [[
+        'organisaatio1'
+      ]]: [
+          '55:55',
+          '66:66'
+        ]
     }
   )
 })
 
-test('should return auditlogs for given oid', async () => {
-  const logsForOid = await AuditLog.getAllForOid('testoid')
-  expect(logsForOid)
-    .toEqual(
-      [
-        {
-          organizationOid: 'aa',
-          timestamps: [
-            '11:11',
-            '22:22',
-            '33:33'
-          ]
-        },
-        {
-          organizationOid: 'bb',
-          timestamps: [
-            '22:22'
-          ]
-        }
-      ]
-    )
+test('should return auditlogs', async () => {
+  const auditLogsForOid = await AuditLog.getAllForOid('testoid')
+  expect(auditLogsForOid).toEqual(
+    [
+      {
+        organizations: [
+          {
+            oid: 'organisaatio1',
+            name: { fi: '' }
+          }
+        ],
+        timestamps: [
+          '11:11'
+        ]
+      },
+      {
+        organizations: [
+          {
+            oid: 'organisaatio1',
+            name: { fi: '' }
+          },
+          {
+            oid: 'organisaatio2',
+            name: { fi: '' }
+          }
+        ],
+        timestamps: [
+          '22:22'
+        ]
+      },
+      {
+        organizations: [
+          {
+            oid: 'organisaatio3',
+            name: { fi: '' }
+          }
+        ],
+        timestamps: [
+          '33:33'
+        ]
+      }
+    ]
+  )
 })
