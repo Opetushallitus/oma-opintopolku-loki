@@ -20,7 +20,7 @@ const createLogTable = (db) => {
         KeyType: 'RANGE'
       }
     ],
-    TableName: 'LogEntry',
+    TableName: 'AuditLog',
     ProvisionedThroughput: {
       ReadCapacityUnits: 1,
       WriteCapacityUnits: 1
@@ -39,7 +39,7 @@ const createLogTable = (db) => {
 
 const deleteLogTable = (db) => {
   const params = {
-    TableName: 'LogEntry'
+    TableName: 'AuditLog'
   }
 
   return new Promise(
@@ -55,19 +55,19 @@ const deleteLogTable = (db) => {
 const insertMockData = (db) => {
   params = {
     RequestItems: {
-      'LogEntry': [
+      'AuditLog': [
         {
           PutRequest: {
             Item: {
               'studentOid': {
-                S: 'testoid'
+                S: 'student1'
               },
               time: {
                 S: '11:11'
               },
               'organizationOid': {
                 L: [
-                  { S: 'aa' }
+                  { S: 'organisaatio1' }
                 ]
               },
               'id': {
@@ -80,15 +80,15 @@ const insertMockData = (db) => {
           PutRequest: {
             Item: {
               'studentOid': {
-                S: 'testoid'
+                S: 'student1'
               },
               time: {
                 S: '22:22'
               },
               'organizationOid': {
                 L: [
-                  { S: 'aa' },
-                  { S: 'bb' }
+                  { S: 'organisaatio1' },
+                  { S: 'organisaatio2' }
                 ]
               },
               'id': {
@@ -101,14 +101,14 @@ const insertMockData = (db) => {
           PutRequest: {
             Item: {
               'studentOid': {
-                S: 'testoid'
+                S: 'student1'
               },
               time: {
                 S: '33:33'
               },
               'organizationOid': {
                 L: [
-                  { S: 'aa' }
+                  { S: 'organisaatio3' }
                 ]
               },
               'id': {
@@ -121,18 +121,99 @@ const insertMockData = (db) => {
           PutRequest: {
             Item: {
               'studentOid': {
-                S: 'fakeoid'
+                S: 'student1'
               },
               time: {
                 S: '44:44'
               },
               'organizationOid': {
                 L: [
-                  { S: 'cc' }
+                  { S: 'organisaatio3' }
                 ]
               },
               'id': {
                 S: '4'
+              }
+            }
+          },
+        },
+        {
+          PutRequest: {
+            Item: {
+              'studentOid': {
+                S: 'student1'
+              },
+              time: {
+                S: '55:55'
+              },
+              'organizationOid': {
+                L: [
+                  { S: 'organisaatio2' },
+                  { S: 'organisaatio1' }
+                ]
+              },
+              'id': {
+                S: '5'
+              }
+            }
+          },
+        },
+        {
+          PutRequest: {
+            Item: {
+              'studentOid': {
+                S: 'student2'
+              },
+              time: {
+                S: '66:66'
+              },
+              'organizationOid': {
+                L: [
+                  { S: 'organisaatio1' }
+                ]
+              },
+              'id': {
+                S: '6'
+              }
+            }
+          },
+        },
+        {
+          PutRequest: {
+            Item: {
+              'studentOid': {
+                S: 'student2'
+              },
+              time: {
+                S: '77:77'
+              },
+              'organizationOid': {
+                L: [
+                  { S: 'self' }
+                ]
+              },
+              'id': {
+                S: '7'
+              }
+            }
+          }
+        },
+        {
+          PutRequest: {
+            Item: {
+              'studentOid': {
+                S: 'error_student'
+              },
+              time: {
+                S: '88:88'
+              },
+              'organizationOid': {
+                L: [
+                  { S: 'ERROR' }
+                ]
+              },
+              'id': {
+                S: '8'
               }
             }
           }
