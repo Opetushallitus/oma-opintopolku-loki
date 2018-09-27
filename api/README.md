@@ -1,16 +1,20 @@
 # Rajapinta auditlogien hakemiseen
 
 ## Jos sinulla ei ole serverless -frameworkkia, asenna se
+[serverless](https://serverless.com/)
+
 `npm i -g serverless`
 
 ## Asenna tarvittavat riippuvuudet
-### huom. jokaisella lambda funktiolla on omat riippuvuudet
+huom. jokaisella lambda funktiolla on omat riippuvuudet
+
 `npm i`
 
 ## Käynnistä lokaali dynamoDB
 `docker run -p 8000:8000 amazon/dynamodb-local`
 
 ## Aja testit
+[Jest](https://jestjs.io/)
 > Muista käynnistää lokaali dynamo ennen testejä
 
 `npm test`
