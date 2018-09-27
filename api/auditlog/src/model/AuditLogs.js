@@ -25,7 +25,7 @@ class AuditLogs {
       }
     } catch (error) {
       log.error(`Failed to get organization names for ${oid}`, { error })
-      return { oid, name: null }
+      throw error
     }
   }
 
