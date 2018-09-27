@@ -31,6 +31,7 @@ class AuditLogs {
 
   async _getOrganizationNameMap(oids) {
     const orgNames = await Promise.all(oids.map(async oid => await this._getOrganizationNames(oid)))
+      .catch(e => { throw e })
 
     return orgNames.reduce((obj, val) => ({ ...obj, [val.oid]: val.name }), {})
   }
@@ -54,6 +55,7 @@ class AuditLogs {
   async _mapOrganizationNames(logsGroupedByOrgs) {
     const uniqueOrgOids = this._getOrganizationOids(logsGroupedByOrgs)
     const nameMap = await this._getOrganizationNameMap(uniqueOrgOids)
+      .catch(e => { throw e })
 
     return this._mapNamesToOrganizationOids(logsGroupedByOrgs, nameMap)
   }
@@ -89,7 +91,7 @@ class AuditLogs {
 
           const { Items } = data
           const grouped = this._groupByOrganizationOids(Items)
-          const asArray = await this._mapOrganizationNames(grouped)
+          const asArray = await this._mapOrganizationNames(grouped).catch(e => reject(e))
           resolve(asArray)
         })
       }
