@@ -40,6 +40,8 @@ class UserClient {
   }
 
   async getUser(hetu) {
+    if (hetu === null || typeof hetu === 'undefined') throw new Error("Cannot get OID for null hetu")
+
     try {
       const session = await this.getCasCookie()
       const response = await this.getOid(hetu, session)
