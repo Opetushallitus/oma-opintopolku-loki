@@ -1,7 +1,7 @@
 const AuditLogs = require('../model/AuditLogs')
 const AWS = require('aws-sdk')
 const config = require('config');
-const SecretManager = require('../auth/SecretManager')
+const SecretManager = require('../../../common/auth/SecretManager')
 
 const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
 const secretManager = new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
