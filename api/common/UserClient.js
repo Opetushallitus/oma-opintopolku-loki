@@ -1,14 +1,18 @@
+const AWS = require('aws-sdk')
 const axios = require('axios')
+
 const cas = require('./cas.js')
+const SecretManager = require('./auth/SecretManager')
 
 class UserClient {
-  constructor(timeout, host) {
+  constructor(timeout, host, secret) {
     this.client = axios.create({
       baseURL: `https://${host}`,
       timeout,
     });
 
     this.host = host
+    this.secretManager = new SecretManager(new AWS.SecretsManager(), secret)
   }
 
   getUrl(hetu) { return `/oppijanumerorekisteri-service/henkilo/henkiloPerusByHetu/${hetu}` }
@@ -34,8 +38,14 @@ class UserClient {
     })
   }
 
+  async getCredentials() {
+    const jooh = await this.secretManager.getSecretValue()
+    console.log(jooh)
+  }
+
   async getUser(credentials, hetu) {
     try {
+      this.getCredentials()
       const session = await this.getCasCookie(credentials)
       return this.getOid(hetu, session)
     } catch (err) {
