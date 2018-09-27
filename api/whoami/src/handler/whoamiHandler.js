@@ -1,5 +1,7 @@
 const AWS = require('aws-sdk')
 const config = require('config');
+const log = require('lambda-log')
+const deepOmit = require('omit-deep-lodash')
 
 const SecretManager = require('../../../common/src/auth/SecretManager')
 const UserClient = require('../../../common/src/client/UserClient')
@@ -13,14 +15,27 @@ const userClient = new UserClient(
 
 module.exports = async (event, context) => {
   try {
+    log.options.meta = { event: { ...context, ...deepOmit(event, 'secret', 'hetu') } }
+
     const { secret, hetu, oid } = event.headers
-    console.log(JSON.stringify({message: `Received whoami request for ${oid}`}))
+    log.info(`Received whoami request for ${oid}`)
+
+    if (!secret || !hetu) {
+      log.info(`Received whoami request without headers`)
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ message: 'Missing headers' })
+      }
+    }
 
     const isAuthenticated = await secretManager.authenticateRequest(secret)
 
-    if (!isAuthenticated) return {
-      statusCode: 401,
-      body: JSON.stringify({message: 'Not authenticated'})
+    if (!isAuthenticated) {
+      log.info(`Unauthorized request`)
+      return {
+        statusCode: 401,
+        body: JSON.stringify({message: 'Not authenticated'})
+      }
     }
 
     const user = await userClient.getUser(hetu)
@@ -33,8 +48,8 @@ module.exports = async (event, context) => {
       body: JSON.stringify(user)
     }
 
-  } catch (err) {
-    console.log('Failed', err)
+  } catch (error) {
+    log.error(`Response failed`, { error })
 
     return {
       statusCode: 500,
