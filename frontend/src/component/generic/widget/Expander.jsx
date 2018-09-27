@@ -54,7 +54,7 @@ class Expander extends React.Component {
 
 Expander.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.node.isRequired
 }
 
 export default Expander

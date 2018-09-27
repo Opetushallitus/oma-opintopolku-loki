@@ -55,6 +55,7 @@
     "ramda": "^0.25.0",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
+    "recompose": "^0.30.0",
     "styled-components": "^3.4.6"
   }
 }
