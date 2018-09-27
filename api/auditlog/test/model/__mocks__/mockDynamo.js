@@ -197,6 +197,26 @@ const insertMockData = (db) => {
               }
             }
           }
+        },
+        {
+          PutRequest: {
+            Item: {
+              'studentOid': {
+                S: 'error_student'
+              },
+              time: {
+                S: '88:88'
+              },
+              'organizationOid': {
+                L: [
+                  { S: 'ERROR' }
+                ]
+              },
+              'id': {
+                S: '8'
+              }
+            }
+          }
         }
       ]
     }
