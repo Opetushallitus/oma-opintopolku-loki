@@ -73,9 +73,11 @@ class AuditLogs {
   getAllForOid(oid) {
     const params = {
       TableName: "AuditLog",
-      KeyConditionExpression: "studentOid = :sOid",
+      KeyConditionExpression: "studentOid = :oid",
+      FilterExpression: "not contains (organizationOid, :self)",
       ExpressionAttributeValues: {
-        ":sOid": oid
+        ":oid": oid,
+        ":self": "self"
       }
     }
 
