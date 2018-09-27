@@ -42,11 +42,15 @@ module.exports.handler = async (event, context, callback) => {
 
       callback(null, {
         statusCode: 401,
-        body: JSON.stringify({message: 'Not authenticated'})
+        body: JSON.stringify({ message: 'Not authenticated' })
       })
 
     }
   } catch (err) {
     console.log('Failed', err)
+    callback(null, {
+      statusCode: 500,
+      body: JSON.stringify({ message: 'Internal server error' })
+    })
   }
 }
