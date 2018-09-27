@@ -1,12 +1,14 @@
 const AuditLogs = require('../model/AuditLogs')
 const AWS = require('aws-sdk')
 const config = require('config');
-const SecretManager = require('../../../common/auth/SecretManager')
+
+const SecretManager = require('../../../common/src/auth/SecretManager')
+const UserClient = require('../../../common/src/client/UserClient')
 
 const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
 const secretManager = new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
 
-const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers.oid
+const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers.hetu
 
 module.exports = async (event, context) => {
   try {
@@ -24,7 +26,15 @@ module.exports = async (event, context) => {
       }
     }
 
-    const { oid, secret } = event.headers
+    const { hetu, secret } = event.headers
+
+    const userClient = new UserClient(
+      config.get('backend.timeout'),
+      config.get('backend.host'),
+      config.get('secret.name')
+    )
+
+    const { oidHenkilo } = await userClient.getUser(hetu)
 
     const isAuthenticated = await secretManager.authenticateRequest(secret)
 
@@ -40,7 +50,7 @@ module.exports = async (event, context) => {
       headers: {
         'Cache-Control': `max-age=${config.get('cache.max-age')}`
       },
-      body: JSON.stringify(await AuditLog.getAllForOid(oid))
+      body: JSON.stringify(await AuditLog.getAllForOid(oidHenkilo))
     }
 
   } catch (e) {
