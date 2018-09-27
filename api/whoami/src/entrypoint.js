@@ -10,7 +10,14 @@ module.exports.handler = async (event, context, callback) => {
 
   try {
     const { secret, hetu, oid } = event.headers
-    console.log(JSON.stringify({message: `Received whoami request for ${oid}`}))
+    console.log(JSON.stringify({ message: `Received whoami request for ${oid}` }))
+
+    if (!secret || !hetu || !oid) {
+      callback(null, {
+        statusCode: 401,
+        body: JSON.stringify({ message: 'Missing headers' })
+      })
+    }
 
     const isAuthenticated = await secretManager.authenticateRequest(secret)
 
