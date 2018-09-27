@@ -1,10 +1,10 @@
 import React from 'react'
 import { lensProp, map, over, view } from 'ramda'
 import Query from 'http/Query'
-import LogEntry from 'component/LogEntry'
 import { lang } from 'util/preferences'
-import { AlertText } from '../ui/typography'
+import { AlertText } from 'ui/typography'
 import t from 'util/translate'
+import LogEntryGroup from 'component/log-entry-group/LogEntryGroup'
 
 const organizationLens = lensProp('organizations')
 const nameLens = lensProp('name')
@@ -24,14 +24,13 @@ const LogEntries = () => (
         const key = map(view(oidLens), organizations).join(',')
 
         return (
-          <LogEntry
+          <LogEntryGroup
             key={key}
-            organizations={organizations}
+            organizationAlternatives={organizations}
             timestamps={timestamps}
           />
         )
-      }
-      )
+      })
     }}
   </Query>
 )
