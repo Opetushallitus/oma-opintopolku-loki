@@ -18,7 +18,6 @@ const ExpanderTitle = styled.div`
 `
 
 const ExpandedContents = styled.div`
-  background-color: ${constants.color.background.neutralLight};
   padding: 1.5rem 2.5rem;
 `
 
