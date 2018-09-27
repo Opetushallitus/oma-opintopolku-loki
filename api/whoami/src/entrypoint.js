@@ -5,6 +5,11 @@ const SecretManager = require('../../common/src/auth/SecretManager')
 const UserClient = require('../../common/src/client/UserClient')
 
 const secretManager = new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
+const userClient = new UserClient(
+  config.get('backend.timeout'),
+  config.get('backend.host'),
+  config.get('secret.name')
+)
 
 module.exports.handler = async (event, context, callback) => {
 
@@ -15,12 +20,6 @@ module.exports.handler = async (event, context, callback) => {
     const isAuthenticated = await secretManager.authenticateRequest(secret)
 
     if (isAuthenticated) {
-
-      const userClient = new UserClient(
-        config.get('backend.timeout'),
-        config.get('backend.host'),
-        config.get('secret.name')
-      )
 
       const user = await userClient.getUser(hetu)
 
