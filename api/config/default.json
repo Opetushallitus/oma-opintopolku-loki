@@ -8,6 +8,6 @@
     "max-age" : 600
   },
   "secret": {
-    "name": "oma-opintopolku-loki/auditlog-api"
+    "name": "oma-opintopolku-loki/auditlog"
   }
 }
