@@ -6,7 +6,7 @@ class AuditLogs {
     this.db = db
 
     this.http = axios.create({
-      baseURL: config.get('backend.url'),
+      baseURL: `https://${config.get('backend.host')}`,
       timeout: config.get('backend.timeout'),
     });
   }

@@ -1,6 +1,5 @@
 {
   "backend": {
-    "url" : "https://dev.koski.opintopolku.fi",
     "timeout" : 5000,
     "host":  "dev.koski.opintopolku.fi"
   },
