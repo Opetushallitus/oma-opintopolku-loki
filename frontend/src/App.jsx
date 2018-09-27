@@ -1,15 +1,22 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
 import constants from 'ui/constants'
 import Header from 'component/Header'
 import LogEntries from 'component/LogEntries'
 
 /**
- * Root style wrapper.
- * Applies base CSS properties.
+ * Apply global styles.
+ * TODO: Styled Components API for defining global styles will change in next major version (v4).
  */
-const Content = styled.article`
-  font-family: ${constants.font.family};
+injectGlobal`
+  body, button, input, optgroup, select, textarea {
+    font-family: ${constants.font.family};
+  }
+`
+
+const Content = styled.main`
+  max-width: ${constants.layout.maxContentWidth};
+  margin: auto;
 `
 
 const App = () => (
