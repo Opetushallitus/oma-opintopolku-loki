@@ -18,7 +18,7 @@ module.exports.handler = async (event, context, callback) => {
     if (!secret || !hetu || !oid) {
       log.info(`Received whoami request without headers`)
       callback(null, {
-        statusCode: 401,
+        statusCode: 400,
         body: JSON.stringify({ message: 'Missing headers' })
       })
     }
