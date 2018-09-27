@@ -1,12 +1,12 @@
 {
   "backend": {
-    "url" : "https://dev.koski.opintopolku.fi",
-    "timeout" : 5000
+    "timeout" : 5000,
+    "host":  "dev.koski.opintopolku.fi"
   },
   "cache": {
     "max-age" : 600
   },
   "secret": {
-    "name": "oma-opintopolku-loki/auditlog-api"
+    "name": "oma-opintopolku-loki/auditlog"
   }
 }

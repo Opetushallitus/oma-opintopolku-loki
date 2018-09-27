@@ -1,0 +1,17 @@
+{
+  "name": "whoami",
+  "version": "1.0.0",
+  "description": "Lambda function for getting user name and oid from hetu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.323.0",
+    "config": "^2.0.1",
+    "lambda-log": "^2.0.0",
+    "omit-deep-lodash": "^1.1.2"
+  }
+}

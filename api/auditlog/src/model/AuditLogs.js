@@ -7,7 +7,7 @@ class AuditLogs {
     this.db = db
 
     this.http = axios.create({
-      baseURL: config.get('backend.url'),
+      baseURL: `https://${config.get('backend.host')}`,
       timeout: config.get('backend.timeout')
     })
   }
@@ -18,7 +18,7 @@ class AuditLogs {
       log.info(`Getting organization name for ${oid}`)
 
       const response = await this.http.get(`/organisaatio-service/rest/organisaatio/v3/${oid}`)
-      const { name: nimi } = response.data
+      const { nimi: name } = response.data
       return {
         name,
         oid

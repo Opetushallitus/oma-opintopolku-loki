@@ -6,7 +6,7 @@ class SecretManger {
     this.secretId = secretId
   }
 
-  _getSecretValue() {
+  getSecretValue() {
     return new Promise(
       (resolve, reject) => {
         const params = { SecretId: this.secretId }
@@ -15,8 +15,7 @@ class SecretManger {
             log.error('Failed to get secret value', { error })
             reject(error)
           } else {
-            const secret = JSON.parse(data.SecretString)
-            resolve(secret.shibbolethSecret)
+            resolve(JSON.parse(data.SecretString))
           }
         })
       }
@@ -24,12 +23,12 @@ class SecretManger {
   }
 
   async authenticateRequest(actualSecret) {
-    const expectedSecret = await this._getSecretValue()
+    const { shibbolethSecret } = await this.getSecretValue()
 
     if (actualSecret === null || typeof actualSecret === 'undefined') return false
-    if (expectedSecret === null || typeof expectedSecret === 'undefined') return false
+    if (shibbolethSecret === null || typeof shibbolethSecret === 'undefined') return false
 
-    return expectedSecret === actualSecret
+    return shibbolethSecret === actualSecret
   }
 }
 
