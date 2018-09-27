@@ -13,7 +13,7 @@ module.exports.handler = async (event, context, callback) => {
   try {
     log.options.meta = { event: { ...context, ...deepOmit(event, 'secret', 'hetu') } }
 
-    const { secret, hetu, oid } = event.header
+    const { secret, hetu, oid } = event.headers
 
     if (!secret || !hetu || !oid) {
       log.info(`Received whoami request without headers`)
