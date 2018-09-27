@@ -35,6 +35,7 @@ functions:
 
   whoami:
     description: Return used oid, firstname and lastname, as returned by Shibboleth
+    role: ${ssm:/oma-opintopolku-api/whoami/role/arn}
     memorySize: 128
     timeout: 10
     handler: whoami/src/entrypoint.handler
