@@ -1,7 +1,7 @@
 {
-  "name": "cas-client",
+  "name": "auditlog-common",
   "version": "1.0.0",
-  "description": "",
+  "description": "Common utils for audit log API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
