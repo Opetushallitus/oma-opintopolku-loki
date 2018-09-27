@@ -25,11 +25,12 @@ class UserClient {
     })
   }
 
-  getCasCookie (credentials) {
+  async getCasCookie() {
+    const { username, password } = await this.secretManager.getSecretValue()
     return new Promise((resolve) => {
       cas.withCookie({
-        username: credentials.username,
-        password: credentials.password,
+        username,
+        password,
         hostname: this.host,
         service: 'oppijanumerorekisteri-service',
       }, (resp) => {
@@ -38,16 +39,11 @@ class UserClient {
     })
   }
 
-  async getCredentials() {
-    const jooh = await this.secretManager.getSecretValue()
-    console.log(jooh)
-  }
-
-  async getUser(credentials, hetu) {
+  async getUser(hetu) {
     try {
-      this.getCredentials()
-      const session = await this.getCasCookie(credentials)
-      return this.getOid(hetu, session)
+      const session = await this.getCasCookie()
+      const response = await this.getOid(hetu, session)
+      return response.data
     } catch (err) {
       console.log('Failed to get oid for student', err)
       throw err
