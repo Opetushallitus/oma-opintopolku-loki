@@ -1,8 +1,8 @@
 const AWS = require('aws-sdk')
 const config = require('config');
 
-const SecretManager = require('../../common/auth/SecretManager')
-const UserClient = require('../../common/UserClient')
+const SecretManager = require('../../common/src/auth/SecretManager')
+const UserClient = require('../../common/src/client/UserClient')
 
 const secretManager = new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
 

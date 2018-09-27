@@ -2,7 +2,7 @@ const AWS = require('aws-sdk')
 const axios = require('axios')
 
 const cas = require('./cas.js')
-const SecretManager = require('./auth/SecretManager')
+const SecretManager = require('../auth/SecretManager')
 
 class UserClient {
   constructor(timeout, host, secret) {
