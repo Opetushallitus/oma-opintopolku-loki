@@ -1,5 +1,7 @@
 const AWS = require('aws-sdk')
 const config = require('config');
+const log = require('lambda-log')
+const deepOmit = require('omit-deep-lodash')
 
 const SecretManager = require('../../common/src/auth/SecretManager')
 const UserClient = require('../../common/src/client/UserClient')
@@ -9,15 +11,19 @@ const secretManager = new SecretManager(new AWS.SecretsManager(), config.get('se
 module.exports.handler = async (event, context, callback) => {
 
   try {
-    const { secret, hetu, oid } = event.headers
-    console.log(JSON.stringify({ message: `Received whoami request for ${oid}` }))
+    log.options.meta = { event: { ...context, ...deepOmit(event, 'secret', 'hetu') } }
+
+    const { secret, hetu, oid } = event.header
 
     if (!secret || !hetu || !oid) {
+      log.info(`Received whoami request without headers`)
       callback(null, {
         statusCode: 401,
         body: JSON.stringify({ message: 'Missing headers' })
       })
     }
+
+    log.info(`Received whoami request for ${oid}`)
 
     const isAuthenticated = await secretManager.authenticateRequest(secret)
 
@@ -39,15 +45,15 @@ module.exports.handler = async (event, context, callback) => {
         body: JSON.stringify(user)
       })
     } else {
-
+      log.info(`Unauthorized request`)
       callback(null, {
         statusCode: 401,
         body: JSON.stringify({ message: 'Not authenticated' })
       })
 
     }
-  } catch (err) {
-    console.log('Failed', err)
+  } catch (error) {
+    log.error(`Response failed`, { error })
     callback(null, {
       statusCode: 500,
       body: JSON.stringify({ message: 'Internal server error' })
