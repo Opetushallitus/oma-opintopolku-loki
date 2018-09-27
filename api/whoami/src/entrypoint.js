@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk')
-const config = require('config');
+const config = require('config')
 const log = require('lambda-log')
 const deepOmit = require('omit-deep-lodash')
 
