@@ -12,9 +12,7 @@ AWS.config.update({
   region: 'localregion'
 })
 
-const dynamodb = new AWS.DynamoDB() //for writing mocks
-const client = new AWS.DynamoDB.DocumentClient() //actual db client
-const AuditLog = new AuditLogs(client)
+const dynamodb = new AWS.DynamoDB() //for initing mock data to db
 
 beforeAll(() => {
   return setup(dynamodb)
@@ -24,54 +22,118 @@ afterAll(() => {
   return teardown(dynamodb)
 })
 
-test('grouping empty items should return empty object', () => {
-  const grouped = AuditLog._groupByOrganization([])
-  expect(grouped).toEqual({})
-})
+describe('with mocked organisaatio-service requests', () => {
 
-test('should group organizations by their oid', () => {
-  const grouped = AuditLog._groupByOrganization(queryResult)
-  expect(grouped).toEqual(
-    {
-      '666': [
-        '11:11',
-        '22:22'
-      ],
-      '322': [
-        '22:22',
-        '33:33'
-      ],
-      '420': [
-        '11:11',
-        '33:33'
-      ],
-      '999': [
-        '44:44',
-        '55:55'
-      ]
+  let AuditLog
+
+  beforeAll(() => {
+    AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
+
+    //mock auditlog http request
+    AuditLog._getOrganizationNames = (oid) => {
+      if (oid === null || typeof oid === 'undefined' || oid === "self") return { oid, name: null }
+      if (oid === 'ERROR') throw new Error('test_error')
+      return { oid, name: { fi: '' } }
     }
-  )
-})
+  })
 
-test('should return auditlogs for given oid', async () => {
-  const logsForOid = await AuditLog.getAllForOid('testoid')
-  expect(logsForOid)
-    .toEqual(
+
+  test('should group organizations by their organizationOid array', () => {
+    const grouped = AuditLog._groupByOrganizationOids(queryResult)
+    expect(grouped).toEqual(
+      {
+        [[
+          'organisaatio1',
+          'organisaatio2'
+        ]]: [
+            '22:22',
+            '23:23'
+          ]
+        ,
+        [[
+          'organisaatio1'
+        ]]: [
+            '55:55',
+            '66:66'
+          ]
+      }
+    )
+  })
+
+  test('no auditlogs', async () => {
+    const auditLogsForOid = await AuditLog.getAllForOid('no_audit_logs')
+    expect(auditLogsForOid).toEqual([])
+  })
+
+  test('should filter logs where organizationOid is self', async () => {
+    const auditLogsForOid = await AuditLog.getAllForOid('student2')
+    expect(auditLogsForOid).toEqual([
+      {
+        organizations: [
+          {
+            oid: 'organisaatio1',
+            name: { fi: '' }
+          }
+        ],
+        timestamps: [
+          '66:66'
+        ]
+      }
+    ])
+  })
+
+  test('returns auditlogs for oid', async () => {
+    const auditLogsForOid = await AuditLog.getAllForOid('student1')
+    expect(auditLogsForOid).toEqual(
       [
         {
-          organizationOid: 'aa',
+          organizations: [
+            {
+              oid: 'organisaatio1',
+              name: { fi: '' }
+            }
+          ],
           timestamps: [
-            '11:11',
-            '22:22',
-            '33:33'
+            '11:11'
           ]
         },
         {
-          organizationOid: 'bb',
+          organizations: [
+            {
+              oid: 'organisaatio1',
+              name: { fi: '' }
+            },
+            {
+              oid: 'organisaatio2',
+              name: { fi: '' }
+            }
+          ],
           timestamps: [
-            '22:22'
+            '22:22',
+            '55:55'
+          ]
+        },
+        {
+          organizations: [
+            {
+              oid: 'organisaatio3',
+              name: { fi: '' }
+            }
+          ],
+          timestamps: [
+            '33:33',
+            '44:44'
           ]
         }
       ]
     )
+  })
+
+  test('if organisaatio-service request fails', async () => {
+    try {
+      await AuditLog.getAllForOid('error_student')
+    } catch (e) {
+      expect(e).toBeDefined()
+    }
+  })
 })

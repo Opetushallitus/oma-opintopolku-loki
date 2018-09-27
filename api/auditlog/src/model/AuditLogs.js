@@ -1,60 +1,85 @@
-const axios = require('axios');
-const config = require('config');
+const axios = require('axios')
+const config = require('config')
+const log = require('lambda-log')
 
 class AuditLogs {
   constructor(db) {
     this.db = db
 
     this.http = axios.create({
-      baseURL: `https://${config.get('backend.host')}`,
-      timeout: config.get('backend.timeout'),
-    });
+      baseURL: config.get('backend.url'),
+      timeout: config.get('backend.timeout')
+    })
   }
 
-  _toOrganizationArray(obj) {
-    return Promise.all(Object.keys(obj)
-      .map(async key => ({
-        organizationOid: key,
-        organizationNames: await this._getOrganizationNames(key),
-        timestamps: obj[key]
-      })))
+  async _getOrganizationNames(oid) {
+    try {
+      if (oid === null || typeof oid === 'undefined' || oid === "self") return { oid, name: null }
+      log.info(`Getting organization name for ${oid}`)
+
+      const response = await this.http.get(`/organisaatio-service/rest/organisaatio/v3/${oid}`)
+      const { name: nimi } = response.data
+      return {
+        name,
+        oid
+      }
+    } catch (error) {
+      log.error(`Failed to get organization names for ${oid}`, { error })
+      throw error
+    }
   }
 
-  _groupByOrganization(array) {
-    return array
-      .map(({ time, organizationOid }) => organizationOid.map(orgOid => ({ time, orgOid })))
-      .reduce((array, val) => array.concat(val), [])
-      .reduce((obj, { time, orgOid }) => (
-        obj[orgOid]
-          ? { ...obj, [orgOid]: obj[orgOid].concat(time) }
-          : { ...obj, [orgOid]: [time] }
+  async _getOrganizationNameMap(oids) {
+    const orgNames = await Promise.all(oids.map(async oid => await this._getOrganizationNames(oid)))
+      .catch(e => { throw e })
+
+    return orgNames.reduce((obj, val) => ({ ...obj, [val.oid]: val.name }), {})
+  }
+
+  _getOrganizationOids(logsGroupedByOrgs) {
+    return Object.keys(logsGroupedByOrgs)
+      .map(str => str.split(','))
+      .reduce((array, organizationOids) => array.concat(organizationOids), [])
+      .filter((val, i, self) => self.indexOf(val) === i)
+  }
+
+  _mapNamesToOrganizationOids(logsGroupedByOrgs, nameMap) {
+    return Object.keys(logsGroupedByOrgs)
+      .map(str => str.split(','))
+      .map(key => ({
+        organizations: key.map(oid => ({ oid, name: nameMap[oid] })),
+        timestamps: logsGroupedByOrgs[key]
+      }))
+  }
+
+  async _mapOrganizationNames(logsGroupedByOrgs) {
+    const uniqueOrgOids = this._getOrganizationOids(logsGroupedByOrgs)
+    const nameMap = await this._getOrganizationNameMap(uniqueOrgOids)
+      .catch(e => { throw e })
+
+    return this._mapNamesToOrganizationOids(logsGroupedByOrgs, nameMap)
+  }
+
+  _groupByOrganizationOids(auditlogs) {
+    return auditlogs
+      .map(({ time, organizationOid }) => ({ time, orgOids: organizationOid.sort() }))
+      .reduce((obj, { time, orgOids }) => (
+        obj[orgOids]
+          ? { ...obj, [orgOids]: obj[orgOids].concat(time) }
+          : { ...obj, [orgOids]: [time] }
       ),
         {}
       )
   }
 
-  async _getOrganizationNames(oid) {
-    try {
-      if (oid === null || typeof oid === 'undefined' || oid === "self") return null
-      console.log(JSON.stringify({message: `Getting organization name for ${oid}`}))
-
-      const response = await this.http.get(`/organisaatio-service/rest/organisaatio/v3/${oid}`)
-      return response.data.nimi
-    } catch (e) {
-      console.log(JSON.stringify({
-        error: e,
-        message: `Failed to get organization names: ${e.message}`
-      }))
-      return null
-    }
-  }
-
   getAllForOid(oid) {
     const params = {
       TableName: "AuditLog",
-      KeyConditionExpression: "studentOid = :sOid",
+      KeyConditionExpression: "studentOid = :oid",
+      FilterExpression: "not contains (organizationOid, :self)",
       ExpressionAttributeValues: {
-        ":sOid": oid
+        ":oid": oid,
+        ":self": "self"
       }
     }
 
@@ -62,11 +87,11 @@ class AuditLogs {
       (resolve, reject) => {
         this.db.query(params, async (error, data) => {
           if (error) return reject(error)
-          if (data === null || typeof data === 'undefined') return resolve([])
+          if (data === null || typeof data === 'undefined') return resolve([])
 
           const { Items } = data
-          const grouped = this._groupByOrganization(Items)
-          const asArray = await this._toOrganizationArray(grouped)
+          const grouped = this._groupByOrganizationOids(Items)
+          const asArray = await this._mapOrganizationNames(grouped).catch(e => reject(e))
           resolve(asArray)
         })
       }

@@ -1,3 +1,5 @@
+const log = require('lambda-log')
+
 class SecretManger {
   constructor(manager, secretId) {
     this.manager = manager
@@ -10,6 +12,7 @@ class SecretManger {
         const params = { SecretId: this.secretId }
         this.manager.getSecretValue(params, (error, data) => {
           if (error) {
+            log.error('Failed to get secret value', { error })
             reject(error)
           } else {
             resolve(JSON.parse(data.SecretString))
