@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk')
 const AuditLogs = require('../../src/model/AuditLogs')
 const { setup, teardown } = require('./__mocks__/mockDynamo')
-const { queryResult, queryresult_2 } = require('./__mocks__/mockQueryResult')
+const { queryResult } = require('./__mocks__/mockQueryResult')
 
 AWS.config.update({
   credentials: new AWS.Credentials({
@@ -29,8 +29,8 @@ afterAll(() => {
   return teardown(dynamodb)
 })
 
-test('should group organizations by their oid', () => {
-  const grouped = AuditLog._groupByOrganizationOids(queryresult_2)
+test('should group organizations by their organizationOid array', () => {
+  const grouped = AuditLog._groupByOrganizationOids(queryResult)
   expect(grouped).toEqual(
     {
       [[
@@ -51,8 +51,30 @@ test('should group organizations by their oid', () => {
   )
 })
 
-test('should return auditlogs', async () => {
-  const auditLogsForOid = await AuditLog.getAllForOid('testoid')
+test('no auditlogs', async () => {
+  const auditLogsForOid = await AuditLog.getAllForOid('no_audit_logs')
+  expect(auditLogsForOid).toEqual([])
+})
+
+test('should filter logs where organizationOid is self', async () => {
+  const auditLogsForOid = await AuditLog.getAllForOid('student2')
+  expect(auditLogsForOid).toEqual([
+    {
+      organizations: [
+        {
+          oid: 'organisaatio1',
+          name: { fi: '' }
+        }
+      ],
+      timestamps: [
+        '66:66'
+      ]
+    }
+  ])
+})
+
+test('returns auditlogs for oid', async () => {
+  const auditLogsForOid = await AuditLog.getAllForOid('student1')
   expect(auditLogsForOid).toEqual(
     [
       {
@@ -78,7 +100,8 @@ test('should return auditlogs', async () => {
           }
         ],
         timestamps: [
-          '22:22'
+          '22:22',
+          '55:55'
         ]
       },
       {
@@ -89,7 +112,8 @@ test('should return auditlogs', async () => {
           }
         ],
         timestamps: [
-          '33:33'
+          '33:33',
+          '44:44'
         ]
       }
     ]
