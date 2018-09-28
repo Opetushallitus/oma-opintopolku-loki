@@ -26,7 +26,7 @@ const TimestampViewTopRow = styled.div`
 
 const withListToggle = withState('showTimestamps', 'setShowTimestamps', false)
 
-const Timestamps = withListToggle(({ timestamps, showTimestamps, setShowTimestamps }) => {
+const LogEntries = withListToggle(({ timestamps, showTimestamps, setShowTimestamps }) => {
   return (
     <TimestampView showList={showTimestamps}>
       <TimestampViewTopRow>
@@ -46,8 +46,8 @@ const Timestamps = withListToggle(({ timestamps, showTimestamps, setShowTimestam
   )
 })
 
-Timestamps.propTypes = {
+LogEntries.propTypes = {
   timestamps: PropTypes.array.isRequired
 }
 
-export default Timestamps
+export default LogEntries

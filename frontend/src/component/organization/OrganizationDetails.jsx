@@ -4,14 +4,14 @@ import styled from 'styled-components'
 import t from 'util/translate'
 import { getTranslatedUsagePermissionDescription } from 'util/usagePermissionDescriptions'
 import { Bold } from 'ui/typography'
-import ExternalLink from '../generic/widget/ExternalLink'
+import ExternalLink from 'component/generic/widget/ExternalLink'
 
 const Details = styled.div`
   display: flex;
   justify-content: space-between;
 `
 
-const LogEntryGroupDetails = ({ organizationOid }) => (
+const OrganizationDetails = ({ organizationOid }) => (
   <Details>
     <div>
       <Bold>{t`Tietojen käyttölupa`}:</Bold> {getTranslatedUsagePermissionDescription(organizationOid)}
@@ -25,8 +25,8 @@ const LogEntryGroupDetails = ({ organizationOid }) => (
   </Details>
 )
 
-LogEntryGroupDetails.propTypes = {
+OrganizationDetails.propTypes = {
   organizationOid: PropTypes.string.isRequired
 }
 
-export default LogEntryGroupDetails
+export default OrganizationDetails

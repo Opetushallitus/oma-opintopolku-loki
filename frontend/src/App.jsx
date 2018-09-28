@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { injectGlobal } from 'styled-components'
 import constants from 'ui/constants'
 import Header from 'component/Header'
-import LogEntries from 'component/LogEntries'
+import Log from 'component/Log'
 
 /**
  * Apply global styles.
@@ -22,7 +22,7 @@ const Content = styled.main`
 const App = () => (
   <Content>
     <Header/>
-    <LogEntries/>
+    <Log/>
   </Content>
 )
 

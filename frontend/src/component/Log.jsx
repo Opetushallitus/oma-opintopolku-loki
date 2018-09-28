@@ -4,7 +4,7 @@ import Query from 'http/Query'
 import { lang } from 'util/preferences'
 import { AlertText } from 'ui/typography'
 import t from 'util/translate'
-import LogEntryGroup from 'component/log-entry-group/LogEntryGroup'
+import Organization from 'component/organization/Organization'
 
 const organizationLens = lensProp('organizations')
 const nameLens = lensProp('name')
@@ -12,7 +12,7 @@ const oidLens = lensProp('oid')
 
 const getTranslatedName = organizationName => organizationName[lang] || ''
 
-const LogEntries = () => (
+const Log = () => (
   <Query url='logs'>
     {({ data, error, pending }) => {
       if (error) return <AlertText>{t`Tietojen hakemisessa tapahtui virhe.`}</AlertText>
@@ -24,7 +24,7 @@ const LogEntries = () => (
         const key = map(view(oidLens), organizations).join(',')
 
         return (
-          <LogEntryGroup
+          <Organization
             key={key}
             organizationAlternatives={organizations}
             timestamps={timestamps}
@@ -35,4 +35,4 @@ const LogEntries = () => (
   </Query>
 )
 
-export default LogEntries
+export default Log
