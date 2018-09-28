@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { lensPath, view } from 'ramda'
 import Expander from 'component/generic/widget/Expander'
 import OrganizationDetails from 'component/organization/OrganizationDetails'
-import LogEntries from 'component/log-entry/LogEntries'
+import LogEntries from 'component/log-entries/LogEntries'
 
 /*
 TODO: Currently we just take the first organization alternative (its name and oid). This must be changed.
