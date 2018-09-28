@@ -1,17 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withState } from 'recompose'
+import { compose, withHandlers, withState } from 'recompose'
 import styled from 'styled-components'
 import t from 'util/translate'
 import constants from 'ui/constants'
 import ButtonSmall from 'component/generic/widget/ButtonSmall'
 import DateList from 'component/generic/widget/DateList'
 
+const NUM_INITIAL_DATES = 10
+const NUM_SHOW_MORE_DATES = 10
 const MARGIN = '1rem'
 
 const Container = styled.div`
   margin: ${MARGIN} -${MARGIN} 0 -${MARGIN};
-  padding: ${MARGIN} ${MARGIN} 0 ${MARGIN};
+  padding: ${MARGIN};
   background-color: ${({ showList }) => showList ? constants.color.background.neutralLight : 'none'};
 `
 
@@ -21,19 +23,44 @@ const TopRow = styled.div`
   flex-direction: row-reverse;
 `
 
-const withListToggle = withState('showDates', 'setShowDates', false)
+const BottomRow = styled.div`
+  margin-left: ${MARGIN};
+`
 
-const LogEntries = withListToggle(({ timestamps, showDates, setShowDates }) => (
-  <Container showList={showDates}>
-    <TopRow>
-      <ButtonSmall onClick={() => setShowDates(show => !show)}>
-        {showDates ? t`Piilota käyttökerrat` : t`Taulukko tietojen käyttökerroista`}
-      </ButtonSmall>
-    </TopRow>
+const addListBehaviors = compose(
+  withState('showDates', 'setShowDates', false),
+  withState('numDatesShown', 'setNumDatesShown', NUM_INITIAL_DATES),
+  withHandlers({
+    toggleShowDates: ({ setShowDates }) => () => setShowDates(show => !show),
+    showMoreDates: ({ setNumDatesShown }) => () => setNumDatesShown(n => n + NUM_SHOW_MORE_DATES)
+  })
+)
 
-    {showDates && <DateList dates={timestamps} />}
-  </Container>
-))
+const LogEntries = addListBehaviors(({ timestamps, showDates, toggleShowDates, numDatesShown, showMoreDates }) => {
+  const hasMoreEntries = numDatesShown < timestamps.length
+
+  return (
+    <Container showList={showDates}>
+      <TopRow>
+        <ButtonSmall onClick={toggleShowDates}>
+          {showDates ? t`Piilota käyttökerrat` : t`Taulukko tietojen käyttökerroista`}
+        </ButtonSmall>
+      </TopRow>
+
+      {showDates && (
+        <React.Fragment>
+          <DateList dates={timestamps} numShown={numDatesShown} />
+
+          {hasMoreEntries && (
+            <BottomRow>
+              <ButtonSmall onClick={showMoreDates}>{t`Näytä lisää käyttökertoja`}</ButtonSmall>
+            </BottomRow>
+          )}
+        </React.Fragment>
+      )}
+    </Container>
+  )
+})
 
 LogEntries.propTypes = {
   timestamps: PropTypes.array.isRequired
