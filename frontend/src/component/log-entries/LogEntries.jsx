@@ -23,6 +23,8 @@ const TopRow = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
+  margin-left: ${MARGIN};
+  margin-bottom: 0.5rem;
 `
 
 const BottomRow = styled.div`
@@ -49,6 +51,12 @@ const LogEntries = addListBehaviors(({ timestamps, showDates, toggleShowDates, n
         <ButtonSmall onClick={toggleShowDates}>
           {showDates ? t`Piilota käyttökerrat` : t`Taulukko tietojen käyttökerroista`}
         </ButtonSmall>
+        {showDates && (
+          <React.Fragment>
+            {t`Näytetään käyttökerrat`}
+            {` 1–${Math.min(numDatesShown, dates.length)} / ${dates.length}`}
+          </React.Fragment>
+        )}
       </TopRow>
 
       {showDates && (
