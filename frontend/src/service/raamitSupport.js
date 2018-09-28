@@ -1,4 +1,12 @@
 import http from 'http/http'
+import { isEmpty } from 'ramda'
+
+const parseUserName = user => {
+  const firstName = user.kutsumanimi && !isEmpty(user.kutsumanimi) ? user.kutsumanimi : user.etunimet
+  const lastName = user.sukunimi
+
+  return `${firstName} ${lastName}`
+}
 
 /**
  * Oppija-raamit interface requires three functions (getUser, login, logout) under global Service object.
@@ -9,7 +17,12 @@ import http from 'http/http'
  * }}
  */
 window.Service = {
-  getUser: () => http.get(`${process.env.API_BASE_URL}/user`).then(v => v.data),
+  getUser: () => http.get(`${process.env.API_BASE_URL}/whoami`)
+    .then(v => v.data)
+    .then(user => ({
+      name: parseUserName(user),
+      oid: user.oidHenkilo
+    })),
   login: () => { throw new Error('Not implemented') },
   logout: () => { throw new Error('Not implemented') }
 }
