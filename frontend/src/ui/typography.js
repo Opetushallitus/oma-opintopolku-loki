@@ -3,7 +3,7 @@ import constants from 'ui/constants'
 
 export const H1 = styled.h1`
   font-size: ${constants.font.size.xxxl};
-  font-weight: 700;
+  font-weight: 600;
 `
 
 export const H2 = styled.h2`
