@@ -1,8 +1,8 @@
+import translations from 'mapping/translations'
 import { lang } from 'util/preferences'
 
 /**
  * Translates given key to the language currently in use.
- * Expects the translation lookup map to exist as a global (window) variable.
  * Prefer using this via the tagged template notation.
  * @example <pre><code>t`Oma Opintopolku`</code></pre>
  * @param {string} key Term (non-interpolated string when using tagged template) to look up from the translation map
@@ -16,7 +16,6 @@ export default key => {
   }
 
   const parsedKey = isTaggedTemplate ? key[0] : key
-  const translations = window.translationsMap || {}
   const versions = translations[parsedKey] || {}
   const translated = versions[lang]
 
