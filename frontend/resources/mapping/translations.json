@@ -22,11 +22,9 @@
     "fi": "Lakiin perustuva tiedonkäyttölupa.",
     "sv": "Rätt att enligt lag använda uppgifter."
   },
-  "Tietojen hakemisessa tapahtui virhe.": {
-    "fi": "Tietojen hakemisessa tapahtui virhe."
-  },
-  "Tapahtui odottamaton virhe.": {
-    "fi": "Tapahtui odottamaton virhe."
+  "Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.": {
+    "fi": "Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.",
+    "sv": "Ett oväntat fel inträffade. Vi kan tyvärr inte just nu visa uppgifterna."
   },
   "Tietoja haetaan": {
     "fi": "Tietoja haetaan"
