@@ -53,9 +53,11 @@
     "fi": "Piilota käyttökerrat"
   },
   "Näytä lisää käyttökertoja": {
-    "fi": "Näytä lisää käyttökertoja"
+    "fi": "Näytä lisää käyttökertoja",
+    "sv": "Visa fler tidpunkter"
   },
   "Näytetään käyttökerrat": {
-    "fi": "Näytetään käyttökerrat"
+    "fi": "Näytetään käyttökerrat",
+    "sv": "Visar tidpunkter"
   }
 }
