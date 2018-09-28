@@ -24,5 +24,8 @@ export default {
       xxl: '1.714rem',
       xxxl: '2.571rem'
     }
+  },
+  layout: {
+    maxContentWidth: '1160px'
   }
 }

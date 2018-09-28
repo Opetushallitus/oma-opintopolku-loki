@@ -10,8 +10,8 @@ const PositionedLinkIcon = styled(ExternalLinkIcon)`
   top: 2px;
 `
 
-const ExternalLink = ({ text, url }) => (
-  <Link href={url}>
+const ExternalLink = ({ text, url, openInNewTab = false }) => (
+  <Link target={openInNewTab ? '_blank' : undefined} href={url}>
     <PositionedLinkIcon/>
     {text || url }
   </Link>
@@ -19,7 +19,8 @@ const ExternalLink = ({ text, url }) => (
 
 ExternalLink.propTypes = {
   text: PropTypes.string,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  openInNewTab: PropTypes.bool
 }
 
 export default ExternalLink

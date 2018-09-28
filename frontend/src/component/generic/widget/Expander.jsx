@@ -18,7 +18,6 @@ const ExpanderTitle = styled.div`
 `
 
 const ExpandedContents = styled.div`
-  background-color: ${constants.color.background.neutralLight};
   padding: 1.5rem 2.5rem;
 `
 
@@ -55,7 +54,7 @@ class Expander extends React.Component {
 
 Expander.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.node.isRequired
 }
 
 export default Expander
