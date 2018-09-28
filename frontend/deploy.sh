@@ -13,7 +13,7 @@ build() {
   echo "Building project $project_dir (environment: $env)"
   cd "$project_dir"
   docker build -t "$docker_image_name" .
-  docker run -v "$project_dir/dist:/opt/app/dist" "$docker_image_name" "build:$env"
+  docker run -v "$project_dir/dist:/opt/app/dist" -e "API_BASE_URL" "$docker_image_name" "build:prod"
   echo "Done!"
   cd -
 }
