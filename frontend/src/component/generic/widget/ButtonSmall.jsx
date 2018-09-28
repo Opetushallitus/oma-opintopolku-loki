@@ -11,6 +11,7 @@ const TextButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
   text-align: center;
+  font-weight: 600;
 `
 
 const ButtonSmall = ({ onClick, children }) => <TextButton onClick={onClick}>{children}</TextButton>

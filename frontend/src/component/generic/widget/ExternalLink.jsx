@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import ExternalLinkIcon from 'icon/external-link-icon.svg'
-import { Link } from '../../../ui/typography'
+import { Bold, Link } from 'ui/typography'
 
 const PositionedLinkIcon = styled(ExternalLinkIcon)`
   padding-right: 0.25rem;
@@ -13,7 +13,7 @@ const PositionedLinkIcon = styled(ExternalLinkIcon)`
 const ExternalLink = ({ text, url, openInNewTab = false }) => (
   <Link target={openInNewTab ? '_blank' : undefined} href={url}>
     <PositionedLinkIcon/>
-    {text || url }
+    <Bold>{text || url }</Bold>
   </Link>
 )
 

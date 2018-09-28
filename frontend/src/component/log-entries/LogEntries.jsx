@@ -6,6 +6,7 @@ import { descend, identity, sort } from 'ramda'
 import t from 'util/translate'
 import { isoStringToDate } from 'util/date'
 import constants from 'ui/constants'
+import { Bold } from 'ui/typography'
 import ButtonSmall from 'component/generic/widget/ButtonSmall'
 import DateList from 'component/generic/widget/DateList'
 
@@ -52,10 +53,10 @@ const LogEntries = addListBehaviors(({ timestamps, showDates, toggleShowDates, n
           {showDates ? t`Piilota käyttökerrat` : t`Taulukko tietojen käyttökerroista`}
         </ButtonSmall>
         {showDates && (
-          <React.Fragment>
+          <Bold>
             {t`Näytetään käyttökerrat`}
             {` 1–${Math.min(numDatesShown, dates.length)} / ${dates.length}`}
-          </React.Fragment>
+          </Bold>
         )}
       </TopRow>
 
