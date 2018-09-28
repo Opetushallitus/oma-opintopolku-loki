@@ -16,7 +16,8 @@ injectGlobal`
 
 const Content = styled.main`
   max-width: ${constants.layout.maxContentWidth};
-  margin: auto;
+  margin: 0 auto 2rem auto;
+  padding: 0 1rem;
 `
 
 const App = () => (
