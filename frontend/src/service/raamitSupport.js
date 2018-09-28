@@ -1,3 +1,5 @@
+import http from 'http/http'
+
 /**
  * Oppija-raamit interface requires three functions (getUser, login, logout) under global Service object.
  * @type {{
@@ -7,8 +9,7 @@
  * }}
  */
 window.Service = {
-  // eslint-disable-next-line no-undef
-  getUser: () => fetch(`${process.env.API_BASE_URL}/user`).then(v => v.json()),
+  getUser: () => http.get(`${process.env.API_BASE_URL}/user`).then(v => v.data),
   login: () => { throw new Error('Not implemented') },
   logout: () => { throw new Error('Not implemented') }
 }
