@@ -15,9 +15,9 @@ const DateList = ({ dates, numShown }) => {
   return (
     <DateTable>
       <tbody>
-        {subList.map((t, i) => (
-          <tr key={`${t}_${i}`}>
-            <td>{t}</td>
+        {subList.map((d, i) => (
+          <tr key={`${d}_${i}`}>
+            <td>{d}</td>
           </tr>
         ))}
       </tbody>

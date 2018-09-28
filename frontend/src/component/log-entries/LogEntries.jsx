@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { compose, withHandlers, withState } from 'recompose'
 import styled from 'styled-components'
+import { descend, identity, sort } from 'ramda'
 import t from 'util/translate'
+import { isoStringToDate } from 'util/date'
 import constants from 'ui/constants'
 import ButtonSmall from 'component/generic/widget/ButtonSmall'
 import DateList from 'component/generic/widget/DateList'
@@ -38,6 +40,8 @@ const addListBehaviors = compose(
 
 const LogEntries = addListBehaviors(({ timestamps, showDates, toggleShowDates, numDatesShown, showMoreDates }) => {
   const hasMoreEntries = numDatesShown < timestamps.length
+  const sortedTimestamps = sort(descend(identity), timestamps)
+  const dates = sortedTimestamps.map(isoStringToDate)
 
   return (
     <Container showList={showDates}>
@@ -49,7 +53,7 @@ const LogEntries = addListBehaviors(({ timestamps, showDates, toggleShowDates, n
 
       {showDates && (
         <React.Fragment>
-          <DateList dates={timestamps} numShown={numDatesShown} />
+          <DateList dates={dates} numShown={numDatesShown} />
 
           {hasMoreEntries && (
             <BottomRow>
