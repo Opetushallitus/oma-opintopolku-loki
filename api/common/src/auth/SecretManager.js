@@ -25,8 +25,15 @@ class SecretManger {
   async authenticateRequest(actualSecret) {
     const { shibbolethSecret } = await this.getSecretValue()
 
-    if (actualSecret === null || typeof actualSecret === 'undefined') return false
-    if (shibbolethSecret === null || typeof shibbolethSecret === 'undefined') return false
+    if (actualSecret === null || typeof actualSecret === 'undefined') {
+      log.error("No secret provided, cannot continue")
+      return false
+    }
+
+    if (shibbolethSecret === null || typeof shibbolethSecret === 'undefined') {
+      log.error("Could not read shibboleth secret from Secrets Manager, cannot continue")
+      return false
+    }
 
     return shibbolethSecret === actualSecret
   }
