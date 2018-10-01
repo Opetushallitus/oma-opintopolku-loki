@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import constants from 'ui/constants'
+import media from 'ui/media'
 
 const ExpanderContainer = styled.div`
   &:not(:last-of-type) {
@@ -23,7 +24,11 @@ const ExpanderTitle = styled.button`
 `
 
 const ExpandedContents = styled.div`
-  padding: 1.5rem 2.5rem;
+  padding: 1rem 1.5rem;
+
+  ${media.full`
+    padding: 1.5rem 2.5rem;
+  `}
 `
 
 class Expander extends React.Component {

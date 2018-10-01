@@ -26,6 +26,7 @@ export default {
     }
   },
   layout: {
-    maxContentWidth: '1160px'
+    maxContentWidth: '1160px',
+    breakpointFull: '900px'
   }
 }

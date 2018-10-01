@@ -7,6 +7,7 @@ import t from 'util/translate'
 import { isoStringToDate } from 'util/date'
 import constants from 'ui/constants'
 import { Bold } from 'ui/typography'
+import media from 'ui/media'
 import ButtonSmall from 'component/generic/widget/ButtonSmall'
 import DateList from 'component/generic/widget/DateList'
 
@@ -23,9 +24,22 @@ const Container = styled.div`
 const TopRow = styled.div`
   display: flex;
   justify-content: space-between;
-  flex-direction: row-reverse;
-  margin-left: ${MARGIN};
+  align-items: flex-start;
+  flex-direction: column;
   margin-bottom: 0.5rem;
+
+  & > button {
+    text-align: left;
+  }
+
+  ${media.full`
+    flex-direction: row-reverse;
+    margin-left: ${MARGIN};
+
+    & > button {
+      text-align: initial;
+    }
+  `}
 `
 
 const BottomRow = styled.div`
