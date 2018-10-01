@@ -9,12 +9,17 @@ const ExpanderContainer = styled.div`
   }
 `
 
-const ExpanderTitle = styled.div`
+const ExpanderTitle = styled.button`
+  display: block;
+  width: 100%;
   background-color: ${({ expanded }) => expanded
     ? constants.color.primaryLight
     : constants.color.background.primaryTintedLight};
   padding: 0.25rem;
   cursor: pointer;
+  font-size: 1rem;
+  text-align: left;
+  border: none;
 `
 
 const ExpandedContents = styled.div`
@@ -43,6 +48,7 @@ class Expander extends React.Component {
         <ExpanderTitle
           expanded={expanded}
           onClick={this.toggleShowContents.bind(this)}
+          aria-pressed={expanded}
         >
           {title}
         </ExpanderTitle>

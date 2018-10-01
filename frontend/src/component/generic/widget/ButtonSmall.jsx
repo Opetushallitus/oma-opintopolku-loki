@@ -14,10 +14,11 @@ const TextButton = styled.button`
   font-weight: 600;
 `
 
-const ButtonSmall = ({ onClick, children }) => <TextButton onClick={onClick}>{children}</TextButton>
+const ButtonSmall = ({ onClick, attributes = {}, children }) => <TextButton onClick={onClick} {...attributes}>{children}</TextButton>
 
 ButtonSmall.propTypes = {
   onClick: PropTypes.func.isRequired,
+  attributes: PropTypes.object,
   children: PropTypes.string
 }
 

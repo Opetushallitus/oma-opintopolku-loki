@@ -49,7 +49,7 @@ const LogEntries = addListBehaviors(({ timestamps, showDates, toggleShowDates, n
   return (
     <Container showList={showDates}>
       <TopRow>
-        <ButtonSmall onClick={toggleShowDates}>
+        <ButtonSmall onClick={toggleShowDates} attributes={{ 'aria-pressed': showDates }}>
           {showDates ? t`Piilota käyttökerrat` : t`Taulukko tietojen käyttökerroista`}
         </ButtonSmall>
         {showDates && (
