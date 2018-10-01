@@ -15,12 +15,12 @@ const userClient = new UserClient(
 
 module.exports = async (event, context) => {
   try {
-    log.options.meta = { event: { ...context, ...deepOmit(event, 'secret', 'hetu') } }
+    log.options.meta = { event: { ...context, ...deepOmit(event, 'security', 'hetu') } }
 
-    const { secret, hetu, oid } = event.headers
+    const { security, hetu, oid } = event.headers
     log.info(`Received whoami request for ${oid}`)
 
-    if (!secret || !hetu) {
+    if (!security || !hetu) {
       log.info(`Received whoami request without headers`)
       return {
         statusCode: 400,
@@ -28,7 +28,7 @@ module.exports = async (event, context) => {
       }
     }
 
-    const isAuthenticated = await secretManager.authenticateRequest(secret)
+    const isAuthenticated = await secretManager.authenticateRequest(security)
 
     if (!isAuthenticated) {
       log.info(`Unauthorized request`)
