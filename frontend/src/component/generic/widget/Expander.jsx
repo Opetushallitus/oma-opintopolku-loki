@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { withState } from 'recompose'
 import constants from 'ui/constants'
 import media from 'ui/media'
 
@@ -31,37 +32,20 @@ const ExpandedContents = styled.div`
   `}
 `
 
-class Expander extends React.Component {
-  constructor (props) {
-    super(props)
+const expandable = withState('expanded', 'setExpanded', false)
 
-    this.state = {
-      expanded: false
-    }
-  }
-
-  toggleShowContents () {
-    this.setState(({ expanded }) => ({ expanded: !expanded }))
-  }
-
-  render () {
-    const { expanded } = this.state
-    const { title, children } = this.props
-
-    return (
-      <ExpanderContainer>
-        <ExpanderTitle
-          expanded={expanded}
-          onClick={this.toggleShowContents.bind(this)}
-          aria-pressed={expanded}
-        >
-          {title}
-        </ExpanderTitle>
-        {expanded && <ExpandedContents>{children}</ExpandedContents>}
-      </ExpanderContainer>
-    )
-  }
-}
+const Expander = expandable(({ title, children, expanded, setExpanded }) => (
+  <ExpanderContainer>
+    <ExpanderTitle
+      expanded={expanded}
+      onClick={() => setExpanded(v => !v)}
+      aria-pressed={expanded}
+    >
+      {title}
+    </ExpanderTitle>
+    {expanded && <ExpandedContents>{children}</ExpandedContents>}
+  </ExpanderContainer>
+))
 
 Expander.propTypes = {
   title: PropTypes.string.isRequired,
