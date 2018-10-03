@@ -46,8 +46,12 @@ functions:
           cors: true
 
 custom:
+  domains:
+    dev:  oma-opintopolku-loki-dev.testiopintopolku.fi
+    qa:   oma-opintopolku-loki-qa.testiopintopolku.fi
+    prod: oma-opintopolku-loki.opintopolku.fi
   customDomain:
-    domainName: oma-opintopolku-loki-dev.testiopintopolku.fi
+    domainName: ${self:custom.domains.${self:provider.stage}}
     stage: ${opt:stage, 'dev'}
     createRoute53Record: true
     endpointType: 'edge'

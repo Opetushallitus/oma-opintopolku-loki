@@ -17,11 +17,11 @@ const userClient = new UserClient(
   config.get('secret.name')
 )
 
-const hasRequiredHeaders = ({ headers }) => headers && headers.secret && headers.hetu
+const hasRequiredHeaders = ({ headers }) => headers && headers.security && headers.hetu
 
 module.exports = async (event, context) => {
   try {
-    log.options.meta = { event: { ...context, ...deepOmit(event, 'secret', 'hetu') } }
+    log.options.meta = { event: { ...context, ...deepOmit(event, 'security', 'hetu') } }
     log.options.debug = true
 
     log.info('Received an audit log request')
@@ -33,11 +33,11 @@ module.exports = async (event, context) => {
       }
     }
 
-    const { hetu, secret } = event.headers
+    const { hetu, security } = event.headers
 
     const { oidHenkilo } = await userClient.getUser(hetu)
-    
-    const isAuthenticated = await secretManager.authenticateRequest(secret)
+
+    const isAuthenticated = await secretManager.authenticateRequest(security)
 
     if (!isAuthenticated) {
       log.debug(`Unauthorized request`)

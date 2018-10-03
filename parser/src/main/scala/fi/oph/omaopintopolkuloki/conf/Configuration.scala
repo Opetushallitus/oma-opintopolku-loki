@@ -10,12 +10,17 @@ import org.http4s.Uri.{Authority, RegName}
 import org.http4s.util.CaseInsensitiveString
 import org.json4s.{DefaultFormats, Formats}
 import org.json4s.jackson.JsonMethods.parse
+import org.slf4j.LoggerFactory
 
 import scala.concurrent.duration.{Duration, FiniteDuration}
 import scala.language.implicitConversions
 
 
 object Configuration {
+
+  private val logger = LoggerFactory.getLogger(this.getClass)
+
+  logger.info(s"Initializing configurations for environment $env")
 
   private lazy val env: String = sys.env.getOrElse("env", "local")
 
@@ -61,9 +66,14 @@ object Configuration {
 
 class SecretsClient {
   implicit private val formats: Formats = DefaultFormats
+  private val logger = LoggerFactory.getLogger(this.getClass)
+
+  logger.info(s"Using secret $secretsKey from ${endpointConfiguration.getServiceEndpoint}")
+
+  lazy val endpointConfiguration: EndpointConfiguration = new EndpointConfiguration(secretsEndpoint, awsRegion)
 
   lazy val secretsManagerClient: AWSSecretsManager = AWSSecretsManagerClientBuilder.standard()
-    .withEndpointConfiguration(new EndpointConfiguration(secretsEndpoint, awsRegion)).build()
+    .withEndpointConfiguration(endpointConfiguration).build()
 
   def getSecrets: Credentials = parse(
     secretsManagerClient.getSecretValue(new GetSecretValueRequest().withSecretId(secretsKey)).getSecretString

@@ -1,0 +1,12 @@
+{
+  "backend": {
+    "timeout" : 5000,
+    "host":  "qa.koski.testiopintopolku.fi"
+  },
+  "cache": {
+    "max-age" : 600
+  },
+  "secret": {
+    "name": "oma-opintopolku-loki/auditlog"
+  }
+}
