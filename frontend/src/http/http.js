@@ -2,8 +2,8 @@ import axios from 'axios'
 
 const client = axios.create()
 
-const get = async url => client(url).get(url)
-const post = async (url, data) => client(url)({ method: 'post', url, data })
+const get = async url => client.get(url)
+const post = async (url, data) => client({ method: 'post', url, data })
 
 const request = async (url, method, data = {}) => {
   switch (method) {
