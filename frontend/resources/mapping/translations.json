@@ -4,60 +4,77 @@
   },
   "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.": {
     "fi": "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.",
-    "sv": "På den här sidan kan du granska och administrera de tillstånd du har givit om dina uppgifter. Du ser här dessutom vilka aktörer, t.ex. myndigheter, som har använt dina studieuppgifter."
+    "sv": "På den här sidan kan du granska och administrera de tillstånd du har givit om dina uppgifter. Du ser här dessutom vilka aktörer, t.ex. myndigheter, som har använt dina studieuppgifter.",
+    "en": "On this page you can inspect and manage permissions you have granted to your data. You can also see which organizations (e.g. authorities) have used your data."
   },
   "Taulukko tietojen käyttökerroista": {
     "fi": "Taulukko tietojen käyttökerroista",
-    "sv": "En tabell över antalet gånger som uppgifterna har använts"
+    "sv": "En tabell över antalet gånger som uppgifterna har använts",
+    "en": ""
   },
   "Tietojen käyttölupa": {
     "fi": "Tietojen käyttölupa",
-    "sv": "Rätt att använda uppgifter"
+    "sv": "Rätt att använda uppgifter",
+    "en": "Permission for data use"
   },
   "Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.": {
     "fi": "Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.",
-    "sv": "Du har gett tillstånd till denna tjänsterbjudare att använda dina uppgifter."
+    "sv": "Du har gett tillstånd till denna tjänsterbjudare att använda dina uppgifter.",
+    "en": "You have granted this service provider a permission to use your data."
   },
   "Lakiin perustuva tiedonkäyttölupa.": {
     "fi": "Lakiin perustuva tiedonkäyttölupa.",
-    "sv": "Rätt att enligt lag använda uppgifter."
+    "sv": "Rätt att enligt lag använda uppgifter.",
+    "en": "Permission is based on the law."
   },
   "Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.": {
     "fi": "Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.",
     "sv": "Ett oväntat fel inträffade. Vi kan tyvärr inte just nu visa uppgifterna."
+    "en": "An unexpected error occurred, and we are currently unable show the information."
   },
   "Tietoja haetaan": {
-    "fi": "Tietoja haetaan"
+    "fi": "Tietoja haetaan",
+    "sv": "",
+    "en": ""
   },
   "Tietojeni käyttö": {
     "fi": "Tietojeni käyttö",
-    "sv": "Hur används uppgifterna?"
+    "sv": "Hur används uppgifterna?",
+    "en": "How is my data used?"
   },
   "Annetut käyttöluvat": {
     "fi": "Annetut käyttöluvat",
-    "sv": "Tillstånd att använda uppgifterna"
+    "sv": "Tillstånd att använda uppgifterna",
+    "en": "Granted permissions"
   },
   "Tietojani käyttäneet toimijat": {
     "fi": "Tietojani käyttäneet toimijat",
-    "sv": "Aktörer som använt mina uppgifter"
+    "sv": "Aktörer som använt mina uppgifter",
+    "en": "Organizations that have used my data"
   },
   "Tietojen käyttäjä": {
     "fi": "Tietojen käyttäjä",
-    "sv": "Uppgiftsanvändare"
+    "sv": "Uppgiftsanvändare",
+    "en": "User of data"
   },
   "Tarkempi kuvaus lähetetyistä tiedoista": {
     "fi": "Tarkempi kuvaus lähetetyistä tiedoista",
-    "sv": "En närmare beskrivning av uppgifterna som skickats"
+    "sv": "En närmare beskrivning av uppgifterna som skickats",
+    "en": "Detailed description of shared data"
   },
   "Piilota käyttökerrat": {
     "fi": "Piilota käyttökerrat"
+    "sv": "",
+    "en": ""
   },
   "Näytä lisää käyttökertoja": {
     "fi": "Näytä lisää käyttökertoja",
-    "sv": "Visa fler tidpunkter"
+    "sv": "Visa fler tidpunkter",
+    "en": ""
   },
   "Näytetään käyttökerrat": {
     "fi": "Näytetään käyttökerrat",
-    "sv": "Visar tidpunkter"
+    "sv": "Visar tidpunkter",
+    "en": ""
   }
 }
