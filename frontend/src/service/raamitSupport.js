@@ -17,7 +17,7 @@ const parseUserName = user => {
  * }}
  */
 window.Service = {
-  getUser: () => http.get(`${process.env.API_BASE_URL}/whoami`)
+  getUser: () => http.get('whoami')
     .then(v => v.data)
     .then(user => ({
       name: parseUserName(user),
