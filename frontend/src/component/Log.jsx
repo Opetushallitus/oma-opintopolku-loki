@@ -13,7 +13,7 @@ const oidLens = lensProp('oid')
 const getTranslatedName = organizationName => organizationName[lang] || ''
 
 const Log = () => (
-  <Query url='logs'>
+  <Query url='auditlog'>
     {({ data, error, pending }) => {
       if (error) return <AlertText>{t`Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.`}</AlertText>
       if (pending) return <div>{t`Tietoja haetaan`}</div>
