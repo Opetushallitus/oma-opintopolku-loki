@@ -24,5 +24,5 @@ window.Service = {
       oid: user.oidHenkilo
     })),
   login: () => { throw new Error('Not implemented') },
-  logout: () => { throw new Error('Not implemented') }
+  logout: () => { window.location.href = '/shibboleth/Logout?return=/oma-opintopolku/' }
 }
