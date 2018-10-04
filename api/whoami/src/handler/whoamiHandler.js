@@ -43,7 +43,7 @@ module.exports = async (event, context) => {
     return {
       statusCode: 200,
       headers: {
-        'Cache-Control': `max-age=${config.get('cache.max-age')}`
+        'Cache-Control': `private, max-age=${config.get('cache.max-age')}`
       },
       body: JSON.stringify(user)
     }
