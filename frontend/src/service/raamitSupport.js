@@ -17,12 +17,12 @@ const parseUserName = user => {
  * }}
  */
 window.Service = {
-  getUser: () => http.get(`${process.env.API_BASE_URL}/whoami`)
+  getUser: () => http.get('whoami')
     .then(v => v.data)
     .then(user => ({
       name: parseUserName(user),
       oid: user.oidHenkilo
     })),
   login: () => { throw new Error('Not implemented') },
-  logout: () => { throw new Error('Not implemented') }
+  logout: () => { window.location.href = '/shibboleth/Logout?return=/oma-opintopolku/' }
 }
