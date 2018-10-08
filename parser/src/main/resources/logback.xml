@@ -2,10 +2,13 @@
 
 <configuration>
   <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-    <target>System.out</target>
-    <encoding>UTF-8</encoding>
-    <encoder>
-      <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %C - %m%n</pattern>
+    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+      <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+        <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter"/>
+        <appendLineSeparator>true</appendLineSeparator>
+        <timestampFormat>yyyy-MM-dd'T'HH:mm:ss.SSSX</timestampFormat>
+        <timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>
+      </layout>
     </encoder>
   </appender>
 
@@ -19,3 +22,6 @@
     <appender-ref ref="console"/>
   </root>
 </configuration>
+
+
+
