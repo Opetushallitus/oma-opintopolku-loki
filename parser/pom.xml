@@ -70,14 +70,9 @@
     </dependency>
 
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.25</version>
-    </dependency>
-    <dependency>
-      <groupId>org.log4s</groupId>
-      <artifactId>log4s_2.12</artifactId>
-      <version>1.6.1</version>
+      <groupId>io.symphonia</groupId>
+      <artifactId>lambda-logging</artifactId>
+      <version>1.0.2</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.github.cb372/scalacache-redis -->
