@@ -30,7 +30,11 @@ object DB {
     dynamo.createTable(req)
   }
 
-  private def deleteTable() = dynamo.deleteTable(new DeleteTableRequest("AuditLog"))
+  private def deleteTable() = {
+    if (!dbHost.contains("localhost")) throw new RuntimeException(s"Will not delete remote database $dbHost")
+
+    dynamo.deleteTable(new DeleteTableRequest("AuditLog"))
+  }
   def getAllItems: PaginatedScanList[LogEntry] = mapper.scan[LogEntry](classOf[LogEntry], new DynamoDBScanExpression)
 }
 
