@@ -70,15 +70,37 @@
     </dependency>
 
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.25</version>
+      <groupId>io.symphonia</groupId>
+      <artifactId>lambda-logging</artifactId>
+      <version>1.0.2</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder -->
     <dependency>
-      <groupId>org.log4s</groupId>
-      <artifactId>log4s_2.12</artifactId>
-      <version>1.6.1</version>
+      <groupId>net.logstash.logback</groupId>
+      <artifactId>logstash-logback-encoder</artifactId>
+      <version>4.11</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/ch.qos.logback.contrib/logback-json-classic -->
+    <dependency>
+      <groupId>ch.qos.logback.contrib</groupId>
+      <artifactId>logback-json-classic</artifactId>
+      <version>0.1.5</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/ch.qos.logback.contrib/logback-jackson -->
+    <dependency>
+      <groupId>ch.qos.logback.contrib</groupId>
+      <artifactId>logback-jackson</artifactId>
+      <version>0.1.5</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.7</version>
+    </dependency>
+
+
 
     <!-- https://mvnrepository.com/artifact/com.github.cb372/scalacache-redis -->
     <dependency>
