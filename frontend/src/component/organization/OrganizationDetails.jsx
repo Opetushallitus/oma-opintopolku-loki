@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import t from 'util/translate'
-import { getTranslatedUsagePermissionDescription } from 'util/usagePermissionDescriptions'
+import { getTranslatedUsagePermissionDescription, isMydataPartner } from 'util/usagePermissionDescriptions'
 import { Bold } from 'ui/typography'
 import media from 'ui/media'
 import ExternalLink from 'component/generic/widget/ExternalLink'
@@ -26,6 +26,11 @@ const Details = styled.div`
   `}
 `
 
+const weblink = oid => (isMydataPartner(oid)
+  ? 'https://confluence.csc.fi/pages/viewpage.action?pageId=76536741'
+  : 'https://confluence.csc.fi/pages/viewpage.action?pageId=76541418'
+)
+
 const OrganizationDetails = ({ organizationOid }) => (
   <Details>
     <div>
@@ -34,7 +39,7 @@ const OrganizationDetails = ({ organizationOid }) => (
 
     <ExternalLink
       text={t`Tarkempi kuvaus lähetetyistä tiedoista`}
-      url='https://confluence.csc.fi/pages/viewpage.action?pageId=76536741'
+      url={weblink(organizationOid)}
       openInNewTab={true}
     />
   </Details>
