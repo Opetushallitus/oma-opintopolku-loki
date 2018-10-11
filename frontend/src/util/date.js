@@ -3,4 +3,4 @@ import { lang } from 'util/preferences'
 
 moment.locale(lang)
 
-export const isoStringToDate = isoString => moment(isoString).format('l, LT')
+export const isoStringToDate = isoString => moment(isoString).format('l LT')
