@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import constants from 'ui/constants'
+import media from 'ui/media'
 
 const Navigation = styled.div`
   display: flex;
@@ -11,7 +12,11 @@ const Navigation = styled.div`
 const Tab = styled.span`
   display: inline-block;
   font-size: ${constants.font.size.base};
-  padding: 0.5rem 5rem;
+  padding: 0.5rem 2rem;
+  
+  ${media.full`
+    padding: 0.5rem 5rem;
+  `}
 `
 
 const InactiveTab = styled(Tab)`
