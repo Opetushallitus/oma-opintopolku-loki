@@ -9,6 +9,14 @@ const proxy = {
   '/oppija-raamit': {
     target: process.env.RAAMIT_DEV_PROXY_TARGET,
     secure: false
+  },
+  '/auditlog': {
+    target: 'http://localhost:3000',
+    secure: false
+  },
+  '/whoami': {
+    target: 'http://localhost:3000',
+    secure: false
   }
 }
 
