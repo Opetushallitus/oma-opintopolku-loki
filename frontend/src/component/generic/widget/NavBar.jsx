@@ -4,10 +4,8 @@ import styled from 'styled-components'
 import constants from 'ui/constants'
 
 const Navigation = styled.div`
+  display: flex;
   margin-bottom: 27px;
-  border-style: none none solid none;
-  border-width: 1px;
-  border-color: #149ecb;
 `
 
 const Tab = styled.span`
@@ -19,6 +17,7 @@ const Tab = styled.span`
 const InactiveTab = styled(Tab)`
   font-weight: 600;
   background-color: #f5f5f5;
+  border-bottom: 1px solid #149ecb;
 `
 
 const ActiveTab = styled(Tab)`
@@ -27,10 +26,16 @@ const ActiveTab = styled(Tab)`
   border-width: 2px 1px 0px 1px;
 `
 
+const Filler = styled.span`
+  flex: 1;
+  border-bottom: 1px solid #149ecb;
+`
+
 const NavBar = () => (
   <Navigation>
     <InactiveTab>Annetut käyttöluvat</InactiveTab>
     <ActiveTab>Tietojani käyttäneet toimijat</ActiveTab>
+    <Filler />
   </Navigation>
 )
 
