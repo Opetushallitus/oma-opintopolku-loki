@@ -10,7 +10,7 @@ const Navigation = styled.div`
 
 const Tab = styled.span`
   display: inline-block;
-  font-size: ${constants.font.size.l};
+  font-size: ${constants.font.size.base};
   padding: 0.5rem 5rem;
 `
 
@@ -18,6 +18,13 @@ const InactiveTab = styled(Tab)`
   font-weight: 600;
   background-color: #f5f5f5;
   border-bottom: 1px solid #149ecb;
+  
+  a:link {
+    color: red;
+  }
+  a:visited {
+    color: green;
+  }
 `
 
 const ActiveTab = styled(Tab)`
@@ -31,9 +38,21 @@ const Filler = styled.span`
   border-bottom: 1px solid #149ecb;
 `
 
+const Link = ({ className, children, href }) => (
+  <a href={href} className={className}>
+    {children}
+  </a>
+);
+
+const StyledLink = styled(Link)`
+  color: #000000;
+`;
+
 const NavBar = () => (
   <Navigation>
-    <InactiveTab>Annetut käyttöluvat</InactiveTab>
+    <StyledLink href={'/koski/omadata/kayttooikeudet'}>
+      <InactiveTab>Annetut käyttöluvat</InactiveTab>
+    </StyledLink>
     <ActiveTab>Tietojani käyttäneet toimijat</ActiveTab>
     <Filler />
   </Navigation>
