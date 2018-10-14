@@ -6,7 +6,7 @@ import NavBar from 'component/generic/widget/NavBar'
 const Header = () => (
   <header>
     <H1>
-      {t`Oma Opintopolku -loki`}
+      {t`Tietojeni käyttö`}
     </H1>
     <Lead>
       {t`Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.`}
