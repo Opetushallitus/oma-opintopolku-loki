@@ -21,26 +21,19 @@ const Tab = styled.span`
 
 const InactiveTab = styled(Tab)`
   font-weight: 600;
-  background-color: #f5f5f5;
-  border-bottom: 1px solid #149ecb;
-  
-  a:link {
-    color: red;
-  }
-  a:visited {
-    color: green;
-  }
+  background-color: ${constants.color.background.neutralLight};
+  border-bottom: 1px solid ${constants.color.primary};
 `
 
 const ActiveTab = styled(Tab)`
-  border-color: #149ecb #979797 white #979797;
+  border-color: ${constants.color.primary} ${constants.color.border} ${constants.color.white} ${constants.color.border};
   border-style: solid solid none solid;
   border-width: 2px 1px 0px 1px;
 `
 
 const Filler = styled.span`
   flex: 1;
-  border-bottom: 1px solid #149ecb;
+  border-bottom: 1px solid ${constants.color.primary};
 `
 
 const Link = ({ className, children, href }) => (
@@ -50,7 +43,7 @@ const Link = ({ className, children, href }) => (
 );
 
 const StyledLink = styled(Link)`
-  color: #000000;
+  color: ${constants.color.black};
 `;
 
 const NavBar = () => (
