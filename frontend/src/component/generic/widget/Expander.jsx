@@ -38,7 +38,6 @@ const ExpandedContents = styled.div`
 `
 
 const expandable = withState('expanded', 'setExpanded', false)
-const prefix = (expanded) => expanded ? '-' : '+'
 
 const Expander = expandable(({ title, children, expanded, setExpanded }) => (
   <ExpanderContainer>
@@ -47,7 +46,7 @@ const Expander = expandable(({ title, children, expanded, setExpanded }) => (
       onClick={() => setExpanded(v => !v)}
       aria-pressed={expanded}
     >
-      <ExpanderPrefix>{prefix(expanded)}</ExpanderPrefix>
+      <ExpanderPrefix>{expanded ? '-' : '+'}</ExpanderPrefix>
       {title}
     </ExpanderTitle>
     {expanded && <ExpandedContents>{children}</ExpandedContents>}
