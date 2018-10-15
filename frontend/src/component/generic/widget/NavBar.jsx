@@ -40,11 +40,11 @@ const Link = ({ className, children, href }) => (
   <a href={href} className={className}>
     {children}
   </a>
-);
+)
 
 const StyledLink = styled(Link)`
   color: ${constants.color.black};
-`;
+`
 
 const NavBar = () => (
   <Navigation>
