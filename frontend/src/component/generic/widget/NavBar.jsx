@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import constants from 'ui/constants'
 import media from 'ui/media'
@@ -55,5 +56,11 @@ const NavBar = () => (
     <Filler />
   </Navigation>
 )
+
+Link.propTypes = {
+  href: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired
+}
 
 export default NavBar
