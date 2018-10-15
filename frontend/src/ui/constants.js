@@ -19,6 +19,7 @@ export default {
   font: {
     family: `'Source Sans Pro', sans-serif`,
     size: {
+      s: '0.75rem',
       base: '0.875em', // ~14px with default browser font size of 16px
       l: '1.286rem',
       xl: '1.429rem',
