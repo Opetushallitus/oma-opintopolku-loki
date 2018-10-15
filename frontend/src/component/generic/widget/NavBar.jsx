@@ -2,10 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import constants from 'ui/constants'
 import media from 'ui/media'
+import t from 'util/translate'
 
 const Navigation = styled.div`
   display: flex;
-  margin-bottom: 27px;
+  margin-bottom: 1.5rem;
 `
 
 const Tab = styled.span`
@@ -48,9 +49,9 @@ const StyledLink = styled(Link)`
 const NavBar = () => (
   <Navigation>
     <StyledLink href={'/koski/omadata/kayttooikeudet'}>
-      <InactiveTab>Annetut käyttöluvat</InactiveTab>
+      <InactiveTab>{t`Annetut käyttöluvat`}</InactiveTab>
     </StyledLink>
-    <ActiveTab>Tietojani käyttäneet toimijat</ActiveTab>
+    <ActiveTab>{t`Tietojani käyttäneet toimijat`}</ActiveTab>
     <Filler />
   </Navigation>
 )
