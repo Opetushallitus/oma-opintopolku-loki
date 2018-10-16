@@ -11,7 +11,6 @@ const Navigation = styled.div`
 
 const Tab = styled.span`
   display: inline-block;
-  font-size: ${constants.font.size.base};
   padding: 0.5rem 2rem;
   
   ${media.full`

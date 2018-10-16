@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import t from 'util/translate'
 import { getTranslatedUsagePermissionDescription } from 'util/usagePermissionDescriptions'
 import { Bold } from 'ui/typography'
+import constants from 'ui/constants'
 import media from 'ui/media'
 import ExternalLink from 'component/generic/widget/ExternalLink'
 
@@ -26,11 +27,15 @@ const Details = styled.div`
   `}
 `
 
+const Description = styled.div`
+  font-size: ${constants.font.size.s};
+`
+
 const OrganizationDetails = ({ organizationOid }) => (
   <Details>
-    <div>
+    <Description>
       <Bold>{t`Tietojen käyttölupa`}:</Bold> {getTranslatedUsagePermissionDescription(organizationOid)}
-    </div>
+    </Description>
 
     <ExternalLink
       text={t`Tarkempi kuvaus lähetetyistä tiedoista`}
