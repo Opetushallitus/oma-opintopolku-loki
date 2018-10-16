@@ -18,8 +18,7 @@ export const H3 = styled.h3`
 `
 
 export const Lead = styled.p`
-  font-size: ${constants.font.size.xl};
-  font-weight: 300;
+  font-size: ${constants.font.size.m};
 `
 
 export const AlertText = styled.strong`
