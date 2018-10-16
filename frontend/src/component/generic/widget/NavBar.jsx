@@ -20,6 +20,8 @@ const Tab = styled.span`
 `
 
 const InactiveTab = styled(Tab)`
+  box-sizing: border-box;
+  height: 100%;
   font-weight: 600;
   background-color: ${constants.color.background.neutralLight};
   border-bottom: 1px solid ${constants.color.primary};
