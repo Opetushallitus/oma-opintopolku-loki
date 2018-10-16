@@ -13,6 +13,10 @@ injectGlobal`
   body, button, input, optgroup, select, textarea {
     font-family: ${constants.font.family};
   }
+
+  html {
+    font-size: ${constants.font.size.base};
+  }
 `
 
 const Content = styled.main`

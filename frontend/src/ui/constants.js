@@ -25,8 +25,7 @@ export default {
       l: '1.286rem',
       xl: '1.429rem',
       xxl: '1.714rem',
-      xxxl: '2.25rem',
-      xxxxl: '2.571rem'
+      xxxl: '2.571rem'
     }
   },
   layout: {
