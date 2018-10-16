@@ -46,7 +46,7 @@ const Expander = expandable(({ title, children, expanded, setExpanded }) => (
       onClick={() => setExpanded(v => !v)}
       aria-pressed={expanded}
     >
-      <ExpanderPrefix>{expanded ? '-' : '+'}</ExpanderPrefix>
+      <ExpanderPrefix aria-hidden={'true'}>{expanded ? '-' : '+'}</ExpanderPrefix>
       {title}
     </ExpanderTitle>
     {expanded && <ExpandedContents>{children}</ExpandedContents>}
