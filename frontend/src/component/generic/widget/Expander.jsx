@@ -6,6 +6,8 @@ import constants from 'ui/constants'
 import media from 'ui/media'
 
 const ExpanderContainer = styled.div`
+  background-color: ${constants.color.background.neutralLight};
+
   &:not(:last-of-type) {
     margin-bottom: 0.5rem;
   }
