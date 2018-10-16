@@ -8,6 +8,7 @@ export default {
     primary: '#149ecb',
     primaryDark: '#00526c',
     alert: '#b90400',
+    border: '#979797',
     white: '#ffffff',
     black: '#000000',
     background: {
@@ -18,6 +19,7 @@ export default {
   font: {
     family: `'Source Sans Pro', sans-serif`,
     size: {
+      s: '0.75rem',
       base: '0.875em', // ~14px with default browser font size of 16px
       l: '1.286rem',
       xl: '1.429rem',

@@ -11,6 +11,11 @@ const ExpanderContainer = styled.div`
   }
 `
 
+const ExpanderPrefix = styled.span`
+  margin-left: 0.375rem;
+  margin-right: 0.625rem;
+`
+
 const ExpanderTitle = styled.button`
   display: block;
   width: 100%;
@@ -41,6 +46,7 @@ const Expander = expandable(({ title, children, expanded, setExpanded }) => (
       onClick={() => setExpanded(v => !v)}
       aria-pressed={expanded}
     >
+      <ExpanderPrefix aria-hidden={'true'}>{expanded ? '-' : '+'}</ExpanderPrefix>
       {title}
     </ExpanderTitle>
     {expanded && <ExpandedContents>{children}</ExpandedContents>}
