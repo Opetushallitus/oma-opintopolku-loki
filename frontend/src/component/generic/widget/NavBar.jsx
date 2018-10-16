@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import constants from 'ui/constants'
 import media from 'ui/media'
@@ -37,30 +36,18 @@ const Filler = styled.span`
   border-bottom: 1px solid ${constants.color.primary};
 `
 
-const Link = ({ className, children, href }) => (
-  <a href={href} className={className}>
-    {children}
-  </a>
-)
-
-const StyledLink = styled(Link)`
+const Link = styled.a`
   color: ${constants.color.black};
 `
 
 const NavBar = () => (
   <Navigation>
-    <StyledLink href={'/koski/omadata/kayttooikeudet'}>
+    <Link href={'/koski/omadata/kayttooikeudet'}>
       <InactiveTab>{t`Annetut käyttöluvat`}</InactiveTab>
-    </StyledLink>
+    </Link>
     <ActiveTab>{t`Tietojani käyttäneet toimijat`}</ActiveTab>
     <Filler />
   </Navigation>
 )
-
-Link.propTypes = {
-  href: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
-}
 
 export default NavBar
