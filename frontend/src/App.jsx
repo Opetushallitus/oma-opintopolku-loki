@@ -1,9 +1,11 @@
 import React from 'react'
 import styled, { injectGlobal } from 'styled-components'
 import constants from 'ui/constants'
+import media from 'ui/media'
 import Header from 'component/Header'
 import Subheader from 'component/Subheader'
 import Log from 'component/Log'
+
 
 /**
  * Apply global styles.
@@ -13,9 +15,17 @@ injectGlobal`
   body, button, input, optgroup, select, textarea {
     font-family: ${constants.font.family};
   }
+  
+  * {
+    box-sizing: border-box;
+  }
 
   html {
-    font-size: ${constants.font.size.base};
+    font-size: ${constants.font.size.xs};
+    
+    ${media.full`
+      font-size: ${constants.font.size.base};
+    `}
   }
 `
 

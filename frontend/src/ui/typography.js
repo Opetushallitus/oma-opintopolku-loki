@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 import constants from 'ui/constants'
+import media from 'ui/media'
 
 export const H1 = styled.h1`
-  font-size: ${constants.font.size.xxxl};
+  font-size: 2.667rem;
   font-weight: 700;
+  
+  ${media.full`
+    font-size: ${constants.font.size.xxxl};
+  `}
 `
 
 export const H2 = styled.h2`
