@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import constants from 'ui/constants'
 import { H3 } from 'ui/typography'
-import media from 'ui/media'
-import t from 'util/translate'
 import http from 'http/http'
 import { parseUserName } from '../../../service/raamitSupport'
 
@@ -19,6 +17,7 @@ const Name = styled.span`
   font-weight: 600;
 `
 const Birthday = styled.span`
+  font-weight: 400;
 `
 
 class StudentInfo extends React.Component {
@@ -31,15 +30,15 @@ class StudentInfo extends React.Component {
     }
   }
 
-  componentDidMount () {
-    this.getName()
+  componentDidMount() {
+    this.getStudentDetails()
   }
 
-  async getName() {
+  async getStudentDetails() {
     const whoami = await http.get('whoami')
     this.setState({
       name: parseUserName(whoami.data),
-      birthday: '1.1.2009'
+      birthday: whoami.data.syntymaaika
     })
   }
 
@@ -49,7 +48,7 @@ class StudentInfo extends React.Component {
     return (
       <Student>
         <Name>{this.state.name}</Name>
-        <Birthday> {this.state.birthday}</Birthday>
+        <Birthday> s.{this.state.birthday}</Birthday>
       </Student>
     )
   }
