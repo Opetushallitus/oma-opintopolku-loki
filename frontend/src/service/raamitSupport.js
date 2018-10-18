@@ -1,7 +1,7 @@
 import http from 'http/http'
 import { isEmpty } from 'ramda'
 
-const parseUserName = user => {
+export const parseUserName = user => {
   const firstName = user.kutsumanimi && !isEmpty(user.kutsumanimi) ? user.kutsumanimi : user.etunimet
   const lastName = user.sukunimi
 
