@@ -1,16 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import constants from 'ui/constants'
 import { H3 } from 'ui/typography'
 import http from 'http/http'
 import { parseUserName } from '../../../service/raamitSupport'
 
-const Student = styled.h3`
+const Student = styled(H3)`
   margin-top: 3rem;
   margin-bottom: 2.214rem;
-    
-  font-size: ${constants.font.size.l};
-  font-weight: 400;
 `
 
 const Name = styled.span`
@@ -48,7 +44,7 @@ class StudentInfo extends React.Component {
     return (
       <Student>
         <Name>{this.state.name}</Name>
-        <Birthday> s.{this.state.birthday}</Birthday>
+        <Birthday> s. {this.state.birthday}</Birthday>
       </Student>
     )
   }
