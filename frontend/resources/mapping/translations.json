@@ -76,5 +76,10 @@
     "fi": "Näytetään käyttökerrat",
     "sv": "Användningstidpunkter",
     "en": "Showing times of data use"
+  },
+  "Sivu on tyhjä, koska tietojasi ei ole vielä käytetty": {
+    "fi": "Sivu on tyhjä, koska tietojasi ei ole vielä käytetty.",
+    "sv": "Sidan är tom, eftersom ingen ännu har använt dina uppgifter.",
+    "en": "The page is empty, as no one has used your information."
   }
 }
