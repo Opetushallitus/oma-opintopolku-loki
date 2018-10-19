@@ -10,7 +10,7 @@
   "Taulukko tietojen käyttökerroista": {
     "fi": "Näytä tietojen käyttökerrat",
     "sv": "En tabell över antalet gånger som uppgifterna har använts",
-    "en": ""
+    "en": "When has my data been used?"
   },
   "Tietojen käyttölupa": {
     "fi": "Tietojen käyttölupa",
@@ -34,8 +34,8 @@
   },
   "Tietoja haetaan": {
     "fi": "Tietoja haetaan",
-    "sv": "",
-    "en": ""
+    "sv": "Uppgifter hämtas",
+    "en": "Fetching data"
   },
   "Tietojeni käyttö": {
     "fi": "Tietojeni käyttö",
@@ -65,16 +65,16 @@
   "Piilota käyttökerrat": {
     "fi": "Piilota käyttökerrat",
     "sv": "Göm tidpunkter",
-    "en": ""
+    "en": "Hide times of data use"
   },
   "Näytä lisää käyttökertoja": {
     "fi": "Näytä lisää käyttökertoja",
     "sv": "Visa fler tidpunkter",
-    "en": ""
+    "en": "Show more"
   },
   "Näytetään käyttökerrat": {
     "fi": "Näytetään käyttökerrat",
     "sv": "Visar tidpunkter",
-    "en": ""
+    "en": "Showing times of data use"
   }
 }
