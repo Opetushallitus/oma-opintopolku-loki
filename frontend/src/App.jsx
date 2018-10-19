@@ -6,7 +6,6 @@ import Header from 'component/Header'
 import Subheader from 'component/Subheader'
 import Log from 'component/Log'
 
-
 /**
  * Apply global styles.
  * TODO: Styled Components API for defining global styles will change in next major version (v4).
