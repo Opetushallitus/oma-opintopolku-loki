@@ -3,8 +3,8 @@ import constants from 'ui/constants'
 import media from 'ui/media'
 
 export const H1 = styled.h1`
-  font-size: 2.667rem;
-  font-weight: 700;
+  font-size: ${constants.font.size.xxxxl};
+  font-weight: 600;
   
   ${media.full`
     font-size: ${constants.font.size.xxxl};
