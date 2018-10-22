@@ -19,12 +19,15 @@ export default {
   font: {
     family: `'Source Sans Pro', sans-serif`,
     size: {
-      s: '0.75rem',
+      xs: '0.75em', // base size for mobile
+      s: '0.857rem',
       base: '0.875em', // ~14px with default browser font size of 16px
+      m: '1.25rem',
       l: '1.286rem',
       xl: '1.429rem',
       xxl: '1.714rem',
-      xxxl: '2.571rem'
+      xxxl: '2.571rem',
+      xxxxl: '2.667rem' // mobile ~32px
     }
   },
   layout: {

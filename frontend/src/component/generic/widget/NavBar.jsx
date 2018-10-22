@@ -6,12 +6,11 @@ import t from 'util/translate'
 
 const Navigation = styled.div`
   display: flex;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.714rem;
 `
 
 const Tab = styled.span`
   display: inline-block;
-  font-size: ${constants.font.size.base};
   padding: 0.5rem 2rem;
   
   ${media.full`
