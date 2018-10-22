@@ -25,7 +25,7 @@ const Log = () => (
     {({ data, error, pending }) => {
       if (error) return <AlertText>{t`Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.`}</AlertText>
       if (pending) return <div>{t`Tietoja haetaan`}</div>
-      if (Array.isArray(data) || !data) return <NotificationText>{t`Sivu on tyhjä, koska tietojasi ei ole vielä käytetty`}</NotificationText>
+      if (!Array.isArray(data) || !data.length) return <NotificationText>{t`Sivu on tyhjä, koska tietojasi ei ole vielä käytetty`}</NotificationText>
 
       const translatedOrganizations = map(over(organizationLens, map(over(nameLens, getTranslatedName))))(data)
 
