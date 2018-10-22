@@ -14,14 +14,10 @@ injectGlobal`
   body, button, input, optgroup, select, textarea {
     font-family: ${constants.font.family};
   }
-  
-  * {
-    box-sizing: border-box;
-  }
 
   html {
     font-size: ${constants.font.size.xs};
-    
+
     ${media.full`
       font-size: ${constants.font.size.base};
     `}
@@ -32,6 +28,7 @@ const Content = styled.main`
   max-width: ${constants.layout.maxContentWidth};
   margin: 0 auto 2rem auto;
   padding: 0 1rem;
+  box-sizing: border-box;
 `
 
 const App = () => (
