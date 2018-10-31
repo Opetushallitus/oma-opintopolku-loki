@@ -3,7 +3,6 @@ import styled, { injectGlobal } from 'styled-components'
 import constants from 'ui/constants'
 import media from 'ui/media'
 import Header from 'component/Header'
-import Subheader from 'component/Subheader'
 import Log from 'component/Log'
 
 /**
@@ -34,7 +33,6 @@ const Content = styled.main`
 const App = () => (
   <Content>
     <Header/>
-    <Subheader/>
     <Log/>
   </Content>
 )

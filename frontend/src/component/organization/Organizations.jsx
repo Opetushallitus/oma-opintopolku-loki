@@ -1,19 +1,36 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { lensProp, map, view } from 'ramda'
 import Organization from 'component/organization/Organization'
+import Footnote from 'component/generic/widget/Footnote'
+import OrganizationsHeader from 'component/organization/OrganizationsHeader'
 
 const oidLens = lensProp('oid')
 
-const Organizations = ({ translatedOrganizations }) => translatedOrganizations.map(({ organizations, timestamps }) => {
-  const key = map(view(oidLens), organizations).join(',')
+const Organizations = ({ translatedOrganizations }) => (
+  <React.Fragment>
+    <OrganizationsHeader/>
 
-  return (
-    <Organization
-      key={key}
-      organizationAlternatives={organizations}
-      timestamps={timestamps}
-    />
-  )
-})
+    {
+      translatedOrganizations.map(({ organizations, timestamps }) => {
+        const key = map(view(oidLens), organizations).join(',')
+
+        return (
+          <Organization
+            key={key}
+            organizationAlternatives={organizations}
+            timestamps={timestamps}
+          />
+        )
+      })
+    }
+
+    <Footnote text={'Tietojen käyttäjät näytetään 1.10.2018 jälkeiseltä ajalta.'}/>
+  </React.Fragment>
+)
+
+Organizations.propTypes = {
+  translatedOrganizations: PropTypes.array.isRequired
+}
 
 export default Organizations

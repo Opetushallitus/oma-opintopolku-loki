@@ -11,6 +11,7 @@ export default {
     border: '#979797',
     white: '#ffffff',
     black: '#000000',
+    gray: '#747474',
     background: {
       neutralLight: '#f5f5f5',
       primaryTintedLight: '#eaf8fb'

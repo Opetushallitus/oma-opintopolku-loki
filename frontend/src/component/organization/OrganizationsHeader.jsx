@@ -12,8 +12,8 @@ const Container = styled.div`
   letter-spacing: 0.0125rem;
 `
 
-const Subheader = () => (
-  <Container>{t`Tietojen käyttäjä`}</Container>
+const OrganizationsHeader = () => (
+  <Container>{`${t('Tietojen käyttäjä')}*`}</Container>
 )
 
-export default Subheader
+export default OrganizationsHeader
