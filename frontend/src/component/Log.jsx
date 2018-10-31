@@ -1,16 +1,15 @@
 import React from 'react'
-import { lensProp, map, over, view } from 'ramda'
+import { lensProp, map, over } from 'ramda'
 import Query from 'http/Query'
 import { lang } from 'util/preferences'
 import { AlertText } from 'ui/typography'
 import constants from 'ui/constants'
 import t from 'util/translate'
-import Organization from 'component/organization/Organization'
+import Organizations from 'component/organization/Organizations'
 import styled from 'styled-components'
 
 const organizationLens = lensProp('organizations')
 const nameLens = lensProp('name')
-const oidLens = lensProp('oid')
 
 const NotificationText = styled.div`
   margin: 4.429rem 0;
@@ -28,18 +27,7 @@ const Log = () => (
       if (!Array.isArray(data) || !data.length) return <NotificationText>{t`Sivu on tyhjä, koska tietojasi ei ole vielä käytetty`}</NotificationText>
 
       const translatedOrganizations = map(over(organizationLens, map(over(nameLens, getTranslatedName))))(data)
-
-      return translatedOrganizations.map(({ organizations, timestamps }) => {
-        const key = map(view(oidLens), organizations).join(',')
-
-        return (
-          <Organization
-            key={key}
-            organizationAlternatives={organizations}
-            timestamps={timestamps}
-          />
-        )
-      })
+      return <Organizations translatedOrganizations={translatedOrganizations}/>
     }}
   </Query>
 )
