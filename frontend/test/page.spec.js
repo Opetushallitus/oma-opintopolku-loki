@@ -6,6 +6,6 @@ describe('Oma Opintopolku -loki', () => {
   })
 
   it('should display text', async () => {
-    await expect(page).toMatch('Oma Opintopolku -loki')
+    await expect(page).toMatch('Tietojeni käyttö')
   })
 })
