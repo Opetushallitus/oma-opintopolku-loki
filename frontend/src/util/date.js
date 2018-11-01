@@ -1,6 +1,3 @@
-import moment from 'moment'
-import { lang } from 'util/preferences'
+import format from 'date-fns/format'
 
-moment.locale(lang)
-
-export const isoStringToDate = isoString => moment(isoString).format('l LT')
+export const isoStringToDate = isoString => format(isoString, 'D.M.YYYY HH.mm')
