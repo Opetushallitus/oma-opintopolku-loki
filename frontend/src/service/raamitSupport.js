@@ -1,12 +1,6 @@
 import http from 'http/http'
-import { isEmpty } from 'ramda'
 
-export const parseUserName = user => {
-  const firstName = user.kutsumanimi && !isEmpty(user.kutsumanimi) ? user.kutsumanimi : user.etunimet
-  const lastName = user.sukunimi
-
-  return `${firstName} ${lastName}`
-}
+export const parseUserName = user => `${user.etunimet} ${user.sukunimi}`
 
 /**
  * Oppija-raamit interface requires three functions (getUser, login, logout) under global Service object.
