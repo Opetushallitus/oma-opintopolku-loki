@@ -1,13 +1,13 @@
 import React from 'react'
 import { lensProp, map, over } from 'ramda'
+import styled from 'styled-components'
 import Query from 'http/Query'
 import { lang } from 'util/preferences'
 import { AlertText } from 'ui/typography'
 import constants from 'ui/constants'
 import t from 'util/translate'
 import Organizations from 'component/organization/Organizations'
-import styled from 'styled-components'
-import Footnote from './generic/widget/Footnote'
+import Footnote from 'component/generic/widget/Footnote'
 
 const organizationLens = lensProp('organizations')
 const nameLens = lensProp('name')
@@ -22,7 +22,10 @@ const getTranslatedName = organizationName => organizationName[lang] || ''
 
 const NoEntries = () => (
   <div>
-    <NotificationText>{`${t('Sivu on tyhjä, koska tietojasi ei ole vielä käytetty')}*`}</NotificationText>
+    <NotificationText>
+      <p>{t`Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.`}</p>
+      <p>{`${t('Sivu on tyhjä, koska tietojasi ei ole vielä käytetty')}*`}</p>
+    </NotificationText>
     <Footnote text={'Tietojen käyttäjät näytetään 1.10.2018 jälkeiseltä ajalta. --ei-katsomisia'}/>
   </div>
 )
