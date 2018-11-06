@@ -44,3 +44,18 @@ To lint both application code and tests:
 `npm run lint`
 
 In addition to JavaScript Standard Style, ESLint uses the recommended configs for React and Jest.
+
+# Deploying
+
+We have the following environments:
+
+- `dev`: (TODO)
+- `qa`: https://testiopintopolku.fi/oma-opintopolku-loki/
+- `prod`: https://opintopolku.fi/oma-opintopolku-loki/
+
+Execute the following command to deploy frontend to one of the environments:
+```sbtshell
+export AWS_PROFILE=oph-koski-[env]
+./deploy [env]
+```
+
