@@ -10,7 +10,7 @@ huom. jokaisella lambda funktiolla on omat riippuvuudet
 
 `npm i`
 
-To keep package-lock.json file consistent, use npm 5.x.
+Tiedosto `package-lock.json` on generoitu npm-versiolla 5.
 
 ## Käynnistä lokaali dynamoDB
 `docker run -p 8000:8000 amazon/dynamodb-local`
@@ -25,15 +25,19 @@ To keep package-lock.json file consistent, use npm 5.x.
 
 `sls invoke local --function auditlog --data '{ "headers": {"secret":"shibbosecret", "oid": "1.2.3.4"}}'`
 
-# Deploying
+# Asennus palvelinympäristöön
 
-We have the following environments:
+Ympäristöjä on kolme:
 
 - `dev`: (TODO)
 - `qa`: https://testiopintopolku.fi/oma-opintopolku-loki/
 - `prod`: https://opintopolku.fi/oma-opintopolku-loki/
 
-`sls create_domain` (this only needs to be run once, and most likely it has already been created)
+Domainin luonti (ajetaan vain kerran, ja on todennäköisesti ajettu jo)
+
+`sls create_domain`
+
+Itse asennus:
 
 `sls deploy --stage [env] --aws-profile oph-koski-[dev]`
 
