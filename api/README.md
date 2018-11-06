@@ -27,9 +27,15 @@ To keep package-lock.json file consistent, use npm 5.x.
 
 # Deploying
 
+We have the following environments:
+
+- `dev`: (TODO)
+- `qa`: https://testiopintopolku.fi/oma-opintopolku-loki/
+- `prod`: https://opintopolku.fi/oma-opintopolku-loki/
+
 `sls create_domain` (this only needs to be run once, and most likely it has already been created)
 
-`sls deploy --stage dev --aws-profile oph-koski-dev`
+`sls deploy --stage [env] --aws-profile oph-koski-[dev]`
 
 # TODO
 
