@@ -10,6 +10,8 @@ huom. jokaisella lambda funktiolla on omat riippuvuudet
 
 `npm i`
 
+To keep package-lock.json file consistent, use npm 5.x.
+
 ## Käynnistä lokaali dynamoDB
 `docker run -p 8000:8000 amazon/dynamodb-local`
 

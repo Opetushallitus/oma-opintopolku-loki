@@ -13,6 +13,8 @@ First, setup dependencies by running:
 
 `npm i`
 
+To keep package-lock.json file consistent, use npm 5.x.
+
 Next, copy `.env-example` to `.env`.
 
 Then, start the local hot-reloaded development server by running:
