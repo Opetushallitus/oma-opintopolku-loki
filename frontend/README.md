@@ -1,61 +1,71 @@
-# User interface
+# Oma opintopolku -lokin käyttöliittymä
 
-The Oma Opintopolku -loki user interface is a
+Käyttöliittymä omien tietojen käytön katseluun.
 
-- **React** (https://reactjs.org/) app,
-- styled using **styled components** (https://www.styled-components.com/),
-- dependencies managed using **NPM** (https://www.npmjs.com/), and
-- build handled with **webpack** (https://webpack.js.org/) and **Babel** (https://babeljs.io/).
+## Käytetyt teknologiat ja kehitystyökalut
 
-## Development
+- **React** (https://reactjs.org/) (sovellusrunko)
+- **styled components** (https://www.styled-components.com/) (UI-tyylit)
+- **NPM (5.x)** (https://www.npmjs.com/) (riippuvuuksien hallinta)
+- **Jest** (https://jestjs.io/) ja **Puppeteer** (https://pptr.dev/) (testit)
+- **webpack** (https://webpack.js.org/) ja **Babel** (https://babeljs.io/) (buildaus)
+- **JavaScript Standard Style** (https://standardjs.com/) ja **ESLint** (https://eslint.org/) (koodityylit ja niiden tarkistus)
 
-First, setup dependencies by running:
+## Riippuvuuksien asentaminen
 
-`npm i`
+``` shell
+npm i
+```
 
-To keep package-lock.json file consistent, use npm 5.x.
+Perusta `.env`-tiedosto kopioimalla se esimerkkitiedostosta:
 
-Next, copy `.env-example` to `.env`.
+```shell
+cp .env-example .env
+```
 
-Then, start the local hot-reloaded development server by running:
+## Sovelluksen ajaminen paikallisesti
 
-`npm run start:dev`
+Käynnistä sovellus kehitysmoodissa, jolloin se käyttää `mock`-hakemistossa olevaa mock-API:a ja Webpack lataa automaattisesti sovelluksen uudelleen selaimessa, kun teet muutoksia:
 
-Or, build the development build by running `npm run build:dev` and serve the files from `dist` directory with some other development server.
+```shell
+npm run start:dev
+```
 
-To include Oppija-raamit (https://github.com/Opetushallitus/oppija-raamit), add `proxy-oppija-raamit=true` argument by running:
+Vaihtoehtoisesti voit tehdä dev-buildin (`npm run build:dev`) ja tarjoilla `dist`-hakemistossa olevat tiedostot jollain toisella HTTP-palvelinsovelluksella.
 
-`npm run start:dev -- --proxy-oppija-raamit=true`
+Saat [Oppija-raamit](https://github.com/Opetushallitus/oppija-raamit) käyttöön `proxy-oppija-raamit=true` -parametrin avulla seuraavasti:
 
-### Tests
+```shell
+npm run start:dev -- --proxy-oppija-raamit=true
+```
 
-Tests use **Jest** (https://jestjs.io/) and **Puppeteer** (https://pptr.dev/).
+## Testien ajaminen
 
-To run tests:
+```shell
+npm test
+```
 
-`npm test`
+## Koodityylit
 
-### Code style
+Tarkista sovellus- ja testikoodien tyylit ajamalla:
 
-The code base uses **JavaScript Standard Style** (https://standardjs.com/). **ESLint** (https://eslint.org/) is used for linting.
+```shell
+npm run lint
+```
 
-To lint both application code and tests:
+JavaScript Standard Stylen lisäksi ESLint käyttää Reactin ja Jestin suositeltuja konfiguraatioita.
 
-`npm run lint`
+## Asennus palvelinympäristöön
 
-In addition to JavaScript Standard Style, ESLint uses the recommended configs for React and Jest.
-
-# Deploying
-
-We have the following environments:
+Ympäristöjä on kolme:
 
 - `dev`: (TODO)
 - `qa`: https://testiopintopolku.fi/oma-opintopolku-loki/
 - `prod`: https://opintopolku.fi/oma-opintopolku-loki/
 
-Execute the following command to deploy frontend to one of the environments:
-```sbtshell
-export AWS_PROFILE=oph-koski-[env]
-./deploy [env]
-```
+Asennus ympäristöön `[env]` tehdään ajamalla seuraavat komennot:
 
+```shell
+export AWS_PROFILE=oph-koski-[env]
+./deploy.sh [env]
+```

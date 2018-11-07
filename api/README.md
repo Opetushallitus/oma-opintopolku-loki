@@ -1,41 +1,66 @@
 # Rajapinta auditlogien hakemiseen
 
-## Jos sinulla ei ole serverless -frameworkkia, asenna se
-[serverless](https://serverless.com/)
+## Kehitystyökalut
 
-`npm i -g serverless`
+* `npm` package manager (versio 5.x)
+* GNU Make (OSX & Linux sisältää, komentorivillä `make`)
+* Docker
+* [Jest](https://jestjs.io/) testaukseen
 
-## Asenna tarvittavat riippuvuudet
-huom. jokaisella lambda funktiolla on omat riippuvuudet
+## Riippuvuuksien asennus
 
-`npm i`
+[Serverless framework](https://serverless.com/):
 
-To keep package-lock.json file consistent, use npm 5.x.
+``` shell
+npm i -g serverless
+```
 
-## Käynnistä lokaali dynamoDB
-`docker run -p 8000:8000 amazon/dynamodb-local`
+Lambda-funktioiden riippuvuuksien asennus:
 
-## Aja testit
-[Jest](https://jestjs.io/)
-> Muista käynnistää lokaali dynamo ennen testejä
+``` shell
+make deps
+```
 
-`npm test`
+## Testien ajaminen
 
-## Funktion ajaminen lokaalisti:
+Käynnistä ja pysäytä paikallinen DynamoDB:
 
-`sls invoke local --function auditlog --data '{ "headers": {"secret":"shibbosecret", "oid": "1.2.3.4"}}'`
+``` shell
+make dynamodb-start
+make dynamodb-stop
+```
 
-# Deploying
+Aja testit (pystyttää myös DynamoDB:n, ellei ole jo)
 
-We have the following environments:
+``` shell
+make test
+```
+
+## Funktion ajaminen lokaalisti
+
+``` shell
+sls invoke local --function auditlog --data '{ "headers": {"secret":"shibbosecret", "oid": "1.2.3.4"}}'
+```
+
+## Asennus palvelinympäristöön
+
+Ympäristöjä on kolme:
 
 - `dev`: (TODO)
 - `qa`: https://testiopintopolku.fi/oma-opintopolku-loki/
 - `prod`: https://opintopolku.fi/oma-opintopolku-loki/
 
-`sls create_domain` (this only needs to be run once, and most likely it has already been created)
+Domainin luonti (ajetaan vain kerran, ja on todennäköisesti ajettu jo)
 
-`sls deploy --stage [env] --aws-profile oph-koski-[dev]`
+``` shell
+sls create_domain
+```
+
+Itse asennus:
+
+``` shell
+make deploy env=<dev|qa|prod>
+```
 
 # TODO
 
