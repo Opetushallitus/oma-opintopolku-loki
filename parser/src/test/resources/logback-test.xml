@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%date{ISO8601}] %-5level %logger{30}: %msg %ex{full} %n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Our HTTP requests -->
+    <logger name="org.http4s" level="INFO"/>
+    <!--  AWS HTTP requests (DynamoDB & SQS) -->
+    <logger name="org.apache.http" level="INFO"/>
+    <logger name="com.amazonaws" level="ERROR"/>
+
+    <!-- Set this to DEBUG or something to see log output from tests -->
+    <root level="OFF">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>
