@@ -1,112 +1,128 @@
-# Audit log parser for Opintopolku audit logs
+# Oma opintopolku -lokin parseri
 
-This application reads audit log entries from AWS SQS, 
-resolves corresponding organizations and stores the information to a DB
+Lambda-funktio joka lukee audit log -tapahtumat AWS SQS -jonosta, rikastaa ne organisaatiotiedoilla ja tallentaa ne DynamoDB-tietokantaan.
 
-## Requirements
+## Kehitystyökalut
 
-### Redis
+* [Maven](https://maven.apache.org/) -build-työkalu
+* GNU Make (OSX & Linux sisältää, komentorivillä `make`)
+* Docker
+* [Serverless framework](https://serverless.com/)
 
-`apt-get install redis`
+## Kehitysympäristön pystyttäminen
 
-### DynamoDB
+Lambda-funktion tarvitsemat DynamoDB, Redis ja SQS ajetaan Docker-konteissa. `Makefile` sisältää komennot, joilla kontit voidaan käynnistää ja pysäyttää:
 
-`docker run -p 8000:8000 amazon/dynamodb-local`
+``` shell
+make dynamodb-start
+make redis-start
+make sqs-start
 
-### SQS
-
-`docker run --name alpine-sqs -p 9324:9324 -p 9325:9325 -d roribio16/alpine-sqs:latest`
-
-After which you can access it from http://localhost:8000/shell/
-   
-## Running tests
-
-Start Redis and run Docker DynamoDB and SQS containers, 
-
-and run :
-
-```
-mvn test
+make dynamodb-stop
+make redis-stop
+make sqs-stop
 ```
 
-## Running the application
-
-Override default configurations from application.conf with environment specific variables.
-
-### Serverless
+Kaikki kolme voidaan käynnistää ja pysäyttää myös näin:
 ```shell
-cd $NVM_DIR/versions/node/v9.5.0/lib/node_modules/serverless/lib/plugins/aws/invokeLocal/java
+make docker-up
+make docker-down
+```
+
+Katso alempaa muutamia [hyödyllisiä komentoja Docker-konttien kanssa operoimiseen](#paikallisten-docker-konttien-kanssa-operoiminen).
+
+## Lambdan ajaminen paikallisesti
+
+Käynnistä ensin Docker-kontit ylläolevien ohjeiden mukaisesti.
+
+Nyt voit ajaa lambdan seuraavalla komennolla:
+
+```shell
+serverless invoke local --function parser --data "" --log true --stage local
+```
+
+### Serverless invoke local -komennon bugit
+
+Serverlessin `invoke local` -komennossa (jolla funktioita ajetaan paikallisesti) vaikuttaa tällä hetkellä olevan joitain ongelmia.
+
+1. Java-funktioiden tarvitsema Java bridge ei käänny automaattisesti. Siksi se pitää tehdä manuaalisesti kerran, ennen kuin funktion ajaminen toimii:
+
+```shell
+cd $NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules/serverless/lib/plugins/aws/invokeLocal/java
 mvn package
-serverless invoke local --function parsequeue --data "" --log true
 ```
 
-## Compiling
+2. Tämänkään jälkeen logitus Lambda-funktiossa ei toimi. Yllämainittuun Maven-projektiin joutuu lisäämään esim. `logback-json-classic` -riippuvuuden ja `logback.xml` -konfiguraation, jos haluaa logituksen käyttöön. Tämän jälkeen projekti pitää paketoida uudestaan.
 
-Packaging:
+## Testien ajaminen
 
-`mvn package`
-
-Code style:
-
-`mvn scalastyle:check`
-
-Deploy to AWS dev environment:
+Aja testit näin (pystyttää myös Docker-kontit, ellei niitä ole jo pystytetty).
 
 ```shell
-export AWS_PROFILE=oph-koski-dev
-serverless deploy --stage dev
+make test
 ```
 
-## Interacting with services
+## Koodityylit
+
+Tarkista tuotanto- ja testikoodien tyylit ajamalla:
+
+```shell
+make scalastyle
+```
+
+## Asennus pilviympäristöön
+
+Funktion asennus pilviympäristöön tapahtuu komennolla `make deploy`. Se käynnistää Docker-kontit, ajaa testit ja paketoi funktion tiedostoon `target/omaopintopolkuloki-1.0-SNAPSHOT.jar`. Sen jälkeen paketoitu funktio asentuu määriteltyyn ympäristöön.
+
+```shell
+make deploy env=<dev|qa|prod>
+```
+
+## Paikallisten Docker-konttien kanssa operoiminen
 
 ### SQS
 
-Write to default queue:
+Viestin lähettäminen `default`-jonoon:
 
-`aws --region eu-west-1 --endpoint-url http://localhost:9324 sqs send-message --queue-url http://localhost:9324/queue/default --message-body "Hello world"`
+```shell
+aws --region eu-west-1 --endpoint-url http://localhost:9324 sqs send-message --queue-url http://localhost:9324/queue/default --message-body "Hello world"
+```
 
-Read from default queue:
+Viestin lukeminen `default`-jonosta:
 
-`aws --region eu-west-1 --endpoint-url http://localhost:9324 sqs receive-message --queue-url http://localhost:9324/queue/default --wait-time-seconds 10`
+```shell
+aws --region eu-west-1 --endpoint-url http://localhost:9324 sqs receive-message --queue-url http://localhost:9324/queue/default --wait-time-seconds 10
+```
 
+SQS-konsoli selaimessa: `http://localhost:9325`
 
 ### DynamoDB
 
-List tables:
-`aws dynamodb list-tables --endpoint-url http://localhost:8000 --region eu-west-1`
+Listaa olemassaolevat taulut:
 
-List items:
- `aws dynamodb scan --table-name LogEntry --endpoint-url http://localhost:8000 --region eu-west-1`
+```shell
+aws dynamodb list-tables --endpoint-url http://localhost:8000 --region eu-west-1
+```
 
+Listaa kaikki lokitapahtumat:
+```shell
+aws dynamodb scan --table-name AuditLog --endpoint-url http://localhost:8000 --region eu-west-1
+```
 
 ### Redis
 
-List keys:
+Komentojen ajaminen Redis-konsolissa:
 
-`echo "keys *" | redis-cli`
+```shell
+make redis-cli
+redis:6379> keys *
+...
+redis:6379> quit
+```
 
 ## TODO:
 
    * Check if failures are cached (redis) or not
-   * Start Docker containers & Redis before running tests
    * Implement an integration test for organization repository
-   * Code to Github, repo name "oma-opintopolku-loki"
    * `mvn deploy` task (e.g. https://github.com/SeanRoy/lambda-maven-plugin)
    * Currently no way for setting backend credentials when running locally
-
-## User interface
-
-The user interface (UI) source code can be found under `frontend` directory.
-The UI is a *React* app, its dependencies are managed with *NPM*, and build is handled using *webpack* and *Babel*.
-
-### Development
-
-First, setup dependencies by running:
-
-`npm i`
-
-Then, start the local hot-reloaded development server by running:
-
-`npm run start:dev`
-
-Or, build the development build by running `npm run build:dev` and serve the files from `dist` directory with some other development server.
