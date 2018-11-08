@@ -1,19 +1,6 @@
 # Rajapinta auditlogien hakemiseen
 
-## Kehitystyökalut
-
-* `npm` package manager (versio 5.x)
-* GNU Make (OSX & Linux sisältää, komentorivillä `make`)
-* Docker
-* [Jest](https://jestjs.io/) testaukseen
-
 ## Riippuvuuksien asennus
-
-[Serverless framework](https://serverless.com/):
-
-``` shell
-npm i -g serverless
-```
 
 Lambda-funktioiden riippuvuuksien asennus:
 
@@ -39,7 +26,7 @@ make test
 ## Funktion ajaminen lokaalisti
 
 ``` shell
-sls invoke local --function auditlog --data '{ "headers": {"secret":"shibbosecret", "oid": "1.2.3.4"}}'
+./common/node_modules/.bin/sls invoke local --function auditlog --data '{ "headers": {"secret":"shibbosecret", "oid": "1.2.3.4"}}'
 ```
 
 ## Asennus palvelinympäristöön
@@ -53,7 +40,7 @@ Ympäristöjä on kolme:
 Domainin luonti (ajetaan vain kerran, ja on todennäköisesti ajettu jo)
 
 ``` shell
-sls create_domain
+./common/node_modules/.bin/sls create_domain
 ```
 
 Itse asennus:

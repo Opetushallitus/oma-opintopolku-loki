@@ -2,13 +2,6 @@
 
 Lambda-funktio joka lukee audit log -tapahtumat AWS SQS -jonosta, rikastaa ne organisaatiotiedoilla ja tallentaa ne DynamoDB-tietokantaan.
 
-## Kehitystyökalut
-
-* [Maven](https://maven.apache.org/) -build-työkalu
-* GNU Make (OSX & Linux sisältää, komentorivillä `make`)
-* Docker
-* [Serverless framework](https://serverless.com/)
-
 ## Kehitysympäristön pystyttäminen
 
 Lambda-funktion tarvitsemat DynamoDB, Redis ja SQS ajetaan Docker-konteissa. `Makefile` sisältää komennot, joilla kontit voidaan käynnistää ja pysäyttää:
@@ -38,7 +31,7 @@ Käynnistä ensin Docker-kontit ylläolevien ohjeiden mukaisesti.
 Nyt voit ajaa lambdan seuraavalla komennolla:
 
 ```shell
-serverless invoke local --function parser --data "" --log true --stage local
+../api/common/node_modules/.bin/sls invoke local --function parser --data "" --log true --stage local
 ```
 
 ### Serverless invoke local -komennon bugit
@@ -48,7 +41,7 @@ Serverlessin `invoke local` -komennossa (jolla funktioita ajetaan paikallisesti)
 1. Java-funktioiden tarvitsema Java bridge ei käänny automaattisesti. Siksi se pitää tehdä manuaalisesti kerran, ennen kuin funktion ajaminen toimii:
 
 ```shell
-cd $NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules/serverless/lib/plugins/aws/invokeLocal/java
+cd ../api/common/node_modules/serverless/lib/plugins/aws/invokeLocal/java
 mvn package
 ```
 
