@@ -94,5 +94,5 @@ deploy: package
 ifndef env
 	@echo "Usage: make deploy <dev|qa|prod>"
 else
-	sls deploy --stage $(env) --aws-profile oph-koski-$(env)
+	../api/common/node_modules/.bin/sls deploy --stage $(env) --aws-profile oph-koski-$(env)
 endif
