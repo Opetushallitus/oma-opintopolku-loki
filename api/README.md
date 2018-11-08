@@ -1,12 +1,5 @@
 # Rajapinta auditlogien hakemiseen
 
-## Kehitystyökalut
-
-* `npm` package manager (versio 5.x)
-* GNU Make (OSX & Linux sisältää, komentorivillä `make`)
-* Docker
-* [Jest](https://jestjs.io/) testaukseen
-
 ## Riippuvuuksien asennus
 
 [Serverless framework](https://serverless.com/):

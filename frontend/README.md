@@ -6,7 +6,6 @@ Käyttöliittymä omien tietojen käytön katseluun.
 
 - **React** (https://reactjs.org/) (sovellusrunko)
 - **styled components** (https://www.styled-components.com/) (UI-tyylit)
-- **NPM (5.x)** (https://www.npmjs.com/) (riippuvuuksien hallinta)
 - **Jest** (https://jestjs.io/) ja **Puppeteer** (https://pptr.dev/) (testit)
 - **webpack** (https://webpack.js.org/) ja **Babel** (https://babeljs.io/) (buildaus)
 - **JavaScript Standard Style** (https://standardjs.com/) ja **ESLint** (https://eslint.org/) (koodityylit ja niiden tarkistus)
