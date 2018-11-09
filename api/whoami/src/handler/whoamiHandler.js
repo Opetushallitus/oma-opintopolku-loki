@@ -6,12 +6,8 @@ const deepOmit = require('omit-deep-lodash')
 const SecretManager = require('../../../common/src/auth/SecretManager')
 const UserClient = require('../../../common/src/client/UserClient')
 
-const secretManager = new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
-const userClient = new UserClient(
-  config.get('backend.timeout'),
-  config.get('backend.host'),
-  secretManager
-)
+let secretManager
+let userClient
 
 module.exports = async (event, context) => {
   try {
@@ -28,6 +24,7 @@ module.exports = async (event, context) => {
       }
     }
 
+    secretManager = secretManager || new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
     const isAuthenticated = await secretManager.authenticateRequest(security)
 
     if (!isAuthenticated) {
@@ -38,6 +35,7 @@ module.exports = async (event, context) => {
       }
     }
 
+    userClient = userClient || new UserClient(config.get('backend.timeout'), config.get('backend.host'), secretManager)
     const user = await userClient.getUser(hetu)
 
     return {
