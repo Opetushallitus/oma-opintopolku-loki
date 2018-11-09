@@ -68,7 +68,8 @@ class LambdaLogParserHandlerTest extends FunSpec with Matchers with MockFactory 
       val parser = new LambdaLogParserHandler(remoteOrganizationRepository)
       val result = parser.handleRequest(mock[SQSEvent], mock[Context])
 
-      assert(result.success == 7, "Processed correct amount of log entries")
+      assert(result.stored == 5, "Stored correct amount of log entries")
+      assert(result.skipped == 2, "Skipped entries")
       assert(result.failed == 1, "Non-parsable entries reported as failed")
 
       val dbEntries = DB.getAllItems
@@ -90,7 +91,8 @@ class LambdaLogParserHandlerTest extends FunSpec with Matchers with MockFactory 
       val parser = new LambdaLogParserHandler
       val result = parser.handleRequest(mock[SQSEvent], mock[Context])
 
-      assert(result.success == 1, "Was able to process self view entry")
+      assert(result.stored == 1, "Was able to process self view entry")
+      assert(result.skipped == 0, "No skipped entries")
       assert(result.failed == 0, "No failed entries was found")
 
       val dbEntries = DB.getAllItems
