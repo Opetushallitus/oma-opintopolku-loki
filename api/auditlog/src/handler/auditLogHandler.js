@@ -9,13 +9,8 @@ const log = require('lambda-log')
 const deepOmit = require('omit-deep-lodash')
 
 const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
-const secretManager = new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
-
-const userClient = new UserClient(
-  config.get('backend.timeout'),
-  config.get('backend.host'),
-  secretManager
-)
+let secretManager
+let userClient
 
 const hasRequiredHeaders = ({ headers }) => headers && headers.security && headers.hetu
 
@@ -35,6 +30,7 @@ module.exports = async (event, context) => {
 
     const { hetu, security } = event.headers
 
+    secretManager = secretManager || new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
     const isAuthenticated = await secretManager.authenticateRequest(security)
 
     if (!isAuthenticated) {
@@ -45,6 +41,7 @@ module.exports = async (event, context) => {
       }
     }
 
+    userClient = userClient || new UserClient(config.get('backend.timeout'), config.get('backend.host'), secretManager)
     const { oidHenkilo } = await userClient.getUser(hetu)
 
     return {
