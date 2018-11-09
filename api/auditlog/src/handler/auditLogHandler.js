@@ -14,7 +14,7 @@ const secretManager = new SecretManager(new AWS.SecretsManager(), config.get('se
 const userClient = new UserClient(
   config.get('backend.timeout'),
   config.get('backend.host'),
-  config.get('secret.name')
+  secretManager
 )
 
 const hasRequiredHeaders = ({ headers }) => headers && headers.security && headers.hetu
