@@ -72,6 +72,9 @@ const insertMockData = (db) => {
               },
               'id': {
                 S: '1'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":1,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"11:11","serviceName":"koski","applicationType":"backend","user":{"oid":"1.2.345.678.90.11122233344","ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"OPISKELUOIKEUS_KATSOMINEN","target":{"oppijaHenkiloOid":"student1"},"changes":{}}'
               }
             }
           }
@@ -93,6 +96,9 @@ const insertMockData = (db) => {
               },
               'id': {
                 S: '2'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":2,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"22:22","serviceName":"koski","applicationType":"backend","user":{"oid":"1.2.345.678.90.11122233345","ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"OPISKELUOIKEUS_KATSOMINEN","target":{"oppijaHenkiloOid":"student1"},"changes":{}}'
               }
             }
           }
@@ -113,6 +119,9 @@ const insertMockData = (db) => {
               },
               'id': {
                 S: '3'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":3,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"33:33","serviceName":"koski","applicationType":"backend","user":{"oid":"1.2.345.678.90.11122233346","ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"OPISKELUOIKEUS_KATSOMINEN","target":{"oppijaHenkiloOid":"student1"},"changes":{}}'
               }
             }
           }
@@ -133,6 +142,9 @@ const insertMockData = (db) => {
               },
               'id': {
                 S: '4'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":4,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"44:44","serviceName":"koski","applicationType":"backend","user":{"oid":"1.2.345.678.90.11122233346","ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"OPISKELUOIKEUS_KATSOMINEN","target":{"oppijaHenkiloOid":"student1"},"changes":{}}'
               }
             }
           },
@@ -154,6 +166,9 @@ const insertMockData = (db) => {
               },
               'id': {
                 S: '5'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":5,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"55:55","serviceName":"koski","applicationType":"backend","user":{"oid":"1.2.345.678.90.11122233345","ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"OPISKELUOIKEUS_KATSOMINEN","target":{"oppijaHenkiloOid":"student1"},"changes":{}}'
               }
             }
           },
@@ -174,6 +189,9 @@ const insertMockData = (db) => {
               },
               'id': {
                 S: '6'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":6,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"66:66","serviceName":"koski","applicationType":"backend","user":{"oid":"1.2.345.678.90.11122233344","ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"OPISKELUOIKEUS_KATSOMINEN","target":{"oppijaHenkiloOid":"student2"},"changes":{}}'
               }
             }
           },
@@ -194,6 +212,9 @@ const insertMockData = (db) => {
               },
               'id': {
                 S: '7'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":7,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"77:77","serviceName":"koski","applicationType":"backend","user":{"oid":"student2","ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"OPISKELUOIKEUS_KATSOMINEN","target":{"oppijaHenkiloOid":"student2"},"changes":{}}'
               }
             }
           }
@@ -214,6 +235,32 @@ const insertMockData = (db) => {
               },
               'id': {
                 S: '8'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":8,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"88:88","serviceName":"koski","applicationType":"backend","user":{"oid":undefined,"ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"OPISKELUOIKEUS_KATSOMINEN","target":{"oppijaHenkiloOid":"error_student"},"changes":{}}'
+              }
+            }
+          }
+        },
+        {
+          PutRequest: {
+            Item: {
+              'studentOid': {
+                S: 'student1'
+              },
+              time: {
+                S: '99:99'
+              },
+              'organizationOid': {
+                L: [
+                  { S: 'organisaatio1' }
+                ]
+              },
+              'id': {
+                S: '9'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":9,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"99:99","serviceName":"koski","applicationType":"backend","user":{"oid":"1.2.345.678.90.11122233344","ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"OPISKELUOIKEUS_MUUTOS","target":{"oppijaHenkiloOid":"student1"},"changes":{}}'
               }
             }
           }
