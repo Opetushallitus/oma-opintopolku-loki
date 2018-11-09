@@ -35,8 +35,6 @@ module.exports = async (event, context) => {
 
     const { hetu, security } = event.headers
 
-    const { oidHenkilo } = await userClient.getUser(hetu)
-
     const isAuthenticated = await secretManager.authenticateRequest(security)
 
     if (!isAuthenticated) {
@@ -46,6 +44,8 @@ module.exports = async (event, context) => {
         body: 'unauthorized request'
       }
     }
+
+    const { oidHenkilo } = await userClient.getUser(hetu)
 
     return {
       statusCode: 200,
