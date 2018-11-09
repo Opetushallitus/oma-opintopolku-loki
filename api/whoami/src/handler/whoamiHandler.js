@@ -13,8 +13,8 @@ module.exports = async (event, context) => {
   try {
     log.options.meta = { event: { ...context, ...deepOmit(event, 'security', 'hetu') } }
 
-    const { security, hetu, oid } = event.headers
-    log.info(`Received whoami request for ${oid}`)
+    const { security, hetu } = event.headers
+    log.info(`Received whoami request`)
 
     if (!security || !hetu) {
       log.info(`Received whoami request without headers`)
