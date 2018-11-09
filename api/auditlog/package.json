@@ -23,5 +23,18 @@
     "jest": "^23.6.0",
     "serverless-domain-manager": "^2.6.5",
     "serverless-jest-plugin": "^0.1.6"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   }
 }
