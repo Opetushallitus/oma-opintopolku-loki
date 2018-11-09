@@ -27,8 +27,8 @@ class RemoteOrganizationRepositoryTest extends FunSpec with Matchers with MockFa
 
       val permissions: Array[OrganizationPermission] = repository.getOrganizationIdsForUser("1.2.3")
 
-      assume(permissions.length == 1, "Contains one permission")
-      assume(permissions.headOption.get.organisaatioOid == "1.2.246.562.10.82388989657", "Has correct organization oid")
+      assert(permissions.length == 1, "Contains one permission")
+      assert(permissions.headOption.get.organisaatioOid == "1.2.246.562.10.82388989657", "Has correct organization oid")
     }
   }
 }

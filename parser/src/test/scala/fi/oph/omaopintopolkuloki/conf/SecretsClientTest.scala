@@ -28,9 +28,9 @@ class SecretsClientTest extends FunSpec with Matchers with MockFactory {
 
       val credentials = secretsClient.getSecrets
 
-      assume(credentials.username == "azurediamond")
-      assume(credentials.password == "hunter2")
-      assume(credentials.accountId == "1234567890")
+      assert(credentials.username == "azurediamond")
+      assert(credentials.password == "hunter2")
+      assert(credentials.accountId == "1234567890")
 
     }
   }

@@ -68,17 +68,17 @@ class LambdaLogParserHandlerTest extends FunSpec with Matchers with MockFactory 
       val parser = new LambdaLogParserHandler(remoteOrganizationRepository)
       val result = parser.handleRequest(mock[SQSEvent], mock[Context])
 
-      assume(result.success == 7, "Processed correct amount of log entries")
-      assume(result.failed == 1, "Non-parsable entries reported as failed")
+      assert(result.success == 7, "Processed correct amount of log entries")
+      assert(result.failed == 1, "Non-parsable entries reported as failed")
 
       val dbEntries = DB.getAllItems
-      assume(dbEntries.size() == 1, "No duplicate entries were stored to DB") // All 5 of our valid entries were identical
+      assert(dbEntries.size() == 1, "No duplicate entries were stored to DB") // All 5 of our valid entries were identical
 
       val dbEntry = dbEntries.get(0)
-      assume(dbEntry.organizationOid.get(0) == mockOrganizationOid, "Correct organization oid was stored to DB")
-      assume(dbEntry.studentOid == studentOid, "Correct student oid was stored to DB")
-      assume(dbEntry.id == "2018-08-24T13:18:32.667+03;3;", "Correct ID was stored to DB")
-      assume(dbEntry.raw.length > 100, "Raw log entry data stored to DB")
+      assert(dbEntry.organizationOid.get(0) == mockOrganizationOid, "Correct organization oid was stored to DB")
+      assert(dbEntry.studentOid == studentOid, "Correct student oid was stored to DB")
+      assert(dbEntry.id == "2018-08-24T13:18:32.667+03;3;", "Correct ID was stored to DB")
+      assert(dbEntry.raw.length > 100, "Raw log entry data stored to DB")
     }
 
     it("Should store logs when student viewed own data") {
@@ -90,14 +90,14 @@ class LambdaLogParserHandlerTest extends FunSpec with Matchers with MockFactory 
       val parser = new LambdaLogParserHandler
       val result = parser.handleRequest(mock[SQSEvent], mock[Context])
 
-      assume(result.success == 1, "Was able to process self view entry")
-      assume(result.failed == 0, "No failed entries was found")
+      assert(result.success == 1, "Was able to process self view entry")
+      assert(result.failed == 0, "No failed entries was found")
 
       val dbEntries = DB.getAllItems
-      assume(dbEntries.size() == 1, "Entry was stored to DB") // All 5 of our valid entries were identical
+      assert(dbEntries.size() == 1, "Entry was stored to DB") // All 5 of our valid entries were identical
 
       val dbEntry = dbEntries.get(0)
-      assume(dbEntry.organizationOid.get(0) == "self", "Organization is 'self' when user viewed own data")
+      assert(dbEntry.organizationOid.get(0) == "self", "Organization is 'self' when user viewed own data")
     }
 
   }
