@@ -313,6 +313,11 @@
           <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
           <junitxml>.</junitxml>
           <filereports>TestSuiteReport.txt</filereports>
+	  <environmentVariables>
+	    <AWS_REGION>local</AWS_REGION>
+	    <AWS_ACCESS_KEY_ID>123</AWS_ACCESS_KEY_ID>
+	    <AWS_SECRET_ACCESS_KEY>123</AWS_SECRET_ACCESS_KEY>
+	  </environmentVariables>
           <!-- Comma separated list of JUnit test class names to execute -->
           <!-- <jUnitClasses>samples.AppTest</jUnitClasses> -->
         </configuration>

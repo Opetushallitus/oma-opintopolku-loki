@@ -31,7 +31,8 @@ Käynnistä ensin Docker-kontit ylläolevien ohjeiden mukaisesti.
 Nyt voit ajaa lambdan seuraavalla komennolla:
 
 ```shell
-../api/common/node_modules/.bin/sls invoke local --function parser --data "" --log true --stage local
+mvn package
+AWS_ACCESS_KEY_ID=123 AWS_SECRET_ACCESS_KEY=123 AWS_REGION=local ../api/common/node_modules/.bin/sls invoke local --function parser --data "" --log true --stage local
 ```
 
 ### Serverless invoke local -komennon bugit
