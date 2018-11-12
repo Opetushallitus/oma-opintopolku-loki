@@ -5,13 +5,13 @@ const log = require('lambda-log')
 class AuditLogs {
   constructor(db) {
     this.db = db
-
     this.http = axios.create({
       baseURL: `https://${config.get('backend.host')}`,
       timeout: config.get('backend.timeout')
     })
   }
 
+  /* istanbul ignore next */
   async _getOrganizationNames(oid) {
     try {
       if (oid === null || typeof oid === 'undefined' || oid === "self") return { oid, name: null }
@@ -88,7 +88,6 @@ class AuditLogs {
         this.db.query(params, async (error, data) => {
           if (error) return reject(error)
           if (data === null || typeof data === 'undefined') return resolve([])
-
           const { Items } = data
           const grouped = this._groupByOrganizationOids(Items)
           const asArray = await this._mapOrganizationNames(grouped).catch(e => reject(e))
