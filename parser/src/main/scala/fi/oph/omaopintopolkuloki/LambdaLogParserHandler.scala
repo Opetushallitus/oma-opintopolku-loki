@@ -5,7 +5,7 @@ import com.amazonaws.services.lambda.runtime.{Context, RequestHandler}
 import fi.oph.omaopintopolkuloki.db.{DB, LogEntry}
 import fi.oph.omaopintopolkuloki.log.EntryParser
 import fi.oph.omaopintopolkuloki.repository.{RemoteOrganizationRepository, RemoteSQSRepository}
-import org.slf4j.LoggerFactory
+import org.slf4j.{LoggerFactory, MDC}
 
 import scala.collection.JavaConverters._
 
@@ -32,25 +32,38 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
     logger.info(s"Starting to process SQS queue")
 
     var failureCount = 0
-    var successCount = 0
+    var storedCount = 0
+    var skippedCount = 0
 
     do {
       sqsRepository.getMessages.asScala.foreach(message => {
         try {
-          storeLogEntry(message.getBody)
+          val stored = storeLogEntry(message.getBody)
           sqsRepository.deleteMessage(message.getReceiptHandle)
-          successCount += 1
+          if (stored) {
+            storedCount += 1
+          } else {
+            skippedCount += 1
+          }
         } catch {
           case t: Throwable => logger.error(s"Failed to process SQS message ${message.getBody}", t) ; failureCount += 1
         }
       })
     } while (sqsRepository.hasMessages)
-
-    logger.info(s"Processed ${successCount} events, failed to process ${failureCount} events")
-    ProcessResult(successCount, failureCount)
+    try {
+      MDC.put("storedCount", storedCount.toString)
+      MDC.put("skippedCount", skippedCount.toString)
+      MDC.put("failureCount", failureCount.toString)
+      logger.info(s"Stored ${storedCount} events, skipped ${skippedCount}, failed to process ${failureCount} events")
+    } finally {
+      MDC.remove("storedCount")
+      MDC.remove("skippedCount")
+      MDC.remove("failureCount")
+    }
+    ProcessResult(storedCount, skippedCount, failureCount)
   }
 
-  private def storeLogEntry(entryBody: String) = {
+  private def storeLogEntry(entryBody: String): Boolean = {
 
     val entry = EntryParser(entryBody)
 
@@ -73,10 +86,12 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
         viewerOrganizations.asJava,
         entryBody
       ))
+      true
     } else {
       logger.debug(s"Skipping log entry ${entry.operation.getOrElse(entry.`type`)}")
+      false
     }
   }
 }
 
-case class ProcessResult(success: Int, failed: Int)
+case class ProcessResult(stored: Int, skipped: Int, failed: Int)
