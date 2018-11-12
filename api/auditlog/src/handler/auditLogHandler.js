@@ -42,16 +42,33 @@ module.exports = async (event, context) => {
     }
 
     userClient = userClient || new UserClient(config.get('backend.timeout'), config.get('backend.host'), secretManager)
-    const { oidHenkilo } = await userClient.getUser(hetu)
 
-    AuditLog = AuditLog || new AuditLogs(new AWS.DynamoDB.DocumentClient())
+    let oidHenkilo
+    try {
+      result = await userClient.getUser(hetu)
+      oidHenkilo = result.oidHenkilo
+    } catch (err) {
+      if (err.response && err.response.status === 404) {
+        log.debug('Received 404 response for user data query')
+      } else {
+        throw err
+      }
+    }
+
+    let logEntries
+    if (oidHenkilo) {
+      AuditLog = AuditLog || new AuditLogs(new AWS.DynamoDB.DocumentClient())
+      logEntries = await AuditLog.getAllForOid(oidHenkilo)
+    } else {
+      logEntries = []
+    }
 
     return {
       statusCode: 200,
       headers: {
         'Cache-Control': `private, max-age=${config.get('cache.max-age')}`
       },
-      body: JSON.stringify(await AuditLog.getAllForOid(oidHenkilo))
+      body: JSON.stringify(logEntries)
     }
 
   } catch (error) {

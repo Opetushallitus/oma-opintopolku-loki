@@ -72,6 +72,26 @@ describe('auditlog', () => {
     })
   })
 
+  it('returns 200 OK and empty array when authenticated user is not found from oppijanumerorekisteri', () => {
+    const auditLogFn = jest.fn()
+    const originalFn = AuditLogs.prototype.getAllForOid
+    AuditLogs.prototype.getAllForOid = auditLogFn
+
+    UserClient.prototype.getOid = jest.fn(() => {
+      const error = new Error('Request failed with status code 404')
+      error.response = {status: 404}
+      return Promise.reject(error)
+    })
+    return wrapped.run({headers: {security: shibbolethSecret, hetu}}).then((response) => {
+      expect(response.statusCode).toBe(200)
+      const body = JSON.parse(response.body)
+      expect(body).toEqual([])
+      expect(response.headers).toEqual({'Cache-Control': 'private, max-age=600'})
+      expect(auditLogFn).not.toHaveBeenCalled
+      AuditLogs.prototype.getAllForOid = originalFn
+    })
+  })
+
   it('returns 200 OK and empty array when query result is undefined', () => {
     aws.remock('DynamoDB.DocumentClient', 'query', function(params, callback) {
       callback(null, null)
@@ -118,8 +138,12 @@ describe('auditlog', () => {
     })
   })
 
-  it('returns 500 when authenticated user is not found from oppijanumerorekisteri', () => {
-    UserClient.prototype.getOid = jest.fn(() => Promise.reject(new Error('Request failed with status code 404')))
+  it('returns 500 when user data query fails with non-404 error', () => {
+    UserClient.prototype.getOid = jest.fn(() => {
+      const error = new Error('Internal server error')
+      error.response = {status: 500}
+      return Promise.reject(error)
+    })
     return wrapped.run({headers: {security: shibbolethSecret, hetu}}).then((response) => {
       expect(response.statusCode).toBe(500)
       expect(response.body).toEqual('internal server error')
