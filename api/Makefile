@@ -32,7 +32,8 @@ else
 endif
 
 test: dynamodb-start
-	@cd auditlog && npm test
+	@cd auditlog && npm test -- --coverage
+	@cd whoami && npm test -- --coverage
 
 deploy:
 ifndef env
