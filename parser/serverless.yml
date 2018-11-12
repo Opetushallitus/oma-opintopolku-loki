@@ -15,14 +15,15 @@ package:
 functions:
   parser:
     description: Function that reads Koski audit log entries from SQS, processes them and stores to DynamoDB
+    name: oma-opintopolku-loki-parser
     role: ${ssm:/oma-opintopolku-loki/parser/role/arn}
     memorySize: 512
     timeout: 60
     handler: fi.oph.omaopintopolkuloki.LambdaLogParserHandler
     events:
         - schedule:
-            name: scheduled-parser-execution-event
-            description: 'Trigger log parser automatically every 5 minutes'
+            name: oma-opintopolku-loki-parser-scheduled-event
+            description: 'Trigger oma-opintopolku-loki-parser every 5 minutes'
             rate: rate(5 minutes)
             enabled:  true
     vpc:
