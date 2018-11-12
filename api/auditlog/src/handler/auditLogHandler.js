@@ -8,7 +8,7 @@ const UserClient = require('../../../common/src/client/UserClient')
 const log = require('lambda-log')
 const deepOmit = require('omit-deep-lodash')
 
-const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
+let AuditLog
 let secretManager
 let userClient
 
@@ -43,6 +43,8 @@ module.exports = async (event, context) => {
 
     userClient = userClient || new UserClient(config.get('backend.timeout'), config.get('backend.host'), secretManager)
     const { oidHenkilo } = await userClient.getUser(hetu)
+
+    AuditLog = AuditLog || new AuditLogs(new AWS.DynamoDB.DocumentClient())
 
     return {
       statusCode: 200,
