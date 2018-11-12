@@ -264,6 +264,75 @@ const insertMockData = (db) => {
               }
             }
           }
+        },
+        {
+          PutRequest: {
+            Item: {
+              'studentOid': {
+                S: 'student3'
+              },
+              time: {
+                S: '100:100'
+              },
+              'organizationOid': {
+                L: [
+                  { S: 'organisaatio1' }
+                ]
+              },
+              'id': {
+                S: '10'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":10,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"100:100","serviceName":"koski","applicationType":"backend","user":{"oid":"1.2.345.678.90.11122233344","ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"OPISKELUOIKEUS_KATSOMINEN","target":{"oppijaHenkiloOid":"student3"},"changes":{}}'
+              }
+            }
+          }
+        },
+        {
+          PutRequest: {
+            Item: {
+              'studentOid': {
+                S: 'student3'
+              },
+              time: {
+                S: '101:101'
+              },
+              'organizationOid': {
+                L: [
+                  { S: 'organisaatio1' }
+                ]
+              },
+              'id': {
+                S: '11'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":11,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"101:101","serviceName":"koski","applicationType":"backend","user":{"oid":"1.2.345.678.90.11122233344","ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"KANSALAINEN_OPISKELUOIKEUS_KATSOMINEN","target":{"oppijaHenkiloOid":"student3"},"changes":{}}'
+              }
+            }
+          }
+        },
+        {
+          PutRequest: {
+            Item: {
+              'studentOid': {
+                S: 'student3'
+              },
+              time: {
+                S: '102:102'
+              },
+              'organizationOid': {
+                L: [
+                  { S: 'organisaatio1' }
+                ]
+              },
+              'id': {
+                S: '12'
+              },
+              'raw': {
+                S: '{"version":1,"logSeq":12,"type":"log","bootTime":"2018-08-24T13:18:32.667+03","hostname":"","timestamp":"102:102","serviceName":"koski","applicationType":"backend","user":{"oid":"1.2.345.678.90.11122233344","ip":"10.0.0.1","session":"","userAgent":"Apache-HttpClient/4.3.6 (java 1.5)"},"operation":"OPISKELUOIKEUS_MUUTOS","target":{"oppijaHenkiloOid":"student3"},"changes":{}}'
+              }
+            }
+          }
         }
       ]
     }

@@ -83,7 +83,7 @@ class AuditLogs {
       ExpressionAttributeValues: {
         ":oid": oid,
         ":self": "self",
-        ":katsominen": "OPISKELUOIKEUS_KATSOMINEN"
+        ":katsominen": "\"OPISKELUOIKEUS_KATSOMINEN\""
       }
     }
 
