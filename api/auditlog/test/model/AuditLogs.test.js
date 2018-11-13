@@ -129,6 +129,25 @@ describe('with mocked organisaatio-service requests', () => {
     )
   })
 
+  test('returns auditlogs only for OPISKELUOIKEUS_KATSOMINEN events', async () => {
+    const auditLogsForOid = await AuditLog.getAllForOid('student3')
+    expect(auditLogsForOid).toEqual(
+      [
+        {
+          organizations: [
+            {
+              oid: 'organisaatio1',
+              name: { fi: '' }
+            }
+          ],
+          timestamps: [
+            '100:100'
+          ]
+        }
+      ]
+    )
+  })
+
   test('if organisaatio-service request fails', async () => {
     try {
       await AuditLog.getAllForOid('error_student')

@@ -76,10 +76,14 @@ class AuditLogs {
     const params = {
       TableName: "AuditLog",
       KeyConditionExpression: "studentOid = :oid",
-      FilterExpression: "not contains (organizationOid, :self)",
+      FilterExpression: "not contains (organizationOid, :self) and contains (#rawEntry, :katsominen)",
+      ExpressionAttributeNames: {
+        "#rawEntry" : "raw"
+      },
       ExpressionAttributeValues: {
         ":oid": oid,
-        ":self": "self"
+        ":self": "self",
+        ":katsominen": "\"OPISKELUOIKEUS_KATSOMINEN\""
       }
     }
 
