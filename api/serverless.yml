@@ -31,7 +31,6 @@ functions:
       - http:
           path: auditlog
           method: get
-          cors: true
 
   whoami:
     description: Return used oid, firstname and lastname, as returned by Shibboleth
@@ -43,7 +42,6 @@ functions:
       - http:
           path: whoami
           method: get
-          cors: true
 
 custom:
   domains:
