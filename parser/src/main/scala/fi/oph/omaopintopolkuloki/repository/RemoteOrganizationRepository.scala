@@ -49,7 +49,7 @@ class RemoteOrganizationRepository {
 
   private def parseResponse[T](status: Int, body: String, request: Request)(implicit m: Manifest[T]): T = {
     if (status != 200) {
-      logger.warn(s"Request ${request.uri.renderString} failed with with status ${status}: ${body}")
+      throw new RuntimeException(s"Request ${request.uri.renderString} failed with with status ${status}: ${body.take(40)}")
     }
 
     parse(body).extract[T]
