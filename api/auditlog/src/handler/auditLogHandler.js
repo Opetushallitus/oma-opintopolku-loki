@@ -8,14 +8,9 @@ const UserClient = require('../../../common/src/client/UserClient')
 const log = require('lambda-log')
 const deepOmit = require('omit-deep-lodash')
 
-const AuditLog = new AuditLogs(new AWS.DynamoDB.DocumentClient())
-const secretManager = new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
-
-const userClient = new UserClient(
-  config.get('backend.timeout'),
-  config.get('backend.host'),
-  config.get('secret.name')
-)
+let AuditLog
+let secretManager
+let userClient
 
 const hasRequiredHeaders = ({ headers }) => headers && headers.security && headers.hetu
 
@@ -35,8 +30,7 @@ module.exports = async (event, context) => {
 
     const { hetu, security } = event.headers
 
-    const { oidHenkilo } = await userClient.getUser(hetu)
-
+    secretManager = secretManager || new SecretManager(new AWS.SecretsManager(), config.get('secret.name'))
     const isAuthenticated = await secretManager.authenticateRequest(security)
 
     if (!isAuthenticated) {
@@ -47,12 +41,34 @@ module.exports = async (event, context) => {
       }
     }
 
+    userClient = userClient || new UserClient(config.get('backend.timeout'), config.get('backend.host'), secretManager)
+
+    let oidHenkilo
+    try {
+      result = await userClient.getUser(hetu)
+      oidHenkilo = result.oidHenkilo
+    } catch (err) {
+      if (err.response && err.response.status === 404) {
+        log.debug('Received 404 response for user data query')
+      } else {
+        throw err
+      }
+    }
+
+    let logEntries
+    if (oidHenkilo) {
+      AuditLog = AuditLog || new AuditLogs(new AWS.DynamoDB.DocumentClient())
+      logEntries = await AuditLog.getAllForOid(oidHenkilo)
+    } else {
+      logEntries = []
+    }
+
     return {
       statusCode: 200,
       headers: {
         'Cache-Control': `private, max-age=${config.get('cache.max-age')}`
       },
-      body: JSON.stringify(await AuditLog.getAllForOid(oidHenkilo))
+      body: JSON.stringify(logEntries)
     }
 
   } catch (error) {

@@ -19,7 +19,22 @@
     "omit-deep-lodash": "^1.1.2"
   },
   "devDependencies": {
+    "aws-sdk-mock": "^4.2.0",
     "jest": "^23.6.0",
-    "serverless-domain-manager": "^2.6.5"
+    "serverless-domain-manager": "^2.6.5",
+    "serverless-jest-plugin": "^0.1.6"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   }
 }

@@ -32,11 +32,12 @@ else
 endif
 
 test: dynamodb-start
-	@cd auditlog && npm test
+	@cd auditlog && npm test -- --coverage
+	@cd whoami && npm test -- --coverage
 
 deploy:
 ifndef env
-	@echo "Usage: make deploy <dev|qa|prod>"
+	@echo "Usage: make deploy env=<dev|qa|prod>"
 else
 	./common/node_modules/.bin/sls deploy --stage $(env) --aws-profile oph-koski-$(env)
 endif

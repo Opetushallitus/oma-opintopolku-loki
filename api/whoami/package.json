@@ -4,7 +4,7 @@
   "description": "Lambda function for getting user name and oid from hetu",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_CONFIG_DIR=../config NODE_CONFIG_ENV=dev jest"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +13,23 @@
     "config": "^2.0.1",
     "lambda-log": "^2.0.0",
     "omit-deep-lodash": "^1.1.2"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^4.2.0",
+    "jest": "^23.6.0",
+    "serverless-jest-plugin": "^0.1.6"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   }
 }
