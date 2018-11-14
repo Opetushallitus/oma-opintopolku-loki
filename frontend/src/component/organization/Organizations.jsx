@@ -25,7 +25,7 @@ const Organizations = ({ translatedOrganizations }) => (
       })
     }
 
-    <Footnote text={'Tietojen käyttäjät näytetään 1.10.2018 jälkeiseltä ajalta.'}/>
+    <Footnote text={'Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.'}/>
   </React.Fragment>
 )
 

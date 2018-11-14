@@ -26,7 +26,7 @@ const NoEntries = () => (
       <p>{t`Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.`}</p>
       <p>{`${t('Sivu on tyhjä, koska tietojasi ei ole vielä käytetty')}*`}</p>
     </NotificationText>
-    <Footnote text={'Tietojen käyttäjät näytetään 1.10.2018 jälkeiseltä ajalta. --ei-katsomisia'}/>
+    <Footnote text={'Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta. --ei-katsomisia'}/>
   </div>
 )
 
