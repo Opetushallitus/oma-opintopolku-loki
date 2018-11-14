@@ -37,8 +37,7 @@ object Configuration {
     authority = Some(Authority(host = RegName(config.getString("auditlog.backend.authority"))))
   )
 
-  lazy val cacheHost: String = config.getString("auditlog.cache.host")
-  lazy val cachePort: Int = config.getInt("auditlog.cache.port")
+  lazy val cacheSize: Int = config.getInt("auditlog.cache.size")
   lazy val cacheTTL: Duration = config.getDuration("auditlog.cache.ttl")
 
   lazy val maxRequestThreads: Int = config.getInt("auditlog.http.maxRequestThreads")

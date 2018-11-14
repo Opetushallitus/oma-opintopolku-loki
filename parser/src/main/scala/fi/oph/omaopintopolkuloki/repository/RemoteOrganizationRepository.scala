@@ -21,12 +21,10 @@ class RemoteOrganizationRepository {
 
   implicit private val formats: Formats = DefaultFormats
 
-  final private val CACHE_SIZE = 500
-
-  private val underlyingPermissionCache = CacheBuilder.newBuilder().maximumSize(CACHE_SIZE).build[String, Entry[Array[OrganizationPermission]]]
+  private val underlyingPermissionCache = CacheBuilder.newBuilder().maximumSize(cacheSize).build[String, Entry[Array[OrganizationPermission]]]
   implicit private val permissionCache: Cache[Array[OrganizationPermission]] = GuavaCache(underlyingPermissionCache)
 
-  private val underlyingOrganizationCache = CacheBuilder.newBuilder().maximumSize(CACHE_SIZE).build[String, Entry[Array[Organization]]]
+  private val underlyingOrganizationCache = CacheBuilder.newBuilder().maximumSize(cacheSize).build[String, Entry[Array[Organization]]]
   implicit private val organizationCache: Cache[Array[Organization]] = GuavaCache(underlyingOrganizationCache)
 
   private def organizationURL(oid: String): Uri = baseURI.copy(path = organization_path + oid, query = Map("includeImage" -> "false"))
