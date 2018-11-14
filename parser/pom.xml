@@ -100,13 +100,11 @@
       <version>2.9.7</version>
     </dependency>
 
-
-
-    <!-- https://mvnrepository.com/artifact/com.github.cb372/scalacache-redis -->
+    <!-- https://mvnrepository.com/artifact/com.github.cb372/scalacache-guava -->
     <dependency>
       <groupId>com.github.cb372</groupId>
-      <artifactId>scalacache-redis_2.12</artifactId>
-      <version>0.24.3</version>
+      <artifactId>scalacache-guava_2.12</artifactId>
+      <version>0.26.0</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb -->
