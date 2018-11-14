@@ -9,7 +9,8 @@ import org.slf4j.LoggerFactory
 import scalacache._
 import scalacache.memoization._
 import scalacache.modes.sync._
-import scalacache.redis._
+import scalacache.guava._
+import com.google.common.cache.CacheBuilder
 import scalacache.serialization.binary._
 
 import scala.language.implicitConversions
@@ -18,9 +19,15 @@ class RemoteOrganizationRepository {
 
   implicit def toQuery(params: Map[String, String]): Query = Query.fromMap(params.map{ case (k,v) => (k, Seq(v)) })
 
-  implicit private val permissionCache: Cache[Array[OrganizationPermission]] = RedisCache(cacheHost, cachePort)
-  implicit private val organizationCache: Cache[Array[Organization]] = RedisCache(cacheHost, cachePort)
   implicit private val formats: Formats = DefaultFormats
+
+  final private val CACHE_SIZE = 500
+
+  private val underlyingPermissionCache = CacheBuilder.newBuilder().maximumSize(CACHE_SIZE).build[String, Entry[Array[OrganizationPermission]]]
+  implicit private val permissionCache: Cache[Array[OrganizationPermission]] = GuavaCache(underlyingPermissionCache)
+
+  private val underlyingOrganizationCache = CacheBuilder.newBuilder().maximumSize(CACHE_SIZE).build[String, Entry[Array[Organization]]]
+  implicit private val organizationCache: Cache[Array[Organization]] = GuavaCache(underlyingOrganizationCache)
 
   private def organizationURL(oid: String): Uri = baseURI.copy(path = organization_path + oid, query = Map("includeImage" -> "false"))
   private def permissionURL(oid: String): Uri = baseURI.copy(path = permissions_path, query = Map("oidHenkilo" -> oid))
