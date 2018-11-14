@@ -4,19 +4,21 @@ const log = require('lambda-log')
 const deepOmit = require('omit-deep-lodash')
 
 const SecretManager = require('../../../common/src/auth/SecretManager')
-const UserClient = require('../../../common/src/client/UserClient')
 
 let secretManager
-let userClient
+
+function cleanShibbolethHeader(value) {
+  return value ? Buffer.from(Array.from(value, c => c.charCodeAt(0)), 'utf16le').toString('utf8').trim() : value
+}
 
 module.exports = async (event, context) => {
   try {
     log.options.meta = { event: { ...context, ...deepOmit(event, 'security', 'hetu') } }
 
-    const { security, hetu } = event.headers
+    const { security, hetu, FirstName: firstName, givenName, sn } = event.headers
     log.info(`Received whoami request`)
 
-    if (!security || !hetu) {
+    if (!security || !hetu || !firstName || !sn) {
       log.info(`Received whoami request without headers`)
       return {
         statusCode: 400,
@@ -35,8 +37,7 @@ module.exports = async (event, context) => {
       }
     }
 
-    userClient = userClient || new UserClient(config.get('backend.timeout'), config.get('backend.host'), secretManager)
-    const user = await userClient.getUser(hetu)
+    const user = {hetu, etunimet: cleanShibbolethHeader(firstName), kutsumanimi: cleanShibbolethHeader(givenName), sukunimi: cleanShibbolethHeader(sn)}
 
     return {
       statusCode: 200,
