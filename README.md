@@ -2,6 +2,8 @@
 
 Tarjoaa näkyvyyttä siihen kuka on katsonut käyttäjän omia tietoja.
 
+![Arkkitehtuuri](/docs/architecture.png)
+
 ## Kansiohierarkia
 
 - `api/` - Sisältää palvelun backend-koodin.
