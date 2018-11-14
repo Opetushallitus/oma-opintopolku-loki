@@ -14,8 +14,7 @@ window.Service = {
   getUser: () => http.get('whoami')
     .then(v => v.data)
     .then(user => ({
-      name: parseUserName(user),
-      oid: user.oidHenkilo
+      name: parseUserName(user)
     })),
   login: () => { throw new Error('Not implemented') },
   logout: () => { window.location.href = '/shibboleth/Logout?return=/oma-opintopolku/' }
