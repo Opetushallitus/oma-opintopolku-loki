@@ -4,15 +4,13 @@ Lambda-funktio joka lukee audit log -tapahtumat AWS SQS -jonosta, rikastaa ne or
 
 ## Kehitysympäristön pystyttäminen
 
-Lambda-funktion tarvitsemat DynamoDB, Redis ja SQS ajetaan Docker-konteissa. `Makefile` sisältää komennot, joilla kontit voidaan käynnistää ja pysäyttää:
+Lambda-funktion tarvitsemat DynamoDB ja SQS ajetaan Docker-konteissa. `Makefile` sisältää komennot, joilla kontit voidaan käynnistää ja pysäyttää:
 
 ``` shell
 make dynamodb-start
-make redis-start
 make sqs-start
 
 make dynamodb-stop
-make redis-stop
 make sqs-stop
 ```
 
@@ -103,20 +101,9 @@ Listaa kaikki lokitapahtumat:
 aws dynamodb scan --table-name AuditLog --endpoint-url http://localhost:8000 --region eu-west-1
 ```
 
-### Redis
-
-Komentojen ajaminen Redis-konsolissa:
-
-```shell
-make redis-cli
-redis:6379> keys *
-...
-redis:6379> quit
-```
-
 ## TODO:
 
-   * Check if failures are cached (redis) or not
+   * Check if failures are cached (Guava) or not
    * Implement an integration test for organization repository
    * `mvn deploy` task (e.g. https://github.com/SeanRoy/lambda-maven-plugin)
    * Currently no way for setting backend credentials when running locally
