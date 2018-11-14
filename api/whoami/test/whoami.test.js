@@ -6,29 +6,22 @@ const jestPlugin = require('serverless-jest-plugin')
 const lambdaWrapper = jestPlugin.lambdaWrapper
 const log = require('lambda-log')
 const mod = require('../src/entrypoint')
-const UserClient = require('../../common/src/client/UserClient')
 const wrapped = lambdaWrapper.wrap(mod, { handler: 'handler' })
 
 jest.mock('../../common/src/client/cas')
-jest.unmock('../../common/src/client/UserClient')
 
 describe('whoami', () => {
   const shibbolethSecret = 'hyshys'
 
   const hetu = '120456-ABCD'
-
-  const user = {
-    oidHenkilo: '1.2.3',
-    hetu,
-    etunimet: 'Mikko Alfons',
-    kutsumanimi: 'Mikko',
-    sukunimi: 'Mallikas'
-  }
+  const etunimet = 'Mikko Alfons'
+  const kutsumanimi = 'Mikko'
+  const sukunimi = 'Mallikas'
+  const user = { hetu, etunimet, kutsumanimi, sukunimi }
 
   beforeAll(() => {
     log.options.silent = true
     aws.mock('SecretsManager', 'getSecretValue', {SecretString: JSON.stringify({shibbolethSecret})})
-    UserClient.prototype.getOid = jest.fn(() => Promise.resolve({ data: user}))
     cas.withCookie.mockImplementation((options, cookieCallback) => cookieCallback('JSESSIONID=testcookie'))
   })
 
@@ -38,10 +31,23 @@ describe('whoami', () => {
   })
 
   it('returns 200 OK and user information for authenticated user', () => {
-    return wrapped.run({headers: {security: shibbolethSecret, hetu}}).then((response) => {
+    return wrapped.run({headers: {security: shibbolethSecret, hetu, FirstName: etunimet, givenName: kutsumanimi, sn: sukunimi}}).then((response) => {
       expect(response.statusCode).toBe(200)
       const body = JSON.parse(response.body)
       expect(body).toEqual(user)
+    })
+  })
+
+  it('parses headers correctly', () => {
+    const sn = String.fromCharCode.apply(null, [84, 117, 117, 108, 105, 115, 112, 65475, 65444, 65475, 65444])
+    return wrapped.run({headers: {security: shibbolethSecret, hetu, FirstName: etunimet, sn}}).then((response) => {
+      expect(response.statusCode).toBe(200)
+      const body = JSON.parse(response.body)
+      expect(body).toEqual({
+        hetu,
+        etunimet: 'Mikko Alfons',
+        sukunimi: 'Tuulispää'
+      })
     })
   })
 
@@ -58,7 +64,7 @@ describe('whoami', () => {
       expect(body).toEqual({message: 'Missing headers'})
     })
 
-    return wrapped.run({headers: {hetu}}).then((response) => {
+    return wrapped.run({headers: {hetu, FirstName: etunimet, givenName: kutsumanimi, sn: sukunimi}}).then((response) => {
       expect(response.statusCode).toBe(400)
       const body = JSON.parse(response.body)
       expect(body).toEqual({message: 'Missing headers'})
@@ -66,7 +72,7 @@ describe('whoami', () => {
   })
 
   it('returns 401 for unauthenticated user', () => {
-    return wrapped.run({headers: {security: 'foo', hetu}}).then((response) => {
+    return wrapped.run({headers: {security: 'foo', hetu, FirstName: etunimet, givenName: kutsumanimi, sn: sukunimi}}).then((response) => {
       expect(response.statusCode).toBe(401)
       const body = JSON.parse(response.body)
       expect(body).toEqual({message: 'Not authenticated'})
