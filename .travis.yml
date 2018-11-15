@@ -1,0 +1,19 @@
+sudo: required
+
+language: node_js
+
+services:
+  - docker
+
+node_js:
+  - 8
+
+install:
+  - echo "Running install"
+
+before_script:
+  - echo "Running before script"
+
+script:
+  - echo "Running script"
+  - cd api && make test
