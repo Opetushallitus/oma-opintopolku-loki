@@ -16,4 +16,4 @@ before_script:
 
 script:
   - echo "Running script"
-  - cd api && make test
+  - cd api && make deps && make test
