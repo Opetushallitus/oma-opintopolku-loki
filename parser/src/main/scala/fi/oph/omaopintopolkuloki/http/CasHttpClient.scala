@@ -14,7 +14,7 @@ object CasHttpClient {
       new CasClient(scheme_authority, httpClient),
       params,
       httpClient,
-      Some(AuditLogParserSubsystemCode.code),
+      Some(AuditLogCallerId.code),
       sessionCookieName
     )
   }
