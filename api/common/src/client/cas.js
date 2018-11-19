@@ -1,10 +1,10 @@
 const querystring = require('querystring');
 const https = require('https');
 const format = require('string-format');
+const config = require('config')
 
 format.extend(String.prototype);
 
-const clientSubSystemCode = 'oma-opintopolku-loki-api';
 
 getTgt = (username, password, hostname, callback) => {
   const credentials = querystring.stringify({
@@ -20,7 +20,7 @@ getTgt = (username, password, hostname, callback) => {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': credentials.length,
-      clientSubSystemCode
+      'Caller-Id': config.get('backend.callerId')
     }
   }, (res) => {
     if (res.statusCode === 201)
@@ -51,7 +51,7 @@ getSt = (hostname, tgtUrl, service, callback) => {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': serviceUrl.length,
-      clientSubSystemCode
+      'Caller-Id': config.get('backend.callerId')
     }
   }, (res) => {
     if (res.statusCode === 200)
@@ -72,17 +72,21 @@ getSt = (hostname, tgtUrl, service, callback) => {
 }
 
 getCookie = (hostname, service, st, callback) => {
-  https.get('https://{0}/{1}/?ticket={2}'.format(hostname, service, st), (res) => {
-    if (res.statusCode === 200) {
-      const jsessionId = res.headers['set-cookie'].filter((header) => {
-        return header.match(/^JSESSIONID=.*$/)
-      });
-      if (jsessionId.length > 0)
-        callback(jsessionId[0]);
-      else
-        throw new Error("JSESSIONID cookieta ei löytynyt")
-    }
-    else callback(null);
+    https.get({
+        hostname,
+        path: '/{0}/?ticket={1}'.format(service, st),
+        headers: { 'Caller-Id': config.get('backend.callerId') }
+    }, (res) => {
+      if (res.statusCode === 200) {
+        const jsessionId = res.headers['set-cookie'].filter((header) => {
+          return header.match(/^JSESSIONID=.*$/)
+        });
+        if (jsessionId.length > 0)
+          callback(jsessionId[0]);
+        else
+          throw new Error("JSESSIONID cookieta ei löytynyt")
+      }
+      else callback(null);
   }).on('error', (e) => {
     console.error(e);
     callback(null);

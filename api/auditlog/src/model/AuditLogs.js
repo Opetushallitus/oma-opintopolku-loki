@@ -7,7 +7,10 @@ class AuditLogs {
     this.db = db
     this.http = axios.create({
       baseURL: `https://${config.get('backend.host')}`,
-      timeout: config.get('backend.timeout')
+      timeout: config.get('backend.timeout'),
+      headers: {
+        'Caller-Id': config.get('backend.callerId')
+      }
     })
   }
 
