@@ -26,7 +26,3 @@ functions:
             description: 'Trigger oma-opintopolku-loki-parser every 5 minutes'
             rate: rate(5 minutes)
             enabled:  true
-    vpc:
-      securityGroupIds:
-        - ${ssm:/oma-opintopolku-loki/parser/security_group/id}
-      subnetIds: { 'Fn::Split': [ ",", "${ssm:/oma-opintopolku-loki/parser/subnet/id}" ] }
