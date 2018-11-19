@@ -26,6 +26,7 @@ matrix:
         - cd frontend
       script:
         - npm install && npm run test
+        - npm run lint
 
     - name: "oma-opintopolku-loki log parser"
       language: java
@@ -41,3 +42,4 @@ matrix:
         - cd parser
       script:
         - make test
+        - make scalastyle
