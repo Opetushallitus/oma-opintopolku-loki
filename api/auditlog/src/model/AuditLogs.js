@@ -1,13 +1,17 @@
 const axios = require('axios')
 const config = require('config')
 const log = require('lambda-log')
+const opintopolkuCallerId = require('../../../common/src/auth/opintopolkuCallerId')
 
 class AuditLogs {
   constructor(db) {
     this.db = db
     this.http = axios.create({
       baseURL: `https://${config.get('backend.host')}`,
-      timeout: config.get('backend.timeout')
+      timeout: config.get('backend.timeout'),
+      headers: {
+        'Caller-Id': opintopolkuCallerId
+      }
     })
   }
 
