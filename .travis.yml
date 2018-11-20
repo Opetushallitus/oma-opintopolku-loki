@@ -1,19 +1,45 @@
-sudo: required
+matrix:
+  include:
+    - name: "oma-opintopolku-loki frontend API"
+      language: node_js
+      node_js: 8
+      cache: npm
+      before_script:
+        - cd api
+      script:
+        - make deps && make test
 
-language: node_js
+    - name: "oma-opintopolku-loki frontend"
+      language: node_js
+      node_js: 8
+      cache: npm
+      sudo: required
+      services:
+        - docker
+      env:
+        - TEST_PORT=3030
+      before_install:
+        - "sysctl kernel.unprivileged_userns_clone=1"
+        - "export DISPLAY=:99.0"
+        - "sh -e /etc/init.d/xvfb start"
+      before_script:
+        - cd frontend
+      script:
+        - npm install && npm run test
+        - npm run lint
 
-services:
-  - docker
+    - name: "oma-opintopolku-loki log parser"
+      language: java
+      jdk: openjdk8
+      sudo: required
+      services:
+        - docker
 
-node_js:
-  - 8
-
-install:
-  - echo "Running install"
-
-before_script:
-  - echo "Running before script"
-
-script:
-  - echo "Running script"
-  - cd api && make deps && make test
+      cache:
+        directories:
+          - $HOME/.m2
+      before_script:
+        - cd parser
+      script:
+        - make test
+        - make scalastyle
