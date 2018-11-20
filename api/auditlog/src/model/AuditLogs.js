@@ -1,6 +1,7 @@
 const axios = require('axios')
 const config = require('config')
 const log = require('lambda-log')
+const opintopolkuCallerId = require('../../../common/src/auth/opintopolkuCallerId')
 
 class AuditLogs {
   constructor(db) {
@@ -9,7 +10,7 @@ class AuditLogs {
       baseURL: `https://${config.get('backend.host')}`,
       timeout: config.get('backend.timeout'),
       headers: {
-        'Caller-Id': config.get('backend.callerId')
+        'Caller-Id': opintopolkuCallerId
       }
     })
   }

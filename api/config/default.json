@@ -1,8 +1,7 @@
 {
   "backend": {
     "timeout" : 5000,
-    "host":  "dev.koski.opintopolku.fi",
-    "callerId": "1.2.246.562.10.00000000001.oma-opintopolku-loki/api"
+    "host":  "dev.koski.opintopolku.fi"
   },
   "cache": {
     "max-age" : 600

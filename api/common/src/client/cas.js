@@ -1,7 +1,7 @@
 const querystring = require('querystring');
 const https = require('https');
 const format = require('string-format');
-const config = require('config')
+const opintopolkuCallerId = require('../auth/opintopolkuCallerId')
 
 format.extend(String.prototype);
 
@@ -20,7 +20,7 @@ getTgt = (username, password, hostname, callback) => {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': credentials.length,
-      'Caller-Id': config.get('backend.callerId')
+      'Caller-Id': opintopolkuCallerId
     }
   }, (res) => {
     if (res.statusCode === 201)
@@ -51,7 +51,7 @@ getSt = (hostname, tgtUrl, service, callback) => {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': serviceUrl.length,
-      'Caller-Id': config.get('backend.callerId')
+      'Caller-Id': opintopolkuCallerId
     }
   }, (res) => {
     if (res.statusCode === 200)
@@ -75,7 +75,7 @@ getCookie = (hostname, service, st, callback) => {
     https.get({
         hostname,
         path: '/{0}/?ticket={1}'.format(service, st),
-        headers: { 'Caller-Id': config.get('backend.callerId') }
+        headers: { 'Caller-Id': opintopolkuCallerId }
     }, (res) => {
       if (res.statusCode === 200) {
         const jsessionId = res.headers['set-cookie'].filter((header) => {

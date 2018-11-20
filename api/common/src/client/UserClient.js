@@ -1,6 +1,5 @@
-const AWS = require('aws-sdk')
 const axios = require('axios')
-const config = require('config')
+const opintopolkuCallerId = require('../auth/opintopolkuCallerId')
 
 const cas = require('./cas.js')
 
@@ -10,7 +9,7 @@ class UserClient {
       baseURL: `https://${host}`,
       timeout,
       headers: {
-        'Caller-Id': config.get('backend.callerId')
+        'Caller-Id': opintopolkuCallerId
       }
     });
 
