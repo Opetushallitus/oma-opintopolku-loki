@@ -65,6 +65,5 @@ Ympäristöjä on kolme:
 Asennus ympäristöön `[env]` tehdään ajamalla seuraavat komennot:
 
 ```shell
-export AWS_PROFILE=oph-koski-[env]
 ./deploy.sh [env]
 ```
