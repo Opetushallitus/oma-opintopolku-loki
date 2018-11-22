@@ -7,6 +7,8 @@ import fi.oph.omaopintopolkuloki.log.EntryParser
 import fi.oph.omaopintopolkuloki.repository.{RemoteOrganizationRepository, RemoteSQSRepository}
 import org.slf4j.{LoggerFactory, MDC}
 
+import scala.util.Try
+import scala.io.Source
 import scala.collection.JavaConverters._
 
 class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrganizationRepository: RemoteOrganizationRepository)
@@ -14,7 +16,7 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
 
   private val logger = LoggerFactory.getLogger(this.getClass)
 
-  logger.info("Log parser created")
+  logger.info("Log parser created, version: " + buildVersion)
 
   def this(remoteOrganizationRepository: RemoteOrganizationRepository) = this(RemoteSQSRepository, remoteOrganizationRepository)
   def this() = this(RemoteSQSRepository, new RemoteOrganizationRepository)
@@ -92,6 +94,8 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
       false
     }
   }
+
+  private lazy val buildVersion: String = Try(Source.fromResource("buildversion.txt").getLines.mkString(", ")).getOrElse("unknown")
 }
 
 case class ProcessResult(stored: Int, skipped: Int, failed: Int)
