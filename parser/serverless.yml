@@ -26,3 +26,6 @@ functions:
             description: 'Trigger oma-opintopolku-loki-parser every 5 minutes'
             rate: rate(5 minutes)
             enabled:  true
+
+resources:
+  Description: oma-opintopolku-loki-parser Serverless CloudFormation stack
