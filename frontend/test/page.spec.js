@@ -8,4 +8,9 @@ describe('Oma Opintopolku -loki', () => {
   it('should display text', async () => {
     await expect(page).toMatch('Tietojeni käyttö')
   })
+
+  it('should display correct title', async () => {
+    const pageTitle = await page.title()
+    expect(pageTitle).toMatch('Oma opintopolku - tietojeni käyttö')
+  })
 })
