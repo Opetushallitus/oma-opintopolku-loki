@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   resolve: {
@@ -40,4 +41,15 @@ module.exports = {
       }
     ]
   },
+  entry: "./src/index.js",
+  output: {
+      filename: "main.js"
+  },
+  plugins: [
+      new HtmlWebpackPlugin({
+          filename: 'index.html',
+          template: './src/index.html',
+          title: 'Oma opintopolku - tietojeni käyttö'
+      })
+  ]
 }

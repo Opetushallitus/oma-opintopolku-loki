@@ -12,7 +12,7 @@
     "build:dev": "./node_modules/.bin/webpack --config webpack.dev.js",
     "start:dev": "npm run mock-api & ./node_modules/.bin/webpack-dev-server --config webpack.dev.js",
     "mock-api": "./node_modules/.bin/json-server ./mock/api.json",
-    "lint": "./node_modules/.bin/eslint --ext .js,.jsx ./src/** ./test/**",
+    "lint": "./node_modules/.bin/eslint --ext .js,.jsx src test",
     "test": "npm run build:prod && ./node_modules/.bin/jest"
   },
   "devDependencies": {
