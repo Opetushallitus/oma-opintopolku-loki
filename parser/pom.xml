@@ -228,6 +228,28 @@
       </plugin>
 
       <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>Create buildversion.txt</id>
+            <phase>generate-sources</phase>
+	    <configuration>
+              <tasks>
+                <mkdir dir="${basedir}/target/classes"/>
+                <exec executable="${basedir}/create-buildversion.sh">
+                  <arg value="${basedir}/target/classes/buildversion.txt"/>
+                  <arg value="${project.version}"/>
+                </exec>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <version>3.1.1</version>
