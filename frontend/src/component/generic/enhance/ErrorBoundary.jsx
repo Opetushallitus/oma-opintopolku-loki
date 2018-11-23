@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import t from 'util/translate'
 import { AlertText } from '../../../ui/typography'
 
+/* istanbul ignore next */
 const getDisplayName = Component => Component.displayName || Component.name || 'Component'
 
 const Alert = () => (

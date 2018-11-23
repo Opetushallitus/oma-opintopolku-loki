@@ -17,5 +17,5 @@ window.Service = {
       name: parseUserName(user)
     })),
   login: () => { throw new Error('Not implemented') },
-  logout: () => { window.location.href = '/shibboleth/Logout?return=/oma-opintopolku/' }
+  logout: () => { window.location.assign('/shibboleth/Logout?return=/oma-opintopolku/') }
 }

@@ -42,9 +42,18 @@ npm run start:dev -- --proxy-oppija-raamit=true
 
 ## Testien ajaminen
 
+Puppeteer-pohjaiset selaintestit:
+
 ```shell
 npm test
 ```
+
+Jest-yksikkötestit:
+```shell
+npm run unit
+```
+
+Testissä on käytetty [Jestin snapshoteja](https://jestjs.io/docs/en/snapshot-testing). Jos teet toiminnallisen muutoksen, joka aiheuttaa olemassaolevan snapshotin muuttumisen, voit päivittää snapshotin komennolla `npm run unit -- -u`, mutta ole tarkkana ettet vahingossa tallenna rikkinäisiä snapshoteja versionhallintaan.
 
 ## Koodityylit
 

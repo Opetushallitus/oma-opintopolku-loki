@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Query should render alert defined by ErrorBoundary when query fails 1`] = `
+<div>
+  <strong
+    className="typography__AlertText-sc-1yq3b4j-4 hwYozJ"
+  >
+    Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.
+  </strong>
+</div>
+`;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StudentInfo should be rendered 1`] = `
+<h3
+  className="StudentInfo__Student-sc-8zvgal-0 eVBqba typography__H3-sc-1yq3b4j-2 kmaVaO"
+>
+  <span
+    className="StudentInfo__Name-sc-8zvgal-1 fKcnY"
+  >
+    Onni Oskari Oppija
+  </span>
+  <span
+    className="StudentInfo__Birthday-sc-8zvgal-2 igEQxQ"
+  >
+     s. 
+    1.2.1980
+  </span>
+</h3>
+`;

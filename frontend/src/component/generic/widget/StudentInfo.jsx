@@ -9,10 +9,10 @@ const Student = styled(H3)`
   margin-bottom: 2.214rem;
 `
 
-const Name = styled.span`
+export const Name = styled.span`
   font-weight: 600;
 `
-const Birthday = styled.span`
+export const Birthday = styled.span`
   font-weight: 400;
 `
 

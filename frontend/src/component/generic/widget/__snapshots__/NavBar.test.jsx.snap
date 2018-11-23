@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar should be rendered 1`] = `
+<div
+  className="NavBar__Navigation-sc-18mzj0n-0 jHKwkt"
+>
+  <a
+    className="NavBar__Link-sc-18mzj0n-5 ktidaL"
+    href="/koski/omadata/kayttooikeudet"
+  >
+    <span
+      className="NavBar__InactiveTab-sc-18mzj0n-2 cspcye NavBar__Tab-sc-18mzj0n-1 kTVtoM"
+    >
+      Annetut käyttöluvat
+    </span>
+  </a>
+  <span
+    className="NavBar__ActiveTab-sc-18mzj0n-3 jnfhNV NavBar__Tab-sc-18mzj0n-1 kTVtoM"
+  >
+    Tietojani käyttäneet toimijat
+  </span>
+  <span
+    className="NavBar__Filler-sc-18mzj0n-4 jTKRzr"
+  />
+</div>
+`;

@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogEntries should render with empty timestamp list 1`] = `
+<div
+  className="LogEntries__Container-ufvf4x-0 zfOaI"
+>
+  <div
+    className="LogEntries__TopRow-ufvf4x-1 bimmMK"
+  >
+    <button
+      aria-pressed={false}
+      className="ButtonSmall__TextButton-r8zxw8-0 clXOxN"
+      onClick={[Function]}
+    >
+      Näytä tietojen käyttökerrat
+    </button>
+  </div>
+</div>
+`;
+
+exports[`LogEntries should render with non-empty timestamp list, and toggle expansion of timestamps when link is clicked 1`] = `
+<div
+  class="LogEntries__Container-ufvf4x-0 zfOaI"
+>
+  <div
+    class="LogEntries__TopRow-ufvf4x-1 bimmMK"
+  >
+    <button
+      aria-pressed="false"
+      class="ButtonSmall__TextButton-r8zxw8-0 clXOxN"
+    >
+      Näytä tietojen käyttökerrat
+    </button>
+  </div>
+</div>
+`;
+
+exports[`LogEntries should render with non-empty timestamp list, and toggle expansion of timestamps when link is clicked 2`] = `
+<div
+  class="LogEntries__Container-ufvf4x-0 kYkSFt"
+>
+  <div
+    class="LogEntries__TopRow-ufvf4x-1 bimmMK"
+  >
+    <button
+      aria-pressed="true"
+      class="ButtonSmall__TextButton-r8zxw8-0 clXOxN"
+    >
+      Piilota käyttökerrat
+    </button>
+    <b
+      class="typography__Bold-sc-1yq3b4j-6 jaOKTJ"
+    >
+      Näytetään käyttökerrat 1–2 / 2
+    </b>
+  </div>
+  <table
+    class="DateList__DateTable-sc-9hn0em-0 eAhpWx"
+  >
+    <tbody>
+      <tr>
+        <td>
+          20.9.2018 16.01
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`LogEntries should render with non-empty timestamp list, and toggle expansion of timestamps when link is clicked 3`] = `
+<div
+  class="LogEntries__Container-ufvf4x-0 zfOaI"
+>
+  <div
+    class="LogEntries__TopRow-ufvf4x-1 bimmMK"
+  >
+    <button
+      aria-pressed="false"
+      class="ButtonSmall__TextButton-r8zxw8-0 clXOxN"
+    >
+      Näytä tietojen käyttökerrat
+    </button>
+  </div>
+</div>
+`;
+
+exports[`LogEntries should render with timestamp list of over 10 entries, expanding 10 timestamps at a time 1`] = `
+<div
+  class="LogEntries__Container-ufvf4x-0 kYkSFt"
+>
+  <div
+    class="LogEntries__TopRow-ufvf4x-1 bimmMK"
+  >
+    <button
+      aria-pressed="true"
+      class="ButtonSmall__TextButton-r8zxw8-0 clXOxN"
+    >
+      Piilota käyttökerrat
+    </button>
+    <b
+      class="typography__Bold-sc-1yq3b4j-6 jaOKTJ"
+    >
+      Näytetään käyttökerrat 1–10 / 15
+    </b>
+  </div>
+  <table
+    class="DateList__DateTable-sc-9hn0em-0 eAhpWx"
+  >
+    <tbody>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="LogEntries__BottomRow-ufvf4x-2 beIkpz"
+  >
+    <button
+      class="ButtonSmall__TextButton-r8zxw8-0 clXOxN"
+    >
+      Näytä lisää käyttökertoja
+    </button>
+  </div>
+</div>
+`;
+
+exports[`LogEntries should render with timestamp list of over 10 entries, expanding 10 timestamps at a time 2`] = `
+<div
+  class="LogEntries__Container-ufvf4x-0 kYkSFt"
+>
+  <div
+    class="LogEntries__TopRow-ufvf4x-1 bimmMK"
+  >
+    <button
+      aria-pressed="true"
+      class="ButtonSmall__TextButton-r8zxw8-0 clXOxN"
+    >
+      Piilota käyttökerrat
+    </button>
+    <b
+      class="typography__Bold-sc-1yq3b4j-6 jaOKTJ"
+    >
+      Näytetään käyttökerrat 1–15 / 15
+    </b>
+  </div>
+  <table
+    class="DateList__DateTable-sc-9hn0em-0 eAhpWx"
+  >
+    <tbody>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19.9.2018 12.05
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

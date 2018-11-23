@@ -1,0 +1,328 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Log should render alert in case of error in query 1`] = `
+<strong
+  className="typography__AlertText-sc-1yq3b4j-4 hwYozJ"
+>
+  Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.
+</strong>
+`;
+
+exports[`Log should render with empty log 1`] = `
+<div>
+  <div
+    className="Log__NotificationText-sc-1asjtoe-0 eYmDPs"
+  >
+    <p>
+      Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.
+    </p>
+    <p>
+      Sivu on tyhjä, koska tietojasi ei ole vielä käytetty.**
+    </p>
+  </div>
+  <div
+    className="Footnote__Container-x809r1-0 ckoyhi"
+  >
+    *
+     
+    Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
+    <a
+      className="typography__Link-sc-1yq3b4j-5 epyGqB"
+      href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
+      target="_blank"
+    >
+      <test-file-stub
+        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 fdjWcT"
+      />
+      <b
+        className="typography__Bold-sc-1yq3b4j-6 jaOKTJ"
+      >
+        tietosuojaselosteesta
+      </b>
+    </a>
+    .
+  </div>
+  <div
+    className="Footnote__Container-x809r1-0 ckoyhi"
+  >
+    **
+     
+    Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.
+  </div>
+</div>
+`;
+
+exports[`Log should render with non-empty log 1`] = `
+Array [
+  <div
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 ljtzsR"
+  >
+    Tietojen käyttäjä**
+  </div>,
+  <div
+    className="Expander__ExpanderContainer-fukmjx-0 jPqCCS"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-fukmjx-2 hdishk"
+      onClick={[Function]}
+    >
+      <span
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-fukmjx-1 kcIvlE"
+      >
+        +
+      </span>
+      Organisaatio 1
+    </button>
+  </div>,
+  <div
+    className="Expander__ExpanderContainer-fukmjx-0 jPqCCS"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-fukmjx-2 hdishk"
+      onClick={[Function]}
+    >
+      <span
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-fukmjx-1 kcIvlE"
+      >
+        +
+      </span>
+      Test 2
+    </button>
+  </div>,
+  <div
+    className="Footnote__Container-x809r1-0 ckoyhi"
+  >
+    *
+     
+    Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
+    <a
+      className="typography__Link-sc-1yq3b4j-5 epyGqB"
+      href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
+      target="_blank"
+    >
+      <test-file-stub
+        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 fdjWcT"
+      />
+      <b
+        className="typography__Bold-sc-1yq3b4j-6 jaOKTJ"
+      >
+        tietosuojaselosteesta
+      </b>
+    </a>
+    .
+  </div>,
+  <div
+    className="Footnote__Container-x809r1-0 ckoyhi"
+  >
+    **
+     
+    Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.
+  </div>,
+]
+`;
+
+exports[`Log should render with non-empty log and language en 1`] = `
+Array [
+  <div
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 ljtzsR"
+  >
+    User of data**
+  </div>,
+  <div
+    className="Expander__ExpanderContainer-fukmjx-0 jPqCCS"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-fukmjx-2 hdishk"
+      onClick={[Function]}
+    >
+      <span
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-fukmjx-1 kcIvlE"
+      >
+        +
+      </span>
+      Organization 1
+    </button>
+  </div>,
+  <div
+    className="Expander__ExpanderContainer-fukmjx-0 jPqCCS"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-fukmjx-2 hdishk"
+      onClick={[Function]}
+    >
+      <span
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-fukmjx-1 kcIvlE"
+      >
+        +
+      </span>
+      Test 2
+    </button>
+  </div>,
+  <div
+    className="Footnote__Container-x809r1-0 ckoyhi"
+  >
+    *
+     
+    This applies only to study-related information. Please check the 
+    <a
+      className="typography__Link-sc-1yq3b4j-5 epyGqB"
+      href="https://studyinfo.fi/wp2/en/register/"
+      target="_blank"
+    >
+      <test-file-stub
+        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 fdjWcT"
+      />
+      <b
+        className="typography__Bold-sc-1yq3b4j-6 jaOKTJ"
+      >
+        register description
+      </b>
+    </a>
+     if you want to know how the information you have given in joint/separate applications is used.
+  </div>,
+  <div
+    className="Footnote__Container-x809r1-0 ckoyhi"
+  >
+    **
+     
+    Showing organisations that have used your data after 14.11.2018.
+  </div>,
+]
+`;
+
+exports[`Log should render with non-empty log and language sv 1`] = `
+Array [
+  <div
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 ljtzsR"
+  >
+    Uppgiftsanvändare**
+  </div>,
+  <div
+    className="Expander__ExpanderContainer-fukmjx-0 jPqCCS"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-fukmjx-2 hdishk"
+      onClick={[Function]}
+    >
+      <span
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-fukmjx-1 kcIvlE"
+      >
+        +
+      </span>
+      Organisation 1
+    </button>
+  </div>,
+  <div
+    className="Expander__ExpanderContainer-fukmjx-0 jPqCCS"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-fukmjx-2 hdishk"
+      onClick={[Function]}
+    >
+      <span
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-fukmjx-1 kcIvlE"
+      >
+        +
+      </span>
+      Test 2
+    </button>
+  </div>,
+  <div
+    className="Footnote__Container-x809r1-0 ckoyhi"
+  >
+    *
+     
+    Gäller studieuppgifter, dvs. inte uppgifter som ingår i ansökningar. I 
+    <a
+      className="typography__Link-sc-1yq3b4j-5 epyGqB"
+      href="https://studieinfo.fi/wp/sv/dataskyddsbeskrivning/"
+      target="_blank"
+    >
+      <test-file-stub
+        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 fdjWcT"
+      />
+      <b
+        className="typography__Bold-sc-1yq3b4j-6 jaOKTJ"
+      >
+        dataskyddsbeskrivningen
+      </b>
+    </a>
+     får du information om grunderna för användning av personuppgifter i ansökningarna och hur de kan överlåtas.
+  </div>,
+  <div
+    className="Footnote__Container-x809r1-0 ckoyhi"
+  >
+    **
+     
+    Här visas aktörerna som använt dina studieuppgifterna efter 14.11.2018.
+  </div>,
+]
+`;
+
+exports[`Log should render with non-empty log and organization with no English name 1`] = `
+Array [
+  <div
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 ljtzsR"
+  >
+    User of data**
+  </div>,
+  <div
+    className="Expander__ExpanderContainer-fukmjx-0 jPqCCS"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-fukmjx-2 hdishk"
+      onClick={[Function]}
+    >
+      <span
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-fukmjx-1 kcIvlE"
+      >
+        +
+      </span>
+      
+    </button>
+  </div>,
+  <div
+    className="Footnote__Container-x809r1-0 ckoyhi"
+  >
+    *
+     
+    This applies only to study-related information. Please check the 
+    <a
+      className="typography__Link-sc-1yq3b4j-5 epyGqB"
+      href="https://studyinfo.fi/wp2/en/register/"
+      target="_blank"
+    >
+      <test-file-stub
+        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 fdjWcT"
+      />
+      <b
+        className="typography__Bold-sc-1yq3b4j-6 jaOKTJ"
+      >
+        register description
+      </b>
+    </a>
+     if you want to know how the information you have given in joint/separate applications is used.
+  </div>,
+  <div
+    className="Footnote__Container-x809r1-0 ckoyhi"
+  >
+    **
+     
+    Showing organisations that have used your data after 14.11.2018.
+  </div>,
+]
+`;

@@ -11,6 +11,7 @@ import { lang } from 'util/preferences'
 export default key => {
   const isTaggedTemplate = key.hasOwnProperty('raw')
 
+  /* istanbul ignore next */
   if (isTaggedTemplate && key.length > 1) {
     console.error('Unsupported translation usage: Using tagged template notation does not support interpolation.')
   }
