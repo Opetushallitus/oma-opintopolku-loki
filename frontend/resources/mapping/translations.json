@@ -5,7 +5,7 @@
   "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.": {
     "fi": "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.",
     "sv": "På den här sidan kan du granska och administrera de tillstånd du har givit om dina uppgifter. Du ser här dessutom vilka aktörer, t.ex. myndigheter, som har använt dina studieuppgifter.",
-    "en": "On this page you can inspect and manage permissions you have granted to your data. You can also see which organisations (e.g. authorities) have used your data."
+    "en": "On this page you can inspect and manage permissions you have given to use your data. You can also check which organisations (e.g. authorities) have used your data."
   },
   "Taulukko tietojen käyttökerroista": {
     "fi": "Näytä tietojen käyttökerrat",
@@ -80,7 +80,7 @@
   "Sivu on tyhjä, koska tietojasi ei ole vielä käytetty": {
     "fi": "Sivu on tyhjä, koska tietojasi ei ole vielä käytetty.",
     "sv": "Sidan är tom, eftersom ingen ännu har använt dina uppgifter.",
-    "en": "The page is empty, as no one has used your information."
+    "en": "The page is empty, as no one has used your data."
   },
   "Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.": {
     "fi": "Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.",
@@ -95,6 +95,6 @@
   "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.": {
     "fi": "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.",
     "sv": "Här visas de aktörer som har använt dina studieuppgifter.",
-    "en": "This page displays organisations that have used your study information."
+    "en": "This page displays organisations that have used data related to your studies."
   }
 }
