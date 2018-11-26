@@ -109,17 +109,17 @@
   },
   "Koskee vain opintotietoja --prefix": {
     "fi": "Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat ",
-    "sv": "Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat ",
-    "en": "Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat "
+    "sv": "Gäller studieuppgifter, dvs. inte uppgifter som ingår i ansökningar. I ",
+    "en": "This applies only to study-related information. Please check the "
   },
   "Koskee vain opintotietoja --link-title": {
     "fi": "tietosuojaselosteesta",
-    "sv": "dataskyddsbeskrivning",
+    "sv": "dataskyddsbeskrivningen",
     "en": "register description"
   },
   "Koskee vain opintotietoja --suffix": {
     "fi": ".",
-    "sv": ".",
-    "en": "."
+    "sv": " får du information om grunderna för användning av personuppgifter i ansökningarna och hur de kan överlåtas.",
+    "en": " if you want to know how the information you have given in joint/separate applications is used."
   }
 }
