@@ -96,5 +96,30 @@
     "fi": "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.",
     "sv": "Här visas de aktörer som har använt dina studieuppgifter.",
     "en": "This page displays organisations that have used data related to your studies."
+  },
+  "tietosuojaseloste-link": {
+    "fi": "https://opintopolku.fi/wp/fi/tietosuojaseloste/",
+    "sv": "https://studieinfo.fi/wp/sv/dataskyddsbeskrivning/",
+    "en": "https://studyinfo.fi/wp2/en/register/"
+  },
+  "omadata-link": {
+    "fi": "https://confluence.csc.fi/pages/viewpage.action?pageId=76536741",
+    "sv": "https://confluence.csc.fi/pages/viewpage.action?pageId=76536741",
+    "en": "https://confluence.csc.fi/pages/viewpage.action?pageId=76536741"
+  },
+  "Koskee vain opintotietoja --prefix": {
+    "fi": "Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat ",
+    "sv": "Gäller studieuppgifter, dvs. inte uppgifter som ingår i ansökningar. I ",
+    "en": "This applies only to study-related information. Please check the "
+  },
+  "Koskee vain opintotietoja --link-title": {
+    "fi": "tietosuojaselosteesta",
+    "sv": "dataskyddsbeskrivningen",
+    "en": "register description"
+  },
+  "Koskee vain opintotietoja --suffix": {
+    "fi": ".",
+    "sv": " får du information om grunderna för användning av personuppgifter i ansökningarna och hur de kan överlåtas.",
+    "en": " if you want to know how the information you have given in joint/separate applications is used."
   }
 }

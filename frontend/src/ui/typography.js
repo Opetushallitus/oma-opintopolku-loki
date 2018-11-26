@@ -33,7 +33,7 @@ export const AlertText = styled.strong`
 
 export const Link = styled.a`
   text-decoration: underline;
-  color: black;
+  color: inherit;
 `
 
 export const Bold = styled.b`

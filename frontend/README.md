@@ -30,6 +30,8 @@ Käynnistä sovellus kehitysmoodissa, jolloin se käyttää `mock`-hakemistossa 
 npm run start:dev
 ```
 
+Nyt voit mennä selaimella osoitteeseen http://localhost:8080/ .
+
 Vaihtoehtoisesti voit tehdä dev-buildin (`npm run build:dev`) ja tarjoilla `dist`-hakemistossa olevat tiedostot jollain toisella HTTP-palvelinsovelluksella.
 
 Saat [Oppija-raamit](https://github.com/Opetushallitus/oppija-raamit) käyttöön `proxy-oppija-raamit=true` -parametrin avulla seuraavasti:

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import constants from 'ui/constants'
-import t from 'util/translate'
 
 const Container = styled.div`
   font-size: ${constants.font.size.s};
@@ -10,10 +9,15 @@ const Container = styled.div`
   margin: 1rem 0;
 `
 
-const Footnote = ({ text }) => <Container>{`* = ${t(text)}`}</Container>
+const Footnote = ({ children, stars }) => <Container>{'*****'.substr(0, stars)} {children}</Container>
 
 Footnote.propTypes = {
-  text: PropTypes.string.isRequired
+  children: PropTypes.node.isRequired,
+  stars: PropTypes.number
+}
+
+Footnote.defaultProps = {
+  stars: 1
 }
 
 export default Footnote

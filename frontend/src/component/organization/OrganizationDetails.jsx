@@ -32,8 +32,8 @@ const Description = styled.div`
 `
 
 const weblink = oid => (isMydataPartner(oid)
-  ? 'https://confluence.csc.fi/pages/viewpage.action?pageId=76536741'
-  : 'https://opintopolku.fi/wp/tietosuojaseloste/koski-palvelun-tietosuojaseloste/'
+  ? t('omadata-link')
+  : t('tietosuojaseloste-link')
 )
 
 const OrganizationDetails = ({ organizationOid }) => (
