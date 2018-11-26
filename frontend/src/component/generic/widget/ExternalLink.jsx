@@ -5,7 +5,7 @@ import ExternalLinkIcon from 'icon/external-link-icon.svg'
 import { Bold, Link } from 'ui/typography'
 
 const PositionedLinkIcon = styled(ExternalLinkIcon)`
-  padding-right: 0.25rem;
+  padding: 0 0.25rem;
   position: relative;
   top: 2px;
 `

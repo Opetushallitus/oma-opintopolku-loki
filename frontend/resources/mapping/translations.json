@@ -96,5 +96,15 @@
     "fi": "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.",
     "sv": "Här visas de aktörer som har använt dina studieuppgifter.",
     "en": "This page displays organisations that have used data related to your studies."
+  },
+  "tietosuojaseloste-link": {
+    "fi": "https://opintopolku.fi/wp/fi/tietosuojaseloste/",
+    "sv": "https://studieinfo.fi/wp/sv/dataskyddsbeskrivning/",
+    "en": "https://studyinfo.fi/wp2/en/register/"
+  },
+  "omadata-link": {
+    "fi": "https://confluence.csc.fi/pages/viewpage.action?pageId=76536741",
+    "sv": "https://confluence.csc.fi/pages/viewpage.action?pageId=76536741",
+    "en": "https://confluence.csc.fi/pages/viewpage.action?pageId=76536741"
   }
 }
