@@ -106,5 +106,20 @@
     "fi": "https://confluence.csc.fi/pages/viewpage.action?pageId=76536741",
     "sv": "https://confluence.csc.fi/pages/viewpage.action?pageId=76536741",
     "en": "https://confluence.csc.fi/pages/viewpage.action?pageId=76536741"
+  },
+  "Koskee vain opintotietoja --prefix": {
+    "fi": "Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat ",
+    "sv": "Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat ",
+    "en": "Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat "
+  },
+  "Koskee vain opintotietoja --link-title": {
+    "fi": "tietosuojaselosteesta",
+    "sv": "dataskyddsbeskrivning",
+    "en": "register description"
+  },
+  "Koskee vain opintotietoja --suffix": {
+    "fi": ".",
+    "sv": ".",
+    "en": "."
   }
 }

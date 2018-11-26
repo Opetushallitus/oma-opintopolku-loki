@@ -13,7 +13,7 @@ const Container = styled.div`
 `
 
 const OrganizationsHeader = () => (
-  <Container>{`${t('Tietojen käyttäjä')}*`}</Container>
+  <Container>{`${t('Tietojen käyttäjä')}**`}</Container>
 )
 
 export default OrganizationsHeader

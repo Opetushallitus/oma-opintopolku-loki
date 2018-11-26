@@ -16,7 +16,7 @@ const Header = () => (
       {t`Tietojeni käyttö`}
     </H1>
     <Description>
-      {t`Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.`}
+      {t`Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.`}{'*'}
     </Description>
     <StudentInfo/>
     <NavBar />
