@@ -15,10 +15,10 @@ module.exports = {
   snapshotSerializers: ['enzyme-to-json/serializer'],
   coverageThreshold: {
     global: {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100
+      branches: 95,
+      functions: 95,
+      lines: 95,
+      statements: 95
     }
   },
   preset: 'jest-puppeteer',
