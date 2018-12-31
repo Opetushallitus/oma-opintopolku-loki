@@ -20,7 +20,7 @@ const NotificationText = styled.div`
   letter-spacing: 0.0214rem;
 `
 
-const getTranslatedName = organizationName => organizationName[lang] || ''
+const getTranslatedName = organizationName => organizationName[lang] || organizationName['fi'] || ''
 
 const NoEntries = () => (
   <div>
