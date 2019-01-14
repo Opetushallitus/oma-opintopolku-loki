@@ -14,6 +14,10 @@ ignore:
     - '*':
         reason: 'not relevant - developer tools only, and we trust developer machines'
         expires: 2019-08-30T08:01:01.564Z
+  'SNYK-JS-CHOWNR-73502':
+    - '*':
+        reason: 'not relevant - developer tools only, and we trust developer machines'
+        expires: 2019-08-30T08:01:01.564Z
   'npm:qs:20170213':
     - '*':
         reason: not relevant - developer tools only
