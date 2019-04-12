@@ -26,4 +26,9 @@ ignore:
     - '*':
         reason: not relevant - developer tools low severity DoS
         expires: 2019-08-30T08:01:21.890Z   
+  serverless-jest-plugin@0.2.1:
+    - '*':
+        reason: not relevant - developer tool only
+        expires: 2019-10-30T00:00:00.000Z
+
 patch: {}
