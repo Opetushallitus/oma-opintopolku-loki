@@ -4,4 +4,4 @@ help:
 
 snyk:
 		npm install --no-save snyk
-		./node_modules/.bin/snyk test --dev api/auditlog api/common api/whoami frontend parser
+		./node_modules/.bin/snyk test api/auditlog api/common api/whoami frontend parser
