@@ -23,10 +23,17 @@ getTgt = (username, password, hostname, callback) => {
       'Caller-Id': opintopolkuCallerId
     }
   }, (res) => {
-    if (res.statusCode === 201)
-      callback(res.headers.location);
-    else
-      throw new Error('TGT:n hakeminen ei onnistunut, status code: {0}'.format(res.statusCode));
+    let chunks = []
+    res.on('data', (chunk) => chunks.push(chunk))
+    res.on('end', () => {
+      const body = Buffer.concat(chunks).toString()
+      console.log(`${req.method} ${req.path} ${res.statusCode} ${body}`)
+      if (res.statusCode === 201) {
+        callback(res.headers.location)
+      } else {
+        throw new Error('TGT:n hakeminen ei onnistunut, status code: {0}'.format(res.statusCode))
+      }
+    })
   });
 
   req.on('error', (e) => {
