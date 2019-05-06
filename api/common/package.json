@@ -4,7 +4,9 @@
   "description": "Common utils for audit log API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "",
   "license": "ISC",
@@ -13,9 +15,11 @@
     "axios": "^0.18.0",
     "config": "^2.0.1",
     "lambda-log": "^2.0.0",
-    "string-format": "^2.0.0"
+    "string-format": "^2.0.0",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "serverless": "1.32.0"
-  }
+  },
+  "snyk": true
 }
