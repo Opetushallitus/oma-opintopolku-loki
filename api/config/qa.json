@@ -1,7 +1,7 @@
 {
   "backend": {
     "timeout" : 5000,
-    "host":  "qa.koski.testiopintopolku.fi"
+    "host":  "virkailija.testiopintopolku.fi"
   },
   "cache": {
     "max-age" : 600
