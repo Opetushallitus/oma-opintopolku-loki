@@ -44,7 +44,7 @@
     "jest-cli": "^24.7.1",
     "jest-puppeteer": "^3.5.2",
     "json-server": "^0.14.0",
-    "puppeteer": "^1.8.0",
+    "puppeteer": "1.18.0",
     "react-test-renderer": "^16.6.3",
     "uglifyjs-webpack-plugin": "^2.0.0",
     "webpack": "^4.29.6",
@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "axios": "^0.18.0",
+    "axios": "0.19.0",
     "core-js": "^2.5.7",
     "date-fns": "^1.29.0",
     "dotenv": "^6.0.0",
