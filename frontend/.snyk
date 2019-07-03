@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.1
+version: v1.13.3
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:braces:20180219':
@@ -14,7 +14,7 @@ ignore:
     - '*':
         reason: 'not relevant - developer tools only, and we trust developer machines'
         expires: 2019-08-30T08:01:01.564Z
-  'SNYK-JS-CHOWNR-73502':
+  SNYK-JS-CHOWNR-73502:
     - '*':
         reason: 'not relevant - developer tools only, and we trust developer machines'
         expires: 2019-08-30T08:01:01.564Z
@@ -22,4 +22,8 @@ ignore:
     - '*':
         reason: not relevant - developer tools only
         expires: 2019-08-30T08:01:21.890Z
-patch: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-AXIOS-174505:
+    - axios:
+        patched: '2019-05-05T21:04:07.718Z'
