@@ -8,7 +8,9 @@
     "url": "git+https://github.com/Opetushallitus/oma-opintopolku-loki.git"
   },
   "scripts": {
-    "test": "NODE_CONFIG_DIR=../config NODE_CONFIG_ENV=dev jest"
+    "test": "NODE_CONFIG_DIR=../config NODE_CONFIG_ENV=dev jest",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "aws-sdk": "2.320.0",
@@ -16,7 +18,8 @@
     "config": "^2.0.1",
     "lambda-log": "^2.0.0",
     "merge": "^1.2.1",
-    "omit-deep-lodash": "^1.1.2"
+    "omit-deep-lodash": "^1.1.2",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "aws-sdk-mock": "^4.2.0",
@@ -36,5 +39,6 @@
         "statements": 100
       }
     }
-  }
+  },
+  "snyk": true
 }
