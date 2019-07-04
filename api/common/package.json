@@ -16,7 +16,7 @@
     "config": "^2.0.1",
     "lambda-log": "^2.0.0",
     "string-format": "^2.0.0",
-    "snyk": "^1.161.1"
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "serverless": "1.45.1"
