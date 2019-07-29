@@ -14,7 +14,7 @@
     "aws-sdk": "^2.323.0",
     "config": "^2.0.1",
     "lambda-log": "^2.0.0",
-    "omit-deep-lodash": "^1.1.2",
+    "omit-deep-lodash": "^1.1.4",
     "snyk": "^1.202.0"
   },
   "devDependencies": {
