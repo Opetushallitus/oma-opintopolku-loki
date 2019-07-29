@@ -19,7 +19,7 @@
     "string-format": "^2.0.0"
   },
   "devDependencies": {
-    "serverless": "1.45.1"
+    "serverless": "1.48.4"
   },
   "snyk": true
 }
