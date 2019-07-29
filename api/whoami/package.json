@@ -4,7 +4,9 @@
   "description": "Lambda function for getting user name and oid from hetu",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_CONFIG_DIR=../config NODE_CONFIG_ENV=dev jest"
+    "test": "NODE_CONFIG_DIR=../config NODE_CONFIG_ENV=dev jest",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "",
   "license": "ISC",
@@ -12,7 +14,8 @@
     "aws-sdk": "^2.323.0",
     "config": "^2.0.1",
     "lambda-log": "^2.0.0",
-    "omit-deep-lodash": "^1.1.2"
+    "omit-deep-lodash": "^1.1.2",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "aws-sdk-mock": "^4.2.0",
@@ -31,5 +34,6 @@
         "statements": 100
       }
     }
-  }
+  },
+  "snyk": true
 }
