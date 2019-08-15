@@ -39,7 +39,7 @@ test: dynamodb-start
 	@cd auditlog && npm test -- --coverage
 	@cd whoami && npm test -- --coverage
 
-deploy:
+deploy: clean deps test
 ifndef env
 	@echo "Usage: make deploy env=<dev|qa|prod>"
 else
