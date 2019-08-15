@@ -8,6 +8,10 @@ help:
 	@echo "make dynamodb-start   - Start local DynamoDB instance"
 	@echo "make dynamodb-stop    - Stop local DynamoDB instance"
 	@echo "make test             - Run unit tests of lambda functions"
+	@echo "make clean            - Remove build artifacts"
+
+clean:
+	find . -name "node_modules" -d -depth 3 -exec rm -rf {} \;
 
 deps:
 	@cd auditlog && npm i
