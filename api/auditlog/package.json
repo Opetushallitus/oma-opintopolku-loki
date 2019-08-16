@@ -25,7 +25,8 @@
     "aws-sdk-mock": "^4.5.0",
     "jest": "^24.8.0",
     "serverless-domain-manager": "^2.6.13",
-    "serverless-jest-plugin": "^0.2.1"
+    "serverless-jest-plugin": "^0.2.1",
+    "serverless-plugin-aws-alerts": "1.4.0"
   },
   "jest": {
     "collectCoverageFrom": [

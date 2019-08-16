@@ -19,6 +19,8 @@ plugins:
   localPath: './auditlog/node_modules'
   modules:
     - serverless-domain-manager
+    - serverless-plugin-aws-alerts
+
 
 functions:
   auditlog:
@@ -53,3 +55,22 @@ custom:
     stage: ${opt:stage, 'dev'}
     createRoute53Record: true
     endpointType: 'edge'
+
+  alerts:
+    dashboards: true
+    topics:
+      alarm:
+        topic: arn:aws:sns:${self:provider.region}:${env:AWS_ACCOUNT_ID}:alarm-notifications
+    definitions:
+      functionErrors:
+        namespace: 'AWS/Lambda'
+        metric: Errors
+        threshold: 1
+        statistic: Sum
+        period: 60
+        evaluationPeriods: 1
+        datapointsToAlarm: 1
+        comparisonOperator: GreaterThanOrEqualToThreshold
+        treatMissingData: notBreaching
+    alarms:
+      - functionErrors

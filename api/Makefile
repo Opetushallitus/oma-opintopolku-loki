@@ -1,5 +1,6 @@
 APP_NAME = oma-opintopolku-loki
 DYNAMODB_RUNNING := $(shell docker inspect -f {{.State.Running}} $(APP_NAME)-dynamodb 2> /dev/null)
+AWS_ACCOUNT_ID := $(shell aws --profile oph-koski-dev sts get-caller-identity | jq --raw-output '.Account')
 
 help:
 	@echo ""
@@ -43,5 +44,5 @@ deploy: clean deps test
 ifndef env
 	@echo "Usage: make deploy env=<dev|qa|prod>"
 else
-	./common/node_modules/.bin/sls deploy --stage $(env) --aws-profile oph-koski-$(env)
+	AWS_ACCOUNT_ID=${AWS_ACCOUNT_ID} ./common/node_modules/.bin/sls deploy --stage $(env) --aws-profile oph-koski-$(env)
 endif
