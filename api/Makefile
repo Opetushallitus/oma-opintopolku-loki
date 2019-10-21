@@ -1,6 +1,6 @@
 APP_NAME = oma-opintopolku-loki
 DYNAMODB_RUNNING := $(shell docker inspect -f {{.State.Running}} $(APP_NAME)-dynamodb 2> /dev/null)
-AWS_ACCOUNT_ID := $(shell aws --profile oph-koski-dev sts get-caller-identity | jq --raw-output '.Account')
+AWS_ACCOUNT_ID := $(shell aws --profile oph-koski-$(env) sts get-caller-identity | jq --raw-output '.Account')
 
 help:
 	@echo ""
