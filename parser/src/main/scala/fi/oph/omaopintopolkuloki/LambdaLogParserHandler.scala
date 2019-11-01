@@ -73,10 +73,12 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
       val studentOid = entry.target.getOrElse(throw new RuntimeException("No student oid found for log entry")).oppijaHenkiloOid
       val viewerOid = entry.user.getOrElse(throw new RuntimeException("No viewer oid found for log entry")).oid
 
-      val viewerOrganizations: List[String] = if (studentOid != viewerOid) {
-        remoteOrganizationRepository.getOrganizationIdsForUser(viewerOid).map(permission => permission.organisaatioOid).toList
-      } else {
+      val viewerOrganizations: List[String] = if (studentOid == viewerOid) {
         List("self") // Student has viewed his/her own data
+      } else if (entry.operation.contains("KANSALAINEN_HUOLTAJA_OPISKELUOIKEUS_KATSOMINEN")) {
+        List("huoltaja")
+      } else {
+        remoteOrganizationRepository.getOrganizationIdsForUser(viewerOid).map(permission => permission.organisaatioOid).toList
       }
 
       if(viewerOrganizations.isEmpty) throw new RuntimeException(s"Failed to get organizations for ${viewerOid}")
