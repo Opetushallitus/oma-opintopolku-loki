@@ -83,25 +83,33 @@ class LambdaLogParserHandlerTest extends FunSpec with Matchers with MockFactory 
     }
 
     it("Should store logs when student viewed own data") {
-      val selfEntry = Source.fromResource("opiskeluoikeus-katsominen-self.log").mkString
-      RemoteSQSRepository invokePrivate sendMessage(selfEntry)
-
-      while (!RemoteSQSRepository.hasMessages) Thread.sleep(1000)
-
-      val parser = new LambdaLogParserHandler
-      val result = parser.handleRequest(mock[SQSEvent], mock[Context])
-
-      assert(result.stored == 1, "Was able to process self view entry")
-      assert(result.skipped == 0, "No skipped entries")
-      assert(result.failed == 0, "No failed entries was found")
-
-      val dbEntries = DB.getAllItems
-      assert(dbEntries.size() == 1, "Entry was stored to DB") // All 5 of our valid entries were identical
-
-      val dbEntry = dbEntries.get(0)
-      assert(dbEntry.organizationOid.get(0) == "self", "Organization is 'self' when user viewed own data")
+     verifySingleLogEntry("opiskeluoikeus-katsominen-self.log", "self")
     }
 
+    it("Shuold store logs when viewer is huoltaja") {
+      verifySingleLogEntry("opiskeluoikeus-katsominen-huoltaja.log", "huoltaja")
+    }
   }
 
+  private def verifySingleLogEntry(mockResourceName: String, expectedOrganization: String) {
+    val logEntry = Source.fromResource(mockResourceName).mkString
+
+    RemoteSQSRepository invokePrivate sendMessage(logEntry)
+
+    while (!RemoteSQSRepository.hasMessages) Thread.sleep(1000)
+
+    val parser = new LambdaLogParserHandler
+    val result = parser.handleRequest(mock[SQSEvent], mock[Context])
+
+    assert(result.stored == 1, "Was able to process self view entry")
+    assert(result.skipped == 0, "No skipped entries")
+    assert(result.failed == 0, "No failed entries was found")
+
+    val dbEntries = DB.getAllItems
+    assert(dbEntries.size() == 1, "Entry was stored to DB")
+
+    val dbEntry = dbEntries.get(0)
+    assert(dbEntry.organizationOid.get(0) == expectedOrganization, "Organization is correct")
+
+  }
 }
