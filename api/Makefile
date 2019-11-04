@@ -12,7 +12,10 @@ help:
 	@echo "make clean            - Remove build artifacts"
 
 clean:
-	find . -name "node_modules" -d -depth 3 -exec rm -rf {} \;
+	rm -rf ./whoami/node_modules
+	rm -rf ./common/node_modules
+	rm -rf ./auditlog/node_modules
+	rm -rf ../frontend/node_modules
 
 deps:
 	@cd auditlog && npm i

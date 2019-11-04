@@ -42,6 +42,7 @@ function init_nodejs {
 }
 
 function init_python {
+  export VIRTUAL_ENV_DISABLE_PROMPT=1 ## https://github.com/pypa/virtualenv/issues/1029
   pushd "$repo"
   pipenv install
   source "$(pipenv --venv)/bin/activate"
