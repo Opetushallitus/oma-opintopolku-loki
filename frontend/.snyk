@@ -22,6 +22,11 @@ ignore:
     - '*':
         reason: not relevant - developer tools only
         expires: 2019-08-30T08:01:21.890Z
+  SNYK-JS-TREEKILL-536781:
+    - '*':
+        reason: 'Dev dependency, no fix available'
+        expires: 2020-02-01T00:00:00.000Z
+
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   SNYK-JS-AXIOS-174505:
