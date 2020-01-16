@@ -18,7 +18,7 @@ functions:
     name: oma-opintopolku-loki-parser
     role: ${ssm:/oma-opintopolku-loki/parser/role/arn}
     memorySize: 512
-    timeout: 240
+    timeout: 900
     handler: fi.oph.omaopintopolkuloki.LambdaLogParserHandler
     events:
         - schedule:
