@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "serverless": "1.48.4",
-    "snyk": "^1.202.0"
+    "snyk": "^1.290.1"
   },
   "snyk": true
 }

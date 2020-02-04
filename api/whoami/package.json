@@ -20,7 +20,7 @@
     "aws-sdk-mock": "^4.5.0",
     "jest": "^24.8.0",
     "serverless-jest-plugin": "^0.2.1",
-    "snyk": "^1.202.0"
+    "snyk": "^1.290.1"
   },
   "jest": {
     "collectCoverageFrom": [
