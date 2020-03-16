@@ -18,7 +18,8 @@
     "config": "^2.0.2",
     "lambda-log": "^2.3.0",
     "merge": "^1.2.1",
-    "omit-deep-lodash": "^1.1.4"
+    "omit-deep-lodash": "^1.1.4",
+    "minimist": ">=1.2.2"
   },
   "devDependencies": {
     "aws-sdk-mock": "^4.5.0",
