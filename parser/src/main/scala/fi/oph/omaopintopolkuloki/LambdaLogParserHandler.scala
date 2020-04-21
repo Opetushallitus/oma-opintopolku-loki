@@ -81,8 +81,6 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
         remoteOrganizationRepository.getOrganizationIdsForUser(viewerOid).map(permission => permission.organisaatioOid).toList
       }
 
-      if(viewerOrganizations.isEmpty) throw new RuntimeException(s"Failed to get organizations for ${viewerOid}")
-
       DB.save(new LogEntry(
         entry.getKey,
         entry.timestamp,
