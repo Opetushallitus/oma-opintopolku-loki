@@ -66,6 +66,7 @@ class AuditLogs {
 
   _groupByOrganizationOids(auditlogs) {
     return auditlogs
+      .filter(({_, organizationOid}) => organizationOid.length > 0)
       .map(({ time, organizationOid }) => ({ time, orgOids: organizationOid.sort() }))
       .reduce((obj, { time, orgOids }) => (
         obj[orgOids]

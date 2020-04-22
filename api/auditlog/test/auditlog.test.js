@@ -106,6 +106,20 @@ describe('auditlog', () => {
     })
   })
 
+  it('returns 200 OK when organization oids is empty', () => {
+    const logEntryWithEmptyOrganizationOid = { id: '1', studentOid: '1.2.3', time: '12:34', organizationOid: [] }
+    aws.remock('DynamoDB.DocumentClient', 'query', function(params, callback) {
+      callback(null, {Items: [logEntryWithEmptyOrganizationOid]})
+    })
+
+    return wrapped.run({headers: {security: shibbolethSecret, hetu}}).then((response) => {
+      expect(response.statusCode).toBe(200)
+      const body = JSON.parse(response.body)
+      expect(body).toEqual([])
+      expect(userDataFn).toHaveBeenCalled()
+    })
+  })
+
   it('returns 400 when required headers are missing', () => {
     return wrapped.run({headers: {}}).then((response) => {
       expect(response.statusCode).toBe(400)
