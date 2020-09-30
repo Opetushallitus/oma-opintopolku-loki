@@ -11,10 +11,10 @@ object CasHttpClient {
 
   def apply(httpClient: Client, scheme_authority: String, params: CasParams = Params.permission) = {
     CasAuthenticatingClient(
-      new CasClient(scheme_authority, httpClient),
+      new CasClient(scheme_authority, httpClient, AuditLogCallerId.code),
       params,
       httpClient,
-      Some(AuditLogCallerId.code),
+      AuditLogCallerId.code,
       sessionCookieName
     )
   }
