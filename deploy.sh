@@ -15,9 +15,6 @@ function main {
 
   require_command aws
 
-  cd "$repo/api"
-  make deploy env=$ENV
-
   cd "$repo/parser"
   make test
   make scalastyle
