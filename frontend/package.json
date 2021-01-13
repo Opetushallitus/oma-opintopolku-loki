@@ -8,9 +8,11 @@
     "url": "git+https://github.com/Opetushallitus/oma-opintopolku-loki.git"
   },
   "scripts": {
-    "build:prod": "./node_modules/.bin/webpack --config webpack.prod.js",
     "build:dev": "./node_modules/.bin/webpack --config webpack.dev.js",
-    "start:dev": "npm run mock-api & ./node_modules/.bin/webpack-dev-server --config webpack.dev.js",
+    "build:qa": "./node_modules/.bin/webpack --config webpack.qa.js",
+    "build:prod": "./node_modules/.bin/webpack --config webpack.prod.js",
+    "build:local": "./node_modules/.bin/webpack --config webpack.local.js",
+    "start:local": "npm run mock-api & ./node_modules/.bin/webpack-dev-server --config webpack.local.js",
     "mock-api": "./node_modules/.bin/json-server ./mock/api.json",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx src test",
     "test": "npm run build:prod && JEST_ENV=jest-environment-puppeteer ./node_modules/.bin/jest --testPathPattern=page.spec.js",

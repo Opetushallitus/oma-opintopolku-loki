@@ -27,17 +27,17 @@ cp .env-example .env
 Käynnistä sovellus kehitysmoodissa, jolloin se käyttää `mock`-hakemistossa olevaa mock-API:a ja Webpack lataa automaattisesti sovelluksen uudelleen selaimessa, kun teet muutoksia:
 
 ```shell
-npm run start:dev
+npm run start:local
 ```
 
 Nyt voit mennä selaimella osoitteeseen http://localhost:8080/ .
 
-Vaihtoehtoisesti voit tehdä dev-buildin (`npm run build:dev`) ja tarjoilla `dist`-hakemistossa olevat tiedostot jollain toisella HTTP-palvelinsovelluksella.
+Vaihtoehtoisesti voit tehdä lokaalin dev-buildin (`npm run build:local`) ja tarjoilla `dist`-hakemistossa olevat tiedostot jollain toisella HTTP-palvelinsovelluksella.
 
 Saat [Oppija-raamit](https://github.com/Opetushallitus/oppija-raamit) käyttöön `proxy-oppija-raamit=true` -parametrin avulla seuraavasti:
 
 ```shell
-npm run start:dev -- --proxy-oppija-raamit=true
+npm run start:local -- --proxy-oppija-raamit=true
 ```
 
 ## Testien ajaminen
@@ -69,7 +69,7 @@ JavaScript Standard Stylen lisäksi ESLint käyttää Reactin ja Jestin suositel
 
 Ympäristöjä on kolme:
 
-- `dev`: (TODO)
+- `dev`: https://untuvaopintopolku.fi/oma-opintopolku-loki/
 - `qa`: https://testiopintopolku.fi/oma-opintopolku-loki/
 - `prod`: https://opintopolku.fi/oma-opintopolku-loki/
 

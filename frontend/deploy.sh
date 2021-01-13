@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -o errexit -o nounset -o pipefail
+
 PROJECT_ROOT="$(pwd)"
 AWS_CLI="$(which aws)"
 S3_BUCKET_PREFIX="oma-opintopolku-loki-frontend"
@@ -13,7 +15,7 @@ build() {
   echo "Building project $project_dir (environment: $env)"
   cd "$project_dir"
   docker build -t "$docker_image_name" .
-  docker run -v "$project_dir/dist:/opt/app/dist" -e "API_BASE_URL" "$docker_image_name" "build:prod"
+  docker run -v "$project_dir/dist:/opt/app/dist" "$docker_image_name" "build:$ENV"
   echo "Done!"
   cd -
 }

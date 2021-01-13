@@ -52,7 +52,7 @@ Footnotes.propTypes = {
 }
 
 const Log = () => (
-  <Query url='auditlog'>
+  <Query url='auditlogs'>
     {({ data, error, pending }) => {
       if (error) return <AlertText>{t`Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.`}</AlertText>
       if (pending) return <div>{t`Tietoja haetaan`}</div>

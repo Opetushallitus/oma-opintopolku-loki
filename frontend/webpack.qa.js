@@ -7,7 +7,7 @@ module.exports = merge(common, {
   mode: 'production',
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.API_BASE_URL': JSON.stringify('https://untuvaopintopolku.fi/koski/api/omaopintopolkuloki/')
+      'process.env.API_BASE_URL': JSON.stringify('https://testiopintopolku.fi/koski/api/omaopintopolkuloki/')
     })
   ]
 })

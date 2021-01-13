@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-const client = axios.create()
+const client = axios.create({
+  baseURL: process.env.API_BASE_URL
+})
 
 const get = async url => client.get(url)
 const post = async (url, data) => client.post(url, data)
