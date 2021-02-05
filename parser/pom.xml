@@ -24,7 +24,7 @@
     <scala.version>2.12.6</scala.version>
     <scala.compat.version>2.12</scala.compat.version>
     <spec2.version>4.8.0</spec2.version>
-    <http4s.version>0.16.6</http4s.version>
+    <http4s.version>0.21.17</http4s.version>
   </properties>
 
   <dependencies>
