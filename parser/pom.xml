@@ -112,7 +112,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-dynamodb</artifactId>
-      <version>1.11.754</version>
+      <version>1.11.950</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.typesafe/config -->
@@ -126,7 +126,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-sqs</artifactId>
-      <version>1.11.754</version>
+      <version>1.11.950</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-core -->
@@ -147,7 +147,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-secretsmanager</artifactId>
-      <version>1.11.754</version>
+      <version>1.11.950</version>
     </dependency>
 
 
