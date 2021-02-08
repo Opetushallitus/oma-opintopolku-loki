@@ -34,7 +34,7 @@ describe('RaamitSupport', () => {
     window.location.assign = jest.fn()
     const service = global.Service
     service.logout()
-    expect(window.location.assign).toHaveBeenCalledWith('/shibboleth/Logout?return=/oma-opintopolku/')
+    expect(window.location.assign).toHaveBeenCalledWith('/cas-oppija/logout?service=/oma-opintopolku/')
     window.location.assign.mockRestore()
   })
 })
