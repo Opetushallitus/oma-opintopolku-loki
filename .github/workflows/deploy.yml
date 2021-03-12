@@ -58,7 +58,7 @@ jobs:
           aws-region: eu-west-1
           role-to-assume: ${{ secrets.DEPLOYMENT_ROLE }}
           role-duration-seconds: 3600
-          role-session-name: OmaOpintopolkuLokiDeployment-${{ github.event.inputs.commithash }}
+          role-session-name: LokiDeployment-${{ github.event.inputs.commithash }}
 
       - name: Deploy backend
         run: |
