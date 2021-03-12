@@ -21,7 +21,7 @@ ifeq ($(DYNAMODB_RUNNING), true)
 else
 	@echo "Starting DynamoDB instance..."
 	-@docker rm --force $(APP_NAME)-dynamodb 2> /dev/null || true
-	@docker run -d --name $(APP_NAME)-dynamodb -p 8000:8000 amazon/dynamodb-local 1> /dev/null
+	@docker run -d --name $(APP_NAME)-dynamodb -p 8000:8000 amazon/dynamodb-local:1.13.4 1> /dev/null
 	@echo "DynamoDB started."
 endif
 
@@ -39,7 +39,7 @@ ifeq ($(SQS_RUNNING), true)
 else
 	@echo "Starting SQS..."
 	-@docker rm --force $(APP_NAME)-sqs 2> /dev/null || true
-	@docker run -d --name $(APP_NAME)-sqs -p 9324:9324 -p 9325:9325 -d roribio16/alpine-sqs 1> /dev/null
+	@docker run -d --name $(APP_NAME)-sqs -p 9324:9324 -p 9325:9325 -d roribio16/alpine-sqs:1.0.0 1> /dev/null
 	@echo "SQS started."
 endif
 
