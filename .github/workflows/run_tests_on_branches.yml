@@ -1,0 +1,52 @@
+name: Run tests on branches
+on:
+  workflow_dispatch:
+env:
+  DOCKER_BUILDKIT: 1
+jobs:
+  oma_opintopolku_loki_frontend:
+    name: oma-opintopolku-loki frontend
+    runs-on: ubuntu-20.04
+    env:
+      TEST_PORT: 3030
+      TZ: Europe/Helsinki
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node 8
+        uses: actions/setup-node@v2
+        with:
+          node-version: "8"
+
+      - name: Run tests
+        run: |
+          cd frontend
+          npm install && npm run test
+          npm run unit
+          npm run lint
+
+  oma_opintopolku_loki_log_parser:
+    name: oma-opintopolku-loki log parser
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: "8"
+          architecture: x64
+
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Run tests
+        run: |
+          cd parser
+          make test
+          make scalastyle
