@@ -1,6 +1,8 @@
 name: Run tests on branches
 on:
-  workflow_dispatch:
+  push:
+    branches-ignore:
+      - "master"
 env:
   DOCKER_BUILDKIT: 1
 jobs:
