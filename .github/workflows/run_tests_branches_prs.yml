@@ -3,7 +3,7 @@ on:
   push:
     branches-ignore:
       - "master"
-  pull_requests:
+  pull_request:
 env:
   DOCKER_BUILDKIT: 1
 jobs:
