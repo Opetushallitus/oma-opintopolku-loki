@@ -25,7 +25,12 @@ deploy() {
   local s3_bucket="$2"
   local env="$3"
   echo "Deploying project $project_dir to S3 bucket $s3_bucket (environment: $env)"
-  $AWS_CLI s3 --profile oph-koski-$ENV sync "$project_dir/dist/" "s3://$s3_bucket/"
+  # If running on Github Actions we can assume correct AWS role has been assumed
+  if [[ "$GITHUB_ACTIONS" == "true" ]]; then
+    $AWS_CLI s3 sync "$project_dir/dist/" "s3://$s3_bucket/"
+  else
+    $AWS_CLI s3 --profile oph-koski-$ENV sync "$project_dir/dist/" "s3://$s3_bucket/"
+  fi
   echo "Done!"
 }
 
