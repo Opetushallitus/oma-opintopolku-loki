@@ -14,7 +14,7 @@ make dynamodb-stop
 make sqs-stop
 ```
 
-Kaikki kolme voidaan käynnistää ja pysäyttää myös näin:
+Molemmat voidaan käynnistää ja pysäyttää myös näin:
 ```shell
 make docker-up
 make docker-down
