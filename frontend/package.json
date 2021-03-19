@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/Opetushallitus/oma-opintopolku-loki.git"
   },
+  "engines": {
+    "node": "14"
+  },
   "scripts": {
     "build:dev": "./node_modules/.bin/webpack --config webpack.dev.js",
     "build:qa": "./node_modules/.bin/webpack --config webpack.qa.js",
@@ -18,7 +21,7 @@
     "test": "npm run build:prod && JEST_ENV=jest-environment-puppeteer ./node_modules/.bin/jest --testPathPattern=page.spec.js",
     "unit": "JEST_ENV=jsdom ./node_modules/.bin/jest --testPathPattern=test.js --coverage",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "node update_nvmrc.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
@@ -48,31 +51,31 @@
     "jest-cli": "^24.7.1",
     "jest-puppeteer": "^3.5.2",
     "json-server": "^0.15.1",
-    "puppeteer": "1.18.0",
+    "minimist": ">=1.2.2",
+    "puppeteer": "1.20.0",
     "react-test-renderer": "^16.6.3",
+    "snyk": "^1.299",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.3.1",
     "webpack-merge": "^4.1.4",
-    "yargs": "^12.0.2",
-    "snyk": "^1.299",
-    "minimist": ">=1.2.2"
+    "yargs": "^12.0.2"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0",
-    "axios": "0.19.0",
-    "core-js": "^2.5.7",
-    "date-fns": "^1.29.0",
-    "dotenv": "^6.0.0",
-    "js-cookie": "^2.2.0",
-    "merge": "^1.2.1",
-    "prop-types": "^15.6.2",
-    "ramda": "^0.25.0",
+    "@babel/runtime": "7.13.10",
+    "axios": "0.21.1",
+    "core-js": "3.9.1",
+    "date-fns": "2.19.0",
+    "dotenv": "8.2.0",
+    "js-cookie": "2.2.1",
+    "merge": "2.1.1",
+    "prop-types": "15.7.2",
+    "ramda": "0.27.1",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "recompose": "^0.30.0",
+    "recompose": "0.30.0",
     "save-dev": "0.0.1-security",
-    "styled-components": "^3.4.6"
+    "styled-components": "3.4.10"
   },
   "snyk": true
 }
