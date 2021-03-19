@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { injectGlobal } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import constants from 'ui/constants'
 import media from 'ui/media'
 import Header from 'component/Header'
@@ -7,9 +7,8 @@ import Log from 'component/Log'
 
 /**
  * Apply global styles.
- * TODO: Styled Components API for defining global styles will change in next major version (v4).
  */
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   body, button, input, optgroup, select, textarea {
     font-family: ${constants.font.family};
   }
@@ -32,6 +31,7 @@ const Content = styled.main`
 
 const App = () => (
   <Content>
+    <GlobalStyle/>
     <Header/>
     <Log/>
   </Content>

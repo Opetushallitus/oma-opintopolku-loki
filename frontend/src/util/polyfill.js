@@ -1,2 +1,2 @@
-import 'core-js/es6/promise'
-import 'core-js/fn/string/starts-with'
+import 'core-js/features/promise'
+import 'core-js/features/string/starts-with'

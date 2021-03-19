@@ -6,6 +6,7 @@ import { matchesSnapshot } from 'util/testUtils'
 describe('LogEntries', () => {
   const timestamps = ['2018-09-19T12:05:26.432+03', '2018-09-20T16:01:44.543+03']
 
+  // eslint-disable-next-line jest/expect-expect
   it('should render with empty timestamp list', () => {
     matchesSnapshot(<LogEntries timestamps={[]} />)
   })

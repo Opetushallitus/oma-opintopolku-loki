@@ -3,51 +3,51 @@
 exports[`Header should be rendered 1`] = `
 <header>
   <h1
-    className="typography__H1-sc-1yq3b4j-0 bzXKrb"
+    className="typography__H1-sc-1yq3b4j-0 dZFoUB"
   >
     Tietojeni käyttö
   </h1>
   <p
-    className="Header__Description-sc-19ub9le-0 bSOtdS typography__Lead-sc-1yq3b4j-3 gAMCJo"
+    className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 hJmPol kEPuny"
   >
     Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.
     *
   </p>
   <h3
-    className="StudentInfo__Student-sc-8zvgal-0 eVBqba typography__H3-sc-1yq3b4j-2 kmaVaO"
+    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 gvyvrj hgZvKc"
   >
     <span
-      className="StudentInfo__Name-sc-8zvgal-1 fKcnY"
+      className="StudentInfo__Name-sc-8zvgal-1 eCdtyi"
     >
       Onni Oskari Oppija
     </span>
     <span
-      className="StudentInfo__Birthday-sc-8zvgal-2 igEQxQ"
+      className="StudentInfo__Birthday-sc-8zvgal-2 cscvKh"
     >
        s. 
       1.2.1980
     </span>
   </h3>
   <div
-    className="NavBar__Navigation-sc-18mzj0n-0 jHKwkt"
+    className="NavBar__Navigation-sc-18mzj0n-0 bira-DC"
   >
     <a
-      className="NavBar__Link-sc-18mzj0n-5 ktidaL"
+      className="NavBar__Link-sc-18mzj0n-5 dUttYD"
       href="/koski/omadata/kayttooikeudet"
     >
       <span
-        className="NavBar__InactiveTab-sc-18mzj0n-2 cspcye NavBar__Tab-sc-18mzj0n-1 kTVtoM"
+        className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 isTCpN iFmxlB"
       >
         Annetut käyttöluvat
       </span>
     </a>
     <span
-      className="NavBar__ActiveTab-sc-18mzj0n-3 jnfhNV NavBar__Tab-sc-18mzj0n-1 kTVtoM"
+      className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 isTCpN yElqT"
     >
       Tietojani käyttäneet toimijat
     </span>
     <span
-      className="NavBar__Filler-sc-18mzj0n-4 jTKRzr"
+      className="NavBar__Filler-sc-18mzj0n-4 ePEVXG"
     />
   </div>
 </header>
