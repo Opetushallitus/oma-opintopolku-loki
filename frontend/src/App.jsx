@@ -7,9 +7,8 @@ import Log from 'component/Log'
 
 /**
  * Apply global styles.
- * TODO: Styled Components API for defining global styles will change in next major version (v4).
  */
-createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   body, button, input, optgroup, select, textarea {
     font-family: ${constants.font.family};
   }
@@ -32,6 +31,7 @@ const Content = styled.main`
 
 const App = () => (
   <Content>
+    <GlobalStyle/>
     <Header/>
     <Log/>
   </Content>
