@@ -2,7 +2,7 @@
 
 exports[`StudentInfo should be rendered 1`] = `
 <h3
-  className="StudentInfo__Student-sc-8zvgal-0 hsvIvK"
+  className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 hsvIvK"
 >
   <span
     className="StudentInfo__Name-sc-8zvgal-1 fKcnY"

@@ -9,13 +9,13 @@ exports[`NavBar should be rendered 1`] = `
     href="/koski/omadata/kayttooikeudet"
   >
     <span
-      className="NavBar__InactiveTab-sc-18mzj0n-2 dhKxFl"
+      className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 dhKxFl"
     >
       Annetut käyttöluvat
     </span>
   </a>
   <span
-    className="NavBar__ActiveTab-sc-18mzj0n-3 erWAMW"
+    className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 erWAMW"
   >
     Tietojani käyttäneet toimijat
   </span>

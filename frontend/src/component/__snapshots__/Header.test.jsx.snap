@@ -8,13 +8,13 @@ exports[`Header should be rendered 1`] = `
     Tietojeni käyttö
   </h1>
   <p
-    className="Header__Description-sc-19ub9le-0 gqzQDt"
+    className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 gqzQDt"
   >
     Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.
     *
   </p>
   <h3
-    className="StudentInfo__Student-sc-8zvgal-0 hsvIvK"
+    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 hsvIvK"
   >
     <span
       className="StudentInfo__Name-sc-8zvgal-1 fKcnY"
@@ -36,13 +36,13 @@ exports[`Header should be rendered 1`] = `
       href="/koski/omadata/kayttooikeudet"
     >
       <span
-        className="NavBar__InactiveTab-sc-18mzj0n-2 dhKxFl"
+        className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 dhKxFl"
       >
         Annetut käyttöluvat
       </span>
     </a>
     <span
-      className="NavBar__ActiveTab-sc-18mzj0n-3 erWAMW"
+      className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 erWAMW"
     >
       Tietojani käyttäneet toimijat
     </span>
