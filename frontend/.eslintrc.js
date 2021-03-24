@@ -13,5 +13,9 @@ module.exports = {
     "page": true,
     "browser": true,
     "jestPuppeteer": true
+  },
+  rules: {
+    "jest/no-done-callback": "warn",
+    "no-import-assign": "warn"
   }
 }
