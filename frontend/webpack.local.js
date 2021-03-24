@@ -1,6 +1,7 @@
 require('dotenv').config()
 
-const merge = require('webpack-merge')
+const webpack = require('webpack')
+const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 const path = require('path')
 const argv = require('yargs').argv
@@ -25,6 +26,11 @@ const apiProxy = {
 
 module.exports = merge(common, {
   mode: 'development',
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.API_BASE_URL': JSON.stringify('http://localhost:3000')
+    })
+  ],
   resolve: {
     alias: {
       Resources: path.resolve(__dirname, 'mock') // dependency-inject mocks to the aliased resources module
@@ -34,7 +40,7 @@ module.exports = merge(common, {
     contentBase: path.resolve(__dirname, 'dist'),
     compress: true,
     port: 8080,
-    proxy: argv.proxyOppijaRaamit === 'true' ? {...raamitProxy, ...apiProxy} : apiProxy
+    proxy: argv.proxyOppijaRaamit === 'true' ? { ...raamitProxy, ...apiProxy } : apiProxy
   },
   devtool: 'eval-source-map'
 })
