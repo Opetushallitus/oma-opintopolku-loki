@@ -3,51 +3,51 @@
 exports[`Header should be rendered 1`] = `
 <header>
   <h1
-    className="typography__H1-sc-1yq3b4j-0 lfcEVq"
+    className="typography__H1-sc-1yq3b4j-0 dQZScR"
   >
     Tietojeni käyttö
   </h1>
   <p
-    className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 erAWnF"
+    className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 djLBhx cZNvim"
   >
     Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.
     *
   </p>
   <h3
-    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 jQjjxN"
+    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 egTQlX cECwBg"
   >
     <span
-      className="StudentInfo__Name-sc-8zvgal-1 ljSZoX"
+      className="StudentInfo__Name-sc-8zvgal-1 jdyOje"
     >
       Onni Oskari Oppija
     </span>
     <span
-      className="StudentInfo__Birthday-sc-8zvgal-2 euvLPQ"
+      className="StudentInfo__Birthday-sc-8zvgal-2 eXtxDt"
     >
        s. 
       1.2.1980
     </span>
   </h3>
   <div
-    className="NavBar__Navigation-sc-18mzj0n-0 dZYHOX"
+    className="NavBar__Navigation-sc-18mzj0n-0 bgkCSq"
   >
     <a
-      className="NavBar__Link-sc-18mzj0n-5 hNdsZu"
+      className="NavBar__Link-sc-18mzj0n-5 iYMnjr"
       href="/koski/omadata/kayttooikeudet"
     >
       <span
-        className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 ZVHRy"
+        className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 ikofyd ihXexB"
       >
         Annetut käyttöluvat
       </span>
     </a>
     <span
-      className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 daUKRw"
+      className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 ikofyd kfcFkL"
     >
       Tietojani käyttäneet toimijat
     </span>
     <span
-      className="NavBar__Filler-sc-18mzj0n-4 cKlUAj"
+      className="NavBar__Filler-sc-18mzj0n-4 dxzTra"
     />
   </div>
 </header>

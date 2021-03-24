@@ -75,7 +75,7 @@
     "react-dom": "16.14.0",
     "recompose": "0.30.0",
     "save-dev": "0.0.1-security",
-    "styled-components": "5.0.0"
+    "styled-components": "5.2.1"
   },
   "snyk": true
 }
