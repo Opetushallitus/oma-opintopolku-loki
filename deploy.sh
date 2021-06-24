@@ -4,23 +4,18 @@ repo="$( cd "$( dirname "$0" )" && pwd )"
 
 function main {
   require_command docker "On macOS: brew cask install docker"
-  require_command pyenv "On macOS: brew install pyenv"
-  require_command pipenv "On macOS: brew install pipenv"
-  require_command mvn "On macOS: brew install maven"
-
   docker ps > /dev/null || { echo >&2 "Could not connect to docker daemon"; exit 1; }
-
-  init_nodejs
-  init_python
-
+  require_command mvn "On macOS: brew install maven"
   require_command aws
 
   cd "$repo/parser"
+  init_nodejs
   make test
   make scalastyle
   make deploy env=$ENV
 
   cd "$repo/frontend"
+  init_nodejs
   npm install
   npm run lint
   cp "$repo/frontend/.env-example" "$repo/frontend/.env"
@@ -31,20 +26,11 @@ function main {
 }
 
 function init_nodejs {
-  local node_version="8"
-
   export NVM_DIR="${NVM_DIR:-$HOME/.cache/nvm}"
   source "$repo/nvm.sh"
-  nvm use $node_version || nvm install $node_version
+  nvm install $(cat .nvmrc)
 }
 
-function init_python {
-  export VIRTUAL_ENV_DISABLE_PROMPT=1 ## https://github.com/pypa/virtualenv/issues/1029
-  pushd "$repo"
-  pipenv install
-  source "$(pipenv --venv)/bin/activate"
-  popd
-}
 
 function require_command {
   command -v "$1" > /dev/null 2>&1 || {
