@@ -21,7 +21,11 @@
     "test": "npm run build:prod && JEST_ENV=jest-environment-puppeteer ./node_modules/.bin/jest --testPathPattern=page.spec.js",
     "unit": "JEST_ENV=jsdom ./node_modules/.bin/jest --testPathPattern=test.js --coverage",
     "snyk-protect": "snyk protect",
-    "prepare": "node update_nvmrc.js && npm run snyk-protect"
+    "prepare": "node update_nvmrc.js && npm run snyk-protect",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",
