@@ -9,7 +9,7 @@ import { lang } from 'util/preferences'
  * @returns {string} Translated text if translation found, else key
  */
 export default key => {
-  const isTaggedTemplate = key.hasOwnProperty('raw')
+  const isTaggedTemplate = Object.prototype.hasOwnProperty.call(key, 'raw')
 
   /* istanbul ignore next */
   if (isTaggedTemplate && key.length > 1) {

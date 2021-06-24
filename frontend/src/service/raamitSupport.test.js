@@ -31,7 +31,10 @@ describe('RaamitSupport', () => {
   })
 
   it('should forward to logout url', () => {
-    window.location.assign = jest.fn()
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: { assign: jest.fn() }
+    })
     const service = global.Service
     service.logout()
     expect(window.location.assign).toHaveBeenCalledWith('/cas-oppija/logout?service=/oma-opintopolku/')

@@ -1,3 +1,4 @@
 import format from 'date-fns/format'
+import parseISO from 'date-fns/parseISO'
 
-export const isoStringToDate = isoString => format(isoString, 'D.M.YYYY HH.mm')
+export const isoStringToDate = isoString => format(parseISO(isoString), 'd.M.yyyy HH.mm')

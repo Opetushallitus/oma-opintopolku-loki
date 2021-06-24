@@ -2,14 +2,14 @@
 
 exports[`ExternalLink should render external link 1`] = `
 <a
-  className="typography__Link-sc-1yq3b4j-5 epyGqB"
+  className="typography__Link-sc-1yq3b4j-5 isxUQo"
   href="http://localhost"
 >
   <test-file-stub
-    className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 fdjWcT"
+    className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bSIrMh"
   />
   <b
-    className="typography__Bold-sc-1yq3b4j-6 jaOKTJ"
+    className="typography__Bold-sc-1yq3b4j-6 gAaKPb"
   >
     Teksti
   </b>
@@ -18,15 +18,15 @@ exports[`ExternalLink should render external link 1`] = `
 
 exports[`ExternalLink should render external link that targets new tab 1`] = `
 <a
-  className="typography__Link-sc-1yq3b4j-5 epyGqB"
+  className="typography__Link-sc-1yq3b4j-5 isxUQo"
   href="http://localhost"
   target="_blank"
 >
   <test-file-stub
-    className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 fdjWcT"
+    className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bSIrMh"
   />
   <b
-    className="typography__Bold-sc-1yq3b4j-6 jaOKTJ"
+    className="typography__Bold-sc-1yq3b4j-6 gAaKPb"
   >
     Teksti
   </b>
@@ -35,14 +35,14 @@ exports[`ExternalLink should render external link that targets new tab 1`] = `
 
 exports[`ExternalLink should render link without explicit text 1`] = `
 <a
-  className="typography__Link-sc-1yq3b4j-5 epyGqB"
+  className="typography__Link-sc-1yq3b4j-5 isxUQo"
   href="http://localhost"
 >
   <test-file-stub
-    className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 fdjWcT"
+    className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bSIrMh"
   />
   <b
-    className="typography__Bold-sc-1yq3b4j-6 jaOKTJ"
+    className="typography__Bold-sc-1yq3b4j-6 gAaKPb"
   >
     http://localhost
   </b>

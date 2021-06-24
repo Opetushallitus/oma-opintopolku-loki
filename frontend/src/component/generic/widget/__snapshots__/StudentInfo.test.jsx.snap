@@ -2,15 +2,15 @@
 
 exports[`StudentInfo should be rendered 1`] = `
 <h3
-  className="StudentInfo__Student-sc-8zvgal-0 eVBqba typography__H3-sc-1yq3b4j-2 kmaVaO"
+  className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 gvyvrj hgZvKc"
 >
   <span
-    className="StudentInfo__Name-sc-8zvgal-1 fKcnY"
+    className="StudentInfo__Name-sc-8zvgal-1 eCdtyi"
   >
     Onni Oskari Oppija
   </span>
   <span
-    className="StudentInfo__Birthday-sc-8zvgal-2 igEQxQ"
+    className="StudentInfo__Birthday-sc-8zvgal-2 cscvKh"
   >
      s. 
     1.2.1980
