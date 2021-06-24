@@ -10,8 +10,8 @@ on:
         description: "Commit hash to deploy from"
 
 jobs:
-  deploy:
-    name: Deploy
+  deploy_parser:
+    name: Deploy Parser
     environment:
       name: ${{ github.event.inputs.environment }}
     env:
@@ -37,10 +37,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Setup Node 14
+      - name: Setup Node 12
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "12"
 
       - name: Cache Node modules
         uses: actions/cache@v2
@@ -60,10 +60,45 @@ jobs:
           role-duration-seconds: 3600
           role-session-name: LokiDeployment-${{ github.event.inputs.commithash }}
 
-      - name: Deploy backend
+      - name: Deploy parser
         run: |
           cd parser
           make deploy env=$ENV_NAME
+
+  deploy_frontend:
+    name: Deploy Frontend
+    environment:
+      name: ${{ github.event.inputs.environment }}
+    env:
+      ENV_NAME: ${{ github.event.inputs.environment }}
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.commithash }}
+
+      - name: Setup Node 12
+        uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+
+      - name: Cache Node modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Assume role for target environment
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+          role-to-assume: ${{ secrets.DEPLOYMENT_ROLE }}
+          role-duration-seconds: 3600
+          role-session-name: LokiDeployment-${{ github.event.inputs.commithash }}
 
       - name: Deploy frontend
         run: |

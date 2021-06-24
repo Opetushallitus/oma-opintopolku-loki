@@ -29,10 +29,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Setup Node 14
+      - name: Setup Node 12
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "12"
 
       - name: Cache Node modules
         uses: actions/cache@v2
@@ -88,10 +88,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Setup Node 14
+      - name: Setup Node 12
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "12"
 
       - name: Cache Node modules
         uses: actions/cache@v2
@@ -147,10 +147,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Setup Node 14
+      - name: Setup Node 12
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "12"
 
       - name: Cache Node modules
         uses: actions/cache@v2
