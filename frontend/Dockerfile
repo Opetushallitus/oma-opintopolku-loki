@@ -1,6 +1,6 @@
-FROM node:10.10-slim
+FROM node:12-slim
 WORKDIR /opt/app
 COPY package*.json ./
-RUN npm ci --ignore-scripts
+RUN npm clean-install --ignore-scripts
 COPY . .
 ENTRYPOINT ["npm", "run"]
