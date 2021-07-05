@@ -42,16 +42,16 @@ module.exports = {
       }
     ]
   },
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-      filename: "main.js"
+    filename: 'main.js'
   },
   plugins: [
-      new HtmlWebpackPlugin({
-          filename: 'index.html',
-          template: './src/index.html',
-          title: 'Oma opintopolku - tietojeni käyttö'
-      }),
-      new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './src/index.html',
+      title: 'Oma opintopolku - tietojeni käyttö'
+    }),
+    new CleanWebpackPlugin(['dist']),
   ]
 }
