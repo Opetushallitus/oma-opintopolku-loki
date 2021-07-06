@@ -2,15 +2,15 @@
 
 exports[`Organization should render with organization permitted by default, and expand data when button is clicked 1`] = `
 <div
-  class="Expander__ExpanderContainer-fukmjx-0 jCqhtW"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 gpyaKr"
 >
   <button
     aria-pressed="false"
-    class="Expander__ExpanderTitle-fukmjx-2 eoLcom"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 jTlHaj"
   >
     <span
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-fukmjx-1 hpIMkw"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 hSvCBh"
     >
       +
     </span>
@@ -21,22 +21,22 @@ exports[`Organization should render with organization permitted by default, and 
 
 exports[`Organization should render with organization permitted by default, and expand data when button is clicked 2`] = `
 <div
-  class="Expander__ExpanderContainer-fukmjx-0 jCqhtW"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 gpyaKr"
 >
   <button
     aria-pressed="true"
-    class="Expander__ExpanderTitle-fukmjx-2 ggmTkr"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 bVEGba"
   >
     <span
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-fukmjx-1 hpIMkw"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 hSvCBh"
     >
       -
     </span>
     Organisaatio 1
   </button>
   <div
-    class="Expander__ExpandedContents-fukmjx-3 gdRYEd"
+    class="Expander__ExpandedContents-sc-fukmjx-3 dUsxxk"
   >
     <div
       class="OrganizationDetails__Details-sc-4gjwy4-0 kirkY"
@@ -67,14 +67,14 @@ exports[`Organization should render with organization permitted by default, and 
       </a>
     </div>
     <div
-      class="LogEntries__Container-ufvf4x-0 cLaRpB"
+      class="LogEntries__Container-sc-ufvf4x-0 eiShUc"
     >
       <div
-        class="LogEntries__TopRow-ufvf4x-1 cbQMmk"
+        class="LogEntries__TopRow-sc-ufvf4x-1 ireFFl"
       >
         <button
           aria-pressed="false"
-          class="ButtonSmall__TextButton-r8zxw8-0 jsDTeO"
+          class="ButtonSmall__TextButton-sc-r8zxw8-0 grqWAT"
         >
           Näytä tietojen käyttökerrat
         </button>
@@ -86,15 +86,15 @@ exports[`Organization should render with organization permitted by default, and 
 
 exports[`Organization should render with organization permitted by user, and expand data when button is clicked 1`] = `
 <div
-  class="Expander__ExpanderContainer-fukmjx-0 jCqhtW"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 gpyaKr"
 >
   <button
     aria-pressed="false"
-    class="Expander__ExpanderTitle-fukmjx-2 eoLcom"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 jTlHaj"
   >
     <span
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-fukmjx-1 hpIMkw"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 hSvCBh"
     >
       +
     </span>
@@ -105,22 +105,22 @@ exports[`Organization should render with organization permitted by user, and exp
 
 exports[`Organization should render with organization permitted by user, and expand data when button is clicked 2`] = `
 <div
-  class="Expander__ExpanderContainer-fukmjx-0 jCqhtW"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 gpyaKr"
 >
   <button
     aria-pressed="true"
-    class="Expander__ExpanderTitle-fukmjx-2 ggmTkr"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 bVEGba"
   >
     <span
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-fukmjx-1 hpIMkw"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 hSvCBh"
     >
       -
     </span>
     Organisaatio 2
   </button>
   <div
-    class="Expander__ExpandedContents-fukmjx-3 gdRYEd"
+    class="Expander__ExpandedContents-sc-fukmjx-3 dUsxxk"
   >
     <div
       class="OrganizationDetails__Details-sc-4gjwy4-0 kirkY"
@@ -151,14 +151,14 @@ exports[`Organization should render with organization permitted by user, and exp
       </a>
     </div>
     <div
-      class="LogEntries__Container-ufvf4x-0 cLaRpB"
+      class="LogEntries__Container-sc-ufvf4x-0 eiShUc"
     >
       <div
-        class="LogEntries__TopRow-ufvf4x-1 cbQMmk"
+        class="LogEntries__TopRow-sc-ufvf4x-1 ireFFl"
       >
         <button
           aria-pressed="false"
-          class="ButtonSmall__TextButton-r8zxw8-0 jsDTeO"
+          class="ButtonSmall__TextButton-sc-r8zxw8-0 grqWAT"
         >
           Näytä tietojen käyttökerrat
         </button>

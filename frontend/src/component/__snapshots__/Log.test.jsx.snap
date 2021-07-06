@@ -21,7 +21,7 @@ exports[`Log should render with empty log 1`] = `
     </p>
   </div>
   <div
-    className="Footnote__Container-x809r1-0 gBeUmu"
+    className="Footnote__Container-sc-x809r1-0 dKDXLL"
   >
     *
      
@@ -43,7 +43,7 @@ exports[`Log should render with empty log 1`] = `
     .
   </div>
   <div
-    className="Footnote__Container-x809r1-0 gBeUmu"
+    className="Footnote__Container-sc-x809r1-0 dKDXLL"
   >
     **
      
@@ -60,16 +60,16 @@ Array [
     Tietojen käyttäjä**
   </div>,
   <div
-    className="Expander__ExpanderContainer-fukmjx-0 jCqhtW"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 gpyaKr"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-fukmjx-2 eoLcom"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 jTlHaj"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-fukmjx-1 hpIMkw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 hSvCBh"
       >
         +
       </span>
@@ -77,16 +77,16 @@ Array [
     </button>
   </div>,
   <div
-    className="Expander__ExpanderContainer-fukmjx-0 jCqhtW"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 gpyaKr"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-fukmjx-2 eoLcom"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 jTlHaj"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-fukmjx-1 hpIMkw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 hSvCBh"
       >
         +
       </span>
@@ -94,7 +94,7 @@ Array [
     </button>
   </div>,
   <div
-    className="Footnote__Container-x809r1-0 gBeUmu"
+    className="Footnote__Container-sc-x809r1-0 dKDXLL"
   >
     *
      
@@ -116,7 +116,7 @@ Array [
     .
   </div>,
   <div
-    className="Footnote__Container-x809r1-0 gBeUmu"
+    className="Footnote__Container-sc-x809r1-0 dKDXLL"
   >
     **
      
@@ -133,16 +133,16 @@ Array [
     User of data**
   </div>,
   <div
-    className="Expander__ExpanderContainer-fukmjx-0 jCqhtW"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 gpyaKr"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-fukmjx-2 eoLcom"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 jTlHaj"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-fukmjx-1 hpIMkw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 hSvCBh"
       >
         +
       </span>
@@ -150,16 +150,16 @@ Array [
     </button>
   </div>,
   <div
-    className="Expander__ExpanderContainer-fukmjx-0 jCqhtW"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 gpyaKr"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-fukmjx-2 eoLcom"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 jTlHaj"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-fukmjx-1 hpIMkw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 hSvCBh"
       >
         +
       </span>
@@ -167,7 +167,7 @@ Array [
     </button>
   </div>,
   <div
-    className="Footnote__Container-x809r1-0 gBeUmu"
+    className="Footnote__Container-sc-x809r1-0 dKDXLL"
   >
     *
      
@@ -189,7 +189,7 @@ Array [
      if you want to know how the information you have given in joint/separate applications is used.
   </div>,
   <div
-    className="Footnote__Container-x809r1-0 gBeUmu"
+    className="Footnote__Container-sc-x809r1-0 dKDXLL"
   >
     **
      
@@ -206,16 +206,16 @@ Array [
     Uppgiftsanvändare**
   </div>,
   <div
-    className="Expander__ExpanderContainer-fukmjx-0 jCqhtW"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 gpyaKr"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-fukmjx-2 eoLcom"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 jTlHaj"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-fukmjx-1 hpIMkw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 hSvCBh"
       >
         +
       </span>
@@ -223,16 +223,16 @@ Array [
     </button>
   </div>,
   <div
-    className="Expander__ExpanderContainer-fukmjx-0 jCqhtW"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 gpyaKr"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-fukmjx-2 eoLcom"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 jTlHaj"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-fukmjx-1 hpIMkw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 hSvCBh"
       >
         +
       </span>
@@ -240,7 +240,7 @@ Array [
     </button>
   </div>,
   <div
-    className="Footnote__Container-x809r1-0 gBeUmu"
+    className="Footnote__Container-sc-x809r1-0 dKDXLL"
   >
     *
      
@@ -262,7 +262,7 @@ Array [
      får du information om grunderna för användning av personuppgifter i ansökningarna och hur de kan överlåtas.
   </div>,
   <div
-    className="Footnote__Container-x809r1-0 gBeUmu"
+    className="Footnote__Container-sc-x809r1-0 dKDXLL"
   >
     **
      
@@ -279,16 +279,16 @@ Array [
     User of data**
   </div>,
   <div
-    className="Expander__ExpanderContainer-fukmjx-0 jCqhtW"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 gpyaKr"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-fukmjx-2 eoLcom"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 jTlHaj"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-fukmjx-1 hpIMkw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 hSvCBh"
       >
         +
       </span>
@@ -296,7 +296,7 @@ Array [
     </button>
   </div>,
   <div
-    className="Footnote__Container-x809r1-0 gBeUmu"
+    className="Footnote__Container-sc-x809r1-0 dKDXLL"
   >
     *
      
@@ -318,7 +318,7 @@ Array [
      if you want to know how the information you have given in joint/separate applications is used.
   </div>,
   <div
-    className="Footnote__Container-x809r1-0 gBeUmu"
+    className="Footnote__Container-sc-x809r1-0 dKDXLL"
   >
     **
      
