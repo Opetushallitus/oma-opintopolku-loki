@@ -2,14 +2,14 @@
 
 exports[`LogEntries should render with empty timestamp list 1`] = `
 <div
-  className="LogEntries__Container-ufvf4x-0 cLaRpB"
+  className="LogEntries__Container-sc-ufvf4x-0 eiShUc"
 >
   <div
-    className="LogEntries__TopRow-ufvf4x-1 cbQMmk"
+    className="LogEntries__TopRow-sc-ufvf4x-1 ireFFl"
   >
     <button
       aria-pressed={false}
-      className="ButtonSmall__TextButton-r8zxw8-0 jsDTeO"
+      className="ButtonSmall__TextButton-sc-r8zxw8-0 grqWAT"
       onClick={[Function]}
     >
       Näytä tietojen käyttökerrat
@@ -20,14 +20,14 @@ exports[`LogEntries should render with empty timestamp list 1`] = `
 
 exports[`LogEntries should render with non-empty timestamp list, and toggle expansion of timestamps when link is clicked 1`] = `
 <div
-  class="LogEntries__Container-ufvf4x-0 cLaRpB"
+  class="LogEntries__Container-sc-ufvf4x-0 eiShUc"
 >
   <div
-    class="LogEntries__TopRow-ufvf4x-1 cbQMmk"
+    class="LogEntries__TopRow-sc-ufvf4x-1 ireFFl"
   >
     <button
       aria-pressed="false"
-      class="ButtonSmall__TextButton-r8zxw8-0 jsDTeO"
+      class="ButtonSmall__TextButton-sc-r8zxw8-0 grqWAT"
     >
       Näytä tietojen käyttökerrat
     </button>
@@ -37,14 +37,14 @@ exports[`LogEntries should render with non-empty timestamp list, and toggle expa
 
 exports[`LogEntries should render with non-empty timestamp list, and toggle expansion of timestamps when link is clicked 2`] = `
 <div
-  class="LogEntries__Container-ufvf4x-0 fLEcVH"
+  class="LogEntries__Container-sc-ufvf4x-0 ccDISG"
 >
   <div
-    class="LogEntries__TopRow-ufvf4x-1 cbQMmk"
+    class="LogEntries__TopRow-sc-ufvf4x-1 ireFFl"
   >
     <button
       aria-pressed="true"
-      class="ButtonSmall__TextButton-r8zxw8-0 jsDTeO"
+      class="ButtonSmall__TextButton-sc-r8zxw8-0 grqWAT"
     >
       Piilota käyttökerrat
     </button>
@@ -75,14 +75,14 @@ exports[`LogEntries should render with non-empty timestamp list, and toggle expa
 
 exports[`LogEntries should render with non-empty timestamp list, and toggle expansion of timestamps when link is clicked 3`] = `
 <div
-  class="LogEntries__Container-ufvf4x-0 cLaRpB"
+  class="LogEntries__Container-sc-ufvf4x-0 eiShUc"
 >
   <div
-    class="LogEntries__TopRow-ufvf4x-1 cbQMmk"
+    class="LogEntries__TopRow-sc-ufvf4x-1 ireFFl"
   >
     <button
       aria-pressed="false"
-      class="ButtonSmall__TextButton-r8zxw8-0 jsDTeO"
+      class="ButtonSmall__TextButton-sc-r8zxw8-0 grqWAT"
     >
       Näytä tietojen käyttökerrat
     </button>
@@ -92,14 +92,14 @@ exports[`LogEntries should render with non-empty timestamp list, and toggle expa
 
 exports[`LogEntries should render with timestamp list of over 10 entries, expanding 10 timestamps at a time 1`] = `
 <div
-  class="LogEntries__Container-ufvf4x-0 fLEcVH"
+  class="LogEntries__Container-sc-ufvf4x-0 ccDISG"
 >
   <div
-    class="LogEntries__TopRow-ufvf4x-1 cbQMmk"
+    class="LogEntries__TopRow-sc-ufvf4x-1 ireFFl"
   >
     <button
       aria-pressed="true"
-      class="ButtonSmall__TextButton-r8zxw8-0 jsDTeO"
+      class="ButtonSmall__TextButton-sc-r8zxw8-0 grqWAT"
     >
       Piilota käyttökerrat
     </button>
@@ -166,10 +166,10 @@ exports[`LogEntries should render with timestamp list of over 10 entries, expand
     </tbody>
   </table>
   <div
-    class="LogEntries__BottomRow-ufvf4x-2 jlhkim"
+    class="LogEntries__BottomRow-sc-ufvf4x-2 kVThCr"
   >
     <button
-      class="ButtonSmall__TextButton-r8zxw8-0 jsDTeO"
+      class="ButtonSmall__TextButton-sc-r8zxw8-0 grqWAT"
     >
       Näytä lisää käyttökertoja
     </button>
@@ -179,14 +179,14 @@ exports[`LogEntries should render with timestamp list of over 10 entries, expand
 
 exports[`LogEntries should render with timestamp list of over 10 entries, expanding 10 timestamps at a time 2`] = `
 <div
-  class="LogEntries__Container-ufvf4x-0 fLEcVH"
+  class="LogEntries__Container-sc-ufvf4x-0 ccDISG"
 >
   <div
-    class="LogEntries__TopRow-ufvf4x-1 cbQMmk"
+    class="LogEntries__TopRow-sc-ufvf4x-1 ireFFl"
   >
     <button
       aria-pressed="true"
-      class="ButtonSmall__TextButton-r8zxw8-0 jsDTeO"
+      class="ButtonSmall__TextButton-sc-r8zxw8-0 grqWAT"
     >
       Piilota käyttökerrat
     </button>

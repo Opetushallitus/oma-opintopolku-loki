@@ -1,6 +1,6 @@
+const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   resolve: {
@@ -44,7 +44,9 @@ module.exports = {
   },
   entry: './src/index.js',
   output: {
-    filename: 'main.js'
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -52,6 +54,8 @@ module.exports = {
       template: './src/index.html',
       title: 'Oma opintopolku - tietojeni käyttö'
     }),
-    new CleanWebpackPlugin(['dist']),
+    new webpack.EnvironmentPlugin(
+      { RAAMIT_DEV_PROXY_TARGET: 'https://testiopintopolku.fi' }
+    )
   ]
 }
