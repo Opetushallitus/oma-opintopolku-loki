@@ -2,8 +2,6 @@
 
 Tarjoaa näkyvyyttä siihen kuka on katsonut käyttäjän omia tietoja.
 
-[![Build Status](https://travis-ci.org/Opetushallitus/oma-opintopolku-loki.svg?branch=master)](https://travis-ci.org/Opetushallitus/oma-opintopolku-loki)
-
 ![Arkkitehtuuri](/docs/architecture.png)
 
 ## Kansiohierarkia
