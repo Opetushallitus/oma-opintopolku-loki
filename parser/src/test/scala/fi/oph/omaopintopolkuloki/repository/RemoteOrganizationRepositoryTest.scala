@@ -3,14 +3,15 @@ package fi.oph.omaopintopolkuloki.repository
 import fi.oph.omaopintopolkuloki.http.HttpClient
 import org.http4s.Uri
 import org.scalamock.scalatest.MockFactory
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 import scalacache.Flags
 import scalaz.concurrent.Task
 
 import scala.io.Source
 
 
-class RemoteOrganizationRepositoryTest extends FunSpec with Matchers with MockFactory {
+class RemoteOrganizationRepositoryTest extends AnyFunSpec with Matchers with MockFactory {
 
   implicit val flags: Flags = Flags(readsEnabled = false, writesEnabled = false) // no cache for tests
 

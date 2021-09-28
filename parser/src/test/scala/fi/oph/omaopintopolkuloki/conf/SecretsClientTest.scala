@@ -3,9 +3,10 @@ package fi.oph.omaopintopolkuloki.conf
 import com.amazonaws.services.secretsmanager.AWSSecretsManager
 import com.amazonaws.services.secretsmanager.model.GetSecretValueResult
 import org.scalamock.scalatest.MockFactory
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class SecretsClientTest extends FunSpec with Matchers with MockFactory {
+class SecretsClientTest extends AnyFunSpec with Matchers with MockFactory {
   describe("Secrets Client") {
 
     it("Can extract username and password") {
