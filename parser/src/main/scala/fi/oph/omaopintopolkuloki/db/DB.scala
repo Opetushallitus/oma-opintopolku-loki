@@ -34,7 +34,7 @@ object DB {
   }
 
   private def deleteTable() = {
-    if (!dbHost.contains("localhost")) throw new RuntimeException(s"Will not delete remote database $dbHost")
+    if (!(dbHost.contains("localhost") || dbHost.contains("dockerhost"))) throw new RuntimeException(s"Will not delete remote database $dbHost")
 
     try {
       dynamo.deleteTable(new DeleteTableRequest("AuditLog"))
