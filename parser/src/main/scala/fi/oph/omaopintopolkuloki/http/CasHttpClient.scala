@@ -1,5 +1,6 @@
 package fi.oph.omaopintopolkuloki.http
 
+import cats.effect.IO
 import fi.oph.omaopintopolkuloki.conf.Configuration
 import fi.vm.sade.utils.cas.{CasAuthenticatingClient, CasClient, CasParams}
 import org.http4s.client._
@@ -9,9 +10,9 @@ object CasHttpClient {
 
   val sessionCookieName = "JSESSIONID"
 
-  def apply(httpClient: Client, scheme_authority: String, params: CasParams = Params.permission) = {
+  def apply(httpClient: Client[IO], schemeAuthority: String, params: CasParams = Params.permission): Client[IO] = {
     CasAuthenticatingClient(
-      new CasClient(scheme_authority, httpClient, AuditLogCallerId.code),
+      new CasClient(schemeAuthority, httpClient, AuditLogCallerId.code),
       params,
       httpClient,
       AuditLogCallerId.code,

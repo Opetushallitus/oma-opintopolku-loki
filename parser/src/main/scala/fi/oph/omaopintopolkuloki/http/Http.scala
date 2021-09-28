@@ -1,43 +1,47 @@
 package fi.oph.omaopintopolkuloki.http
 
+import cats.effect.IO
+import cats.effect.unsafe.IORuntime
 import fi.oph.omaopintopolkuloki.conf.Configuration._
-import org.http4s.client.{Client, blaze}
-import org.http4s.{Header, Request, Uri}
-import scalaz.concurrent.Task
+import org.http4s.blaze.client.BlazeClientBuilder
+import org.http4s.client.Client
+import org.http4s.{Request, Uri}
+
+import scala.concurrent.ExecutionContext.global
 
 trait HttpClient {
-  type Decode[ResultType] = (Int, String, Request) => ResultType
+  type Decode[ResultType] = (Int, String, Request[IO]) => ResultType
 
-  def get[ResultType](uri: Uri)(decode: Decode[ResultType]): Task[ResultType]
+  def get[ResultType](uri: Uri)(decode: Decode[ResultType]): IO[ResultType]
 }
 
 object Http {
+  implicit private val runtime: IORuntime = cats.effect.unsafe.IORuntime.global
+
   def apply(useCas: Boolean = false): HttpClient = {
-    val blazeHttpClient = blaze.PooledHttp1Client(maxTotalConnections = maxRequestThreads)
+    val client = BlazeClientBuilder[IO](global)
+      .withMaxTotalConnections(maxRequestThreads)
+      .allocated
+      .map(_._1)
+      .unsafeRunSync()
 
     if (useCas) {
-      new Http(CasHttpClient(blazeHttpClient, baseURI.renderString))
+      new Http(CasHttpClient(client, baseURI.renderString))
     } else {
-      new Http(blazeHttpClient)
+      new Http(client)
     }
   }
 }
 
-private class Http(client: Client) extends HttpClient {
+private class Http(client: Client[IO]) extends HttpClient {
 
-  def get[ResultType](uri: Uri)(decode: Decode[ResultType]): Task[ResultType] = {
-    processRequest(Request(uri = uri))(decode)
+  def get[ResultType](uri: Uri)(decode: Decode[ResultType]): IO[ResultType] = {
+    processRequest(Request[IO](uri = uri))(decode)
   }
 
-  private def processRequest[ResultType](request: Request)(decoder: (Int, String, Request) => ResultType): Task[ResultType] = {
-    client.fetch(addTrackingHeader(request)) { response =>
-      response.as[String].map { text => // Might be able to optimize by not turning into String here
-        decoder(response.status.code, text, request)
-      }
+  private def processRequest[ResultType](request: Request[IO])(decoder: (Int, String, Request[IO]) => ResultType): IO[ResultType] = {
+    client.run(request).use { response =>
+      response.as[String].map(text => decoder(response.status.code, text, request))
     }
   }
-
-  private def addTrackingHeader(request: Request) = request.copy(headers = request.headers.put(
-    Header("Caller-Id", AuditLogCallerId.code)
-  ))
 }

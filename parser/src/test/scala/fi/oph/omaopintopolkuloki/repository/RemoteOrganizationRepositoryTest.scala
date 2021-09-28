@@ -1,12 +1,12 @@
 package fi.oph.omaopintopolkuloki.repository
 
+import cats.effect.IO
 import fi.oph.omaopintopolkuloki.http.HttpClient
 import org.http4s.Uri
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 import scalacache.Flags
-import scalaz.concurrent.Task
 
 import scala.io.Source
 
@@ -20,8 +20,8 @@ class RemoteOrganizationRepositoryTest extends AnyFunSpec with Matchers with Moc
     it("Should be able to get organizations for user") {
       val repository = new RemoteOrganizationRepository {
         override protected lazy val casHttpClient: HttpClient = new HttpClient {
-          override def get[ResultType](uri: Uri)(decode: Decode[ResultType]): Task[ResultType] = {
-            Task.now[ResultType](decode(200, Source.fromResource("permissions.json").mkString, null))
+          override def get[ResultType](uri: Uri)(decode: Decode[ResultType]): IO[ResultType] = {
+            IO.pure[ResultType](decode(200, Source.fromResource("permissions.json").mkString, null))
           }
         }
       }
