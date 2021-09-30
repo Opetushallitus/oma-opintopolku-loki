@@ -1,10 +1,11 @@
 package fi.oph.omaopintopolkuloki.log
 
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
 import scala.io.Source
 
-class EntryParserTest extends FunSpec with Matchers {
+class EntryParserTest extends AnyFunSpec with Matchers {
   describe("An EntryParser") {
 
     it("Should be able to parse a log entry") {

@@ -1,15 +1,14 @@
 package fi.oph.omaopintopolkuloki.conf
 
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
-import com.amazonaws.services.secretsmanager.{AWSSecretsManager, AWSSecretsManagerClientBuilder}
 import com.amazonaws.services.secretsmanager.model.GetSecretValueRequest
+import com.amazonaws.services.secretsmanager.{AWSSecretsManager, AWSSecretsManagerClientBuilder}
 import com.typesafe.config.ConfigFactory
 import fi.oph.omaopintopolkuloki.conf.Configuration.{awsRegion, secretsEndpoint, secretsKey}
 import org.http4s.Uri
 import org.http4s.Uri.{Authority, RegName}
-import org.http4s.util.CaseInsensitiveString
-import org.json4s.{DefaultFormats, Formats}
 import org.json4s.jackson.JsonMethods.parse
+import org.json4s.{DefaultFormats, Formats}
 import org.slf4j.LoggerFactory
 
 import scala.concurrent.duration.{Duration, FiniteDuration}
@@ -33,15 +32,15 @@ object Configuration {
   lazy val permissions_path: String = config.getString("auditlog.backend.path.permissions")
 
   lazy val baseURI = new Uri(
-    scheme = Some(CaseInsensitiveString(config.getString("auditlog.backend.scheme"))),
+    scheme = Some(Uri.Scheme.unsafeFromString(config.getString("auditlog.backend.scheme"))),
     authority = Some(Authority(host = RegName(config.getString("auditlog.backend.authority"))))
   )
 
   lazy val cacheSize: Int = config.getInt("auditlog.cache.size")
-  lazy val cacheTTL: Duration = config.getDuration("auditlog.cache.ttl")
+  lazy val cacheTTL: FiniteDuration = config.getDuration("auditlog.cache.ttl")
 
   lazy val maxRequestThreads: Int = config.getInt("auditlog.http.maxRequestThreads")
-  lazy val requestTimeout: Duration = config.getDuration("auditlog.http.timeout")
+  lazy val requestTimeout: FiniteDuration = config.getDuration("auditlog.http.timeout")
 
   lazy val awsRegion: String = config.getString("auditlog.aws.region")
 

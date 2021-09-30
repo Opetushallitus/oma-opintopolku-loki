@@ -21,10 +21,10 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <encoding>UTF-8</encoding>
-    <scala.version>2.12.13</scala.version>
+    <scala.version>2.12.15</scala.version>
     <scala.compat.version>2.12</scala.compat.version>
     <ch.qos.logback.contrib.version>0.1.5</ch.qos.logback.contrib.version>
-    <http4s.version>0.16.6</http4s.version> <!-- 0.17.0 requires code changes -->
+    <http4s.version>0.23.4</http4s.version>
     <org.json4s.version>3.6.11</org.json4s.version>
     <com.amazonaws.version>1.12.47</com.amazonaws.version>
     <spec2.version>4.10.6</spec2.version>
@@ -36,7 +36,7 @@
     <dependency>
       <groupId>fi.vm.sade</groupId>
       <artifactId>scala-cas_2.12</artifactId>
-      <version>2.0.0-SNAPSHOT</version>
+      <version>3.0.1-SNAPSHOT</version>
       <exclusions>
         <exclusion>
           <groupId>org.http4s</groupId>

@@ -1,21 +1,22 @@
 package fi.oph.omaopintopolkuloki.repository
 
+import cats.effect.IO
+import cats.effect.unsafe.IORuntime
+import com.google.common.cache.CacheBuilder
 import fi.oph.omaopintopolkuloki.conf.Configuration._
-import fi.oph.omaopintopolkuloki.http.Http
+import fi.oph.omaopintopolkuloki.http.{Http, HttpClient}
 import org.http4s.{Query, Request, Uri}
 import org.json4s._
 import org.json4s.jackson.JsonMethods.parse
-import org.slf4j.LoggerFactory
 import scalacache._
+import scalacache.guava._
 import scalacache.memoization._
 import scalacache.modes.sync._
-import scalacache.guava._
-import com.google.common.cache.CacheBuilder
-import scalacache.serialization.binary._
 
 import scala.language.implicitConversions
 
 class RemoteOrganizationRepository {
+  implicit val runtime: IORuntime = cats.effect.unsafe.IORuntime.global
 
   implicit def toQuery(params: Map[String, String]): Query = Query.fromMap(params.map{ case (k,v) => (k, Seq(v)) })
 
@@ -27,18 +28,25 @@ class RemoteOrganizationRepository {
   private val underlyingOrganizationCache = CacheBuilder.newBuilder().maximumSize(cacheSize).build[String, Entry[Array[Organization]]]
   implicit private val organizationCache: Cache[Array[Organization]] = GuavaCache(underlyingOrganizationCache)
 
-  private def organizationURL(oid: String): Uri = baseURI.copy(path = organization_path + oid, query = Map("includeImage" -> "false"))
-  private def permissionURL(oid: String): Uri = baseURI.copy(path = permissions_path, query = Map("oidHenkilo" -> oid))
+  private def organizationURL(oid: String): Uri = baseURI.copy(
+    path = Uri.Path.unsafeFromString(organization_path + oid),
+    query = Map("includeImage" -> "false")
+  )
+  private def permissionURL(oid: String): Uri = baseURI.copy(
+    path = Uri.Path.unsafeFromString(permissions_path),
+    query = Map("oidHenkilo" -> oid)
+  )
 
-  protected lazy val casHttpClient = Http(useCas = true)
-  protected lazy val httpClient = Http()
-
-  private val logger = LoggerFactory.getLogger(this.getClass)
+  protected lazy val casHttpClient: HttpClient = Http(useCas = true)
+  protected lazy val httpClient: HttpClient = Http()
 
   def getOrganizationIdsForUser(oid: String)(implicit flags: Flags): Array[OrganizationPermission] = memoizeSync(Some(cacheTTL)) {
 
-    val users: Array[User] = casHttpClient.get(permissionURL(oid))(parseResponse[Array[User]])
-       .runFor(requestTimeout)
+    val users: Array[User] =
+      casHttpClient
+        .get(permissionURL(oid))(parseResponse[Array[User]])
+        .timeout(requestTimeout)
+        .unsafeRunSync()
 
     users.flatMap(user => user.organisaatiot)
   }
@@ -47,12 +55,15 @@ class RemoteOrganizationRepository {
 
     val organizations = getOrganizationIdsForUser(oid)
 
-    organizations.map(org => httpClient.get(organizationURL(org.organisaatioOid))(parseResponse[Organization])
-      .runFor(requestTimeout)
+    organizations.map(org =>
+      httpClient
+        .get(organizationURL(org.organisaatioOid))(parseResponse[Organization])
+        .timeout(requestTimeout)
+        .unsafeRunSync()
     )
   }
 
-  private def parseResponse[T](status: Int, body: String, request: Request)(implicit m: Manifest[T]): T = {
+  private def parseResponse[T](status: Int, body: String, request: Request[IO])(implicit m: Manifest[T]): T = {
     if (status != 200) {
       throw new RuntimeException(s"Request ${request.uri.renderString} failed with with status ${status}: ${body.take(40)}")
     }
