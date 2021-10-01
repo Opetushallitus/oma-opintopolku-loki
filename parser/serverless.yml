@@ -17,7 +17,7 @@ functions:
     description: Function that reads Koski audit log entries from SQS, processes them and stores to DynamoDB
     name: oma-opintopolku-loki-parser
     role: ${ssm:/oma-opintopolku-loki/parser/role/arn}
-    memorySize: 512
+    memorySize: 1024
     timeout: 900
     handler: fi.oph.omaopintopolkuloki.LambdaLogParserHandler
     events:
