@@ -26,7 +26,7 @@ object Http {
       .unsafeRunSync()
 
     if (useCas) {
-      new Http(CasHttpClient(client, baseURI.renderString))
+      new Http(CasHttpClient(client, baseURI.renderString + "/cas"))
     } else {
       new Http(client)
     }
