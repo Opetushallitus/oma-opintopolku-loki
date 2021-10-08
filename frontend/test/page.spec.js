@@ -1,4 +1,6 @@
-const BaseUrl = `http://localhost:${process.env.TEST_PORT}/`
+const jestPuppeteerConfig = require('../jest-puppeteer.config')
+
+const BaseUrl = `http://localhost:${jestPuppeteerConfig.server.port}/`
 
 describe('Oma Opintopolku -loki', () => {
   beforeAll(async () => {
