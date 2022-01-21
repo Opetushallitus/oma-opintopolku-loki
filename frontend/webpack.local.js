@@ -4,7 +4,6 @@ const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 const path = require('path')
-const argv = require('yargs').argv
 
 const raamitProxy = {
   '/oppija-raamit': {
@@ -40,7 +39,7 @@ module.exports = merge(common, {
     contentBase: path.resolve(__dirname, 'dist'),
     compress: true,
     port: 8080,
-    proxy: argv.proxyOppijaRaamit === 'true' ? { ...raamitProxy, ...apiProxy } : apiProxy
+    proxy: process.env.PROXY_OPPIJA_RAAMIT === 'true' ? { ...raamitProxy, ...apiProxy } : apiProxy
   },
   devtool: 'eval-source-map'
 })

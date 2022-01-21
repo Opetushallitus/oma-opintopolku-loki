@@ -16,6 +16,7 @@
     "build:prod": "./node_modules/.bin/webpack --config webpack.prod.js",
     "build:local": "./node_modules/.bin/webpack --config webpack.local.js",
     "start:local": "npm run mock-api & ./node_modules/.bin/webpack serve --config webpack.local.js",
+    "start:local:nologin": "webpack serve --config webpack.local.js",
     "mock-api": "./node_modules/.bin/json-server ./mock/api.json",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx src test",
     "test": "npm run build:prod && JEST_ENV=jest-environment-puppeteer ./node_modules/.bin/jest --testPathPattern=page.spec.js",
@@ -62,8 +63,7 @@
     "webpack": "5.42.1",
     "webpack-cli": "4.7.2",
     "webpack-dev-server": "3.11.2",
-    "webpack-merge": "5.8.0",
-    "yargs": "17.0.1"
+    "webpack-merge": "5.8.0"
   },
   "dependencies": {
     "@babel/runtime": "7.15.4",

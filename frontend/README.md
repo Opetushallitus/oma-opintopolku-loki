@@ -30,14 +30,20 @@ Käynnistä sovellus kehitysmoodissa, jolloin se käyttää `mock`-hakemistossa 
 npm run start:local
 ```
 
+Vaihtoehtoisesti voit käynnistää sovelluksen kehitysmoodissa ilman kirjautunutta mock-käyttäjää komennolla:
+
+```shell
+npm run start:local:nologin
+```
+
 Nyt voit mennä selaimella osoitteeseen http://localhost:8080/ .
 
 Vaihtoehtoisesti voit tehdä lokaalin dev-buildin (`npm run build:local`) ja tarjoilla `dist`-hakemistossa olevat tiedostot jollain toisella HTTP-palvelinsovelluksella.
 
-Saat [Oppija-raamit](https://github.com/Opetushallitus/oppija-raamit) käyttöön `proxy-oppija-raamit=true` -parametrin avulla seuraavasti:
+Saat [Oppija-raamit](https://github.com/Opetushallitus/oppija-raamit) käyttöön `PROXY_OPPIJA_RAAMIT` -ympäristömuuttujan avulla seuraavasti:
 
 ```shell
-npm run start:local -- --proxy-oppija-raamit=true
+PROXY_OPPIJA_RAAMIT=true npm run start:local
 ```
 
 ## Testien ajaminen
