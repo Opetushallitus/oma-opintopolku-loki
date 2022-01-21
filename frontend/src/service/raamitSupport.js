@@ -16,6 +16,6 @@ window.Service = {
     .then(user => ({
       name: parseUserName(user)
     })),
-  login: () => { throw new Error('Not implemented') },
-  logout: () => { window.location.assign('/cas-oppija/logout?service=/oma-opintopolku/') }
+  login: () => { window.location.assign('/oma-opintopolku/authenticate') },
+  logout: () => { window.location.assign('/cas-oppija/logout') }
 }
