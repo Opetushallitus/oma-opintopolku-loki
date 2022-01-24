@@ -25,9 +25,15 @@ describe('RaamitSupport', () => {
     })
   })
 
-  it('should not implement login', () => {
+  it('should forward to Opintopolku login', () => {
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: { assign: jest.fn() }
+    })
     const service = global.Service
-    expect(service.login).toThrow()
+    service.login()
+    expect(window.location.assign).toHaveBeenCalledWith('/oma-opintopolku/authenticate')
+    window.location.assign.mockRestore()
   })
 
   it('should forward to logout url', () => {
@@ -37,7 +43,7 @@ describe('RaamitSupport', () => {
     })
     const service = global.Service
     service.logout()
-    expect(window.location.assign).toHaveBeenCalledWith('/cas-oppija/logout?service=/oma-opintopolku/')
+    expect(window.location.assign).toHaveBeenCalledWith('/cas-oppija/logout')
     window.location.assign.mockRestore()
   })
 })
