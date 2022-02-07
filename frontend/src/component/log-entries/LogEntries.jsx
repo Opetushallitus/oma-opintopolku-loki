@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import { compose, withHandlers, withState } from 'recompose'
 import styled from 'styled-components'
 import { descend, identity, sort } from 'ramda'
 import t from 'util/translate'
@@ -46,16 +45,13 @@ const BottomRow = styled.div`
   margin-left: ${MARGIN};
 `
 
-const addListBehaviors = compose(
-  withState('showDates', 'setShowDates', false),
-  withState('numDatesShown', 'setNumDatesShown', NUM_INITIAL_DATES),
-  withHandlers({
-    toggleShowDates: ({ setShowDates }) => () => setShowDates(show => !show),
-    showMoreDates: ({ setNumDatesShown }) => () => setNumDatesShown(n => n + NUM_SHOW_MORE_DATES)
-  })
-)
+const LogEntries = ({ timestamps }) => {
+  const [showDates, setShowDates] = useState(false)
+  const toggleShowDates = useCallback(() => { setShowDates(!showDates) }, [showDates])
 
-const LogEntries = addListBehaviors(({ timestamps, showDates, toggleShowDates, numDatesShown, showMoreDates }) => {
+  const [numDatesShown, setNumDatesShown] = useState(NUM_INITIAL_DATES)
+  const showMoreDates = useCallback(() => { setNumDatesShown(numDatesShown + NUM_SHOW_MORE_DATES) }, [numDatesShown])
+
   const hasMoreEntries = numDatesShown < timestamps.length
   const sortedTimestamps = sort(descend(identity), timestamps)
   const dates = sortedTimestamps.map(isoStringToDate)
@@ -87,7 +83,7 @@ const LogEntries = addListBehaviors(({ timestamps, showDates, toggleShowDates, n
       )}
     </Container>
   )
-})
+}
 
 LogEntries.propTypes = {
   timestamps: PropTypes.array.isRequired
