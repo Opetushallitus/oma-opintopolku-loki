@@ -2,7 +2,7 @@
 
 exports[`Log should render alert in case of error in query 1`] = `
 <strong
-  className="typography__AlertText-sc-1yq3b4j-4 jtexIl"
+  className="typography__AlertText-sc-1yq3b4j-4 fMGdfT"
 >
   Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.
 </strong>
@@ -11,7 +11,7 @@ exports[`Log should render alert in case of error in query 1`] = `
 exports[`Log should render with empty log 1`] = `
 <div>
   <div
-    className="Log__NotificationText-sc-1asjtoe-0 XCMdZ"
+    className="Log__NotificationText-sc-1asjtoe-0 jKcnLz"
   >
     <p>
       Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.
@@ -21,21 +21,21 @@ exports[`Log should render with empty log 1`] = `
     </p>
   </div>
   <div
-    className="Footnote__Container-sc-x809r1-0 bUPHsG"
+    className="Footnote__Container-sc-x809r1-0 jMoeaA"
   >
     *
      
     Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
     <a
-      className="typography__Link-sc-1yq3b4j-5 cJIYQp"
+      className="typography__Link-sc-1yq3b4j-5 kZGoMD"
       href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
       target="_blank"
     >
       <test-file-stub
-        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 dRZGgw"
+        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 ciWFku"
       />
       <b
-        className="typography__Bold-sc-1yq3b4j-6 hlMPgm"
+        className="typography__Bold-sc-1yq3b4j-6 ifvJbY"
       >
         tietosuojaselosteesta
       </b>
@@ -43,7 +43,7 @@ exports[`Log should render with empty log 1`] = `
     .
   </div>
   <div
-    className="Footnote__Container-sc-x809r1-0 bUPHsG"
+    className="Footnote__Container-sc-x809r1-0 jMoeaA"
   >
     **
      
@@ -55,21 +55,21 @@ exports[`Log should render with empty log 1`] = `
 exports[`Log should render with non-empty log 1`] = `
 Array [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 BvtnH"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 fSDZhB"
   >
     Tietojen käyttäjä**
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 fExEJK"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 dZKtkQ"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 ekUJgW"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 ijbGlE"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 cWphqs"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 cdPPnm"
       >
         +
       </span>
@@ -77,16 +77,16 @@ Array [
     </button>
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 fExEJK"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 dZKtkQ"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 ekUJgW"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 ijbGlE"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 cWphqs"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 cdPPnm"
       >
         +
       </span>
@@ -94,21 +94,21 @@ Array [
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 bUPHsG"
+    className="Footnote__Container-sc-x809r1-0 jMoeaA"
   >
     *
      
     Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
     <a
-      className="typography__Link-sc-1yq3b4j-5 cJIYQp"
+      className="typography__Link-sc-1yq3b4j-5 kZGoMD"
       href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
       target="_blank"
     >
       <test-file-stub
-        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 dRZGgw"
+        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 ciWFku"
       />
       <b
-        className="typography__Bold-sc-1yq3b4j-6 hlMPgm"
+        className="typography__Bold-sc-1yq3b4j-6 ifvJbY"
       >
         tietosuojaselosteesta
       </b>
@@ -116,7 +116,7 @@ Array [
     .
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 bUPHsG"
+    className="Footnote__Container-sc-x809r1-0 jMoeaA"
   >
     **
      
@@ -128,21 +128,21 @@ Array [
 exports[`Log should render with non-empty log and language en 1`] = `
 Array [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 BvtnH"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 fSDZhB"
   >
     User of data**
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 fExEJK"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 dZKtkQ"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 ekUJgW"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 ijbGlE"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 cWphqs"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 cdPPnm"
       >
         +
       </span>
@@ -150,16 +150,16 @@ Array [
     </button>
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 fExEJK"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 dZKtkQ"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 ekUJgW"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 ijbGlE"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 cWphqs"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 cdPPnm"
       >
         +
       </span>
@@ -167,21 +167,21 @@ Array [
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 bUPHsG"
+    className="Footnote__Container-sc-x809r1-0 jMoeaA"
   >
     *
      
     This applies only to study-related information. Please check the 
     <a
-      className="typography__Link-sc-1yq3b4j-5 cJIYQp"
+      className="typography__Link-sc-1yq3b4j-5 kZGoMD"
       href="https://studyinfo.fi/wp2/en/register/"
       target="_blank"
     >
       <test-file-stub
-        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 dRZGgw"
+        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 ciWFku"
       />
       <b
-        className="typography__Bold-sc-1yq3b4j-6 hlMPgm"
+        className="typography__Bold-sc-1yq3b4j-6 ifvJbY"
       >
         register description
       </b>
@@ -189,7 +189,7 @@ Array [
      if you want to know how the information you have given in joint/separate applications is used.
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 bUPHsG"
+    className="Footnote__Container-sc-x809r1-0 jMoeaA"
   >
     **
      
@@ -201,21 +201,21 @@ Array [
 exports[`Log should render with non-empty log and language sv 1`] = `
 Array [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 BvtnH"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 fSDZhB"
   >
     Uppgiftsanvändare**
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 fExEJK"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 dZKtkQ"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 ekUJgW"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 ijbGlE"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 cWphqs"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 cdPPnm"
       >
         +
       </span>
@@ -223,16 +223,16 @@ Array [
     </button>
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 fExEJK"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 dZKtkQ"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 ekUJgW"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 ijbGlE"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 cWphqs"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 cdPPnm"
       >
         +
       </span>
@@ -240,21 +240,21 @@ Array [
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 bUPHsG"
+    className="Footnote__Container-sc-x809r1-0 jMoeaA"
   >
     *
      
     Gäller studieuppgifter, dvs. inte uppgifter som ingår i ansökningar. I 
     <a
-      className="typography__Link-sc-1yq3b4j-5 cJIYQp"
+      className="typography__Link-sc-1yq3b4j-5 kZGoMD"
       href="https://studieinfo.fi/wp/sv/dataskyddsbeskrivning/"
       target="_blank"
     >
       <test-file-stub
-        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 dRZGgw"
+        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 ciWFku"
       />
       <b
-        className="typography__Bold-sc-1yq3b4j-6 hlMPgm"
+        className="typography__Bold-sc-1yq3b4j-6 ifvJbY"
       >
         dataskyddsbeskrivningen
       </b>
@@ -262,7 +262,7 @@ Array [
      får du information om grunderna för användning av personuppgifter i ansökningarna och hur de kan överlåtas.
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 bUPHsG"
+    className="Footnote__Container-sc-x809r1-0 jMoeaA"
   >
     **
      
@@ -274,21 +274,21 @@ Array [
 exports[`Log should render with non-empty log and organization with no English name 1`] = `
 Array [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 BvtnH"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 fSDZhB"
   >
     User of data**
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 fExEJK"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 dZKtkQ"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 ekUJgW"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 ijbGlE"
       onClick={[Function]}
     >
       <span
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 cWphqs"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 cdPPnm"
       >
         +
       </span>
@@ -296,21 +296,21 @@ Array [
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 bUPHsG"
+    className="Footnote__Container-sc-x809r1-0 jMoeaA"
   >
     *
      
     This applies only to study-related information. Please check the 
     <a
-      className="typography__Link-sc-1yq3b4j-5 cJIYQp"
+      className="typography__Link-sc-1yq3b4j-5 kZGoMD"
       href="https://studyinfo.fi/wp2/en/register/"
       target="_blank"
     >
       <test-file-stub
-        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 dRZGgw"
+        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 ciWFku"
       />
       <b
-        className="typography__Bold-sc-1yq3b4j-6 hlMPgm"
+        className="typography__Bold-sc-1yq3b4j-6 ifvJbY"
       >
         register description
       </b>
@@ -318,7 +318,7 @@ Array [
      if you want to know how the information you have given in joint/separate applications is used.
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 bUPHsG"
+    className="Footnote__Container-sc-x809r1-0 jMoeaA"
   >
     **
      
