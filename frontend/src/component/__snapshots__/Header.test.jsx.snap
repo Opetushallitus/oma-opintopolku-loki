@@ -3,51 +3,51 @@
 exports[`Header should be rendered 1`] = `
 <header>
   <h1
-    className="typography__H1-sc-1yq3b4j-0 gdklrU"
+    className="typography__H1-sc-1yq3b4j-0 dmNFQy"
   >
     Tietojeni käyttö
   </h1>
   <p
-    className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 idzFKs hBeurj"
+    className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 cBdjGa eHQImV"
   >
     Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.
     *
   </p>
   <h3
-    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 dJMXy kDPNvV"
+    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 cubGuE lhxgwj"
   >
     <span
-      className="StudentInfo__Name-sc-8zvgal-1 oWTJT"
+      className="StudentInfo__Name-sc-8zvgal-1 XxPHx"
     >
       Onni Oskari Oppija
     </span>
     <span
-      className="StudentInfo__Birthday-sc-8zvgal-2 imfvmM"
+      className="StudentInfo__Birthday-sc-8zvgal-2 cXBXja"
     >
        s. 
       1.2.1980
     </span>
   </h3>
   <div
-    className="NavBar__Navigation-sc-18mzj0n-0 eTBYMP"
+    className="NavBar__Navigation-sc-18mzj0n-0 tgbCd"
   >
     <a
-      className="NavBar__Link-sc-18mzj0n-5 uxEPa"
+      className="NavBar__Link-sc-18mzj0n-5 cxhmvY"
       href="/koski/omadata/kayttooikeudet"
     >
       <span
-        className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 coNhoQ hkCMUo"
+        className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 coTvXS dbpaSu"
       >
         Annetut käyttöluvat
       </span>
     </a>
     <span
-      className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 coNhoQ bNPMXO"
+      className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 coTvXS iRIMEg"
     >
       Tietojani käyttäneet toimijat
     </span>
     <span
-      className="NavBar__Filler-sc-18mzj0n-4 zkUET"
+      className="NavBar__Filler-sc-18mzj0n-4 jzerHJ"
     />
   </div>
 </header>
