@@ -1,0 +1,19 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.22.1
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-JAVA-CHQOSLOGBACK-1726923:
+    - '*':
+        reason: >-
+          lambda-logging@1.0.3 ei löydy päivitystä; ei myöskään käytännössä
+          uhkaa
+        expires: 2023-02-08T00:00:00.000Z
+        created: 2022-02-08T13:56:33.856Z
+  SNYK-JAVA-COMGOOGLEGUAVA-1015415:
+    - '*':
+        reason: >-
+          scalacache-guava_2.12@0.28.0 ei löydy päivitystä; ei myöskään
+          käytännössä uhkaa
+        expires: 2023-02-08T00:00:00.000Z
+        created: 2022-02-08T13:56:12.165Z
+patch: {}

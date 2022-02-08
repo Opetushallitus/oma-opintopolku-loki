@@ -51,16 +51,16 @@ jobs:
           name: owasp-report
           path: parser/target/dependency-check-report.html
 
-      # - name: Run snyk
-      #   env:
-      #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      #   run: |
-      #     make snyk
+      - name: Run snyk
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: |
+          make snyk
 
-      # - name: Report failure
-      #   uses: ravsamhq/notify-slack-action@v1
-      #   if: ${{ failure() }}
-      #   with:
-      #     status: ${{ job.status }}
-      #   env:
-      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - name: Report failure
+        uses: ravsamhq/notify-slack-action@v1
+        if: ${{ failure() }}
+        with:
+          status: ${{ job.status }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
