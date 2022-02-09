@@ -1,8 +1,7 @@
 name: Run security tests
 on:
-  push
-  # schedule:
-  #   - cron: "0 0 * * *"
+  schedule:
+    - cron: "0 0 * * 1" # Joka maanantai kello 00:00
 env:
   DOCKER_BUILDKIT: 1
 jobs:
