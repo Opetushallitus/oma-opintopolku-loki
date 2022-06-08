@@ -3,51 +3,51 @@
 exports[`Header should be rendered 1`] = `
 <header>
   <h1
-    className="typography__H1-sc-1yq3b4j-0 dmNFQy"
+    className="typography__H1-sc-1yq3b4j-0 kfGNbY"
   >
     Tietojeni käyttö
   </h1>
   <p
-    className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 cBdjGa eHQImV"
+    className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 jzTXHs eXsqOz"
   >
     Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.
     *
   </p>
   <h3
-    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 cubGuE lhxgwj"
+    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 ctjtMa eujPTZ"
   >
     <span
-      className="StudentInfo__Name-sc-8zvgal-1 XxPHx"
+      className="StudentInfo__Name-sc-8zvgal-1 jjloDz"
     >
       Onni Oskari Oppija
     </span>
     <span
-      className="StudentInfo__Birthday-sc-8zvgal-2 cXBXja"
+      className="StudentInfo__Birthday-sc-8zvgal-2 jGXdno"
     >
        s. 
       1.2.1980
     </span>
   </h3>
   <div
-    className="NavBar__Navigation-sc-18mzj0n-0 tgbCd"
+    className="NavBar__Navigation-sc-18mzj0n-0 bULH"
   >
     <a
-      className="NavBar__Link-sc-18mzj0n-5 cxhmvY"
+      className="NavBar__Link-sc-18mzj0n-5 hOIJCq"
       href="/koski/omadata/kayttooikeudet"
     >
       <span
-        className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 coTvXS dbpaSu"
+        className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 jEmiOw hPiftw"
       >
         Annetut käyttöluvat
       </span>
     </a>
     <span
-      className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 coTvXS iRIMEg"
+      className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 jEmiOw DJvVC"
     >
       Tietojani käyttäneet toimijat
     </span>
     <span
-      className="NavBar__Filler-sc-18mzj0n-4 jzerHJ"
+      className="NavBar__Filler-sc-18mzj0n-4 jysrNL"
     />
   </div>
 </header>
