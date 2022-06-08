@@ -2,15 +2,15 @@
 
 exports[`Organization should render with organization permitted by default, and expand data when button is clicked 1`] = `
 <div
-  class="Expander__ExpanderContainer-sc-fukmjx-0 dZKtkQ"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 kZfkjW"
 >
   <button
     aria-pressed="false"
-    class="Expander__ExpanderTitle-sc-fukmjx-2 ijbGlE"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 dgVGHO"
   >
     <span
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-sc-fukmjx-1 cdPPnm"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 kySCqg"
     >
       +
     </span>
@@ -21,60 +21,60 @@ exports[`Organization should render with organization permitted by default, and 
 
 exports[`Organization should render with organization permitted by default, and expand data when button is clicked 2`] = `
 <div
-  class="Expander__ExpanderContainer-sc-fukmjx-0 dZKtkQ"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 kZfkjW"
 >
   <button
     aria-pressed="true"
-    class="Expander__ExpanderTitle-sc-fukmjx-2 gxvuYp"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 ifuCjD"
   >
     <span
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-sc-fukmjx-1 cdPPnm"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 kySCqg"
     >
       -
     </span>
     Organisaatio 1
   </button>
   <div
-    class="Expander__ExpandedContents-sc-fukmjx-3 ljrpAn"
+    class="Expander__ExpandedContents-sc-fukmjx-3 kMFfdx"
   >
     <div
-      class="OrganizationDetails__Details-sc-4gjwy4-0 fwmqAH"
+      class="OrganizationDetails__Details-sc-4gjwy4-0 kdkPmV"
     >
       <div
-        class="OrganizationDetails__Description-sc-4gjwy4-1 TsEVR"
+        class="OrganizationDetails__Description-sc-4gjwy4-1 gZPZaH"
       >
         <b
-          class="typography__Bold-sc-1yq3b4j-6 ifvJbY"
+          class="typography__Bold-sc-1yq3b4j-6 kiETXm"
         >
           Tietojen käyttölupa:
         </b>
          Lakiin perustuva tiedonkäyttölupa.
       </div>
       <a
-        class="typography__Link-sc-1yq3b4j-5 kZGoMD"
+        class="typography__Link-sc-1yq3b4j-5 jmDJJN"
         href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
         target="_blank"
       >
         <test-file-stub
-          classname="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 ciWFku"
+          classname="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 gSpzYs"
         />
         <b
-          class="typography__Bold-sc-1yq3b4j-6 ifvJbY"
+          class="typography__Bold-sc-1yq3b4j-6 kiETXm"
         >
           Tarkempi kuvaus lähetetyistä tiedoista
         </b>
       </a>
     </div>
     <div
-      class="LogEntries__Container-sc-ufvf4x-0 hoPyUX"
+      class="LogEntries__Container-sc-ufvf4x-0 ieQSrB"
     >
       <div
-        class="LogEntries__TopRow-sc-ufvf4x-1 DbZzG"
+        class="LogEntries__TopRow-sc-ufvf4x-1 sqXOY"
       >
         <button
           aria-pressed="false"
-          class="ButtonSmall__TextButton-sc-r8zxw8-0 jPJNOg"
+          class="ButtonSmall__TextButton-sc-r8zxw8-0 ddBEvS"
         >
           Näytä tietojen käyttökerrat
         </button>
@@ -86,15 +86,15 @@ exports[`Organization should render with organization permitted by default, and 
 
 exports[`Organization should render with organization permitted by user, and expand data when button is clicked 1`] = `
 <div
-  class="Expander__ExpanderContainer-sc-fukmjx-0 dZKtkQ"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 kZfkjW"
 >
   <button
     aria-pressed="false"
-    class="Expander__ExpanderTitle-sc-fukmjx-2 ijbGlE"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 dgVGHO"
   >
     <span
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-sc-fukmjx-1 cdPPnm"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 kySCqg"
     >
       +
     </span>
@@ -105,60 +105,60 @@ exports[`Organization should render with organization permitted by user, and exp
 
 exports[`Organization should render with organization permitted by user, and expand data when button is clicked 2`] = `
 <div
-  class="Expander__ExpanderContainer-sc-fukmjx-0 dZKtkQ"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 kZfkjW"
 >
   <button
     aria-pressed="true"
-    class="Expander__ExpanderTitle-sc-fukmjx-2 gxvuYp"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 ifuCjD"
   >
     <span
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-sc-fukmjx-1 cdPPnm"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 kySCqg"
     >
       -
     </span>
     Organisaatio 2
   </button>
   <div
-    class="Expander__ExpandedContents-sc-fukmjx-3 ljrpAn"
+    class="Expander__ExpandedContents-sc-fukmjx-3 kMFfdx"
   >
     <div
-      class="OrganizationDetails__Details-sc-4gjwy4-0 fwmqAH"
+      class="OrganizationDetails__Details-sc-4gjwy4-0 kdkPmV"
     >
       <div
-        class="OrganizationDetails__Description-sc-4gjwy4-1 TsEVR"
+        class="OrganizationDetails__Description-sc-4gjwy4-1 gZPZaH"
       >
         <b
-          class="typography__Bold-sc-1yq3b4j-6 ifvJbY"
+          class="typography__Bold-sc-1yq3b4j-6 kiETXm"
         >
           Tietojen käyttölupa:
         </b>
          Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.
       </div>
       <a
-        class="typography__Link-sc-1yq3b4j-5 kZGoMD"
+        class="typography__Link-sc-1yq3b4j-5 jmDJJN"
         href="https://confluence.csc.fi/pages/viewpage.action?pageId=76536741"
         target="_blank"
       >
         <test-file-stub
-          classname="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 ciWFku"
+          classname="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 gSpzYs"
         />
         <b
-          class="typography__Bold-sc-1yq3b4j-6 ifvJbY"
+          class="typography__Bold-sc-1yq3b4j-6 kiETXm"
         >
           Tarkempi kuvaus lähetetyistä tiedoista
         </b>
       </a>
     </div>
     <div
-      class="LogEntries__Container-sc-ufvf4x-0 hoPyUX"
+      class="LogEntries__Container-sc-ufvf4x-0 ieQSrB"
     >
       <div
-        class="LogEntries__TopRow-sc-ufvf4x-1 DbZzG"
+        class="LogEntries__TopRow-sc-ufvf4x-1 sqXOY"
       >
         <button
           aria-pressed="false"
-          class="ButtonSmall__TextButton-sc-r8zxw8-0 jPJNOg"
+          class="ButtonSmall__TextButton-sc-r8zxw8-0 ddBEvS"
         >
           Näytä tietojen käyttökerrat
         </button>
