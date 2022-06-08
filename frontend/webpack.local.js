@@ -36,7 +36,9 @@ module.exports = merge(common, {
     }
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
+    static: {
+      directory: path.resolve(__dirname, 'dist')
+    },
     compress: true,
     port: 8080,
     proxy: process.env.PROXY_OPPIJA_RAAMIT === 'true' ? { ...raamitProxy, ...apiProxy } : apiProxy
