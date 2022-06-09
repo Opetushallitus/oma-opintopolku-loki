@@ -1,5 +1,7 @@
 service: auditlog
 
+frameworkVersion: '3'
+
 provider:
   name: aws
   runtime: java8
@@ -7,6 +9,8 @@ provider:
   region: eu-west-1
   environment:
     env: ${self:provider.stage}
+  deploymentBucket:
+    skipPolicySetup: true
 
 
 package:

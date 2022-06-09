@@ -68,9 +68,9 @@ deploy: package
 ifndef env
 	@echo "Usage: make deploy <dev|qa|prod>"
 else ifeq ($(GITHUB_ACTIONS),true)
-	npx serverless@1.48.4 deploy --stage $(env)
+	npx serverless@3.19.0 deploy --stage $(env)
 else
-	npx serverless@1.48.4 deploy --stage dev --aws-profile oph-koski-$(env)
+	npx serverless@3.19.0 deploy --stage dev --aws-profile oph-koski-$(env)
 endif
 
 .PHONY: owasp
