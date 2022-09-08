@@ -26,7 +26,7 @@
     <ch.qos.logback.contrib.version>0.1.5</ch.qos.logback.contrib.version>
     <http4s.version>0.23.12</http4s.version>
     <org.json4s.version>4.0.5</org.json4s.version>
-    <com.amazonaws.version>1.12.282</com.amazonaws.version>
+    <com.amazonaws.version>1.12.284</com.amazonaws.version>
     <spec2.version>4.16.1</spec2.version>
   </properties>
 
