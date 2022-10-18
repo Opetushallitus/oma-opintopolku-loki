@@ -77,6 +77,8 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
         List("self") // Student has viewed his/her own data
       } else if (entry.operation.contains("KANSALAINEN_HUOLTAJA_OPISKELUOIKEUS_KATSOMINEN")) {
         List("huoltaja")
+      } else if (entry.serviceName == "varda") {
+        entry.organizationOid.toList
       } else {
         remoteOrganizationRepository.getOrganizationIdsForUser(viewerOid).map(permission => permission.organisaatioOid).toList
       }
