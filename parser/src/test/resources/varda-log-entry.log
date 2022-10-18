@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "logSeq": 104,
+    "bootTime": "2022-10-04T15:20:28.177714+00:00",
+    "type": "dataAccess",
+    "environment": "testing",
+    "hostname": "backend-testing.varda-db.csc.fi",
+    "timestamp": "2022-10-04T15:20:49.519887+00:00",
+    "serviceName": "varda",
+    "applicationType": "backend",
+    "user": {"oid": "1.2.246.562.24.22846384298"},
+    "target": {"oppijaHenkiloOid": "1.2.246.562.24.10000002335"},
+    "organizationOid": "1.2.246.562.10.27580498759",
+    "operation": "dataAccess"
+}
