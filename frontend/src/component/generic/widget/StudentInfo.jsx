@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { H3 } from 'ui/typography'
+import { H3, Select } from 'ui/typography'
 import { parseUserName } from 'service/raamitSupport'
 import Query from 'http/Query'
+import PropTypes from 'prop-types'
 
 const Student = styled(H3)`
-  margin-top: 3rem;
-  margin-bottom: 2.214rem;
+  margin: 2rem 0;
 `
 
 export const Name = styled.span`
@@ -48,22 +48,67 @@ const parseBirthday = (hetu) => {
   }
 }
 
-const StudentInfo = () => (
-  <Query url='whoami'>
-    {({ data, error, pending }) => {
-      if (error || pending) return null
+const StudentInfo = ({ selectedHetu, onSelectHetu }) => {
+  const [data, setData] = useState()
+  const huollettavat = data ? [data].concat(data.huollettavat) : []
 
-      const name = parseUserName(data)
-      const birthday = parseBirthday(data.hetu)
+  return (
+    <>
+      <Query url='whoami' onSuccess={data => setData(data)}>
+        {({ data, error, pending }) => {
+          if (error || pending) return null
 
-      return (
-        <Student>
-          <Name>{name}</Name>
-          { birthday ? <Birthday> s. {birthday}</Birthday> : null }
-        </Student>
-      )
-    }}
-  </Query>
-)
+          const name = parseUserName(data)
+          const birthday = parseBirthday(data.hetu)
+
+          return (
+            <Student>
+              <Name>{name}</Name>
+              {birthday ? <Birthday> s. {birthday}</Birthday> : null}
+            </Student>
+          )
+        }}
+      </Query>
+      <PersonSelect selectedHetu={selectedHetu} huollettavat={huollettavat} onSelectHetu={onSelectHetu}/>
+    </>
+  )
+}
+StudentInfo.propTypes = ({
+  selectedHetu: PropTypes.string,
+  onSelectHetu: PropTypes.func
+})
+
+const PersonSelect = ({ selectedHetu, huollettavat, onSelectHetu }) => {
+  return (
+    <div>
+      <strong>Tarkasteltava henkilö:</strong>
+      <Select onChange={e => onSelectHetu(e.target.value)} defaultValue={selectedHetu}>
+        {huollettavat?.map(h => (
+          <PersonSelectOption key={h.hetu} etunimet={h.etunimet} sukunimi={h.sukunimi} hetu={h.hetu}/>
+        ))}
+      </Select>
+    </div>
+  )
+}
+PersonSelect.propTypes = ({
+  huollettavat: PropTypes.array,
+  onSelectHetu: PropTypes.func,
+  selectedHetu: PropTypes.string
+})
+
+const PersonSelectOption = ({ etunimet, sukunimi, hetu }) => {
+  const name = parseUserName({ etunimet, sukunimi })
+  const birthday = parseBirthday(hetu)
+  return (
+    <option value={hetu}>
+      {name} {birthday ? ` s. ${birthday}` : null}
+    </option>
+  )
+}
+PersonSelectOption.propTypes = ({
+  etunimet: PropTypes.string,
+  sukunimi: PropTypes.string,
+  hetu: PropTypes.string
+})
 
 export default StudentInfo

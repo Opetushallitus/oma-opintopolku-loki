@@ -5,7 +5,7 @@ import media from 'ui/media'
 export const H1 = styled.h1`
   font-size: ${constants.font.size.xxxxl};
   font-weight: 600;
-  
+
   ${media.full`
     font-size: ${constants.font.size.xxxl};
   `}
@@ -38,4 +38,11 @@ export const Link = styled.a`
 
 export const Bold = styled.b`
   font-weight: 600;
+`
+
+export const Select = styled.select`
+  display: block;
+  min-width: 200px;
+  margin: 1rem 0;
+  padding: 5px;
 `

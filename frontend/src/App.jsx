@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import constants from 'ui/constants'
 import media from 'ui/media'
@@ -29,12 +29,15 @@ const Content = styled.main`
   box-sizing: border-box;
 `
 
-const App = () => (
-  <Content>
-    <GlobalStyle/>
-    <Header/>
-    <Log/>
-  </Content>
-)
+const App = () => {
+  const [selectedHetu, setSelectedHetu] = useState()
+  return (
+    <Content>
+      <GlobalStyle/>
+      <Header selectedHetu={selectedHetu} onSelectHetu={setSelectedHetu}/>
+      <Log hetu={selectedHetu}/>
+    </Content>
+  )
+}
 
 export default App
