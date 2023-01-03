@@ -24,9 +24,9 @@ const parseCentury = (hetu) => {
   switch (separator) {
     case '+':
       return 1800
-    case '-':
+    case separator.match(/[-YXWVU]/)?.input: // hack to use regex in switch statement
       return 1900
-    case 'A':
+    case separator.match(/[ABCDEF]/)?.input:
       return 2000
   }
 }
