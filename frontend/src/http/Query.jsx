@@ -19,7 +19,11 @@ class Query extends React.Component {
   }
 
   componentDidUpdate (prevProps) {
-    if (prevProps.url !== this.props.url) {
+    if (
+      prevProps.url !== this.props.url ||
+      prevProps.method !== this.props.method ||
+      prevProps.body !== this.props.body
+    ) {
       this.doQuery()
     }
   }
