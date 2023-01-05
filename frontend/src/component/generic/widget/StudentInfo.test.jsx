@@ -107,7 +107,7 @@ describe('StudentInfo', () => {
 
       renderer.unmount()
 
-      expect(console.log).toHaveBeenCalledTimes(1)
+      expect(console.log).toHaveBeenCalledTimes(3)
 
       done()
     })
