@@ -83,9 +83,9 @@ const PersonSelect = ({ selectedHetu, huollettavat, onSelectHetu }) => {
     <div>
       <strong>Tarkasteltava henkilö:</strong>
       <Select onChange={e => onSelectHetu(e.target.value)} defaultValue={selectedHetu}>
-        {huollettavat?.map(h => (
-          <PersonSelectOption key={h.hetu} etunimet={h.etunimet} sukunimi={h.sukunimi} hetu={h.hetu}/>
-        ))}
+        {huollettavat.flatMap(h => h
+          ? <PersonSelectOption key={h.hetu} etunimet={h.etunimet} sukunimi={h.sukunimi} hetu={h.hetu}/>
+          : [])}
       </Select>
     </div>
   )
