@@ -51,20 +51,25 @@ Footnotes.propTypes = {
   noEntries: PropTypes.bool.isRequired
 }
 
-const Log = () => (
-  <Query url='auditlogs'>
-    {({ data, error, pending }) => {
-      if (error) return <AlertText>{t`Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.`}</AlertText>
-      if (pending) return <div>{t`Tietoja haetaan`}</div>
-      if (!Array.isArray(data) || !data.length) return <NoEntries/>
+function Log ({ hetu }) {
+  return (
+    <Query url={'auditlogs'} method={'post'} body={{ hetu }}>
+      {({ data, error, pending }) => {
+        if (error) return <AlertText>{t`Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.`}</AlertText>
+        if (pending) return <div>{t`Tietoja haetaan`}</div>
+        if (!Array.isArray(data) || !data.length) return <NoEntries/>
 
-      const translatedOrganizations = map(over(organizationLens, map(over(nameLens, getTranslatedName))))(data)
-      return (<React.Fragment>
-        <Organizations translatedOrganizations={translatedOrganizations}/>
-        <Footnotes noEntries={false}/>
-      </React.Fragment>)
-    }}
-  </Query>
-)
+        const translatedOrganizations = map(over(organizationLens, map(over(nameLens, getTranslatedName))))(data)
+        return (<React.Fragment>
+          <Organizations translatedOrganizations={translatedOrganizations}/>
+          <Footnotes noEntries={false}/>
+        </React.Fragment>)
+      }}
+    </Query>
+  )
+}
+Log.propTypes = {
+  hetu: PropTypes.string
+}
 
 export default Log

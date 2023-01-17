@@ -3,7 +3,15 @@
     "etunimet":"Onni Oskari",
     "kutsumanimi": "Onni",
     "sukunimi": "Oppija",
-    "hetu": "010280-952L"
+    "hetu": "010280-952L",
+    "huollettavat": [
+      {
+        "etunimet":"Huollettava",
+        "kutsumanimi": "Onnin huollettava",
+        "sukunimi": "Oppija",
+        "hetu": "010290-911K"
+      }
+    ]
   },
   "auditlogs": [
     {
@@ -101,6 +109,21 @@
         }
       ],
       "timestamps": ["2018-09-25T12:01:02.542+03"]
+    }
+  ],
+  "auditlogs-huollettava": [
+    {
+      "organizations": [
+        {
+          "oid": "1.1.111.111.11.11111111111",
+          "name": {
+            "fi": "Testiorganisaatio 1",
+            "sv": "Test organisation 1",
+            "en": "Test organization 1"
+          }
+        }
+      ],
+      "timestamps": ["2018-11-19T12:05:26.432+03", "2018-11-20T16:01:44.543+03"]
     }
   ]
 }

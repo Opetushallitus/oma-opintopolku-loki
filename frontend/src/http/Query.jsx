@@ -18,12 +18,23 @@ class Query extends React.Component {
     this.doQuery()
   }
 
+  componentDidUpdate (prevProps) {
+    if (
+      prevProps.url !== this.props.url ||
+      prevProps.method !== this.props.method ||
+      prevProps.body !== this.props.body
+    ) {
+      this.doQuery()
+    }
+  }
+
   async doQuery () {
     const { url, method, body } = this.props
 
     try {
       const { data } = await http.request(url, method, body)
       this.setState({ data, pending: false })
+      if (this.props.onSuccess) this.props.onSuccess(data)
     } catch (error) {
       console.error(error)
       this.setState({ error, pending: false })
@@ -47,7 +58,8 @@ Query.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  children: PropTypes.func.isRequired
+  children: PropTypes.func.isRequired,
+  onSuccess: PropTypes.func
 }
 
 export default withErrorBoundary(Query)

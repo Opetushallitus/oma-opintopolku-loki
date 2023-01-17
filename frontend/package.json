@@ -17,7 +17,7 @@
     "build:local": "./node_modules/.bin/webpack --config webpack.local.js",
     "start:local": "npm run mock-api & ./node_modules/.bin/webpack serve --config webpack.local.js",
     "start:local:nologin": "webpack serve --config webpack.local.js",
-    "mock-api": "./node_modules/.bin/json-server ./mock/api.json",
+    "mock-api": "node ./mock/server.js",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx src test",
     "test": "npm run build:prod && JEST_ENV=jest-environment-puppeteer ./node_modules/.bin/jest --testPathPattern=page.spec.js",
     "unit": "JEST_ENV=jsdom ./node_modules/.bin/jest --testPathPattern=test.js --coverage",
