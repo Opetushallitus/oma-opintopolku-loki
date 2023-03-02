@@ -17,5 +17,5 @@ window.Service = {
       name: parseUserName(user)
     })),
   login: () => { window.location.assign('/oma-opintopolku/authenticate') },
-  logout: () => { window.location.assign('/cas-oppija/logout') }
+  logout: () => { window.location.assign('/koski/user/logout') }
 }
