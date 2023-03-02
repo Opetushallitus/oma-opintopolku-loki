@@ -11,7 +11,7 @@ export const parseUserName = user => `${user.etunimet} ${user.sukunimi}`
  * }}
  */
 window.Service = {
-  getUser: () => http.get('whoami')
+  getUser: () => http.get('/koski/api/omaopintopolkuloki/whoami')
     .then(v => v.data)
     .then(user => ({
       name: parseUserName(user)

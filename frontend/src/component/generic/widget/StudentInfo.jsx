@@ -54,7 +54,7 @@ const StudentInfo = ({ selectedHetu, onSelectHetu }) => {
 
   return (
     <>
-      <Query url='whoami' onSuccess={data => setData(data)}>
+      <Query url='/koski/api/omaopintopolkuloki/whoami' onSuccess={data => setData(data)}>
         {({ data, error, pending }) => {
           if (error || pending) return null
 

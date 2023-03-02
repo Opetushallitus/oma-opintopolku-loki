@@ -9,6 +9,7 @@ server.use(jsonServer.bodyParser)
 
 server.use(transformPostRequestToGet)
 server.use(jsonServer.rewriter({
+  "/koski/api/omaopintopolkuloki/*": "/$1",
   "/auditlogs/010280-952L": "/auditlogs",
   "/auditlogs/010290-911K": "/auditlogs-huollettava"
 }))

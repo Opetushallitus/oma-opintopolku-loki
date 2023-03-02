@@ -13,11 +13,11 @@ const raamitProxy = {
 }
 
 const apiProxy = {
-  '/auditlogs': {
+  '/koski/api/omaopintopolkuloki/auditlogs': {
     target: 'http://localhost:3000',
     secure: false
   },
-  '/whoami': {
+  '/koski/api/omaopintopolkuloki/whoami': {
     target: 'http://localhost:3000',
     secure: false
   }
@@ -25,11 +25,6 @@ const apiProxy = {
 
 module.exports = merge(common, {
   mode: 'development',
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.API_BASE_URL': JSON.stringify('http://localhost:3000')
-    })
-  ],
   resolve: {
     alias: {
       Resources: path.resolve(__dirname, 'mock') // dependency-inject mocks to the aliased resources module

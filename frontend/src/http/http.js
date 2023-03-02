@@ -2,7 +2,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 
 const client = axios.create({
-  baseURL: process.env.API_BASE_URL
+  baseURL: window.location.protocol + '//' + window.location.host
 })
 
 const callerId = '1.2.246.562.10.00000000001.oma-opintopolku-loki.frontend'
