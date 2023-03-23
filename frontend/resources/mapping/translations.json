@@ -2,9 +2,9 @@
   "Oma Opintopolku -loki": {
     "fi": "Oma Opintopolku -loki"
   },
-  "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.": {
-    "fi": "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.",
-    "sv": "På den här sidan kan du granska och administrera de tillstånd du har givit om dina uppgifter. Du ser här dessutom vilka aktörer, t.ex. myndigheter, som har använt dina studieuppgifter.",
+  "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.": {
+    "fi": "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.",
+    "sv": "På den här sidan kan du granska och administrera de tillstånd du har givit om dina uppgifter. Du ser här dessutom vilka aktörer, t.ex. myndigheter, som har använt dina uppgifter.",
     "en": "On this page you can inspect and manage permissions you have given to use your data. You can also check which organisations (e.g. authorities) have used your data."
   },
   "Taulukko tietojen käyttökerroista": {
@@ -82,15 +82,35 @@
     "sv": "Sidan är tom, eftersom ingen ännu har använt dina uppgifter.",
     "en": "The page is empty, as no one has used your data."
   },
-  "Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.": {
-    "fi": "Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.",
-    "sv": "Här visas aktörerna som använt dina studieuppgifterna efter 14.11.2018.",
-    "en": "Showing organisations that have used your data after 14.11.2018."
+  "Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti": {
+    "fi": "Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti:",
+    "sv": "Här visas de aktörer som använt dina uppgifter enligt informationsresurs:",
+    "en": "Showing organizations that have used your data:"
   },
-  "Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta. --ei-katsomisia": {
-    "fi": "Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.",
-    "sv": "Angår aktörerna som använt dina studieuppgifterna efter 14.11.2018.",
-    "en": "Concerns organisations that have used your data after 14.11.2018."
+  "Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti --ei-katsomisia": {
+    "fi": "Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti:",
+    "sv": "Angår aktörerna som använt dina uppgifter enligt informationsresurs:",
+    "en": "Concerns organisations that have used your data:"
+  },
+  "Opintosuoritukset (Koski)": {
+    "fi": "Opintosuoritukset (Koski)",
+    "sv": "Studieprestationer (Koski)",
+    "en": "My completed studies (Koski)"
+  },
+  "Varhaiskasvatuksen tietovaranto (Varda)": {
+    "fi": "Varhaiskasvatuksen tietovaranto (Varda)",
+    "sv": "Informationsresursen inom småbarnspedagogik (Varda)",
+    "en": "The national data warehouse for early childhood education and care Varda"
+  },
+  "14.11.2018 alkaen": {
+    "fi": "14.11.2018 alkaen",
+    "sv": "fr.o.m. 14.11.2018",
+    "en": "starting from 14.11.2018"
+  },
+  "1.6.2023 alkaen": {
+    "fi": "1.6.2023 alkaen",
+    "sv": "fr.o.m. 1.6.2023",
+    "en": "starting from 1.6.2023"
   },
   "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.": {
     "fi": "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.",
@@ -108,9 +128,9 @@
     "en": "https://confluence.csc.fi/pages/viewpage.action?pageId=76536741"
   },
   "Koskee vain opintotietoja --prefix": {
-    "fi": "Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat ",
-    "sv": "Gäller studieuppgifter, dvs. inte uppgifter som ingår i ansökningar. I ",
-    "en": "This applies only to study-related information. Please check the "
+    "fi": "Koskee toistaiseksi vain opintotietoja ja varhaiskasvatuksen tietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat ",
+    "sv": "Gäller tills vidare endast studieuppgifter och uppgifter om småbarnspedagogik, dvs. inte uppgifter som ingår i ansökningar. I ",
+    "en": "This applies for the time being only to early childhood education and study-related information. Please check the "
   },
   "Koskee vain opintotietoja --link-title": {
     "fi": "tietosuojaselosteesta",
@@ -121,5 +141,15 @@
     "fi": ".",
     "sv": " får du information om grunderna för användning av personuppgifter i ansökningarna och hur de kan överlåtas.",
     "en": " if you want to know how the information you have given in joint/separate applications is used."
+  },
+  "Käytetty rekisteri": {
+    "fi": "Käytetty rekisteri",
+    "sv": "Använt register",
+    "en": "Register that has been used"
+  },
+  "Tarkasteltava henkilö": {
+    "fi": "Tarkasteltava henkilö:",
+    "sv": "Person vars uppgifter granskas",
+    "en": "Person who’s data is being viewed"
   }
 }

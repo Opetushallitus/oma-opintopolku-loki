@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import constants from 'ui/constants'
 import media from 'ui/media'
+import t from 'util/translate'
 
 const ExpanderContainer = styled.div`
   background-color: ${constants.color.background.neutralLight};
@@ -12,13 +13,13 @@ const ExpanderContainer = styled.div`
   }
 `
 
-const ExpanderPrefix = styled.span`
+const ExpanderPrefix = styled.div`
   margin-left: 0.375rem;
-  margin-right: 0.625rem;
+  font-family: monospace;
 `
 
 const ExpanderTitle = styled.button`
-  display: block;
+  display: flex;
   width: 100%;
   background-color: ${({ expanded }) => expanded
     ? constants.color.primaryLight
@@ -28,6 +29,13 @@ const ExpanderTitle = styled.button`
   font-size: 1rem;
   text-align: left;
   border: none;
+  gap: 0.5rem;
+`
+
+const ExpanderSuffix = styled.div`
+  margin-left: auto;
+  margin-right: 0.375rem;
+  text-align: right;
 `
 
 const ExpandedContents = styled.div`
@@ -38,7 +46,7 @@ const ExpandedContents = styled.div`
   `}
 `
 
-const Expander = ({ title, children }) => {
+const Expander = ({ title, serviceName, children }) => {
   const [expanded, setExpanded] = useState(false)
 
   return (
@@ -50,6 +58,11 @@ const Expander = ({ title, children }) => {
       >
         <ExpanderPrefix aria-hidden={'true'}>{expanded ? '-' : '+'}</ExpanderPrefix>
         {title}
+        <ExpanderSuffix>
+          {serviceName === 'varda'
+            ? t('Varhaiskasvatuksen tietovaranto (Varda)')
+            : t('Opintosuoritukset (Koski)')}
+        </ExpanderSuffix>
       </ExpanderTitle>
       {expanded && <ExpandedContents>{children}</ExpandedContents>}
     </ExpanderContainer>
@@ -58,6 +71,7 @@ const Expander = ({ title, children }) => {
 
 Expander.propTypes = {
   title: PropTypes.string.isRequired,
+  serviceName: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
 }
 

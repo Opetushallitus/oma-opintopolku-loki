@@ -10,7 +10,7 @@ exports[`Header should be rendered 1`] = `
   <p
     className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 hzjmSQ dABIjb"
   >
-    Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.
+    Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.
     *
   </p>
   <h3
@@ -29,9 +29,11 @@ exports[`Header should be rendered 1`] = `
     </span>
   </h3>
   <div>
-    <strong>
+    <b
+      className="typography__Bold-sc-1yq3b4j-6 kiETXm"
+    >
       Tarkasteltava henkilö:
-    </strong>
+    </b>
     <select
       className="typography__Select-sc-1yq3b4j-7 jmTUoG"
       onChange={[Function]}

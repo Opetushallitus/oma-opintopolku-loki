@@ -42,9 +42,15 @@ const Footnotes = ({ noEntries }) => (
         openInNewTab={true}
       />{t('Koskee vain opintotietoja --suffix')}
     </Footnote>
-    {noEntries
-      ? <Footnote stars={2}>{t('Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta. --ei-katsomisia')}</Footnote>
-      : <Footnote stars={2}>{t('Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.')}</Footnote>}
+    <Footnote stars={2}>
+      {noEntries
+        ? t('Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti --ei-katsomisia')
+        : t('Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti')}
+      <br />
+      {t('Opintosuoritukset (Koski)')} - {t('14.11.2018 alkaen')}
+      <br />
+      {t('Varhaiskasvatuksen tietovaranto (Varda)')} - {t('1.6.2023 alkaen')}
+    </Footnote>
   </React.Fragment>
 )
 Footnotes.propTypes = {
