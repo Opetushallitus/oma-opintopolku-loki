@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StudentInfo should be rendered 1`] = `
-Array [
+[
   <h3
-    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 ctjtMa fuwfGS"
+    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 dJnBdy cpuvVu"
   >
     <span
-      className="StudentInfo__Name-sc-8zvgal-1 jjloDz"
+      className="StudentInfo__Name-sc-8zvgal-1 eOXinT"
     >
       Onni Oskari Oppija
     </span>
     <span
-      className="StudentInfo__Birthday-sc-8zvgal-2 jGXdno"
+      className="StudentInfo__Birthday-sc-8zvgal-2 cDqyaU"
     >
        s. 
       1.2.1980
@@ -22,7 +22,7 @@ Array [
       Tarkasteltava henkilö:
     </strong>
     <select
-      className="typography__Select-sc-1yq3b4j-7 iWIebG"
+      className="typography__Select-sc-1yq3b4j-7 jmTUoG"
       onChange={[Function]}
     >
       <option

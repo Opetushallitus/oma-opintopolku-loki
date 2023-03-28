@@ -8,7 +8,7 @@ describe('Oma Opintopolku -loki', () => {
   })
 
   it('should display text', async () => {
-    await expect(page).toMatch('Tietojeni käyttö')
+    expect(await page.content()).toMatch('Tietojeni käyttö')
   })
 
   it('should display correct title', async () => {
