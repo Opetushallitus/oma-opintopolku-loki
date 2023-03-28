@@ -26,11 +26,12 @@ Katso alempaa muutamia [hyödyllisiä komentoja Docker-konttien kanssa operoimis
 
 Käynnistä ensin Docker-kontit ylläolevien ohjeiden mukaisesti.
 
-Nyt voit ajaa lambdan seuraavalla komennolla:
+Nyt voit ajaa lambdan serverless-työkalulla seuraavasti:
 
 ```shell
+nvm use
 mvn package
-AWS_ACCESS_KEY_ID=123 AWS_SECRET_ACCESS_KEY=123 AWS_REGION=local ../api/common/node_modules/.bin/sls invoke local --function parser --data "" --log true --stage local
+AWS_ACCESS_KEY_ID=123 AWS_SECRET_ACCESS_KEY=123 AWS_REGION=local npx serverless invoke local --function parser --data "{}" --stage local --config serverless.local.yml
 ```
 
 ### Serverless invoke local -komennon bugit
