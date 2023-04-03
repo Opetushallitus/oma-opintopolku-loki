@@ -19,7 +19,7 @@ exports[`StudentInfo should be rendered 1`] = `
   </h3>,
   <div>
     <b
-      className="typography__Bold-sc-1yq3b4j-6 kiETXm"
+      className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
     >
       Tarkasteltava henkilö:
     </b>
