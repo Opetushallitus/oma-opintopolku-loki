@@ -85,17 +85,17 @@
   "Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti": {
     "fi": "Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti:",
     "sv": "Här visas de aktörer som använt dina uppgifter enligt informationsresurs:",
-    "en": "Showing organizations that have used your data:"
+    "en": "Showing organisations that have used your data per data registry:"
   },
   "Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti --ei-katsomisia": {
     "fi": "Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti:",
     "sv": "Angår aktörerna som använt dina uppgifter enligt informationsresurs:",
     "en": "Concerns organisations that have used your data:"
   },
-  "Opintosuoritukset (Koski)": {
-    "fi": "Opintosuoritukset (Koski)",
-    "sv": "Studieprestationer (Koski)",
-    "en": "My completed studies (Koski)"
+  "Opintosuoritukset (KOSKI)": {
+    "fi": "Opintosuoritukset (KOSKI)",
+    "sv": "Studieprestationer (KOSKI)",
+    "en": "Completed studies (KOSKI)"
   },
   "Varhaiskasvatuksen tietovaranto (Varda)": {
     "fi": "Varhaiskasvatuksen tietovaranto (Varda)",
@@ -107,15 +107,15 @@
     "sv": "fr.o.m. 14.11.2018",
     "en": "starting from 14.11.2018"
   },
-  "1.6.2023 alkaen": {
-    "fi": "1.6.2023 alkaen",
-    "sv": "fr.o.m. 1.6.2023",
-    "en": "starting from 1.6.2023"
+  "7.4.2023 alkaen": {
+    "fi": "7.4.2023 alkaen",
+    "sv": "fr.o.m. 7.4.2023",
+    "en": "starting from 7.4.2023"
   },
-  "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.": {
-    "fi": "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.",
-    "sv": "Här visas de aktörer som har använt dina studieuppgifter.",
-    "en": "This page displays organisations that have used data related to your studies."
+  "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opinto- ja varhaiskasvatustietojasi.": {
+    "fi": "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opinto- ja varhaiskasvatustietojasi.",
+    "sv": "Här visas de aktörer som har använt dina studieuppgifter och uppgifter om småbarnspedagogik.",
+    "en": "This page displays organisations that have used data related to your studies and early childhood education and care."
   },
   "tietosuojaseloste-link": {
     "fi": "https://opintopolku.fi/wp/fi/tietosuojaseloste/",
@@ -142,10 +142,10 @@
     "sv": " får du information om grunderna för användning av personuppgifter i ansökningarna och hur de kan överlåtas.",
     "en": " if you want to know how the information you have given in joint/separate applications is used."
   },
-  "Käytetty rekisteri": {
-    "fi": "Käytetty rekisteri",
-    "sv": "Använt register",
-    "en": "Register that has been used"
+  "Käytetty tietovaranto": {
+    "fi": "Käytetty tietovaranto",
+    "sv": "Använt informationsresurs",
+    "en": "Registry that has been used"
   },
   "Tarkasteltava henkilö": {
     "fi": "Tarkasteltava henkilö:",

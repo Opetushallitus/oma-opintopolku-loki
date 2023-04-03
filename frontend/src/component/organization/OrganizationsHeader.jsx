@@ -22,7 +22,7 @@ const RightContainer = styled.div`
 const OrganizationsHeader = () => (
   <Container>
     <div>{t('Tietojen käyttäjä')}{'**'}</div>
-    <RightContainer>{t('Käytetty rekisteri')}</RightContainer>
+    <RightContainer>{t('Käytetty tietovaranto')}</RightContainer>
   </Container>
 )
 
