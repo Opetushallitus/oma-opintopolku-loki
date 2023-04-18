@@ -60,7 +60,7 @@ exports[`Log should render with empty log 1`] = `
       <br />
       Varhaiskasvatuksen tietovaranto (Varda)
        - 
-      7.4.2023 alkaen
+      28.4.2023 alkaen
     </div>
   </div>
 </div>
@@ -165,7 +165,7 @@ exports[`Log should render with non-empty log 1`] = `
       <br />
       Varhaiskasvatuksen tietovaranto (Varda)
        - 
-      7.4.2023 alkaen
+      28.4.2023 alkaen
     </div>
   </div>,
 ]
@@ -270,7 +270,7 @@ exports[`Log should render with non-empty log and language en 1`] = `
       <br />
       The national data warehouse for early childhood education and care Varda
        - 
-      starting from 7.4.2023
+      starting from 28.4.2023
     </div>
   </div>,
 ]
@@ -375,7 +375,7 @@ exports[`Log should render with non-empty log and language sv 1`] = `
       <br />
       Informationsresursen inom småbarnspedagogik (Varda)
        - 
-      fr.o.m. 7.4.2023
+      fr.o.m. 28.4.2023
     </div>
   </div>,
 ]
@@ -458,7 +458,7 @@ exports[`Log should render with non-empty log and organization with no English n
       <br />
       The national data warehouse for early childhood education and care Varda
        - 
-      starting from 7.4.2023
+      starting from 28.4.2023
     </div>
   </div>,
 ]
