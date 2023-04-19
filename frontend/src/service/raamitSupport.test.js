@@ -43,7 +43,7 @@ describe('RaamitSupport', () => {
     })
     const service = global.Service
     service.logout()
-    expect(window.location.assign).toHaveBeenCalledWith('/koski/user/logout')
+    expect(window.location.assign).toHaveBeenCalledWith('/koski/user/logout?target=/oma-opintopolku')
     window.location.assign.mockRestore()
   })
 })
