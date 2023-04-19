@@ -25,7 +25,7 @@ const getTranslatedName = organizationName => organizationName[lang] || organiza
 const NoEntries = () => (
   <div>
     <NotificationText>
-      <p>{t`Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.`}</p>
+      <p>{t`Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opinto- ja varhaiskasvatustietojasi.`}</p>
       <p>{`${t('Sivu on tyhjä, koska tietojasi ei ole vielä käytetty')}**`}</p>
     </NotificationText>
     <Footnotes noEntries={true} />
@@ -42,9 +42,15 @@ const Footnotes = ({ noEntries }) => (
         openInNewTab={true}
       />{t('Koskee vain opintotietoja --suffix')}
     </Footnote>
-    {noEntries
-      ? <Footnote stars={2}>{t('Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta. --ei-katsomisia')}</Footnote>
-      : <Footnote stars={2}>{t('Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.')}</Footnote>}
+    <Footnote stars={2}>
+      {noEntries
+        ? t('Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti --ei-katsomisia')
+        : t('Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti')}
+      <br />
+      {t('Opintosuoritukset (KOSKI)')} - {t('14.11.2018 alkaen')}
+      <br />
+      {t('Varhaiskasvatuksen tietovaranto (Varda)')} - {t('28.4.2023 alkaen')}
+    </Footnote>
   </React.Fragment>
 )
 Footnotes.propTypes = {

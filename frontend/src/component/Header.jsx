@@ -17,7 +17,7 @@ const Header = ({ selectedHetu, onSelectHetu }) => (
       {t`Tietojeni käyttö`}
     </H1>
     <Description>
-      {t`Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä tahot, esim. viranomaiset, ovat katsoneet opintotietojasi.`}{'*'}
+      {t`Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.`}{'*'}
     </Description>
 
     <StudentInfo selectedHetu={selectedHetu} onSelectHetu={onSelectHetu}/>

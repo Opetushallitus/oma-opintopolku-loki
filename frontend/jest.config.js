@@ -7,7 +7,7 @@ module.exports = {
     'src',
     'resources'
   ],
-  moduleFileExtensions: [ 'js', 'jsx', 'json'],
+  moduleFileExtensions: ['js', 'jsx', 'json'],
   moduleNameMapper: {
     '\\.(svg)$': '<rootDir>/src/__mocks__/filemock.js',
     'Resources/mapping/usagePermissionDescriptions': '<rootDir>/resources/mapping/usagePermissionDescriptions.json'

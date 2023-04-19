@@ -13,7 +13,8 @@ describe('Log', () => {
           name: { fi: 'Organisaatio 1', sv: 'Organisation 1', en: 'Organization 1' }
         }
       ],
-      timestamps: ['2018-09-19T12:05:26.432+03', '2018-09-20T16:01:44.543+03']
+      timestamps: ['2018-09-19T12:05:26.432+03', '2018-09-20T16:01:44.543+03'],
+      serviceName: 'koski'
     },
     {
       organizations: [
@@ -22,7 +23,8 @@ describe('Log', () => {
           name: { fi: 'Test 2', sv: 'Test 2', en: 'Test 2' }
         }
       ],
-      timestamps: ['2018-07-19T21:38:35.104+03', '2018-08-26T18:56:17.437+03', '2017-06-07T23:58:55.136+03']
+      timestamps: ['2018-07-19T21:38:35.104+03', '2018-08-26T18:56:17.437+03', '2017-06-07T23:58:55.136+03'],
+      serviceName: 'varda'
     }
   ]
 
@@ -109,7 +111,8 @@ describe('Log', () => {
             name: { fi: 'Organisaatio 1', sv: 'Organisation 1' }
           }
         ],
-        timestamps: ['2018-09-19T12:05:26.432+03']
+        timestamps: ['2018-09-19T12:05:26.432+03'],
+        serviceName: 'koski'
       }
     ]
     http.request = jest.fn(() => Promise.resolve({ data }))

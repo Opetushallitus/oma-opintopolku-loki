@@ -14,40 +14,54 @@ exports[`Log should render with empty log 1`] = `
     className="Log__NotificationText-sc-1asjtoe-0 fHwHNR"
   >
     <p>
-      Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opintotietojasi.
+      Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opinto- ja varhaiskasvatustietojasi.
     </p>
     <p>
       Sivu on tyhjä, koska tietojasi ei ole vielä käytetty.**
     </p>
   </div>
   <div
-    className="Footnote__Container-sc-x809r1-0 jxConm"
+    className="Footnote__Container-sc-x809r1-0 gpyOWC"
   >
     *
-     
-    Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
-    <a
-      className="typography__Link-sc-1yq3b4j-5 hlKauV"
-      href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
-      target="_blank"
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
     >
-      <test-file-stub
-        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
-      />
-      <b
-        className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+      Koskee toistaiseksi vain opintotietoja ja varhaiskasvatuksen tietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
+      <a
+        className="typography__Link-sc-1yq3b4j-5 hlKauV"
+        href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
+        target="_blank"
       >
-        tietosuojaselosteesta
-      </b>
-    </a>
-    .
+        <test-file-stub
+          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+        />
+        <b
+          className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+        >
+          tietosuojaselosteesta
+        </b>
+      </a>
+      .
+    </div>
   </div>
   <div
-    className="Footnote__Container-sc-x809r1-0 jxConm"
+    className="Footnote__Container-sc-x809r1-0 gpyOWC"
   >
     **
-     
-    Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+    >
+      Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti:
+      <br />
+      Opintosuoritukset (KOSKI)
+       - 
+      14.11.2018 alkaen
+      <br />
+      Varhaiskasvatuksen tietovaranto (Varda)
+       - 
+      28.4.2023 alkaen
+    </div>
   </div>
 </div>
 `;
@@ -55,25 +69,38 @@ exports[`Log should render with empty log 1`] = `
 exports[`Log should render with non-empty log 1`] = `
 [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gVFYjj"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gCmkXl"
   >
-    Tietojen käyttäjä**
+    <div>
+      Tietojen käyttäjä
+      **
+    </div>
+    <div
+      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 CwMSI"
+    >
+      Käytetty tietovaranto
+    </div>
   </div>,
   <div
     className="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 jvcEEy"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
       onClick={[Function]}
     >
-      <span
+      <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 lhyFLw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
       >
         +
-      </span>
+      </div>
       Organisaatio 1
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+      >
+        Opintosuoritukset (KOSKI)
+      </div>
     </button>
   </div>,
   <div
@@ -81,46 +108,65 @@ exports[`Log should render with non-empty log 1`] = `
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 jvcEEy"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
       onClick={[Function]}
     >
-      <span
+      <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 lhyFLw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
       >
         +
-      </span>
+      </div>
       Test 2
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+      >
+        Varhaiskasvatuksen tietovaranto (Varda)
+      </div>
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 jxConm"
+    className="Footnote__Container-sc-x809r1-0 gpyOWC"
   >
     *
-     
-    Koskee vain opintotietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
-    <a
-      className="typography__Link-sc-1yq3b4j-5 hlKauV"
-      href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
-      target="_blank"
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
     >
-      <test-file-stub
-        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
-      />
-      <b
-        className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+      Koskee toistaiseksi vain opintotietoja ja varhaiskasvatuksen tietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
+      <a
+        className="typography__Link-sc-1yq3b4j-5 hlKauV"
+        href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
+        target="_blank"
       >
-        tietosuojaselosteesta
-      </b>
-    </a>
-    .
+        <test-file-stub
+          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+        />
+        <b
+          className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+        >
+          tietosuojaselosteesta
+        </b>
+      </a>
+      .
+    </div>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 jxConm"
+    className="Footnote__Container-sc-x809r1-0 gpyOWC"
   >
     **
-     
-    Tietojen käyttäjät näytetään 14.11.2018 jälkeiseltä ajalta.
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+    >
+      Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti:
+      <br />
+      Opintosuoritukset (KOSKI)
+       - 
+      14.11.2018 alkaen
+      <br />
+      Varhaiskasvatuksen tietovaranto (Varda)
+       - 
+      28.4.2023 alkaen
+    </div>
   </div>,
 ]
 `;
@@ -128,25 +174,38 @@ exports[`Log should render with non-empty log 1`] = `
 exports[`Log should render with non-empty log and language en 1`] = `
 [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gVFYjj"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gCmkXl"
   >
-    User of data**
+    <div>
+      User of data
+      **
+    </div>
+    <div
+      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 CwMSI"
+    >
+      Registry that has been used
+    </div>
   </div>,
   <div
     className="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 jvcEEy"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
       onClick={[Function]}
     >
-      <span
+      <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 lhyFLw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
       >
         +
-      </span>
+      </div>
       Organization 1
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+      >
+        Completed studies (KOSKI)
+      </div>
     </button>
   </div>,
   <div
@@ -154,46 +213,65 @@ exports[`Log should render with non-empty log and language en 1`] = `
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 jvcEEy"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
       onClick={[Function]}
     >
-      <span
+      <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 lhyFLw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
       >
         +
-      </span>
+      </div>
       Test 2
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+      >
+        The national data warehouse for early childhood education and care Varda
+      </div>
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 jxConm"
+    className="Footnote__Container-sc-x809r1-0 gpyOWC"
   >
     *
-     
-    This applies only to study-related information. Please check the 
-    <a
-      className="typography__Link-sc-1yq3b4j-5 hlKauV"
-      href="https://studyinfo.fi/wp2/en/register/"
-      target="_blank"
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
     >
-      <test-file-stub
-        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
-      />
-      <b
-        className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+      This applies for the time being only to early childhood education and study-related information. Please check the 
+      <a
+        className="typography__Link-sc-1yq3b4j-5 hlKauV"
+        href="https://studyinfo.fi/wp2/en/register/"
+        target="_blank"
       >
-        register description
-      </b>
-    </a>
-     if you want to know how the information you have given in joint/separate applications is used.
+        <test-file-stub
+          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+        />
+        <b
+          className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+        >
+          register description
+        </b>
+      </a>
+       if you want to know how the information you have given in joint/separate applications is used.
+    </div>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 jxConm"
+    className="Footnote__Container-sc-x809r1-0 gpyOWC"
   >
     **
-     
-    Showing organisations that have used your data after 14.11.2018.
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+    >
+      Showing organisations that have used your data per data registry:
+      <br />
+      Completed studies (KOSKI)
+       - 
+      starting from 14.11.2018
+      <br />
+      The national data warehouse for early childhood education and care Varda
+       - 
+      starting from 28.4.2023
+    </div>
   </div>,
 ]
 `;
@@ -201,25 +279,38 @@ exports[`Log should render with non-empty log and language en 1`] = `
 exports[`Log should render with non-empty log and language sv 1`] = `
 [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gVFYjj"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gCmkXl"
   >
-    Uppgiftsanvändare**
+    <div>
+      Uppgiftsanvändare
+      **
+    </div>
+    <div
+      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 CwMSI"
+    >
+      Använt informationsresurs
+    </div>
   </div>,
   <div
     className="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 jvcEEy"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
       onClick={[Function]}
     >
-      <span
+      <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 lhyFLw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
       >
         +
-      </span>
+      </div>
       Organisation 1
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+      >
+        Studieprestationer (KOSKI)
+      </div>
     </button>
   </div>,
   <div
@@ -227,46 +318,65 @@ exports[`Log should render with non-empty log and language sv 1`] = `
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 jvcEEy"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
       onClick={[Function]}
     >
-      <span
+      <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 lhyFLw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
       >
         +
-      </span>
+      </div>
       Test 2
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+      >
+        Informationsresursen inom småbarnspedagogik (Varda)
+      </div>
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 jxConm"
+    className="Footnote__Container-sc-x809r1-0 gpyOWC"
   >
     *
-     
-    Gäller studieuppgifter, dvs. inte uppgifter som ingår i ansökningar. I 
-    <a
-      className="typography__Link-sc-1yq3b4j-5 hlKauV"
-      href="https://studieinfo.fi/wp/sv/dataskyddsbeskrivning/"
-      target="_blank"
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
     >
-      <test-file-stub
-        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
-      />
-      <b
-        className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+      Gäller tills vidare endast studieuppgifter och uppgifter om småbarnspedagogik, dvs. inte uppgifter som ingår i ansökningar. I 
+      <a
+        className="typography__Link-sc-1yq3b4j-5 hlKauV"
+        href="https://studieinfo.fi/wp/sv/dataskyddsbeskrivning/"
+        target="_blank"
       >
-        dataskyddsbeskrivningen
-      </b>
-    </a>
-     får du information om grunderna för användning av personuppgifter i ansökningarna och hur de kan överlåtas.
+        <test-file-stub
+          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+        />
+        <b
+          className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+        >
+          dataskyddsbeskrivningen
+        </b>
+      </a>
+       får du information om grunderna för användning av personuppgifter i ansökningarna och hur de kan överlåtas.
+    </div>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 jxConm"
+    className="Footnote__Container-sc-x809r1-0 gpyOWC"
   >
     **
-     
-    Här visas aktörerna som använt dina studieuppgifterna efter 14.11.2018.
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+    >
+      Här visas de aktörer som använt dina uppgifter enligt informationsresurs:
+      <br />
+      Studieprestationer (KOSKI)
+       - 
+      fr.o.m. 14.11.2018
+      <br />
+      Informationsresursen inom småbarnspedagogik (Varda)
+       - 
+      fr.o.m. 28.4.2023
+    </div>
   </div>,
 ]
 `;
@@ -274,55 +384,82 @@ exports[`Log should render with non-empty log and language sv 1`] = `
 exports[`Log should render with non-empty log and organization with no English name 1`] = `
 [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gVFYjj"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gCmkXl"
   >
-    User of data**
+    <div>
+      User of data
+      **
+    </div>
+    <div
+      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 CwMSI"
+    >
+      Registry that has been used
+    </div>
   </div>,
   <div
     className="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 jvcEEy"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
       onClick={[Function]}
     >
-      <span
+      <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 lhyFLw"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
       >
         +
-      </span>
+      </div>
       Organisaatio 1
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+      >
+        Completed studies (KOSKI)
+      </div>
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 jxConm"
+    className="Footnote__Container-sc-x809r1-0 gpyOWC"
   >
     *
-     
-    This applies only to study-related information. Please check the 
-    <a
-      className="typography__Link-sc-1yq3b4j-5 hlKauV"
-      href="https://studyinfo.fi/wp2/en/register/"
-      target="_blank"
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
     >
-      <test-file-stub
-        className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
-      />
-      <b
-        className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+      This applies for the time being only to early childhood education and study-related information. Please check the 
+      <a
+        className="typography__Link-sc-1yq3b4j-5 hlKauV"
+        href="https://studyinfo.fi/wp2/en/register/"
+        target="_blank"
       >
-        register description
-      </b>
-    </a>
-     if you want to know how the information you have given in joint/separate applications is used.
+        <test-file-stub
+          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+        />
+        <b
+          className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+        >
+          register description
+        </b>
+      </a>
+       if you want to know how the information you have given in joint/separate applications is used.
+    </div>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 jxConm"
+    className="Footnote__Container-sc-x809r1-0 gpyOWC"
   >
     **
-     
-    Showing organisations that have used your data after 14.11.2018.
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+    >
+      Showing organisations that have used your data per data registry:
+      <br />
+      Completed studies (KOSKI)
+       - 
+      starting from 14.11.2018
+      <br />
+      The national data warehouse for early childhood education and care Varda
+       - 
+      starting from 28.4.2023
+    </div>
   </div>,
 ]
 `;

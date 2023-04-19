@@ -7,9 +7,18 @@ const Container = styled.div`
   font-size: ${constants.font.size.s};
   color: ${constants.color.gray};
   margin: 1rem 0;
+  display: flex;
+`
+const TextContainer = styled.div`
+  margin-left: 0.25rem;
 `
 
-const Footnote = ({ children, stars }) => <Container>{'*****'.substr(0, stars)} {children}</Container>
+const Footnote = ({ children, stars }) => (
+  <Container>
+    {'*'.repeat(stars)}
+    <TextContainer>{children}</TextContainer>
+  </Container>
+)
 
 Footnote.propTypes = {
   children: PropTypes.node.isRequired,

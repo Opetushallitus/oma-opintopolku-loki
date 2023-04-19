@@ -11,7 +11,7 @@ const Organizations = ({ translatedOrganizations }) => (
     <OrganizationsHeader/>
 
     {
-      translatedOrganizations.map(({ organizations, timestamps }) => {
+      translatedOrganizations.map(({ organizations, timestamps, serviceName }) => {
         const key = map(view(oidLens), organizations).join(',')
 
         return (
@@ -19,6 +19,7 @@ const Organizations = ({ translatedOrganizations }) => (
             key={key}
             organizationAlternatives={organizations}
             timestamps={timestamps}
+            serviceName={serviceName}
           />
         )
       })

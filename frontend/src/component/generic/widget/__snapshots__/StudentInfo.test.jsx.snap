@@ -18,9 +18,11 @@ exports[`StudentInfo should be rendered 1`] = `
     </span>
   </h3>,
   <div>
-    <strong>
+    <b
+      className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+    >
       Tarkasteltava henkilö:
-    </strong>
+    </b>
     <select
       className="typography__Select-sc-1yq3b4j-7 jmTUoG"
       onChange={[Function]}

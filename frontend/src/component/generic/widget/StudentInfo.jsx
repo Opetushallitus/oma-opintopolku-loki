@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { H3, Select } from 'ui/typography'
+import { Bold, H3, Select } from 'ui/typography'
 import { parseUserName } from 'service/raamitSupport'
 import Query from 'http/Query'
 import PropTypes from 'prop-types'
+import t from 'util/translate'
 
 const Student = styled(H3)`
   margin: 2rem 0;
@@ -81,7 +82,7 @@ StudentInfo.propTypes = ({
 const PersonSelect = ({ selectedHetu, huollettavat, onSelectHetu }) => {
   return (
     <div>
-      <strong>Tarkasteltava henkilö:</strong>
+      <Bold>{t('Tarkasteltava henkilö')}</Bold>
       <Select onChange={e => onSelectHetu(e.target.value)} defaultValue={selectedHetu}>
         {huollettavat.flatMap(h => h
           ? <PersonSelectOption key={h.hetu} etunimet={h.etunimet} sukunimi={h.sukunimi} hetu={h.hetu}/>
