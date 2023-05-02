@@ -10,6 +10,9 @@ Käyttöliittymä omien tietojen käytön katseluun.
 - **webpack** (https://webpack.js.org/) ja **Babel** (https://babeljs.io/) (buildaus)
 - **JavaScript Standard Style** (https://standardjs.com/) ja **ESLint** (https://eslint.org/) (koodityylit ja niiden tarkistus)
 
+## Käännökset
+Oma opintopolku -lokin käännökset haetaan käännöspalvelun sijaan tiedostosta `frontend/resources/mapping/translations.json`.
+
 ## Riippuvuuksien asentaminen
 
 ``` shell

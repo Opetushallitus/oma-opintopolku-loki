@@ -30,7 +30,7 @@ exports[`Log should render with empty log 1`] = `
       Koskee toistaiseksi vain opintotietoja ja varhaiskasvatuksen tietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
       <a
         className="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
+        href="https://opintopolku.fi/konfo/fi/sivu/koski-palvelun-tietosuojaseloste"
         target="_blank"
       >
         <test-file-stub
@@ -135,7 +135,7 @@ exports[`Log should render with non-empty log 1`] = `
       Koskee toistaiseksi vain opintotietoja ja varhaiskasvatuksen tietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
       <a
         className="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
+        href="https://opintopolku.fi/konfo/fi/sivu/koski-palvelun-tietosuojaseloste"
         target="_blank"
       >
         <test-file-stub
@@ -240,7 +240,7 @@ exports[`Log should render with non-empty log and language en 1`] = `
       This applies for the time being only to early childhood education and study-related information. Please check the 
       <a
         className="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://studyinfo.fi/wp2/en/register/"
+        href="https://opintopolku.fi/konfo/fi/sivu/koski-palvelun-tietosuojaseloste"
         target="_blank"
       >
         <test-file-stub
@@ -345,7 +345,7 @@ exports[`Log should render with non-empty log and language sv 1`] = `
       Gäller tills vidare endast studieuppgifter och uppgifter om småbarnspedagogik, dvs. inte uppgifter som ingår i ansökningar. I 
       <a
         className="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://studieinfo.fi/wp/sv/dataskyddsbeskrivning/"
+        href="https://opintopolku.fi/konfo/fi/sivu/koski-palvelun-tietosuojaseloste"
         target="_blank"
       >
         <test-file-stub
@@ -428,7 +428,7 @@ exports[`Log should render with non-empty log and organization with no English n
       This applies for the time being only to early childhood education and study-related information. Please check the 
       <a
         className="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://studyinfo.fi/wp2/en/register/"
+        href="https://opintopolku.fi/konfo/fi/sivu/koski-palvelun-tietosuojaseloste"
         target="_blank"
       >
         <test-file-stub

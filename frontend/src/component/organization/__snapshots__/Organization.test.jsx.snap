@@ -63,7 +63,7 @@ exports[`Organization should render with organization permitted by default, and 
       </div>
       <a
         class="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://opintopolku.fi/wp/fi/tietosuojaseloste/"
+        href="https://opintopolku.fi/konfo/fi/sivu/koski-palvelun-tietosuojaseloste"
         target="_blank"
       >
         <test-file-stub
