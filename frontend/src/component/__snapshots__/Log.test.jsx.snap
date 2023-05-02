@@ -30,7 +30,7 @@ exports[`Log should render with empty log 1`] = `
       Koskee toistaiseksi vain opintotietoja ja varhaiskasvatuksen tietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
       <a
         className="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://opintopolku.fi/konfo/fi/sivu/koski-palvelun-tietosuojaseloste"
+        href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
         target="_blank"
       >
         <test-file-stub
@@ -135,7 +135,7 @@ exports[`Log should render with non-empty log 1`] = `
       Koskee toistaiseksi vain opintotietoja ja varhaiskasvatuksen tietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
       <a
         className="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://opintopolku.fi/konfo/fi/sivu/koski-palvelun-tietosuojaseloste"
+        href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
         target="_blank"
       >
         <test-file-stub
@@ -345,7 +345,7 @@ exports[`Log should render with non-empty log and language sv 1`] = `
       Gäller tills vidare endast studieuppgifter och uppgifter om småbarnspedagogik, dvs. inte uppgifter som ingår i ansökningar. I 
       <a
         className="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://opintopolku.fi/konfo/fi/sivu/koski-palvelun-tietosuojaseloste"
+        href="https://opintopolku.fi/konfo/sv/sivu/dataskyddsbeskrivningar-och-webbkakor"
         target="_blank"
       >
         <test-file-stub
