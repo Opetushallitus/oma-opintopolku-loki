@@ -240,7 +240,7 @@ exports[`Log should render with non-empty log and language en 1`] = `
       This applies for the time being only to early childhood education and study-related information. Please check the 
       <a
         className="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://opintopolku.fi/konfo/fi/sivu/koski-palvelun-tietosuojaseloste"
+        href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
         target="_blank"
       >
         <test-file-stub
@@ -428,7 +428,7 @@ exports[`Log should render with non-empty log and organization with no English n
       This applies for the time being only to early childhood education and study-related information. Please check the 
       <a
         className="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://opintopolku.fi/konfo/fi/sivu/koski-palvelun-tietosuojaseloste"
+        href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
         target="_blank"
       >
         <test-file-stub
