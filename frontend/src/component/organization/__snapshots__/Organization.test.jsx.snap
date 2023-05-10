@@ -157,7 +157,7 @@ exports[`Organization should render with organization permitted by user, and exp
       </div>
       <a
         class="typography__Link-sc-1yq3b4j-5 hlKauV"
-        href="https://confluence.csc.fi/pages/viewpage.action?pageId=76536741"
+        href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
         target="_blank"
       >
         <test-file-stub
