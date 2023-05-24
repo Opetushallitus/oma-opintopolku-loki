@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>fi.oph</groupId>
   <artifactId>omaopintopolkuloki</artifactId>
@@ -215,11 +217,11 @@
       <scope>test</scope>
     </dependency>
 
-	<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+    <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
     <dependency>
-        <groupId>commons-codec</groupId>
-        <artifactId>commons-codec</artifactId>
-        <version>1.15</version>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.15</version>
     </dependency>
   </dependencies>
 
@@ -266,12 +268,12 @@
           <execution>
             <id>Create buildversion.txt</id>
             <phase>generate-sources</phase>
-	    <configuration>
+            <configuration>
               <tasks>
-                <mkdir dir="${basedir}/target/classes"/>
+                <mkdir dir="${basedir}/target/classes" />
                 <exec executable="${basedir}/create-buildversion.sh">
-                  <arg value="${basedir}/target/classes/buildversion.txt"/>
-                  <arg value="${project.version}"/>
+                  <arg value="${basedir}/target/classes/buildversion.txt" />
+                  <arg value="${project.version}" />
                 </exec>
               </tasks>
             </configuration>
