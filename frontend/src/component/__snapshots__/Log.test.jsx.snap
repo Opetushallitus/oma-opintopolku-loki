@@ -2,7 +2,7 @@
 
 exports[`Log should render alert in case of error in query 1`] = `
 <strong
-  className="typography__AlertText-sc-1yq3b4j-4 btUKpF"
+  className="typography__AlertText-sc-1yq3b4j-4 hqgOFN"
 >
   Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.
 </strong>
@@ -11,7 +11,7 @@ exports[`Log should render alert in case of error in query 1`] = `
 exports[`Log should render with empty log 1`] = `
 <div>
   <div
-    className="Log__NotificationText-sc-1asjtoe-0 fHwHNR"
+    className="Log__NotificationText-sc-1asjtoe-0 fwOAaF"
   >
     <p>
       Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opinto- ja varhaiskasvatustietojasi.
@@ -21,23 +21,23 @@ exports[`Log should render with empty log 1`] = `
     </p>
   </div>
   <div
-    className="Footnote__Container-sc-x809r1-0 gpyOWC"
+    className="Footnote__Container-sc-x809r1-0 vNQvG"
   >
     *
     <div
-      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+      className="Footnote__TextContainer-sc-x809r1-1 ecvKPs"
     >
       Koskee toistaiseksi vain opintotietoja ja varhaiskasvatuksen tietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
       <a
-        className="typography__Link-sc-1yq3b4j-5 hlKauV"
+        className="typography__Link-sc-1yq3b4j-5 jOOwll"
         href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
         target="_blank"
       >
         <test-file-stub
-          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 goYhEw"
         />
         <b
-          className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+          className="typography__Bold-sc-1yq3b4j-6 woqnG"
         >
           tietosuojaselosteesta
         </b>
@@ -46,11 +46,11 @@ exports[`Log should render with empty log 1`] = `
     </div>
   </div>
   <div
-    className="Footnote__Container-sc-x809r1-0 gpyOWC"
+    className="Footnote__Container-sc-x809r1-0 vNQvG"
   >
     **
     <div
-      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+      className="Footnote__TextContainer-sc-x809r1-1 ecvKPs"
     >
       Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti:
       <br />
@@ -69,80 +69,80 @@ exports[`Log should render with empty log 1`] = `
 exports[`Log should render with non-empty log 1`] = `
 [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gCmkXl"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 hYoYvJ"
   >
     <div>
       Tietojen käyttäjä
       **
     </div>
     <div
-      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 CwMSI"
+      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 heHWJo"
     >
       Käytetty tietovaranto
     </div>
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 bzVXOa"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 bzDhVu"
       onClick={[Function]}
     >
       <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 jRSRbx"
       >
         +
       </div>
       Organisaatio 1
       <div
-        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 bdLSfT"
       >
         Opintosuoritukset (KOSKI)
       </div>
     </button>
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 bzVXOa"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 bzDhVu"
       onClick={[Function]}
     >
       <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 jRSRbx"
       >
         +
       </div>
       Test 2
       <div
-        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 bdLSfT"
       >
         Varhaiskasvatuksen tietovaranto (Varda)
       </div>
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 gpyOWC"
+    className="Footnote__Container-sc-x809r1-0 vNQvG"
   >
     *
     <div
-      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+      className="Footnote__TextContainer-sc-x809r1-1 ecvKPs"
     >
       Koskee toistaiseksi vain opintotietoja ja varhaiskasvatuksen tietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
       <a
-        className="typography__Link-sc-1yq3b4j-5 hlKauV"
+        className="typography__Link-sc-1yq3b4j-5 jOOwll"
         href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
         target="_blank"
       >
         <test-file-stub
-          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 goYhEw"
         />
         <b
-          className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+          className="typography__Bold-sc-1yq3b4j-6 woqnG"
         >
           tietosuojaselosteesta
         </b>
@@ -151,11 +151,11 @@ exports[`Log should render with non-empty log 1`] = `
     </div>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 gpyOWC"
+    className="Footnote__Container-sc-x809r1-0 vNQvG"
   >
     **
     <div
-      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+      className="Footnote__TextContainer-sc-x809r1-1 ecvKPs"
     >
       Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti:
       <br />
@@ -174,80 +174,80 @@ exports[`Log should render with non-empty log 1`] = `
 exports[`Log should render with non-empty log and language en 1`] = `
 [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gCmkXl"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 hYoYvJ"
   >
     <div>
       User of data
       **
     </div>
     <div
-      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 CwMSI"
+      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 heHWJo"
     >
       Registry that has been used
     </div>
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 bzVXOa"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 bzDhVu"
       onClick={[Function]}
     >
       <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 jRSRbx"
       >
         +
       </div>
       Organization 1
       <div
-        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 bdLSfT"
       >
         Completed studies (KOSKI)
       </div>
     </button>
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 bzVXOa"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 bzDhVu"
       onClick={[Function]}
     >
       <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 jRSRbx"
       >
         +
       </div>
       Test 2
       <div
-        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 bdLSfT"
       >
         The national data warehouse for early childhood education and care Varda
       </div>
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 gpyOWC"
+    className="Footnote__Container-sc-x809r1-0 vNQvG"
   >
     *
     <div
-      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+      className="Footnote__TextContainer-sc-x809r1-1 ecvKPs"
     >
       This applies for the time being only to early childhood education and study-related information. Please check the 
       <a
-        className="typography__Link-sc-1yq3b4j-5 hlKauV"
+        className="typography__Link-sc-1yq3b4j-5 jOOwll"
         href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
         target="_blank"
       >
         <test-file-stub
-          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 goYhEw"
         />
         <b
-          className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+          className="typography__Bold-sc-1yq3b4j-6 woqnG"
         >
           register description
         </b>
@@ -256,11 +256,11 @@ exports[`Log should render with non-empty log and language en 1`] = `
     </div>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 gpyOWC"
+    className="Footnote__Container-sc-x809r1-0 vNQvG"
   >
     **
     <div
-      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+      className="Footnote__TextContainer-sc-x809r1-1 ecvKPs"
     >
       Showing organisations that have used your data per data registry:
       <br />
@@ -279,80 +279,80 @@ exports[`Log should render with non-empty log and language en 1`] = `
 exports[`Log should render with non-empty log and language sv 1`] = `
 [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gCmkXl"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 hYoYvJ"
   >
     <div>
       Uppgiftsanvändare
       **
     </div>
     <div
-      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 CwMSI"
+      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 heHWJo"
     >
       Använt informationsresurs
     </div>
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 bzVXOa"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 bzDhVu"
       onClick={[Function]}
     >
       <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 jRSRbx"
       >
         +
       </div>
       Organisation 1
       <div
-        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 bdLSfT"
       >
         Studieprestationer (KOSKI)
       </div>
     </button>
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 bzVXOa"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 bzDhVu"
       onClick={[Function]}
     >
       <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 jRSRbx"
       >
         +
       </div>
       Test 2
       <div
-        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 bdLSfT"
       >
         Informationsresursen inom småbarnspedagogik (Varda)
       </div>
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 gpyOWC"
+    className="Footnote__Container-sc-x809r1-0 vNQvG"
   >
     *
     <div
-      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+      className="Footnote__TextContainer-sc-x809r1-1 ecvKPs"
     >
       Gäller tills vidare endast studieuppgifter och uppgifter om småbarnspedagogik, dvs. inte uppgifter som ingår i ansökningar. I 
       <a
-        className="typography__Link-sc-1yq3b4j-5 hlKauV"
+        className="typography__Link-sc-1yq3b4j-5 jOOwll"
         href="https://opintopolku.fi/konfo/sv/sivu/dataskyddsbeskrivningar-och-webbkakor"
         target="_blank"
       >
         <test-file-stub
-          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 goYhEw"
         />
         <b
-          className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+          className="typography__Bold-sc-1yq3b4j-6 woqnG"
         >
           dataskyddsbeskrivningen
         </b>
@@ -361,11 +361,11 @@ exports[`Log should render with non-empty log and language sv 1`] = `
     </div>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 gpyOWC"
+    className="Footnote__Container-sc-x809r1-0 vNQvG"
   >
     **
     <div
-      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+      className="Footnote__TextContainer-sc-x809r1-1 ecvKPs"
     >
       Här visas de aktörer som använt dina uppgifter enligt informationsresurs:
       <br />
@@ -384,58 +384,58 @@ exports[`Log should render with non-empty log and language sv 1`] = `
 exports[`Log should render with non-empty log and organization with no English name 1`] = `
 [
   <div
-    className="OrganizationsHeader__Container-sc-1dz6xpo-0 gCmkXl"
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 hYoYvJ"
   >
     <div>
       User of data
       **
     </div>
     <div
-      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 CwMSI"
+      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 heHWJo"
     >
       Registry that has been used
     </div>
   </div>,
   <div
-    className="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
+    className="Expander__ExpanderContainer-sc-fukmjx-0 bzVXOa"
   >
     <button
       aria-pressed={false}
-      className="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
+      className="Expander__ExpanderTitle-sc-fukmjx-2 bzDhVu"
       onClick={[Function]}
     >
       <div
         aria-hidden="true"
-        className="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 jRSRbx"
       >
         +
       </div>
       Organisaatio 1
       <div
-        className="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 bdLSfT"
       >
         Completed studies (KOSKI)
       </div>
     </button>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 gpyOWC"
+    className="Footnote__Container-sc-x809r1-0 vNQvG"
   >
     *
     <div
-      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+      className="Footnote__TextContainer-sc-x809r1-1 ecvKPs"
     >
       This applies for the time being only to early childhood education and study-related information. Please check the 
       <a
-        className="typography__Link-sc-1yq3b4j-5 hlKauV"
+        className="typography__Link-sc-1yq3b4j-5 jOOwll"
         href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
         target="_blank"
       >
         <test-file-stub
-          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+          className="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 goYhEw"
         />
         <b
-          className="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+          className="typography__Bold-sc-1yq3b4j-6 woqnG"
         >
           register description
         </b>
@@ -444,11 +444,11 @@ exports[`Log should render with non-empty log and organization with no English n
     </div>
   </div>,
   <div
-    className="Footnote__Container-sc-x809r1-0 gpyOWC"
+    className="Footnote__Container-sc-x809r1-0 vNQvG"
   >
     **
     <div
-      className="Footnote__TextContainer-sc-x809r1-1 hlClvk"
+      className="Footnote__TextContainer-sc-x809r1-1 ecvKPs"
     >
       Showing organisations that have used your data per data registry:
       <br />

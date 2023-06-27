@@ -2,21 +2,21 @@
 
 exports[`Organization should render with organization permitted by default, and expand data when button is clicked 1`] = `
 <div
-  class="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 bzVXOa"
 >
   <button
     aria-pressed="false"
-    class="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 bzDhVu"
   >
     <div
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 jRSRbx"
     >
       +
     </div>
     Organisaatio 1
     <div
-      class="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+      class="Expander__ExpanderSuffix-sc-fukmjx-3 bdLSfT"
     >
       Opintosuoritukset (KOSKI)
     </div>
@@ -26,65 +26,65 @@ exports[`Organization should render with organization permitted by default, and 
 
 exports[`Organization should render with organization permitted by default, and expand data when button is clicked 2`] = `
 <div
-  class="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 bzVXOa"
 >
   <button
     aria-pressed="true"
-    class="Expander__ExpanderTitle-sc-fukmjx-2 jedhpj"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 irnmAv"
   >
     <div
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 jRSRbx"
     >
       -
     </div>
     Organisaatio 1
     <div
-      class="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+      class="Expander__ExpanderSuffix-sc-fukmjx-3 bdLSfT"
     >
       Opintosuoritukset (KOSKI)
     </div>
   </button>
   <div
-    class="Expander__ExpandedContents-sc-fukmjx-4 eCPcIa"
+    class="Expander__ExpandedContents-sc-fukmjx-4 jgamua"
   >
     <div
-      class="OrganizationDetails__Details-sc-4gjwy4-0 hAtZYl"
+      class="OrganizationDetails__Details-sc-4gjwy4-0 ccrWNp"
     >
       <div
-        class="OrganizationDetails__Description-sc-4gjwy4-1 bNUnTP"
+        class="OrganizationDetails__Description-sc-4gjwy4-1 cTQfJz"
       >
         <b
-          class="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+          class="typography__Bold-sc-1yq3b4j-6 woqnG"
         >
           Tietojen käyttölupa:
         </b>
          Lakiin perustuva tiedonkäyttölupa.
       </div>
       <a
-        class="typography__Link-sc-1yq3b4j-5 hlKauV"
+        class="typography__Link-sc-1yq3b4j-5 jOOwll"
         href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
         target="_blank"
       >
         <test-file-stub
-          classname="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+          classname="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 goYhEw"
         />
         <b
-          class="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+          class="typography__Bold-sc-1yq3b4j-6 woqnG"
         >
           Tarkempi kuvaus lähetetyistä tiedoista
         </b>
       </a>
     </div>
     <div
-      class="LogEntries__Container-sc-ufvf4x-0 dVMpRx"
+      class="LogEntries__Container-sc-ufvf4x-0 fouHxF"
     >
       <div
-        class="LogEntries__TopRow-sc-ufvf4x-1 iQxbkw"
+        class="LogEntries__TopRow-sc-ufvf4x-1 bWQZsE"
       >
         <button
           aria-pressed="false"
-          class="ButtonSmall__TextButton-sc-r8zxw8-0 bVQDsK"
+          class="ButtonSmall__TextButton-sc-r8zxw8-0 jXNmmu"
         >
           Näytä tietojen käyttökerrat
         </button>
@@ -96,21 +96,21 @@ exports[`Organization should render with organization permitted by default, and 
 
 exports[`Organization should render with organization permitted by user, and expand data when button is clicked 1`] = `
 <div
-  class="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 bzVXOa"
 >
   <button
     aria-pressed="false"
-    class="Expander__ExpanderTitle-sc-fukmjx-2 hfuaOO"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 bzDhVu"
   >
     <div
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 jRSRbx"
     >
       +
     </div>
     Organisaatio 2
     <div
-      class="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+      class="Expander__ExpanderSuffix-sc-fukmjx-3 bdLSfT"
     >
       Opintosuoritukset (KOSKI)
     </div>
@@ -120,65 +120,65 @@ exports[`Organization should render with organization permitted by user, and exp
 
 exports[`Organization should render with organization permitted by user, and expand data when button is clicked 2`] = `
 <div
-  class="Expander__ExpanderContainer-sc-fukmjx-0 ecVdwa"
+  class="Expander__ExpanderContainer-sc-fukmjx-0 bzVXOa"
 >
   <button
     aria-pressed="true"
-    class="Expander__ExpanderTitle-sc-fukmjx-2 jedhpj"
+    class="Expander__ExpanderTitle-sc-fukmjx-2 irnmAv"
   >
     <div
       aria-hidden="true"
-      class="Expander__ExpanderPrefix-sc-fukmjx-1 duwlEB"
+      class="Expander__ExpanderPrefix-sc-fukmjx-1 jRSRbx"
     >
       -
     </div>
     Organisaatio 2
     <div
-      class="Expander__ExpanderSuffix-sc-fukmjx-3 fYPOjv"
+      class="Expander__ExpanderSuffix-sc-fukmjx-3 bdLSfT"
     >
       Opintosuoritukset (KOSKI)
     </div>
   </button>
   <div
-    class="Expander__ExpandedContents-sc-fukmjx-4 eCPcIa"
+    class="Expander__ExpandedContents-sc-fukmjx-4 jgamua"
   >
     <div
-      class="OrganizationDetails__Details-sc-4gjwy4-0 hAtZYl"
+      class="OrganizationDetails__Details-sc-4gjwy4-0 ccrWNp"
     >
       <div
-        class="OrganizationDetails__Description-sc-4gjwy4-1 bNUnTP"
+        class="OrganizationDetails__Description-sc-4gjwy4-1 cTQfJz"
       >
         <b
-          class="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+          class="typography__Bold-sc-1yq3b4j-6 woqnG"
         >
           Tietojen käyttölupa:
         </b>
          Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.
       </div>
       <a
-        class="typography__Link-sc-1yq3b4j-5 hlKauV"
+        class="typography__Link-sc-1yq3b4j-5 jOOwll"
         href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
         target="_blank"
       >
         <test-file-stub
-          classname="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 bylCmw"
+          classname="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 goYhEw"
         />
         <b
-          class="typography__Bold-sc-1yq3b4j-6 jFpkKS"
+          class="typography__Bold-sc-1yq3b4j-6 woqnG"
         >
           Tarkempi kuvaus lähetetyistä tiedoista
         </b>
       </a>
     </div>
     <div
-      class="LogEntries__Container-sc-ufvf4x-0 dVMpRx"
+      class="LogEntries__Container-sc-ufvf4x-0 fouHxF"
     >
       <div
-        class="LogEntries__TopRow-sc-ufvf4x-1 iQxbkw"
+        class="LogEntries__TopRow-sc-ufvf4x-1 bWQZsE"
       >
         <button
           aria-pressed="false"
-          class="ButtonSmall__TextButton-sc-r8zxw8-0 bVQDsK"
+          class="ButtonSmall__TextButton-sc-r8zxw8-0 jXNmmu"
         >
           Näytä tietojen käyttökerrat
         </button>
