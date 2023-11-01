@@ -60,7 +60,7 @@
     "webpack-merge": "5.8.0"
   },
   "dependencies": {
-    "@babel/runtime": "7.23.1",
+    "@babel/runtime": "7.23.2",
     "axios": "1.6.0",
     "core-js": "3.33.0",
     "date-fns": "2.30.0",
