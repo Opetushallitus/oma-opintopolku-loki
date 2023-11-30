@@ -3,15 +3,15 @@
 exports[`StudentInfo should be rendered 1`] = `
 [
   <h3
-    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 lbzUwK krWAqi"
+    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 cVeiUL fWRwCz"
   >
     <span
-      className="StudentInfo__Name-sc-8zvgal-1 hlvkuz"
+      className="StudentInfo__Name-sc-8zvgal-1 AUEOO"
     >
       Onni Oskari Oppija
     </span>
     <span
-      className="StudentInfo__Birthday-sc-8zvgal-2 jLZIgE"
+      className="StudentInfo__Birthday-sc-8zvgal-2 hZmHBl"
     >
        s. 
       1.2.1980
@@ -19,12 +19,12 @@ exports[`StudentInfo should be rendered 1`] = `
   </h3>,
   <div>
     <b
-      className="typography__Bold-sc-1yq3b4j-6 woqnG"
+      className="typography__Bold-sc-1yq3b4j-6 haiWbX"
     >
       Tarkasteltava henkilö:
     </b>
     <select
-      className="typography__Select-sc-1yq3b4j-7 brrZQi"
+      className="typography__Select-sc-1yq3b4j-7 bgiqrT"
       onChange={[Function]}
     >
       <option

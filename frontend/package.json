@@ -21,6 +21,7 @@
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx src test",
     "test": "npm run build:prod && JEST_ENV=jest-environment-puppeteer ./node_modules/.bin/jest --testPathPattern=page.spec.js",
     "unit": "JEST_ENV=jsdom ./node_modules/.bin/jest --testPathPattern=test.js --coverage",
+    "unit:update-snapshots": "JEST_ENV=jsdom ./node_modules/.bin/jest --testPathPattern=test.js --coverage --updateSnapshot",
     "prepare": "node update_nvmrc.js"
   },
   "devDependencies": {
