@@ -3,26 +3,26 @@
 exports[`Header should be rendered 1`] = `
 <header>
   <h1
-    className="typography__H1-sc-1yq3b4j-0 fFvYbU"
+    className="typography__H1-sc-1yq3b4j-0 ijwxQR"
   >
     Tietojeni käyttö
   </h1>
   <p
-    className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 eVJHYk dDxbRH"
+    className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 juNCXp fkqnhq"
   >
     Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.
     *
   </p>
   <h3
-    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 lbzUwK krWAqi"
+    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 cVeiUL fWRwCz"
   >
     <span
-      className="StudentInfo__Name-sc-8zvgal-1 hlvkuz"
+      className="StudentInfo__Name-sc-8zvgal-1 AUEOO"
     >
       Onni Oskari Oppija
     </span>
     <span
-      className="StudentInfo__Birthday-sc-8zvgal-2 jLZIgE"
+      className="StudentInfo__Birthday-sc-8zvgal-2 hZmHBl"
     >
        s. 
       1.2.1980
@@ -30,12 +30,12 @@ exports[`Header should be rendered 1`] = `
   </h3>
   <div>
     <b
-      className="typography__Bold-sc-1yq3b4j-6 woqnG"
+      className="typography__Bold-sc-1yq3b4j-6 haiWbX"
     >
       Tarkasteltava henkilö:
     </b>
     <select
-      className="typography__Select-sc-1yq3b4j-7 brrZQi"
+      className="typography__Select-sc-1yq3b4j-7 bgiqrT"
       onChange={[Function]}
     >
       <option
@@ -48,25 +48,25 @@ exports[`Header should be rendered 1`] = `
     </select>
   </div>
   <div
-    className="NavBar__Navigation-sc-18mzj0n-0 bTYgZv"
+    className="NavBar__Navigation-sc-18mzj0n-0 gcAHEi"
   >
     <a
-      className="NavBar__Link-sc-18mzj0n-5 jkzUgm"
+      className="NavBar__Link-sc-18mzj0n-5 xsGtP"
       href="/koski/omadata/kayttooikeudet"
     >
       <span
-        className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 jJfMKY eWygSg"
+        className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 iWojaZ ejlEFl"
       >
         Annetut käyttöluvat
       </span>
     </a>
     <span
-      className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 jJfMKY gWJYFa"
+      className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 iWojaZ hppvAv"
     >
       Tietojani käyttäneet toimijat
     </span>
     <span
-      className="NavBar__Filler-sc-18mzj0n-4 jsITZj"
+      className="NavBar__Filler-sc-18mzj0n-4 bzdCLW"
     />
   </div>
 </header>

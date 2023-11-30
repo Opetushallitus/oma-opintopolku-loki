@@ -3,7 +3,7 @@
 exports[`Query should render alert defined by ErrorBoundary when query fails 1`] = `
 <div>
   <strong
-    className="typography__AlertText-sc-1yq3b4j-4 hqgOFN"
+    className="typography__AlertText-sc-1yq3b4j-4 bGBNus"
   >
     Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.
   </strong>

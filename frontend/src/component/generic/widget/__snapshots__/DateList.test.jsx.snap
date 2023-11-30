@@ -2,7 +2,7 @@
 
 exports[`DateList should be rendered 1`] = `
 <table
-  className="DateList__DateTable-sc-9hn0em-0 jxAiqi"
+  className="DateList__DateTable-sc-9hn0em-0 dOMHeP"
 >
   <tbody>
     <tr>
