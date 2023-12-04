@@ -8,9 +8,9 @@
     "en": "On this page you can inspect and manage permissions you have given to use your data. You can also check which organisations (e.g. authorities) have used your data."
   },
   "Tietoja käyttäneissä toimijoissa on listattuna kaikki ne kerrat, kun tietojasi on katsottu tai niitä on haettu toiseen järjestelmään automatisoidusti. Tietojasi voivat hakea automaattisesti Opetushallituksen eri järjestelmät, viranomaiset tai ne kolmannet osapuolet, joille olet erikseen antanut luvan hyödyntää tietojasi Oma Opintopolusta. Opetushallituksen ja viranomaisten automaattiset haut tapahtuvat yleensä ruuhka-aikojen ulkopuolella, lähinnä ilta- tai yöaikaan.": {
-    "fi": "Tietoja käyttäneissä toimijoissa on listattuna kaikki ne kerrat, kun tietojasi on katsottu tai niitä on haettu toiseen järjestelmään automatisoidusti. Tietojasi voivat hakea automaattisesti Opetushallituksen eri järjestelmät, viranomaiset tai ne kolmannet osapuolet, joille olet erikseen antanut luvan hyödyntää tietojasi Oma Opintopolusta. Opetushallituksen ja viranomaisten automaattiset haut tapahtuvat yleensä ruuhka-aikojen ulkopuolella, lähinnä ilta- tai yöaikaan.",
-    "sv": "Dina uppgifter kan hämtas automatiskt av olika system hos Utbildningsstyrelsen, myndigheter eller de tredje parter som du specifikt har gett tillstånd att använda dina uppgifter från Oma Opintopolku.",
-    "en": "Your data can be automatically retrieved by various systems of the Education Agency, authorities, or those third parties to whom you have explicitly given permission to utilize your information from Oma Opintopolku."
+    "fi": "",
+    "sv": "",
+    "en": ""
   },
   "Taulukko tietojen käyttökerroista": {
     "fi": "Näytä tietojen käyttökerrat",
