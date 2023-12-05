@@ -2,6 +2,14 @@
 
 Lambda-funktio joka lukee audit log -tapahtumat AWS SQS -jonosta, rikastaa ne organisaatiotiedoilla ja tallentaa ne DynamoDB-tietokantaan.
 
+Lambda voidaan deployata suoraan Github Actioneista tai komentoriviltä käyttäen `make deploy env=<env>` komentoa.
+
+Tärkeää: parserin deployn jälkeen täytyy seurata lokeja runtime-virheiden varalta. Helpoiten tämä käy CloudWatchin kälistä.
+Huomaa, että lambdoja voi olla useampi kerrallaan ajossa, joten pelkästään lokiryhmän seuraaminen voi johtaa harhaan.
+Hyvä tapa on etsiä deployta vastaava log stream listasta ja seurata yksinomaan sen lokeja uuden version toiminnan varmistamiseksi:
+
+https://eu-west-1.console.aws.amazon.com/cloudwatch/home?region=eu-west-1#logsV2:log-groups/log-group/$252Faws$252Flambda$252Foma-opintopolku-loki-parser
+
 ## Kehitysympäristön pystyttäminen
 
 Lambda-funktion tarvitsemat DynamoDB ja SQS ajetaan Docker-konteissa. `Makefile` sisältää komennot, joilla kontit voidaan käynnistää ja pysäyttää:
@@ -100,6 +108,8 @@ Listaa kaikki lokitapahtumat:
 ```shell
 aws dynamodb scan --table-name AuditLog --endpoint-url http://localhost:8000 --region eu-west-1
 ```
+
+
 
 ## TODO:
 
