@@ -4,7 +4,7 @@ frameworkVersion: '3'
 
 provider:
   name: aws
-  runtime: java8
+  runtime: java8.al2
   stage: ${opt:stage, 'dev'}
   region: eu-west-1
   environment:
