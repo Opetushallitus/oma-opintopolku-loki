@@ -1,64 +1,48 @@
 APP_NAME = oma-opintopolku-loki
-DYNAMODB_RUNNING := $(shell docker inspect -f {{.State.Running}} $(APP_NAME)-dynamodb 2> /dev/null)
-SQS_RUNNING := $(shell docker inspect -f {{.State.Running}} $(APP_NAME)-sqs 2> /dev/null)
+LOCALSTACK_RUNNING := $(shell docker inspect -f {{.State.Running}} $(APP_NAME)-localstack 2> /dev/null)
 
 help:
 	@echo ""
 	@echo "make deploy env=<env> - Package current version of lambda function and deploy to environment <env>"
-	@echo "make docker-up        - Start all Docker containers"
-	@echo "make docker-down      - Stop all Docker containers"
-	@echo "make dynamodb-start   - Start local DynamoDB instance"
-	@echo "make dynamodb-stop    - Stop local DynamoDB instance"
+	@echo "make localstack       - Start LocalStack instance"
+	@echo "make localstack-debug - Start LocalStack instance in debug mode"
+	@echo "make localstack-stop  - Stop LocalStack instance"
 	@echo "make package          - Package current version of lambda function into JAR file"
 	@echo "make scalastyle       - Run style-check for Scala code"
-	@echo "make sqs-start        - Start local SQS instance"
-	@echo "make sqs-stop         - Stop local SQS instance"
 	@echo "make test             - Run unit tests"
+	@echo "make sqs-queue        - Make default SQS queue to LocalStack"
 
-dynamodb-start:
-ifeq ($(DYNAMODB_RUNNING), true)
-	@echo "DynamoDB already running..."
+localstack:
+ifeq ($(LOCALSTACK_RUNNING), true)
+	@echo "LocalStack already running..."
 else
-	@echo "Starting DynamoDB instance..."
-	-@docker rm --force $(APP_NAME)-dynamodb 2> /dev/null || true
-	@docker run -d --name $(APP_NAME)-dynamodb -p 8000:8000 amazon/dynamodb-local:1.13.4 1> /dev/null
-	@echo "DynamoDB started."
+	@echo "Starting LocalStack:"
+	@docker run --rm -d --name $(APP_NAME)-localstack -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack
 endif
 
-dynamodb-stop:
-ifeq ($(DYNAMODB_RUNNING), true)
-	@echo "Stopping DynamoDB instances:"
-	@docker stop $(APP_NAME)-dynamodb | xargs docker rm 2> /dev/null
+localstack-debug:
+ifeq ($(LOCALSTACK_RUNNING), true)
+	@echo "LocalStack already running..."
 else
-	@echo "DynamoDB already stopped."
+	@echo "Starting LocalStack in debug mode:"
+	@docker run --rm -it --name $(APP_NAME)-localstack -p 4566:4566 -p 4510-4559:4510-4559 -e "LS_LOG=trace" localstack/localstack
 endif
 
-sqs-start:
-ifeq ($(SQS_RUNNING), true)
-	@echo "SQS already running..."
+localstack-stop:
+ifeq ($(LOCALSTACK_RUNNING), true)
+	@echo "Stopping LocalStack instances:"
+	@docker stop $(APP_NAME)-localstack
 else
-	@echo "Starting SQS..."
-	-@docker rm --force $(APP_NAME)-sqs 2> /dev/null || true
-	@docker run -d --name $(APP_NAME)-sqs -p 9324:9324 -p 9325:9325 -d roribio16/alpine-sqs:1.0.0 1> /dev/null
-	@echo "SQS started."
+	@echo "LocalStack already stopped."
 endif
 
-sqs-stop:
-ifeq ($(SQS_RUNNING), true)
-	@echo "Stopping SQS:"
-	@docker stop $(APP_NAME)-sqs | xargs docker rm 2> /dev/null
-else
-	@echo "SQS already stopped."
-endif
+sqs-queue: localstack
+	@./createqueue.sh
 
-docker-up: dynamodb-start sqs-start
-
-docker-down: dynamodb-stop sqs-stop
-
-package: docker-up
+package: sqs-queue
 	@mvn package
 
-test: docker-up
+test: sqs-queue
 	@mvn test
 
 scalastyle:

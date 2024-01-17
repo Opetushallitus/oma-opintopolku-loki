@@ -47,7 +47,7 @@ object Configuration {
   lazy val dbHost: String = config.getString("auditlog.db.host")
 
   lazy val SQSHost: String = if (config.hasPath("auditlog.sqs.host")) {
-    config.getString("auditlog.sqs.host")
+    s"${config.getString("auditlog.sqs.host")}/000000000000"
   } else {
     s"https://sqs.${awsRegion}.amazonaws.com/${accountId}"
   }
