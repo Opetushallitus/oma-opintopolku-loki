@@ -63,7 +63,7 @@
   "dependencies": {
     "@babel/runtime": "7.25.0",
     "axios": "1.7.5",
-    "core-js": "3.35.0",
+    "core-js": "3.38.1",
     "date-fns": "2.30.0",
     "dotenv": "16.3.1",
     "js-cookie": "3.0.5",
