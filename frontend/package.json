@@ -8,7 +8,7 @@
     "url": "git+https://github.com/Opetushallitus/oma-opintopolku-loki.git"
   },
   "engines": {
-    "node": "16"
+    "node": "20"
   },
   "scripts": {
     "build:dev": "./node_modules/.bin/webpack --config webpack.dev.js",
