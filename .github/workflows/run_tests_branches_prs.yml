@@ -52,5 +52,6 @@ jobs:
       - name: Run tests
         run: |
           cd parser
+          mvn -version
           make test
           make scalastyle
