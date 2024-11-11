@@ -33,20 +33,6 @@
   </properties>
 
   <dependencies>
-
-    <!-- Internal dependencies -->
-    <dependency>
-      <groupId>fi.vm.sade</groupId>
-      <artifactId>scala-cas_2.12</artifactId>
-      <version>3.0.2-SNAPSHOT</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.http4s</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
     <!-- https://mvnrepository.com/artifact/org.http4s/http4s-blaze-client -->
     <dependency>
       <groupId>org.http4s</groupId>
