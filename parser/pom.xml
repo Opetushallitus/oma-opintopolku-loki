@@ -26,27 +26,13 @@
     <scala.version>2.12.16</scala.version>
     <scala.compat.version>2.12</scala.compat.version>
     <ch.qos.logback.contrib.version>0.1.5</ch.qos.logback.contrib.version>
-    <http4s.version>0.23.13</http4s.version>
+    <http4s.version>0.23.14</http4s.version>
     <org.json4s.version>4.0.6</org.json4s.version>
     <com.amazonaws.version>1.12.772</com.amazonaws.version>
     <spec2.version>4.16.1</spec2.version>
   </properties>
 
   <dependencies>
-
-    <!-- Internal dependencies -->
-    <dependency>
-      <groupId>fi.vm.sade</groupId>
-      <artifactId>scala-cas_2.12</artifactId>
-      <version>3.0.2-SNAPSHOT</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.http4s</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
     <!-- https://mvnrepository.com/artifact/org.http4s/http4s-blaze-client -->
     <dependency>
       <groupId>org.http4s</groupId>
@@ -86,6 +72,12 @@
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-reflect</artifactId>
       <version>${scala.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.scala-lang.modules</groupId>
+      <artifactId>scala-xml_2.12</artifactId>
+      <version>2.0.1</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/io.symphonia/lambda-logging -->
