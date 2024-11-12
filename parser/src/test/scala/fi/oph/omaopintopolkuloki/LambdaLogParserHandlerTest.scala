@@ -5,14 +5,12 @@ import com.amazonaws.services.lambda.runtime.events.SQSEvent
 import fi.oph.omaopintopolkuloki.db.DB
 import fi.oph.omaopintopolkuloki.repository.{OrganizationPermission, Permission, RemoteOrganizationRepository, RemoteSQSRepository}
 import org.scalamock.scalatest.MockFactory
-import org.scalatest.funspec.AnyFunSpec
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.{BeforeAndAfter, PrivateMethodTester}
+import org.scalatest.{BeforeAndAfter, FunSpec, Matchers, PrivateMethodTester}
 import scalacache.Flags
 
 import scala.io.Source
 
-class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFactory with PrivateMethodTester with BeforeAndAfter {
+class LambdaLogParserHandlerTest extends FunSpec with Matchers with MockFactory with PrivateMethodTester with BeforeAndAfter {
 
   private val sendMessage = PrivateMethod[Unit]('sendMessage)
   private val purgeQueue = PrivateMethod[Unit]('purgeQueue)
