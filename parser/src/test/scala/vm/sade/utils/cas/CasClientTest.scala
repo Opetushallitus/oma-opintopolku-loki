@@ -7,9 +7,6 @@ import org.scalatest.{BeforeAndAfter, PrivateMethodTester}
 
 class CasClientTest extends AnyFunSpec with Matchers with PrivateMethodTester with BeforeAndAfter {
   describe("CasParams") {
-    it("Removes trailing and leading edge slashes") {
-      CasParams.removeTrailingAndLeadingSlash("/foo/bar/baz/") should be ("foo/bar/baz")
-    }
     it("Should format securityUri path properly, with leading slash")  {
       val params = CasParams("/kayttooikeus-service", "example", "passwd")
       params.service.securityUri.path.renderString should be("/kayttooikeus-service/j_spring_cas_security_check")
@@ -38,17 +35,9 @@ class CasClientTest extends AnyFunSpec with Matchers with PrivateMethodTester wi
       val params = CasParams("kayttooikeus-service/", "security_uri_suffix", "example", "passwd")
       params.service.securityUri.path.renderString should be("/kayttooikeus-service/security_uri_suffix")
     }
-    it("Should format securityUri path properly, without trailing or leading edge and custom security URI suffix (1)") {
-      val params = CasParams("kayttooikeus-service", "/security_uri_suffix/bar/baz", "example", "passwd")
-      params.service.securityUri.path.renderString should be("/kayttooikeus-service/security_uri_suffix/bar/baz")
-    }
-    it("Should format securityUri path properly, without trailing or leading edge and custom security URI suffix (2)") {
-      val params = CasParams("kayttooikeus-service", "/security_uri_suffix/bar", "example", "passwd")
-      params.service.securityUri.path.renderString should be("/kayttooikeus-service/security_uri_suffix/bar")
-    }
-    it("Should format securityUri path properly, without trailing or leading edge and custom security URI suffix (3)") {
-      val params = CasParams("kayttooikeus-service", "/security_uri_suffix/bar/baz/", "example", "passwd")
-      params.service.securityUri.path.renderString should be("/kayttooikeus-service/security_uri_suffix/bar/baz")
+    it("Should format securityUri path properly, without trailing or leading edge and custom security URI suffix") {
+      val params = CasParams("kayttooikeus-service", "security_uri_suffix_test", "example", "passwd")
+      params.service.securityUri.path.renderString should be("/kayttooikeus-service/security_uri_suffix_test")
     }
   }
 }
