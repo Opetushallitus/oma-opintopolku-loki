@@ -1,6 +1,6 @@
 # Oma opintopolku -lokin parseri
 
-Lambda-funktio joka lukee audit log -tapahtumat AWS SQS -jonosta, rikastaa ne organisaatiotiedoilla ja tallentaa ne DynamoDB-tietokantaan.
+Lambda-funktio lukee audit log -tapahtumat AWS SQS -jonosta, rikastaa ne organisaatiotiedoilla ja tallentaa ne DynamoDB-tietokantaan.
 
 Lambda voidaan deployata suoraan Github Actioneista tai komentoriviltä käyttäen `make deploy env=<env>` komentoa.
 
@@ -22,6 +22,10 @@ make localstack-stop
 ```
 
 Katso alempaa muutamia [hyödyllisiä komentoja Docker-konttien kanssa operoimiseen](#paikallisten-docker-konttien-kanssa-operoiminen).
+
+### Lambdan buildaus lokaalisti
+
+```mvn clean install```
 
 ## Lambdan ajaminen paikallisesti
 
