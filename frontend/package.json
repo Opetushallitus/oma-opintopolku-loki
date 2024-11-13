@@ -69,7 +69,7 @@
     "js-cookie": "3.0.5",
     "merge": "2.1.1",
     "prop-types": "15.8.1",
-    "ramda": "0.29.1",
+    "ramda": "0.30.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "save-dev": "0.0.1-security",
