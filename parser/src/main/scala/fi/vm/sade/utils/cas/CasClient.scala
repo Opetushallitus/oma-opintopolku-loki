@@ -23,7 +23,7 @@ object CasClient {
     EntityDecoder.decodeBy(MediaRange.`text/*`, MediaType.application.xml)(msg =>
       collectBinary(msg).map(bs => new String(
         bs.toArray,
-        msg.charset.getOrElse(DefaultCharset).nioCharset
+        msg.charset.getOrElse(Charset.`UTF-8`).nioCharset
       ))
     )
 }

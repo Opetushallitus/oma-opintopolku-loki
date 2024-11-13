@@ -26,17 +26,18 @@
     <scala.version>2.12.18</scala.version>
     <scala.compat.version>2.12</scala.compat.version>
     <ch.qos.logback.contrib.version>0.1.5</ch.qos.logback.contrib.version>
-    <http4s.version>0.23.14</http4s.version>
+    <http4s.version>0.23.16</http4s.version>
     <org.json4s.version>4.0.6</org.json4s.version>
     <com.amazonaws.version>1.12.772</com.amazonaws.version>
     <spec2.version>4.16.1</spec2.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.http4s/http4s-blaze-client -->
+    <!-- https://mvnrepository.com/artifact/org.http4s/http4s-ember-client -->
     <dependency>
       <groupId>org.http4s</groupId>
-      <artifactId>http4s-blaze-client_2.12</artifactId>
+      <artifactId>http4s-ember-client_2.12</artifactId>
       <version>${http4s.version}</version>
     </dependency>
 
@@ -293,6 +294,7 @@
                   <exclude>junit:junit</exclude>
                   <exclude>jmock:*</exclude>
                   <exclude>org.apache.maven:lib:tests</exclude>
+                  <exclude>module-info.java</exclude>
                 </excludes>
               </artifactSet>
             </configuration>
@@ -314,6 +316,7 @@
               <args>
                 <arg>-dependencyfile</arg>
                 <arg>${project.build.directory}/.scala_dependencies</arg>
+                <arg>-deprecation</arg>
               </args>
             </configuration>
           </execution>
