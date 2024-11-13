@@ -3,11 +3,9 @@ package fi.oph.omaopintopolkuloki.http
 import cats.effect.IO
 import cats.effect.unsafe.IORuntime
 import fi.oph.omaopintopolkuloki.conf.Configuration._
-import org.http4s.blaze.client.BlazeClientBuilder
+import org.http4s.ember.client.EmberClientBuilder
 import org.http4s.client.Client
 import org.http4s.{Request, Uri}
-
-import scala.concurrent.ExecutionContext.global
 
 trait HttpClient {
   type Decode[ResultType] = (Int, String, Request[IO]) => ResultType
@@ -19,9 +17,9 @@ object Http {
   implicit private val runtime: IORuntime = cats.effect.unsafe.IORuntime.global
 
   def apply(useCas: Boolean = false): HttpClient = {
-    val client = BlazeClientBuilder[IO](global)
-      .withMaxTotalConnections(maxRequestThreads)
-      .allocated
+    val client = EmberClientBuilder.default[IO]
+      .withMaxTotal(maxRequestThreads)
+      .build.allocated
       .map(_._1)
       .unsafeRunSync()
 

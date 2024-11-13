@@ -15,17 +15,10 @@ https://eu-west-1.console.aws.amazon.com/cloudwatch/home?region=eu-west-1#logsV2
 Lambda-funktion tarvitsemat DynamoDB ja SQS ajetaan Docker-konteissa. `Makefile` sisältää komennot, joilla kontit voidaan käynnistää ja pysäyttää:
 
 ``` shell
-make dynamodb-start
-make sqs-start
+make localstack
+./createqueue.sh
 
-make dynamodb-stop
-make sqs-stop
-```
-
-Molemmat voidaan käynnistää ja pysäyttää myös näin:
-```shell
-make docker-up
-make docker-down
+make localstack-stop
 ```
 
 Katso alempaa muutamia [hyödyllisiä komentoja Docker-konttien kanssa operoimiseen](#paikallisten-docker-konttien-kanssa-operoiminen).
