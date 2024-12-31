@@ -27,7 +27,8 @@ cp .env-example .env
 
 ## Sovelluksen ajaminen paikallisesti
 
-Käynnistä sovellus kehitysmoodissa, jolloin se käyttää `mock`-hakemistossa olevaa mock-API:a ja Webpack lataa automaattisesti sovelluksen uudelleen selaimessa, kun teet muutoksia:
+Käynnistä sovellus kehitysmoodissa, jolloin se käyttää `mock`-hakemistossa olevaa mock-API:a ja Webpack lataa
+automaattisesti sovelluksen uudelleen selaimessa, kun teet muutoksia:
 
 ```shell
 npm run start:local
@@ -41,7 +42,8 @@ npm run start:local:nologin
 
 Nyt voit mennä selaimella osoitteeseen http://localhost:8080/ .
 
-Vaihtoehtoisesti voit tehdä lokaalin dev-buildin (`npm run build:local`) ja tarjoilla `dist`-hakemistossa olevat tiedostot jollain toisella HTTP-palvelinsovelluksella.
+Vaihtoehtoisesti voit tehdä lokaalin dev-buildin (`npm run build:local`) ja tarjoilla `dist`-hakemistossa olevat
+tiedostot jollain toisella HTTP-palvelinsovelluksella.
 
 Saat [Oppija-raamit](https://github.com/Opetushallitus/oppija-raamit) käyttöön `PROXY_OPPIJA_RAAMIT` -ympäristömuuttujan avulla seuraavasti:
 
@@ -62,7 +64,9 @@ Jest-yksikkötestit:
 npm run unit
 ```
 
-Testissä on käytetty [Jestin snapshoteja](https://jestjs.io/docs/en/snapshot-testing). Jos teet toiminnallisen muutoksen, joka aiheuttaa olemassaolevan snapshotin muuttumisen, voit päivittää snapshotin komennolla `npm run unit -- -u`, mutta ole tarkkana ettet vahingossa tallenna rikkinäisiä snapshoteja versionhallintaan.
+Testissä on käytetty [Jestin snapshoteja](https://jestjs.io/docs/en/snapshot-testing). Jos teet toiminnallisen muutoksen,
+joka aiheuttaa olemassaolevan snapshotin muuttumisen, voit päivittää snapshotin komennolla `npm run unit -- -u`, mutta
+ole tarkkana ettet vahingossa tallenna rikkinäisiä snapshoteja versionhallintaan.
 
 ## Koodityylit
 

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import t from 'util/translate'
-import { getTranslatedUsagePermissionDescription, isMydataPartner } from 'util/usagePermissionDescriptions'
+import { getTranslatedUsagePermissionDescription } from 'util/usagePermissionDescriptions'
 import { Bold } from 'ui/typography'
 import constants from 'ui/constants'
 import media from 'ui/media'
@@ -31,27 +31,28 @@ const Description = styled.div`
   font-size: ${constants.font.size.s};
 `
 
-const weblink = oid => (isMydataPartner(oid)
+const weblink = isMyDataUse => (isMyDataUse
   ? t('omadata-link')
   : t('tietosuojaseloste-link')
 )
 
-const OrganizationDetails = ({ organizationOid }) => (
+const OrganizationDetails = ({ isMyDataUse, isJakolinkkiUse }) => (
   <Details>
     <Description>
-      <Bold>{t`Tietojen käyttölupa`}:</Bold> {getTranslatedUsagePermissionDescription(organizationOid)}
+      <Bold>{t`Tietojen käyttölupa`}:</Bold> {getTranslatedUsagePermissionDescription(isMyDataUse, isJakolinkkiUse)}
     </Description>
 
     <ExternalLink
       text={t`Tarkempi kuvaus lähetetyistä tiedoista`}
-      url={weblink(organizationOid)}
+      url={weblink(isMyDataUse)}
       openInNewTab={true}
     />
   </Details>
 )
 
 OrganizationDetails.propTypes = {
-  organizationOid: PropTypes.string.isRequired
+  isMyDataUse: PropTypes.bool,
+  isJakolinkkiUse: PropTypes.bool
 }
 
 export default OrganizationDetails
