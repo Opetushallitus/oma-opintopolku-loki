@@ -156,5 +156,15 @@
     "fi": "Tarkasteltava henkilö:",
     "sv": "Person vars uppgifter granskas",
     "en": "Person who’s data is being viewed"
+  },
+  "Jakolinkin tuntematon käyttäjä": {
+    "fi": "Jakolinkin tuntematon käyttäjä",
+    "sv": "Jakolinkin tuntematon käyttäjä",
+    "en": "Jakolinkin tuntematon käyttäjä"
+  },
+  "Oma Opintopolku -palvelussa luomiesi jakolinkkien käyttökerrat": {
+    "fi": "Oma Opintopolku -palvelussa luomiesi jakolinkkien käyttökerrat",
+    "sv": "Oma Opintopolku -palvelussa luomiesi jakolinkkien käyttökerrat",
+    "en": "Oma Opintopolku -palvelussa luomiesi jakolinkkien käyttökerrat"
   }
 }

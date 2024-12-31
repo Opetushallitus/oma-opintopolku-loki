@@ -9,8 +9,7 @@ module.exports = {
   ],
   moduleFileExtensions: ['js', 'jsx', 'json'],
   moduleNameMapper: {
-    '\\.(svg)$': '<rootDir>/src/__mocks__/filemock.js',
-    'Resources/mapping/usagePermissionDescriptions': '<rootDir>/resources/mapping/usagePermissionDescriptions.json'
+    '\\.(svg)$': '<rootDir>/src/__mocks__/filemock.js'
   },
   snapshotSerializers: ['enzyme-to-json/serializer'],
   coverageThreshold: {
