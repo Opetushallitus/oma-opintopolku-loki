@@ -11,6 +11,8 @@ jobs:
     env:
       ENV_NAME: dev
     runs-on: ubuntu-20.04
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -46,8 +48,6 @@ jobs:
       - name: Assume role for target environment
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
           role-to-assume: ${{ secrets.DEPLOYMENT_ROLE }}
           role-duration-seconds: 3600
@@ -71,6 +71,8 @@ jobs:
     env:
       ENV_NAME: qa
     runs-on: ubuntu-20.04
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -106,8 +108,6 @@ jobs:
       - name: Assume role for target environment
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
           role-to-assume: ${{ secrets.DEPLOYMENT_ROLE }}
           role-duration-seconds: 3600
@@ -131,6 +131,8 @@ jobs:
     env:
       ENV_NAME: prod
     runs-on: ubuntu-20.04
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -166,8 +168,6 @@ jobs:
       - name: Assume role for target environment
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
           role-to-assume: ${{ secrets.DEPLOYMENT_ROLE }}
           role-duration-seconds: 3600
