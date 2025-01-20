@@ -82,6 +82,8 @@ Ympäristöjä on kolme:
 - `qa`: https://testiopintopolku.fi/oma-opintopolku-loki/
 - `prod`: https://opintopolku.fi/oma-opintopolku-loki/
 
+Asennus tehdään ensisijaisesti Github Actionsilla, joka käyttää `deploy.sh`-skriptiä.
+
 Asennus ympäristöön `[env]` tehdään ajamalla seuraavat komennot:
 
 ```shell
