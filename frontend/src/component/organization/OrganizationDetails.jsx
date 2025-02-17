@@ -36,10 +36,10 @@ const weblink = isMyDataUse => (isMyDataUse
   : t('tietosuojaseloste-link')
 )
 
-const OrganizationDetails = ({ isMyDataUse, isJakolinkkiUse }) => (
+const OrganizationDetails = ({ isMyDataUse }) => (
   <Details>
     <Description>
-      <Bold>{t`Tietojen käyttölupa`}:</Bold> {getTranslatedUsagePermissionDescription(isMyDataUse, isJakolinkkiUse)}
+      <Bold>{t`Tietojen käyttölupa`}:</Bold> {getTranslatedUsagePermissionDescription(isMyDataUse)}
     </Description>
 
     <ExternalLink
