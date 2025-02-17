@@ -18,11 +18,12 @@ const Header = ({ selectedHetu, onSelectHetu }) => (
     </H1>
     <Description>
       <p>{t`Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.`}{'*'}</p>
-      <p>{t`Tietoja käyttäneissä toimijoissa on listattuna kaikki ne kerrat, kun tietojasi on katsottu tai niitä on haettu toiseen järjestelmään automatisoidusti. Tietojasi voivat hakea automaattisesti Opetushallituksen eri järjestelmät, viranomaiset tai ne kolmannet osapuolet, joille olet erikseen antanut luvan hyödyntää tietojasi Oma Opintopolusta. Opetushallituksen ja viranomaisten automaattiset haut tapahtuvat yleensä ruuhka-aikojen ulkopuolella, lähinnä ilta- tai yöaikaan.`}</p>
+      <p>{t`Tietoja käyttäneissä toimijoissa on listattuna kaikki ne kerrat, kun ...`}</p>
+      <p>{t`Tietojani käyttäneet toimijat -näkymässä ovat listattuna myös ...`}</p>
     </Description>
 
     <StudentInfo selectedHetu={selectedHetu} onSelectHetu={onSelectHetu}/>
-    <NavBar />
+    <NavBar/>
   </header>
 )
 Header.propTypes = ({

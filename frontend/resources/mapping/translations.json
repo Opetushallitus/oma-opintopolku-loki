@@ -7,10 +7,15 @@
     "sv": "På den här sidan kan du granska och administrera de tillstånd du har givit om dina uppgifter. Du ser här dessutom vilka aktörer, t.ex. myndigheter, som har använt dina uppgifter.",
     "en": "On this page you can inspect and manage permissions you have given to use your data. You can also check which organisations (e.g. authorities) have used your data."
   },
-  "Tietoja käyttäneissä toimijoissa on listattuna kaikki ne kerrat, kun tietojasi on katsottu tai niitä on haettu toiseen järjestelmään automatisoidusti. Tietojasi voivat hakea automaattisesti Opetushallituksen eri järjestelmät, viranomaiset tai ne kolmannet osapuolet, joille olet erikseen antanut luvan hyödyntää tietojasi Oma Opintopolusta. Opetushallituksen ja viranomaisten automaattiset haut tapahtuvat yleensä ruuhka-aikojen ulkopuolella, lähinnä ilta- tai yöaikaan.": {
-    "fi": "Tietoja käyttäneissä toimijoissa on listattuna kaikki ne kerrat, kun tietojasi on katsottu tai niitä on haettu toiseen järjestelmään automatisoidusti. Tietojasi voivat hakea automaattisesti Opetushallituksen eri järjestelmät, viranomaiset tai ne kolmannet osapuolet, joille olet erikseen antanut luvan hyödyntää tietojasi Oma Opintopolusta. Opetushallituksen ja viranomaisten automaattiset haut tapahtuvat yleensä ruuhka-aikojen ulkopuolella, lähinnä ilta- tai yöaikaan.",
-    "sv": "I aktörer som använt uppgifter är listade alla de gånger då dina uppgifter har granskats eller hämtats automatiskt till ett annat system. Dina uppgifter kan automatiskt hämtas av olika system från Utbildningsstyrelsen, myndigheter eller de tredje parter som du specifikt har gett tillstånd att använda dina uppgifter från Min Studieinfo. Utbildningsstyrelsens och myndigheternas automatiska sökningar sker vanligtvis utanför rusningstider, främst på kvällar eller nätter.",
-    "en": "Organizations that have used your data includes each occasion when your data has been viewed or automatically retrieved to another system. Your data can be automatically retrieved by various systems from the Finnish National Agency for Education, authorities, or third parties to whom you’ve specifically granted permission to use your data from My Studyinfo. Automatic searches by the Finnish National Agency for Education and authorities typically occur outside peak hours, primarily in the evenings or at night."
+  "Tietoja käyttäneissä toimijoissa on listattuna kaikki ne kerrat, kun ...": {
+    "fi": "Tietoja käyttäneissä toimijoissa on listattuna niitä kertoja, kun tietojasi on katsottu tai niitä on haettu toiseen järjestelmään automatisoidusti. Tietojasi voivat hakea automaattisesti Opetushallituksen eri järjestelmät, viranomaiset tai ne kolmannet osapuolet, joille olet erikseen antanut luvan hyödyntää tietojasi Oma Opintopolusta. Opetushallituksen järjestelmien ja viranomaisten automaattiset haut tapahtuvat yleensä ruuhka-aikojen ulkopuolella, lähinnä ilta- tai yöaikaan. Joidenkin Opetushallituksen ylläpitämien järjestelmien opintotietojen haut näkyvät vain kyseisen järjestelmän lokitiedoissa, eivätkä listaudu Tietojani käyttäneet toimijat -näkymään. Tilastoinnissa tai erilaisissa tiedonsiirtojen tarkistusraporteissa ja massahakutoiminnallisuuksissa käytettyjen tietojen käyttökertoja ei ole koostettuna Tietojani käyttäneet toimijat -näkymään.",
+    "sv": "I vyn \"Aktörer som använt mina uppgifter\" är listade alla de tillfällen då dina uppgifter har granskats eller hämtats av ett annat system på ett automatiserat sätt. Dina uppgifter kan automatiskt hämtas av Utbildningsstyrelsens olika system, myndigheter eller de tredje parter som du separat har gett tillstånd att utnyttja dina uppgifter i Min Studieinfo. Automatiska hämtningar av Utbildningsstyrelsens system och myndigheter sker oftast utanför rusningstid, främst kvälls- eller nattetid. Hämtningar av studieuppgifter i vissa system som upprätthålls av Utbildningsstyrelsen syns endast i ifrågavarande systems logguppgifter och listas inte i vyn \"Aktörer som använt mina uppgifter\". Användningstillfällen för uppgifter som använts för statistikföring eller olika kontrollrapporter för dataöverföringar och massshämtningsfunktioner finns inte samlade i vyn \"Aktörer som använt mina uppgifter\".",
+    "en": "This \"Organisations that have used my data\" view lists the times your data has been viewed by users or automatically retrieved by another system. Your data might be retrieved automatically by different systems of the Finnish National Agency for Education, authorities or third parties to whom you have separately granted permission to utilize your data from My Studyinfo. Automatic data retrievals by the systems of the National Agency for Education and authorities typically occur outside peak hours, mainly in the evening or at night. Retrievals of study data of certain systems maintained by the Finnish National Board of Education are only visible in the logs of those systems and will not be listed in this \"Operators that has used my data\" view. Retrieval of the data for statistics or for various data transfer verification reports and mass search functions are not compiled into this \"Organisations that have used my data\" view."
+  },
+  "Tietojani käyttäneet toimijat -näkymässä ovat listattuna myös ...": {
+    "fi": "Tietojani käyttäneet toimijat -näkymässä ei ole myöskään listattuna omien opintosuoritusten jakolinkkien katselukertoja. Tämä tarkoittaa tilannetta, kun olet luonut Oma Opintopolku -palvelussa jakolinkin omista opintosuorituksistasi ja jakanut sen eteenpäin haluamallesi kolmannelle osapuolelle. Kun kolmas osapuoli avaa linkin, tästä ei tallennu tietoa Tietojani käyttäneet toimijat -näkymään.",
+    "sv": "I vyn \"Aktörer som använt mina uppgifter\" listas inte heller användare av delningslänkar för dina egna studieprestationer. Det vill säga att du har skapat en delningslänk för dina egna studieprestationer i Min Studieinfo och delat den vidare till önskad tredje part. När en länk öppnas av en tredje part sparas ingen information om detta i vyn \"Aktörer som använt mina uppgifter\".",
+    "en": "This \"Organisations that have used my data\" view does not list the usages of your links to share information about your studies. This means that you have created a link to share your study information in the My Studyinfo service and have shared the link with a third party of your choice. When a third party opens a link, no information is stored in this \"Organisations who have used my data\" view."
   },
   "Taulukko tietojen käyttökerroista": {
     "fi": "Näytä tietojen käyttökerrat",
@@ -149,12 +154,22 @@
   },
   "Käytetty tietovaranto": {
     "fi": "Käytetty tietovaranto",
-    "sv": "Använt informationsresurs",
+    "sv": "Använd informationsresurs",
     "en": "Registry that has been used"
   },
   "Tarkasteltava henkilö": {
     "fi": "Tarkasteltava henkilö:",
     "sv": "Person vars uppgifter granskas",
     "en": "Person who’s data is being viewed"
+  },
+  "Opintosuorituksista tehdyn jakolinkin tuntematon käyttäjä": {
+    "fi": "Opintosuorituksista tehdyn jakolinkin tuntematon käyttäjä",
+    "sv": "Okänd användare av delningslänken för studieprestationer",
+    "en": "Anonymous user of the link to share information about your studies"
+  },
+  "Oma opintopolku -palvelussa luomiesi omien opintosuoritusten jakolinkkien käyttökerrat": {
+    "fi": "Oma opintopolku -palvelussa luomiesi omien opintosuoritusten jakolinkkien käyttökerrat",
+    "sv": "Användningstillfällen för egna studieprestationer som du skapat i tjänsten Min Studieinfo",
+    "en": "The use of the links to share information about your studies that you have created in the My Studyinfo service."
   }
 }

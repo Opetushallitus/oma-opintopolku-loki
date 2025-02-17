@@ -15,7 +15,10 @@ exports[`Header should be rendered 1`] = `
       *
     </p>
     <p>
-      Tietoja käyttäneissä toimijoissa on listattuna kaikki ne kerrat, kun tietojasi on katsottu tai niitä on haettu toiseen järjestelmään automatisoidusti. Tietojasi voivat hakea automaattisesti Opetushallituksen eri järjestelmät, viranomaiset tai ne kolmannet osapuolet, joille olet erikseen antanut luvan hyödyntää tietojasi Oma Opintopolusta. Opetushallituksen ja viranomaisten automaattiset haut tapahtuvat yleensä ruuhka-aikojen ulkopuolella, lähinnä ilta- tai yöaikaan.
+      Tietoja käyttäneissä toimijoissa on listattuna niitä kertoja, kun tietojasi on katsottu tai niitä on haettu toiseen järjestelmään automatisoidusti. Tietojasi voivat hakea automaattisesti Opetushallituksen eri järjestelmät, viranomaiset tai ne kolmannet osapuolet, joille olet erikseen antanut luvan hyödyntää tietojasi Oma Opintopolusta. Opetushallituksen järjestelmien ja viranomaisten automaattiset haut tapahtuvat yleensä ruuhka-aikojen ulkopuolella, lähinnä ilta- tai yöaikaan. Joidenkin Opetushallituksen ylläpitämien järjestelmien opintotietojen haut näkyvät vain kyseisen järjestelmän lokitiedoissa, eivätkä listaudu Tietojani käyttäneet toimijat -näkymään. Tilastoinnissa tai erilaisissa tiedonsiirtojen tarkistusraporteissa ja massahakutoiminnallisuuksissa käytettyjen tietojen käyttökertoja ei ole koostettuna Tietojani käyttäneet toimijat -näkymään.
+    </p>
+    <p>
+      Tietojani käyttäneet toimijat -näkymässä ei ole myöskään listattuna omien opintosuoritusten jakolinkkien katselukertoja. Tämä tarkoittaa tilannetta, kun olet luonut Oma Opintopolku -palvelussa jakolinkin omista opintosuorituksistasi ja jakanut sen eteenpäin haluamallesi kolmannelle osapuolelle. Kun kolmas osapuoli avaa linkin, tästä ei tallennu tietoa Tietojani käyttäneet toimijat -näkymään.
     </p>
   </p>
   <h3

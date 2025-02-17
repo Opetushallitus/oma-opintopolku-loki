@@ -1,12 +1,9 @@
 import t from 'util/translate'
 
-import permissionsMap from 'Resources/mapping/usagePermissionDescriptions'
-
-export const getTranslatedUsagePermissionDescription = organizationOid => {
-  const permission = permissionsMap[organizationOid] || permissionsMap.default
+export const getTranslatedUsagePermissionDescription = (isMyDataUse) => {
+  const permission =
+    isMyDataUse
+      ? 'Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.'
+      : 'Lakiin perustuva tiedonkäyttölupa.'
   return t(permission)
-}
-
-export const isMydataPartner = organizationOid => {
-  return Boolean(permissionsMap[organizationOid])
 }

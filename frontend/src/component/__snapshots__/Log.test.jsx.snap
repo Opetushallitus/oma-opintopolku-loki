@@ -288,7 +288,7 @@ exports[`Log should render with non-empty log and language sv 1`] = `
     <div
       className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 rNsSB"
     >
-      Använt informationsresurs
+      Använd informationsresurs
     </div>
   </div>,
   <div
