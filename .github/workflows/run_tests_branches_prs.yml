@@ -9,7 +9,7 @@ env:
 jobs:
   oma_opintopolku_loki_frontend:
     name: oma-opintopolku-loki frontend
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     env:
       TEST_PORT: 3030
       TZ: Europe/Helsinki
@@ -30,7 +30,7 @@ jobs:
 
   oma_opintopolku_loki_parser:
     name: oma-opintopolku-loki log parser
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 

@@ -10,7 +10,7 @@ jobs:
       name: dev
     env:
       ENV_NAME: dev
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     permissions:
       id-token: write
     steps:
@@ -70,7 +70,7 @@ jobs:
     needs: [test_and_deploy_dev]
     env:
       ENV_NAME: qa
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     permissions:
       id-token: write
     steps:
@@ -130,7 +130,7 @@ jobs:
     needs: [test_and_deploy_qa]
     env:
       ENV_NAME: prod
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     permissions:
       id-token: write
     steps:
