@@ -123,6 +123,20 @@
       ],
       "timestamps": ["2018-09-25T12:01:02.542+03"],
       "serviceName": "varda"
+    },
+    {
+      "organizations": [
+        {
+          "oid": "3.3.333.333.33.33333333333",
+          "name": {
+            "fi": "Testiorganisaatio 3",
+            "sv": "Test organisation 3",
+            "en": "Test organization 3"
+          }
+        }
+      ],
+      "timestamps": ["2024-09-25T12:01:02.542+03"],
+      "serviceName": "kitu"
     }
   ],
   "auditlogs-huollettava": [
@@ -139,6 +153,20 @@
       ],
       "timestamps": ["2018-11-19T12:05:26.432+03", "2018-11-20T16:01:44.543+03"],
       "serviceName": "varda"
+    },
+    {
+      "organizations": [
+        {
+          "oid": "2.2.222.222.22.22222222222",
+          "name": {
+            "fi": "Testiorganisaatio 2",
+            "sv": "Test organisation 2",
+            "en": "Test organization 2"
+          }
+        }
+      ],
+      "timestamps": ["2024-11-19T12:05:26.432+03", "2024-11-20T16:01:44.543+03"],
+      "serviceName": "kitu"
     }
   ]
 }

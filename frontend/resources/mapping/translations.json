@@ -112,10 +112,25 @@
     "sv": "Informationsresursen inom småbarnspedagogik (Varda)",
     "en": "The national data warehouse for early childhood education and care Varda"
   },
+  "Kielitutkintorekisteri": {
+    "fi": "Kielitutkintorekisteri",
+    "sv": "Kielitutkintorekisteri",
+    "en": "Kielitutkintorekisteri"
+  },
   "14.11.2018 alkaen": {
     "fi": "14.11.2018 alkaen",
     "sv": "fr.o.m. 14.11.2018",
     "en": "starting from 14.11.2018"
+  },
+  "14.11.2018 alkaen": {
+    "fi": "14.11.2018 alkaen",
+    "sv": "fr.o.m. 14.11.2018",
+    "en": "starting from 14.11.2018"
+  },
+  "15.9.2025 alkaen": {
+    "fi": "15.9.2025 alkaen",
+    "sv": "fr.o.m. 15.9.2025",
+    "en": "starting from 15.9.2025"
   },
   "28.4.2023 alkaen": {
     "fi": "28.4.2023 alkaen",

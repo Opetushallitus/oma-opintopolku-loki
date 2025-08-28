@@ -50,6 +50,8 @@ const Footnotes = ({ noEntries }) => (
       {t('Opintosuoritukset (KOSKI)')} - {t('14.11.2018 alkaen')}
       <br />
       {t('Varhaiskasvatuksen tietovaranto (Varda)')} - {t('28.4.2023 alkaen')}
+      <br />
+      {t('Kielitutkintorekisteri')} - {t('15.9.2025 alkaen')}
     </Footnote>
   </React.Fragment>
 )

@@ -41,6 +41,7 @@ class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFacto
       val healthcheckEntry = Source.fromResource("healthcheck-entry.log").mkString
       val hakuEntry = Source.fromResource("oppija-haku-entry.log").mkString
       val vardaEntry = Source.fromResource("varda-log-entry.log").mkString
+      val kituEntry = Source.fromResource("kitu-log-entry.log").mkString
 
       val viewerOid = "1.2.345.678.90.11122233344" // same viewer oid as in katsominenEntry
       val studentOid = "1.2.123.456.78.99999999999" // same student oid as in katsominenEntry
@@ -57,6 +58,8 @@ class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFacto
       (1 to amountOfValidKoskiEntries) foreach(_ => RemoteSQSRepository invokePrivate sendMessage(katsominenEntry))
       // Then insert Varda audit log
       RemoteSQSRepository invokePrivate sendMessage(vardaEntry)
+      // Then insert Kitu audit log
+      RemoteSQSRepository invokePrivate sendMessage(kituEntry)
 
       // And wait for the items to show up on queue
       while (!RemoteSQSRepository.hasMessages) Thread.sleep(1000)
@@ -73,18 +76,24 @@ class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFacto
       val parser = new LambdaLogParserHandler(remoteOrganizationRepository)
       val result = parser.handleRequest(mock[SQSEvent], mock[Context])
 
-      assert(result.stored == 6, "Stored correct amount of log entries (Koski + Varda)")
+      assert(result.stored == 7, "Stored correct amount of log entries (Koski + Varda + Kitu)")
       assert(result.skipped == 2, "Skipped entries")
       assert(result.failed == 1, "Non-parsable entries reported as failed")
 
       val dbEntries = DB.getAllItems
-      assert(dbEntries.size() == 2, "No duplicate entries were stored to DB") // All 5 of our valid entries were identical except for Varda entry
+      assert(dbEntries.size() == 3, "No duplicate entries were stored to DB") // All 5 of our valid entries were identical except for Varda and Kitu entry
 
-      val dbEntry = dbEntries.get(1)
+      val dbEntry = dbEntries.get(2)
       assert(dbEntry.organizationOid.get(0) == mockOrganizationOid, "Correct organization oid was stored to DB")
       assert(dbEntry.studentOid == studentOid, "Correct student oid was stored to DB")
       assert(dbEntry.id == "2018-08-24T13:18:32.667+03;3;", "Correct ID was stored to DB")
       assert(dbEntry.raw.length > 100, "Raw log entry data stored to DB")
+
+      val dbKituEntry = dbEntries.get(1)
+      assert(dbKituEntry.organizationOid.get(0) == "1.2.246.562.10.27580498748", "Correct Kitu organization oid was stored to DB")
+      assert(dbKituEntry.studentOid == "1.2.246.562.24.10000001224", "Correct Kitu student oid was stored to DB")
+      assert(dbKituEntry.id == "2025-10-04T15:20:28.177714+00:00;104;testing.kitu.opintopolku.fi", "Correct ID for Kitu entry was stored to DB")
+      assert(dbKituEntry.raw.length > 100, "Raw Kitu log entry data stored to DB")
 
       val dbVardaEntry = dbEntries.get(0)
       assert(dbVardaEntry.organizationOid.get(0) == "1.2.246.562.10.27580498759", "Correct Varda organization oid was stored to DB")

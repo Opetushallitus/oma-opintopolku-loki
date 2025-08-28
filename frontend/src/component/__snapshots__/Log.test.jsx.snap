@@ -61,6 +61,10 @@ exports[`Log should render with empty log 1`] = `
       Varhaiskasvatuksen tietovaranto (Varda)
        - 
       28.4.2023 alkaen
+      <br />
+      Kielitutkintorekisteri
+       - 
+      15.9.2025 alkaen
     </div>
   </div>
 </div>
@@ -126,6 +130,28 @@ exports[`Log should render with non-empty log 1`] = `
     </button>
   </div>,
   <div
+    className="Expander__ExpanderContainer-sc-fukmjx-0 fTQBmX"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-sc-fukmjx-2 kLkbKr"
+      onClick={[Function]}
+    >
+      <div
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 ggQkmk"
+      >
+        +
+      </div>
+      Test 2
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 jBOueG"
+      >
+        Kielitutkintorekisteri
+      </div>
+    </button>
+  </div>,
+  <div
     className="Footnote__Container-sc-x809r1-0 fPArcT"
   >
     *
@@ -166,6 +192,10 @@ exports[`Log should render with non-empty log 1`] = `
       Varhaiskasvatuksen tietovaranto (Varda)
        - 
       28.4.2023 alkaen
+      <br />
+      Kielitutkintorekisteri
+       - 
+      15.9.2025 alkaen
     </div>
   </div>,
 ]
@@ -231,6 +261,28 @@ exports[`Log should render with non-empty log and language en 1`] = `
     </button>
   </div>,
   <div
+    className="Expander__ExpanderContainer-sc-fukmjx-0 fTQBmX"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-sc-fukmjx-2 kLkbKr"
+      onClick={[Function]}
+    >
+      <div
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 ggQkmk"
+      >
+        +
+      </div>
+      Test 2
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 jBOueG"
+      >
+        Kielitutkintorekisteri
+      </div>
+    </button>
+  </div>,
+  <div
     className="Footnote__Container-sc-x809r1-0 fPArcT"
   >
     *
@@ -271,6 +323,10 @@ exports[`Log should render with non-empty log and language en 1`] = `
       The national data warehouse for early childhood education and care Varda
        - 
       starting from 28.4.2023
+      <br />
+      Kielitutkintorekisteri
+       - 
+      starting from 15.9.2025
     </div>
   </div>,
 ]
@@ -336,6 +392,28 @@ exports[`Log should render with non-empty log and language sv 1`] = `
     </button>
   </div>,
   <div
+    className="Expander__ExpanderContainer-sc-fukmjx-0 fTQBmX"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-sc-fukmjx-2 kLkbKr"
+      onClick={[Function]}
+    >
+      <div
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 ggQkmk"
+      >
+        +
+      </div>
+      Test 2
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 jBOueG"
+      >
+        Kielitutkintorekisteri
+      </div>
+    </button>
+  </div>,
+  <div
     className="Footnote__Container-sc-x809r1-0 fPArcT"
   >
     *
@@ -376,6 +454,10 @@ exports[`Log should render with non-empty log and language sv 1`] = `
       Informationsresursen inom småbarnspedagogik (Varda)
        - 
       fr.o.m. 28.4.2023
+      <br />
+      Kielitutkintorekisteri
+       - 
+      fr.o.m. 15.9.2025
     </div>
   </div>,
 ]
@@ -459,6 +541,10 @@ exports[`Log should render with non-empty log and organization with no English n
       The national data warehouse for early childhood education and care Varda
        - 
       starting from 28.4.2023
+      <br />
+      Kielitutkintorekisteri
+       - 
+      starting from 15.9.2025
     </div>
   </div>,
 ]
