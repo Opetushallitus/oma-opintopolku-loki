@@ -79,6 +79,8 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
         List("huoltaja")
       } else if (entry.serviceName == "varda") {
         entry.organizationOid.toList
+      } else if (entry.serviceName == "kitu") {
+        entry.organizationOid.toList
       } else {
         remoteOrganizationRepository.getOrganizationIdsForUser(viewerOid).map(permission => permission.organisaatioOid).toList
       }

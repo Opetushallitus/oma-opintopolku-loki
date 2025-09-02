@@ -61,7 +61,9 @@ const Expander = ({ title, serviceName, children }) => {
         <ExpanderSuffix>
           {serviceName === 'varda'
             ? t('Varhaiskasvatuksen tietovaranto (Varda)')
-            : t('Opintosuoritukset (KOSKI)')}
+            : serviceName === 'kitu'
+              ? t('Kielitutkintorekisteri')
+              : t('Opintosuoritukset (KOSKI)')}
         </ExpanderSuffix>
       </ExpanderTitle>
       {expanded && <ExpandedContents>{children}</ExpandedContents>}

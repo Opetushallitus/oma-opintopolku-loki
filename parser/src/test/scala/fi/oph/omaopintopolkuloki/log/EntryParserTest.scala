@@ -50,5 +50,19 @@ class EntryParserTest extends AnyFunSpec with Matchers {
       assert(entry.serviceName == "varda", "Service name parsed correctly")
       assert(entry.shouldStore, "Valid entry should be stored to database")
     }
+
+    it("Should be able to parse Kitu log entry") {
+      val entry = EntryParser(Source.fromResource("kitu-log-entry.log").mkString)
+
+      assert(entry.user.get.oid == "1.2.246.562.24.22846384298", "Viewer oid parsed correctly")
+      assert(entry.target.get.oppijaHenkiloOid == "1.2.246.562.24.10000001224", "Student oid parsed correctly")
+      assert(entry.organizationOid.get == "1.2.246.562.10.27580498748", "Organization oid parsed correctly")
+      assert(entry.timestamp == "2025-10-04T15:20:49.519887+00:00", "Timestamp parsed correctly")
+      assert(entry.applicationType == "backend", "Application type parsed correctly")
+      assert(entry.operation.get == "dataAccess", "Operation parsed correctly")
+      assert(entry.`type` == "dataAccess", "Type parsed correctly")
+      assert(entry.serviceName == "kitu", "Service name parsed correctly")
+      assert(entry.shouldStore, "Valid entry should be stored to database")
+    }
   }
 }

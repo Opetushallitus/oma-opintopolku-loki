@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "logSeq": 104,
+    "bootTime": "2025-10-04T15:20:28.177714+00:00",
+    "type": "dataAccess",
+    "environment": "testing",
+    "hostname": "testing.kitu.opintopolku.fi",
+    "timestamp": "2025-10-04T15:20:49.519887+00:00",
+    "serviceName": "kitu",
+    "applicationType": "backend",
+    "user": {"oid": "1.2.246.562.24.22846384298"},
+    "target": {"oppijaHenkiloOid": "1.2.246.562.24.10000001224"},
+    "organizationOid": "1.2.246.562.10.27580498748",
+    "operation": "dataAccess"
+}
