@@ -278,7 +278,7 @@ exports[`Log should render with non-empty log and language en 1`] = `
       <div
         className="Expander__ExpanderSuffix-sc-fukmjx-3 jBOueG"
       >
-        Kielitutkintorekisteri
+        Register of Language Proficiency Certificates
       </div>
     </button>
   </div>,
@@ -324,7 +324,7 @@ exports[`Log should render with non-empty log and language en 1`] = `
        - 
       starting from 28.4.2023
       <br />
-      Kielitutkintorekisteri
+      Register of Language Proficiency Certificates
        - 
       starting from 15.9.2025
     </div>
@@ -409,7 +409,7 @@ exports[`Log should render with non-empty log and language sv 1`] = `
       <div
         className="Expander__ExpanderSuffix-sc-fukmjx-3 jBOueG"
       >
-        Kielitutkintorekisteri
+        Språkexamensregister
       </div>
     </button>
   </div>,
@@ -455,7 +455,7 @@ exports[`Log should render with non-empty log and language sv 1`] = `
        - 
       fr.o.m. 28.4.2023
       <br />
-      Kielitutkintorekisteri
+      Språkexamensregister
        - 
       fr.o.m. 15.9.2025
     </div>
@@ -542,7 +542,7 @@ exports[`Log should render with non-empty log and organization with no English n
        - 
       starting from 28.4.2023
       <br />
-      Kielitutkintorekisteri
+      Register of Language Proficiency Certificates
        - 
       starting from 15.9.2025
     </div>
