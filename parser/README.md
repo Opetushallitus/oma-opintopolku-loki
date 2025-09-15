@@ -106,7 +106,52 @@ Listaa kaikki lokitapahtumat:
 aws dynamodb scan --table-name AuditLog --endpoint-url http://localhost:8000 --region eu-west-1
 ```
 
+## SQS-jonosta luettavan JSON-lokiviestin formaatti:
 
+Except for organizationOid, the fields are derived from the JSON output format of https://github.com/Opetushallitus/auditlogger library.
+
+    timestamp         String        ISO-8601 timestamp, e.g. "2025-10-04T15:20:28.177714+00:00".
+    serviceName       String        servicename. Currently "koski", "kitu" or "varda".
+    type              String        Only used in debug prints for now. Type of the log entry.
+    logSeq            String        Sequence number within a boot session, e.g. "123". In practice
+                                    also positive integer as number works.
+    bootTime          String        ISO-8601 boot time of the service,
+                                    e.g. "2025-10-04T15:20:28.177714+00:00"
+    hostname          String        Hostname of the service instance,
+                                    e.g. "ip-1-2-3.foo.bar.com"
+    applicationType   String        Application type, e.g. "backend".
+                                    Not used for anything currently.
+    operation         String        Operation that was done, e.g. "READ_PERSON_DATA".
+    user              User          User, with oppijanumero in field oid, who did the operation.
+                                    E.g. {"oid": "1.2.246.562.24.22846384298"}.
+    target            Student       Target, with oppijanumero in field oppijaHenkiloOid, whose data was accessed.
+                                    E.g. {"oppijaHenkiloOid": "1.2.246.562.24.10000001224"}.
+    organizationOid   String        Organization OID, e.g. "1.2.246.562.10.00000000001".
+                                    Used for kitu and varda entries to define the organization of the user.
+
+    In order to store a log entry successfully, all the fields are mandatory, except serviceName "koski" does not require organizationOid.
+
+    Combination of (bootTime, logSeq, hostname) must define a unique key for the log entry.
+
+    Extra fields are allowed, and even stored as raw data, but not used for anything currently.
+
+Full example:
+
+    {
+      "version": 1,
+      "logSeq": 104,
+      "bootTime": "2025-10-04T15:20:28.177714+00:00",
+      "type": "dataAccess",
+      "environment": "testing",
+      "hostname": "testing.kitu.opintopolku.fi",
+      "timestamp": "2025-10-04T15:20:49.519887+00:00",
+      "serviceName": "kitu",
+      "applicationType": "backend",
+      "user": {"oid": "1.2.246.562.24.22846384298"},
+      "target": {"oppijaHenkiloOid": "1.2.246.562.24.10000001224"},
+      "organizationOid": "1.2.246.562.10.27580498748",
+      "operation": "dataAccess"
+    }
 
 ## TODO:
 
