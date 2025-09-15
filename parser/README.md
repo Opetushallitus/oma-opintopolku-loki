@@ -106,7 +106,7 @@ Listaa kaikki lokitapahtumat:
 aws dynamodb scan --table-name AuditLog --endpoint-url http://localhost:8000 --region eu-west-1
 ```
 
-## SQS-jonosta luettavan JSON-lokiviestin formaatti:
+## Format of the expected log message
 
 Except for organizationOid, the fields are derived from the JSON output format of https://github.com/Opetushallitus/auditlogger library.
 
