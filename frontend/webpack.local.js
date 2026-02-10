@@ -5,23 +5,21 @@ const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 const path = require('path')
 
-const raamitProxy = {
-  '/oppija-raamit': {
+const raamitProxy = [
+  {
+    context: ['/oppija-raamit'],
     target: process.env.RAAMIT_DEV_PROXY_TARGET,
     secure: false
   }
-}
+]
 
-const apiProxy = {
-  '/koski/api/omaopintopolkuloki/auditlogs': {
-    target: 'http://localhost:3000',
-    secure: false
-  },
-  '/koski/api/omaopintopolkuloki/whoami': {
+const apiProxy = [
+  {
+    context: ['/koski/api/omaopintopolkuloki/auditlogs', '/koski/api/omaopintopolkuloki/whoami'],
     target: 'http://localhost:3000',
     secure: false
   }
-}
+]
 
 module.exports = merge(common, {
   mode: 'development',
@@ -36,7 +34,7 @@ module.exports = merge(common, {
     },
     compress: true,
     port: 8080,
-    proxy: process.env.PROXY_OPPIJA_RAAMIT === 'true' ? { ...raamitProxy, ...apiProxy } : apiProxy
+    proxy: process.env.PROXY_OPPIJA_RAAMIT === 'true' ? [...raamitProxy, ...apiProxy] : apiProxy
   },
   devtool: 'eval-source-map'
 })
