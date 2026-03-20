@@ -3,4 +3,5 @@ WORKDIR /opt/app
 COPY package*.json ./
 RUN npm clean-install --ignore-scripts
 COPY . .
+USER node
 ENTRYPOINT ["npm", "run"]
