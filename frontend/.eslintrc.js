@@ -6,7 +6,7 @@ module.exports = {
   ],
   settings: {
     react: {
-      version: '16.14'
+      version: '17'
     }
   },
   globals: {
