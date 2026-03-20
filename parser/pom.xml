@@ -29,7 +29,7 @@
     <http4s.version>0.23.30</http4s.version>
     <org.json4s.version>4.0.7</org.json4s.version>
     <com.amazonaws.version>1.12.797</com.amazonaws.version>
-    <spec2.version>4.16.1</spec2.version>
+    <spec2.version>4.23.0</spec2.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
