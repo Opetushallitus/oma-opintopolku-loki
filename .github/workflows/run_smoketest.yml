@@ -1,0 +1,51 @@
+name: Run smoketest
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to test'
+        required: true
+        type: choice
+        options:
+          - dev
+          - qa
+      branch:
+        description: 'Branch to run from (default: current)'
+        required: false
+        type: string
+        default: ''
+jobs:
+  smoketest:
+    name: Smoketest (${{ inputs.environment }})
+    runs-on: ubuntu-24.04
+    env:
+      TZ: Europe/Helsinki
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch || github.ref }}
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: |
+          cd smoketests
+          pnpm install
+
+      - name: Install Puppeteer browser
+        run: |
+          cd smoketests
+          npx puppeteer browsers install chrome
+
+      - name: Run smoketest
+        run: |
+          cd smoketests
+          pnpm smoketest:${{ inputs.environment }}
