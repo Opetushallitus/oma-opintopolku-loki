@@ -17,3 +17,6 @@ frontend/dist/*
 
 # Test coverage reports
 coverage
+.claude/
+smoketests/cookies.txt
+smoketests/.pnpm-approve-builds.json
