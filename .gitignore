@@ -17,3 +17,4 @@ frontend/dist/*
 
 # Test coverage reports
 coverage
+.claude/

@@ -17,7 +17,7 @@ ifeq ($(LOCALSTACK_RUNNING), true)
 	@echo "LocalStack already running..."
 else
 	@echo "Starting LocalStack:"
-	@docker run --rm -d --name $(APP_NAME)-localstack -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack
+	@docker run --rm -d --name $(APP_NAME)-localstack -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack@sha256:6b6172cfceb04b4fbc35097a55f717c365a35fafa572be49f7341771cf9023ed
 endif
 
 localstack-debug:
@@ -25,7 +25,7 @@ ifeq ($(LOCALSTACK_RUNNING), true)
 	@echo "LocalStack already running..."
 else
 	@echo "Starting LocalStack in debug mode:"
-	@docker run --rm -it --name $(APP_NAME)-localstack -p 4566:4566 -p 4510-4559:4510-4559 -e "LS_LOG=trace" localstack/localstack
+	@docker run --rm -it --name $(APP_NAME)-localstack -p 4566:4566 -p 4510-4559:4510-4559 -e "LS_LOG=trace" localstack/localstack@sha256:6b6172cfceb04b4fbc35097a55f717c365a35fafa572be49f7341771cf9023ed
 endif
 
 localstack-stop:
