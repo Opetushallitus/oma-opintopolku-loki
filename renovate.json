@@ -15,10 +15,42 @@
   "prConcurrentLimit": 5,
   "packageRules": [
     {
-      "description": "Group GitHub Actions minor+patch together",
+      "description": "Group all minor updates",
+      "matchUpdateTypes": ["minor"],
+      "groupName": "all minor"
+    },
+    {
+      "description": "Group all patch updates",
+      "matchUpdateTypes": ["patch"],
+      "groupName": "all patch"
+    },
+    {
+      "description": "Group all digest updates",
+      "matchUpdateTypes": ["digest"],
+      "groupName": "all digest"
+    },
+    {
+      "description": "Group all pin updates",
+      "matchUpdateTypes": ["pin"],
+      "groupName": "all pin"
+    },
+    {
+      "description": "Group GitHub Actions major updates",
       "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["minor", "patch", "digest"],
-      "groupName": "GitHub Actions (non-major)"
+      "matchUpdateTypes": ["major"],
+      "groupName": "GitHub Actions (major)"
+    },
+    {
+      "description": "Group ESLint ecosystem major updates",
+      "matchPackagePatterns": ["^eslint"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "ESLint ecosystem (major)"
+    },
+    {
+      "description": "Group frontend build tooling major updates",
+      "matchPackageNames": ["webpack-cli", "webpack-merge", "babel-loader", "@svgr/webpack"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "frontend build tooling (major)"
     },
     {
       "description": "Hold back majors that need manual migration",
