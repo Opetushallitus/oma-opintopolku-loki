@@ -65,6 +65,7 @@ function Log ({ hetu }) {
       {({ data, error, pending }) => {
         if (error) return <AlertText>{t`Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.`}</AlertText>
         if (pending) return <div>{t`Tietoja haetaan`}</div>
+        window.__auditLogData = data || []
         if (!Array.isArray(data) || !data.length) return <NoEntries/>
 
         const translatedOrganizations = map(over(organizationLens, map(over(nameLens, getTranslatedName))))(data)
