@@ -1,4 +1,4 @@
-FROM node:20-slim@sha256:ec35a66c9a0a275b027debde05247c081f8b2f0c43d7399d3a6ad5660cee2f6a
+FROM node:20-slim@sha256:17281e8d1dc4d671976c6b89a12f47a44c2f390b63a989e2e327631041f544fd
 WORKDIR /opt/app
 COPY package*.json ./
 RUN npm clean-install --ignore-scripts
