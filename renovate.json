@@ -16,40 +16,63 @@
   "packageRules": [
     {
       "description": "Group all minor updates",
-      "matchUpdateTypes": ["minor"],
+      "matchUpdateTypes": [
+        "minor"
+      ],
       "groupName": "all minor"
     },
     {
       "description": "Group all patch updates",
-      "matchUpdateTypes": ["patch"],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "groupName": "all patch"
     },
     {
       "description": "Group all digest updates",
-      "matchUpdateTypes": ["digest"],
+      "matchUpdateTypes": [
+        "digest"
+      ],
       "groupName": "all digest"
     },
     {
       "description": "Group all pin updates",
-      "matchUpdateTypes": ["pin"],
+      "matchUpdateTypes": [
+        "pin"
+      ],
       "groupName": "all pin"
     },
     {
       "description": "Group GitHub Actions major updates",
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["major"],
+      "matchManagers": [
+        "github-actions"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
       "groupName": "GitHub Actions (major)"
     },
     {
       "description": "Group ESLint ecosystem major updates",
-      "matchPackagePatterns": ["^eslint"],
-      "matchUpdateTypes": ["major"],
-      "groupName": "ESLint ecosystem (major)"
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "groupName": "ESLint ecosystem (major)",
+      "matchPackageNames": [
+        "/^eslint/"
+      ]
     },
     {
       "description": "Group frontend build tooling major updates",
-      "matchPackageNames": ["webpack-cli", "webpack-merge", "babel-loader", "@svgr/webpack"],
-      "matchUpdateTypes": ["major"],
+      "matchPackageNames": [
+        "webpack-cli",
+        "webpack-merge",
+        "babel-loader",
+        "@svgr/webpack"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
       "groupName": "frontend build tooling (major)"
     },
     {
@@ -61,7 +84,9 @@
         "org.scala-lang:scala-library",
         "org.scala-lang:scala-reflect"
       ],
-      "matchUpdateTypes": ["major"],
+      "matchUpdateTypes": [
+        "major"
+      ],
       "enabled": false
     }
   ]
