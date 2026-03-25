@@ -88,6 +88,12 @@
         "major"
       ],
       "enabled": false
+    },
+    {
+      "description": "Handle eslint-plugin-node replacement with ESLint major upgrade",
+      "matchPackageNames": ["eslint-plugin-node"],
+      "matchUpdateTypes": ["replacement"],
+      "enabled": false
     }
   ]
 }
