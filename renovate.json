@@ -1,6 +1,36 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:best-practices"
+  ],
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "security"
+    ]
+  },
+  "platformAutomerge": false,
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 5,
+  "packageRules": [
+    {
+      "description": "Group GitHub Actions minor+patch together",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "groupName": "GitHub Actions (non-major)"
+    },
+    {
+      "description": "Hold back majors that need manual migration",
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "react-test-renderer",
+        "org.scala-lang:scala-library",
+        "org.scala-lang:scala-reflect"
+      ],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    }
   ]
 }
