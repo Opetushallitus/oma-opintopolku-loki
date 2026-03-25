@@ -85,6 +85,11 @@ exports[`Log should render with non-empty log 1`] = `
       Käytetty tietovaranto
     </div>
   </div>,
+  <h3
+    className="typography__H3-sc-1yq3b4j-2 Organizations__SectionTitle-sc-1eh35ye-0 cVeiUL eLrjtW"
+  >
+    Lakiin perustuvat tietojen käyttäjät
+  </h3>,
   <div
     className="Expander__ExpanderContainer-sc-fukmjx-0 fTQBmX"
   >
@@ -216,6 +221,11 @@ exports[`Log should render with non-empty log and language en 1`] = `
       Registry that has been used
     </div>
   </div>,
+  <h3
+    className="typography__H3-sc-1yq3b4j-2 Organizations__SectionTitle-sc-1eh35ye-0 cVeiUL eLrjtW"
+  >
+    Lakiin perustuvat tietojen käyttäjät
+  </h3>,
   <div
     className="Expander__ExpanderContainer-sc-fukmjx-0 fTQBmX"
   >
@@ -347,6 +357,11 @@ exports[`Log should render with non-empty log and language sv 1`] = `
       Använd informationsresurs
     </div>
   </div>,
+  <h3
+    className="typography__H3-sc-1yq3b4j-2 Organizations__SectionTitle-sc-1eh35ye-0 cVeiUL eLrjtW"
+  >
+    Lakiin perustuvat tietojen käyttäjät
+  </h3>,
   <div
     className="Expander__ExpanderContainer-sc-fukmjx-0 fTQBmX"
   >
@@ -478,6 +493,11 @@ exports[`Log should render with non-empty log and organization with no English n
       Registry that has been used
     </div>
   </div>,
+  <h3
+    className="typography__H3-sc-1yq3b4j-2 Organizations__SectionTitle-sc-1eh35ye-0 cVeiUL eLrjtW"
+  >
+    Lakiin perustuvat tietojen käyttäjät
+  </h3>,
   <div
     className="Expander__ExpanderContainer-sc-fukmjx-0 fTQBmX"
   >

@@ -1,16 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { lensPath, view } from 'ramda'
 import Expander from 'component/generic/widget/Expander'
 import OrganizationDetails from 'component/organization/OrganizationDetails'
 import LogEntries from 'component/log-entries/LogEntries'
+import t from 'util/translate'
 
-/*
-TODO: Currently we just take the first organization alternative (its name and oid). This must be changed.
- */
-const nameLens = lensPath(['0', 'name'])
-
-const title = organizations => view(nameLens, organizations)
+const title = organizations =>
+  organizations.length > 0
+    ? organizations.map(org => org.name).join(', ')
+    : t('Opintosuorituksista tehdyn jakolinkin tuntematon käyttäjä')
 
 const Organization = ({ organizationAlternatives, timestamps, serviceName, isMyDataUse, isJakolinkkiUse }) => (
   <Expander title={title(organizationAlternatives)} serviceName={serviceName}>
