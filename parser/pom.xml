@@ -55,6 +55,13 @@
       <version>${http4s.version}</version>
     </dependency>
 
+    <!-- Required by http4s 0.23.33+ (cats-effect 3.6+) -->
+    <dependency>
+      <groupId>org.typelevel</groupId>
+      <artifactId>cats-effect-std_2.12</artifactId>
+      <version>3.6.3</version>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/org.json4s/json4s-native -->
     <dependency>
       <groupId>org.json4s</groupId>
