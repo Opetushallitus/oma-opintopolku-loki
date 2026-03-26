@@ -4,8 +4,59 @@ on:
     branches:
       - master
 jobs:
-  test_and_deploy_dev:
+  test_frontend:
+    name: Test frontend
+    runs-on: ubuntu-24.04
+    env:
+      TEST_PORT: 3030
+      TZ: Europe/Helsinki
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Run tests
+        run: |
+          cd frontend
+          npm install
+          npx puppeteer browsers install chrome
+          npm run test
+          npm run unit
+          npm run lint
+
+  test_parser:
+    name: Test parser
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Set up Java 8
+        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5
+        with:
+          java-version: '8'
+          architecture: 'x64'
+          distribution: 'zulu'
+
+      - name: Cache Maven packages
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Run tests
+        run: |
+          cd parser
+          make test
+          make scalastyle
+
+  deploy_dev:
     name: Deploy to dev
+    needs: [test_frontend, test_parser]
     environment:
       name: dev
     env:
@@ -63,11 +114,11 @@ jobs:
           cd frontend
           ./deploy.sh $ENV_NAME
 
-  test_and_deploy_qa:
+  deploy_qa:
     name: Deploy to qa
     environment:
       name: qa
-    needs: [test_and_deploy_dev]
+    needs: [deploy_dev]
     env:
       ENV_NAME: qa
     runs-on: ubuntu-24.04
@@ -123,11 +174,11 @@ jobs:
           cd frontend
           ./deploy.sh $ENV_NAME
 
-  test_and_deploy_prod:
+  deploy_prod:
     name: Deploy to prod
     environment:
       name: prod
-    needs: [test_and_deploy_qa]
+    needs: [deploy_qa]
     env:
       ENV_NAME: prod
     runs-on: ubuntu-24.04
