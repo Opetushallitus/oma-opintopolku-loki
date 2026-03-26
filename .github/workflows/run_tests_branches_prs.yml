@@ -24,7 +24,9 @@ jobs:
       - name: Run tests
         run: |
           cd frontend
-          npm install && npm run test
+          npm install
+          npx puppeteer browsers install chrome
+          npm run test
           npm run unit
           npm run lint
 
