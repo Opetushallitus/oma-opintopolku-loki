@@ -15,32 +15,46 @@
   "prConcurrentLimit": 5,
   "packageRules": [
     {
-      "description": "Group all minor updates",
-      "matchUpdateTypes": [
-        "minor"
-      ],
-      "groupName": "all minor"
+      "description": "Group npm minor updates",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["minor"],
+      "groupName": "npm minor"
     },
     {
-      "description": "Group all patch updates",
-      "matchUpdateTypes": [
-        "patch"
-      ],
-      "groupName": "all patch"
+      "description": "Group npm patch updates",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["patch"],
+      "groupName": "npm patch"
+    },
+    {
+      "description": "Group Maven minor updates",
+      "matchManagers": ["maven"],
+      "matchUpdateTypes": ["minor"],
+      "groupName": "Maven minor"
+    },
+    {
+      "description": "Group Maven patch updates",
+      "matchManagers": ["maven"],
+      "matchUpdateTypes": ["patch"],
+      "groupName": "Maven patch"
     },
     {
       "description": "Group all digest updates",
-      "matchUpdateTypes": [
-        "digest"
-      ],
+      "matchUpdateTypes": ["digest"],
       "groupName": "all digest"
     },
     {
       "description": "Group all pin updates",
-      "matchUpdateTypes": [
-        "pin"
-      ],
+      "matchUpdateTypes": ["pin"],
       "groupName": "all pin"
+    },
+    {
+      "description": "Scala uses X.Y as major version; treat 2.12→2.13 as major",
+      "matchPackageNames": [
+        "org.scala-lang:scala-library",
+        "org.scala-lang:scala-reflect"
+      ],
+      "versioning": "regex:^(?<major>\\d+\\.\\d+)\\.(?<minor>\\d+)$"
     },
     {
       "description": "Group GitHub Actions major updates",
