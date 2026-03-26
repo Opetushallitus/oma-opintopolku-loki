@@ -97,7 +97,8 @@
         "react-dom",
         "react-test-renderer",
         "org.scala-lang:scala-library",
-        "org.scala-lang:scala-reflect"
+        "org.scala-lang:scala-reflect",
+        "org.http4s:*"
       ],
       "matchUpdateTypes": [
         "major"
