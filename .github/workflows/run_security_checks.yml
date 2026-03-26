@@ -59,7 +59,7 @@ jobs:
           make snyk
 
       - name: Report failure
-        uses: ravsamhq/notify-slack-action@b4a384a589d05f367b0f5d4b271559a7fca866cb
+        uses: ravsamhq/notify-slack-action@d0190712a54cd89d2e57a5847f06a78de127711a
         if: ${{ failure() }}
         with:
           status: ${{ job.status }}
