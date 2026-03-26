@@ -64,7 +64,7 @@
     "@babel/runtime": "7.29.2",
     "axios": "1.13.6",
     "core-js": "3.49.0",
-    "date-fns": "2.30.0",
+    "date-fns": "4.1.0",
     "dotenv": "17.3.1",
     "js-cookie": "3.0.5",
     "merge": "2.1.1",
