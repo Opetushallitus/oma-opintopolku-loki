@@ -1,10 +1,17 @@
-import 'service/raamitSupport'
+import { nav } from 'service/raamitSupport'
 
 import http from '../http/http'
 
 describe('RaamitSupport', () => {
+  let assignSpy
+
   beforeEach(() => {
     jest.resetAllMocks()
+    assignSpy = jest.spyOn(nav, 'assign').mockImplementation(() => {})
+  })
+
+  afterEach(() => {
+    jest.restoreAllMocks()
   })
 
   it('should return user name', () => {
@@ -26,24 +33,14 @@ describe('RaamitSupport', () => {
   })
 
   it('should forward to Opintopolku login', () => {
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { assign: jest.fn() }
-    })
     const service = global.Service
     service.login()
-    expect(window.location.assign).toHaveBeenCalledWith('/oma-opintopolku/authenticate')
-    window.location.assign.mockRestore()
+    expect(assignSpy).toHaveBeenCalledWith('/oma-opintopolku/authenticate')
   })
 
   it('should forward to logout url', () => {
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { assign: jest.fn() }
-    })
     const service = global.Service
     service.logout()
-    expect(window.location.assign).toHaveBeenCalledWith('/koski/user/logout?target=/oma-opintopolku')
-    window.location.assign.mockRestore()
+    expect(assignSpy).toHaveBeenCalledWith('/koski/user/logout?target=/oma-opintopolku')
   })
 })
