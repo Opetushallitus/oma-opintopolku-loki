@@ -23,8 +23,8 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <encoding>UTF-8</encoding>
-    <scala.version>2.12.21</scala.version>
-    <scala.compat.version>2.12</scala.compat.version>
+    <scala.version>2.13.16</scala.version>
+    <scala.compat.version>2.13</scala.compat.version>
     <ch.qos.logback.contrib.version>0.1.5</ch.qos.logback.contrib.version>
     <http4s.version>0.23.33</http4s.version>
     <org.json4s.version>4.0.7</org.json4s.version>
@@ -37,41 +37,41 @@
     <!-- https://mvnrepository.com/artifact/org.http4s/http4s-ember-client -->
     <dependency>
       <groupId>org.http4s</groupId>
-      <artifactId>http4s-ember-client_2.12</artifactId>
+      <artifactId>http4s-ember-client_${scala.compat.version}</artifactId>
       <version>${http4s.version}</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.http4s/http4s-dsl -->
     <dependency>
       <groupId>org.http4s</groupId>
-      <artifactId>http4s-dsl_2.12</artifactId>
+      <artifactId>http4s-dsl_${scala.compat.version}</artifactId>
       <version>${http4s.version}</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.http4s/http4s-client -->
     <dependency>
       <groupId>org.http4s</groupId>
-      <artifactId>http4s-client_2.12</artifactId>
+      <artifactId>http4s-client_${scala.compat.version}</artifactId>
       <version>${http4s.version}</version>
     </dependency>
 
     <!-- Required by http4s 0.23.33+ (cats-effect 3.6+) -->
     <dependency>
       <groupId>org.typelevel</groupId>
-      <artifactId>cats-effect-std_2.12</artifactId>
-      <version>3.7-4972921</version>
+      <artifactId>cats-effect-std_${scala.compat.version}</artifactId>
+      <version>3.6.1</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.json4s/json4s-native -->
     <dependency>
       <groupId>org.json4s</groupId>
-      <artifactId>json4s-native_2.12</artifactId>
+      <artifactId>json4s-native_${scala.compat.version}</artifactId>
       <version>${org.json4s.version}</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.json4s/json4s-jackson -->
     <dependency>
       <groupId>org.json4s</groupId>
-      <artifactId>json4s-jackson_2.12</artifactId>
+      <artifactId>json4s-jackson_${scala.compat.version}</artifactId>
       <version>${org.json4s.version}</version>
     </dependency>
 
@@ -84,7 +84,7 @@
 
     <dependency>
       <groupId>org.scala-lang.modules</groupId>
-      <artifactId>scala-xml_2.12</artifactId>
+      <artifactId>scala-xml_${scala.compat.version}</artifactId>
       <version>2.4.0</version>
     </dependency>
 
@@ -125,7 +125,7 @@
     <!-- https://mvnrepository.com/artifact/com.github.cb372/scalacache-guava -->
     <dependency>
       <groupId>com.github.cb372</groupId>
-      <artifactId>scalacache-guava_2.12</artifactId>
+      <artifactId>scalacache-guava_${scala.compat.version}</artifactId>
       <version>0.28.0</version>
     </dependency>
 
@@ -212,7 +212,7 @@
     <!-- https://mvnrepository.com/artifact/org.scalamock/scalamock -->
     <dependency>
       <groupId>org.scalamock</groupId>
-      <artifactId>scalamock_2.12</artifactId>
+      <artifactId>scalamock_${scala.compat.version}</artifactId>
       <version>7.5.5</version>
       <scope>test</scope>
     </dependency>

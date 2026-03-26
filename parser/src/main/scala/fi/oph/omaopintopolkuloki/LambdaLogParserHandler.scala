@@ -9,7 +9,7 @@ import org.slf4j.{LoggerFactory, MDC}
 
 import scala.util.Try
 import scala.io.Source
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 
 class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrganizationRepository: RemoteOrganizationRepository)
   extends RequestHandler[SQSEvent, ProcessResult] {
@@ -99,7 +99,7 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
     }
   }
 
-  private lazy val buildVersion: String = Try(Source.fromResource("buildversion.txt").getLines.mkString(", ")).getOrElse("unknown")
+  private lazy val buildVersion: String = Try(Source.fromResource("buildversion.txt").getLines().mkString(", ")).getOrElse("unknown")
 }
 
 case class ProcessResult(stored: Int, skipped: Int, failed: Int)
