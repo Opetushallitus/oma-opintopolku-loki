@@ -18,7 +18,7 @@ export default {
     }
   },
   font: {
-    family: `'Source Sans Pro', sans-serif`, // eslint-disable-line quotes
+    family: `'Source Sans Pro', sans-serif`,
     size: {
       xs: '0.75em', // base size for mobile
       s: '0.857rem',
