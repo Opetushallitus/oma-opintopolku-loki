@@ -67,14 +67,15 @@
       "groupName": "GitHub Actions (major)"
     },
     {
-      "description": "Group ESLint ecosystem major updates",
+      "description": "Hold back ESLint ecosystem majors until plugin ecosystem catches up",
+      "matchPackageNames": [
+        "/^eslint/",
+        "@eslint/js"
+      ],
       "matchUpdateTypes": [
         "major"
       ],
-      "groupName": "ESLint ecosystem (major)",
-      "matchPackageNames": [
-        "/^eslint/"
-      ]
+      "enabled": false
     },
     {
       "description": "Group frontend build tooling major updates",
@@ -101,12 +102,6 @@
       "matchUpdateTypes": [
         "major"
       ],
-      "enabled": false
-    },
-    {
-      "description": "Handle eslint-plugin-node replacement with ESLint major upgrade",
-      "matchPackageNames": ["eslint-plugin-node"],
-      "matchUpdateTypes": ["replacement"],
       "enabled": false
     }
   ]
