@@ -11,7 +11,6 @@ module.exports = {
   moduleNameMapper: {
     '\\.(svg)$': '<rootDir>/src/__mocks__/filemock.js'
   },
-  snapshotSerializers: ['enzyme-to-json/serializer'],
   coverageThreshold: {
     global: {
       branches: 95,
@@ -20,8 +19,5 @@ module.exports = {
       statements: 95
     }
   },
-  preset: 'jest-puppeteer',
-  setupFiles: [
-    '<rootDir>/src/util/testSetup.js'
-  ]
+  preset: 'jest-puppeteer'
 }
