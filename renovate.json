@@ -58,6 +58,13 @@
       "allowedVersions": "/^2\\.13\\./"
     },
     {
+      "description": "Only allow stable versions for Typelevel packages",
+      "matchPackageNames": [
+        "org.typelevel:*"
+      ],
+      "allowedVersions": "/^\\d+\\.\\d+\\.\\d+$/"
+    },
+    {
       "description": "Group GitHub Actions major updates",
       "matchManagers": [
         "github-actions"
