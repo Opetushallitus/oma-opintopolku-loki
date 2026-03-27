@@ -49,12 +49,13 @@
       "groupName": "all pin"
     },
     {
-      "description": "Scala uses X.Y as major version; treat 2.12→2.13 as major",
+      "description": "Scala uses X.Y as major version; only allow 2.13.x",
       "matchPackageNames": [
         "org.scala-lang:scala-library",
         "org.scala-lang:scala-reflect"
       ],
-      "versioning": "regex:^(?<major>\\d+\\.\\d+)\\.(?<minor>\\d+)$"
+      "versioning": "regex:^(?<major>\\d+\\.\\d+)\\.(?<minor>\\d+)$",
+      "allowedVersions": "/^2\\.13\\./"
     },
     {
       "description": "Group GitHub Actions major updates",
