@@ -143,6 +143,31 @@ describe('Log', () => {
     })
   })
 
+  it('should render with organization with no translated name', (done) => {
+    const data = [
+      {
+        organizations: [
+          {
+            oid: '1.1.111.111.11.11111111111',
+            name: {}
+          }
+        ],
+        timestamps: ['2018-09-19T12:05:26.432+03'],
+        serviceName: 'koski'
+      }
+    ]
+    http.request = jest.fn(() => Promise.resolve({ data }))
+
+    const renderer = create(<Log/>)
+
+    setTimeout(() => {
+      const componentJSON = renderer.toJSON()
+      expect(componentJSON).toMatchSnapshot()
+      renderer.unmount()
+      done()
+    })
+  })
+
   it('should render alert in case of error in query', (done) => {
     http.request = jest.fn(() => {
       const error = new Error('Request failed!')

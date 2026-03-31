@@ -559,3 +559,91 @@ exports[`Log should render with non-empty log and organization with no English n
   </div>,
 ]
 `;
+
+exports[`Log should render with organization with no translated name 1`] = `
+[
+  <div
+    className="OrganizationsHeader__Container-sc-1dz6xpo-0 jjWjKs"
+  >
+    <div>
+      Tietojen käyttäjä
+      **
+    </div>
+    <div
+      className="OrganizationsHeader__RightContainer-sc-1dz6xpo-1 hsNTlp"
+    >
+      Käytetty tietovaranto
+    </div>
+  </div>,
+  <div
+    className="Expander__ExpanderContainer-sc-fukmjx-0 igajno"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-sc-fukmjx-2 hCNLid"
+      expanded={false}
+      onClick={[Function]}
+    >
+      <div
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 fzHeJU"
+      >
+        +
+      </div>
+      
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 gdHHeG"
+      >
+        Opintosuoritukset (KOSKI)
+      </div>
+    </button>
+  </div>,
+  <div
+    className="Footnote__Container-sc-x809r1-0 ivhvVv"
+  >
+    *
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 gHoJtR"
+    >
+      Koskee toistaiseksi vain opintotietoja ja varhaiskasvatuksen tietoja, ei hakemustietoja. Lisätietoa hakemusten henkilötietojen käsittelyn perusteista sekä henkilötietojen luovuttamisesta saat 
+      <a
+        className="typography__Link-sc-1yq3b4j-5 jdVvmw"
+        href="https://opintopolku.fi/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
+        target="_blank"
+      >
+        <test-file-stub
+          class="ExternalLink__PositionedLinkIcon-sc-1in9m5g-0 gFuteV"
+        />
+        <b
+          className="typography__Bold-sc-1yq3b4j-6 hXEqNj"
+        >
+          tietosuojaselosteesta
+        </b>
+      </a>
+      .
+    </div>
+  </div>,
+  <div
+    className="Footnote__Container-sc-x809r1-0 ivhvVv"
+  >
+    **
+    <div
+      className="Footnote__TextContainer-sc-x809r1-1 gHoJtR"
+    >
+      Tietojen käyttäjät näytetään eri tietorekistereistä seuraavasti:
+      <br />
+      Opintosuoritukset (KOSKI)
+       - 
+      14.11.2018 alkaen
+      <br />
+      Varhaiskasvatuksen tietovaranto (Varda)
+       - 
+      28.4.2023 alkaen
+      <br />
+      Kielitutkintorekisteri
+       - 
+      15.9.2025 alkaen
+    </div>
+  </div>,
+]
+`;
