@@ -1,44 +1,63 @@
 import http from './http'
 
-import mockAxios from 'axios'
-
 describe('http', () => {
   beforeEach(() => {
     jest.resetAllMocks()
-    mockAxios.get.mockImplementationOnce(() => Promise.resolve(responseData))
-    mockAxios.post.mockImplementationOnce(() => Promise.resolve(responseData))
+    global.fetch = jest.fn()
   })
 
-  const url = 'http://localhost'
+  const url = '/test'
   const responseData = { status: 'ok' }
   const requestData = { foo: 'bar' }
-  const headers = { headers: { CSRF: undefined, 'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku-loki.frontend' } }
 
-  it('supports method get', () => {
-    return http.request(url, 'get').then(response => {
-      expect(response).toEqual(responseData)
-      expect(mockAxios.get).toHaveBeenCalledWith(url)
+  const mockFetchResponse = (data = responseData) => {
+    global.fetch.mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve(data)
+    })
+  }
+
+  it('supports method get', async () => {
+    mockFetchResponse()
+    const response = await http.request(url, 'get')
+    expect(response).toEqual({ data: responseData })
+    expect(global.fetch).toHaveBeenCalledWith('http://localhost' + url)
+  })
+
+  it('supports method GET', async () => {
+    mockFetchResponse()
+    const response = await http.request(url, 'GET')
+    expect(response).toEqual({ data: responseData })
+    expect(global.fetch).toHaveBeenCalledWith('http://localhost' + url)
+  })
+
+  it('supports method post', async () => {
+    mockFetchResponse()
+    const response = await http.request(url, 'post', requestData)
+    expect(response).toEqual({ data: responseData })
+    expect(global.fetch).toHaveBeenCalledWith('http://localhost' + url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku-loki.frontend',
+        CSRF: undefined
+      },
+      body: JSON.stringify(requestData)
     })
   })
 
-  it('supports method GET', () => {
-    return http.request(url, 'GET').then(response => {
-      expect(response).toEqual(responseData)
-      expect(mockAxios.get).toHaveBeenCalledWith(url)
-    })
-  })
-
-  it('supports method post', () => {
-    return http.request(url, 'post', requestData).then(response => {
-      expect(response).toEqual(responseData)
-      expect(mockAxios.post).toHaveBeenCalledWith(url, requestData, headers)
-    })
-  })
-
-  it('supports method POST', () => {
-    return http.request(url, 'POST', requestData).then(response => {
-      expect(response).toEqual(responseData)
-      expect(mockAxios.post).toHaveBeenCalledWith(url, requestData, headers)
+  it('supports method POST', async () => {
+    mockFetchResponse()
+    const response = await http.request(url, 'POST', requestData)
+    expect(response).toEqual({ data: responseData })
+    expect(global.fetch).toHaveBeenCalledWith('http://localhost' + url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Caller-Id': '1.2.246.562.10.00000000001.oma-opintopolku-loki.frontend',
+        CSRF: undefined
+      },
+      body: JSON.stringify(requestData)
     })
   })
 
@@ -52,5 +71,14 @@ describe('http', () => {
     }
 
     expect(err.message).toBe('Unsupported HTTP method: options')
+  })
+
+  it('throws error on non-ok response', async () => {
+    global.fetch.mockResolvedValueOnce({
+      ok: false,
+      status: 404
+    })
+
+    await expect(http.request(url, 'get')).rejects.toThrow('Request failed with status 404')
   })
 })
