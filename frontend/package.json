@@ -17,6 +17,7 @@
     "build:local": "./node_modules/.bin/webpack --config webpack.local.js",
     "start:local": "npm run mock-api & ./node_modules/.bin/webpack serve --config webpack.local.js",
     "start:local:nologin": "webpack serve --config webpack.local.js",
+    "start:koski": "./node_modules/.bin/webpack serve --config webpack.koski.js",
     "mock-api": "node ./mock/server.js",
     "lint": "./node_modules/.bin/eslint src test",
     "test": "npm run build:prod && JEST_ENV=jest-environment-puppeteer ./node_modules/.bin/jest --testPathPatterns=page.spec.js",
