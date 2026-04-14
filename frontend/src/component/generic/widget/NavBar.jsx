@@ -44,7 +44,7 @@ const Link = styled.a`
 const NavBar = () => (
   <Navigation>
     <Link href={'/koski/omadata/kayttooikeudet'}>
-      <InactiveTab>{t`Annetut käyttöluvat`}</InactiveTab>
+      <InactiveTab>{t`Annetut suostumukset`}</InactiveTab>
     </Link>
     <ActiveTab>{t`Tietojani käyttäneet toimijat`}</ActiveTab>
     <Filler />

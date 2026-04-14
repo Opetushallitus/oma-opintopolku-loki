@@ -11,7 +11,7 @@ exports[`Header should be rendered 1`] = `
     className="typography__Lead-sc-1yq3b4j-3 Header__Description-sc-19ub9le-0 hFQkeG loLJGS"
   >
     <p>
-      Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.
+      Tällä sivulla voit tarkastella ja hallinnoida antamiasi suostumuksia tietojesi käyttöön. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.
       *
     </p>
     <p>
@@ -65,7 +65,7 @@ exports[`Header should be rendered 1`] = `
       <span
         className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 itpwCs fGKjCd"
       >
-        Annetut käyttöluvat
+        Annetut suostumukset
       </span>
     </a>
     <span
