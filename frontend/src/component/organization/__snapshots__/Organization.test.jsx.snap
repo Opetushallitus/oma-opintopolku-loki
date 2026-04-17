@@ -61,11 +61,11 @@ exports[`Organization should render with organization permitted by default, and 
         <b
           className="typography__Bold-sc-1yq3b4j-6 hXEqNj"
         >
-          Tietojen käyttölupa
+          Suostumus tietojen käyttöön
           :
         </b>
          
-        Lakiin perustuva tiedonkäyttölupa.
+        Lakiin perustuva tiedonkäyttöoikeus.
       </div>
       <a
         className="typography__Link-sc-1yq3b4j-5 jdVvmw"
@@ -163,11 +163,11 @@ exports[`Organization should render with organization permitted by user, and exp
         <b
           className="typography__Bold-sc-1yq3b4j-6 hXEqNj"
         >
-          Tietojen käyttölupa
+          Suostumus tietojen käyttöön
           :
         </b>
          
-        Lakiin perustuva tiedonkäyttölupa.
+        Lakiin perustuva tiedonkäyttöoikeus.
       </div>
       <a
         className="typography__Link-sc-1yq3b4j-5 jdVvmw"

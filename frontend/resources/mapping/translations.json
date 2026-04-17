@@ -22,20 +22,20 @@
     "sv": "Visa användningstidpunkter",
     "en": "When has my data been used?"
   },
-  "Tietojen käyttölupa": {
-    "fi": "Tietojen käyttölupa",
-    "sv": "Rätt att använda uppgifter",
-    "en": "Permission for data use"
+  "Suostumus tietojen käyttöön": {
+    "fi": "Suostumus tietojen käyttöön",
+    "sv": "Samtycke till användning av uppgifter",
+    "en": "Consent for data use"
   },
-  "Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.": {
-    "fi": "Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.",
-    "sv": "Du har gett tillstånd till denna tjänsterbjudare att använda dina uppgifter.",
-    "en": "You have granted this service provider a permission to use your data."
+  "Olet antanut tälle palvelutarjoajalle suostumuksen käyttää tietojasi.": {
+    "fi": "Olet antanut tälle palvelutarjoajalle suostumuksen käyttää tietojasi.",
+    "sv": "Du har gett ditt samtycke till denna tjänsteleverantör att använda dina uppgifter.",
+    "en": "You have granted this service provider consent to use your data."
   },
-  "Lakiin perustuva tiedonkäyttölupa.": {
-    "fi": "Lakiin perustuva tiedonkäyttölupa.",
-    "sv": "Rätt att enligt lag använda uppgifter.",
-    "en": "Permission is based on the law."
+  "Lakiin perustuva tiedonkäyttöoikeus.": {
+    "fi": "Lakiin perustuva tiedonkäyttöoikeus.",
+    "sv": "Lagstadgad rätt att använda uppgifter.",
+    "en": "Data use is based on the law."
   },
   "Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.": {
     "fi": "Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.",
