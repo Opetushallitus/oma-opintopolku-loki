@@ -12,5 +12,5 @@ export const isoStringToDate = isoString => {
   const match = isoString.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/)
   if (!match) return isoString
   const [, year, month, day, hour, minute] = match
-  return `${parseInt(day)}.${parseInt(month)}.${year} ${hour}.${minute}`
+  return `${parseInt(day)}.${parseInt(month)}.${year} ${hour}:${minute}`
 }
