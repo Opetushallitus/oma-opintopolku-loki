@@ -17,7 +17,7 @@ const Header = ({ selectedHetu, onSelectHetu }) => (
       {t`Tietojeni käyttö`}
     </H1>
     <Description>
-      <p>{t`Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.`}{'*'}</p>
+      <p>{t`Tällä sivulla voit tarkastella ja hallinnoida antamiasi suostumuksia tietojesi käyttöön. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.`}{'*'}</p>
       <p>{t`Tietoja käyttäneissä toimijoissa on listattuna kaikki ne kerrat, kun ...`}</p>
       <p>{t`Tietojani käyttäneet toimijat -näkymässä ovat listattuna myös ...`}</p>
     </Description>

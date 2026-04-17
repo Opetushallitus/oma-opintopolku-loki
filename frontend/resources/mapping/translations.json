@@ -2,10 +2,10 @@
   "Oma Opintopolku -loki": {
     "fi": "Oma Opintopolku -loki"
   },
-  "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.": {
-    "fi": "Tällä sivulla voit tarkastella ja hallinnoida antamiasi käyttölupia tietoihisi. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.",
-    "sv": "På den här sidan kan du granska och administrera de tillstånd du har givit om dina uppgifter. Du ser här dessutom vilka aktörer, t.ex. myndigheter, som har använt dina uppgifter.",
-    "en": "On this page you can inspect and manage permissions you have given to use your data. You can also check which organisations (e.g. authorities) have used your data."
+  "Tällä sivulla voit tarkastella ja hallinnoida antamiasi suostumuksia tietojesi käyttöön. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.": {
+    "fi": "Tällä sivulla voit tarkastella ja hallinnoida antamiasi suostumuksia tietojesi käyttöön. Lisäksi näet mitkä toimijat, esim. viranomaiset, ovat käyttäneet tietojasi.",
+    "sv": "På den här sidan kan du granska och administrera de samtycken du har givit till användning av dina uppgifter. Du ser här dessutom vilka aktörer, t.ex. myndigheter, som har använt dina uppgifter.",
+    "en": "On this page you can inspect and manage consents you have given to use your data. You can also check which organisations (e.g. authorities) have used your data."
   },
   "Tietoja käyttäneissä toimijoissa on listattuna kaikki ne kerrat, kun ...": {
     "fi": "Tietoja käyttäneissä toimijoissa on listattuna niitä kertoja, kun tietojasi on katsottu tai niitä on haettu toiseen järjestelmään automatisoidusti. Tietojasi voivat hakea automaattisesti Opetushallituksen eri järjestelmät, viranomaiset tai ne kolmannet osapuolet, joille olet erikseen antanut luvan hyödyntää tietojasi Oma Opintopolusta. Opetushallituksen järjestelmien ja viranomaisten automaattiset haut tapahtuvat yleensä ruuhka-aikojen ulkopuolella, lähinnä ilta- tai yöaikaan. Joidenkin Opetushallituksen ylläpitämien järjestelmien opintotietojen haut näkyvät vain kyseisen järjestelmän lokitiedoissa, eivätkä listaudu Tietojani käyttäneet toimijat -näkymään. Tilastoinnissa tai erilaisissa tiedonsiirtojen tarkistusraporteissa ja massahakutoiminnallisuuksissa käytettyjen tietojen käyttökertoja ei ole koostettuna Tietojani käyttäneet toimijat -näkymään.",
@@ -22,20 +22,20 @@
     "sv": "Visa användningstidpunkter",
     "en": "When has my data been used?"
   },
-  "Tietojen käyttölupa": {
-    "fi": "Tietojen käyttölupa",
-    "sv": "Rätt att använda uppgifter",
-    "en": "Permission for data use"
+  "Suostumus tietojen käyttöön": {
+    "fi": "Suostumus tietojen käyttöön",
+    "sv": "Samtycke till användning av uppgifter",
+    "en": "Consent for data use"
   },
-  "Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.": {
-    "fi": "Olet antanut tälle palvelutarjoajalle luvan käyttää tietojasi.",
-    "sv": "Du har gett tillstånd till denna tjänsterbjudare att använda dina uppgifter.",
-    "en": "You have granted this service provider a permission to use your data."
+  "Olet antanut tälle palvelutarjoajalle suostumuksen käyttää tietojasi.": {
+    "fi": "Olet antanut tälle palvelutarjoajalle suostumuksen käyttää tietojasi.",
+    "sv": "Du har gett ditt samtycke till denna tjänsteleverantör att använda dina uppgifter.",
+    "en": "You have granted this service provider consent to use your data."
   },
-  "Lakiin perustuva tiedonkäyttölupa.": {
-    "fi": "Lakiin perustuva tiedonkäyttölupa.",
-    "sv": "Rätt att enligt lag använda uppgifter.",
-    "en": "Permission is based on the law."
+  "Lakiin perustuva tiedonkäyttöoikeus.": {
+    "fi": "Lakiin perustuva tiedonkäyttöoikeus.",
+    "sv": "Lagstadgad rätt att använda uppgifter.",
+    "en": "Data use is based on the law."
   },
   "Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.": {
     "fi": "Tapahtui odottamaton virhe, emmekä juuri nyt pysty näyttämään tietoja.",
@@ -52,10 +52,10 @@
     "sv": "Hur används uppgifterna?",
     "en": "How is my data used?"
   },
-  "Annetut käyttöluvat": {
-    "fi": "Annetut käyttöluvat",
-    "sv": "Tillstånd att använda uppgifterna",
-    "en": "Granted permissions"
+  "Annetut suostumukset": {
+    "fi": "Annetut suostumukset",
+    "sv": "Givna samtycken",
+    "en": "Granted consents"
   },
   "Tietojani käyttäneet toimijat": {
     "fi": "Tietojani käyttäneet toimijat",

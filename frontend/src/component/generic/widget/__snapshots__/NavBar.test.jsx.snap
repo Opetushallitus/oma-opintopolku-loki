@@ -11,7 +11,7 @@ exports[`NavBar should be rendered 1`] = `
     <span
       className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 itpwCs fGKjCd"
     >
-      Annetut käyttöluvat
+      Annetut suostumukset
     </span>
   </a>
   <span
