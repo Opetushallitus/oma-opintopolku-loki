@@ -26,7 +26,7 @@
     <scala.version>2.13.18</scala.version>
     <scala.compat.version>2.13</scala.compat.version>
     <ch.qos.logback.contrib.version>0.1.5</ch.qos.logback.contrib.version>
-    <http4s.version>0.23.33</http4s.version>
+    <http4s.version>0.23.34</http4s.version>
     <org.json4s.version>4.0.7</org.json4s.version>
     <com.amazonaws.version>1.12.797</com.amazonaws.version>
     <spec2.version>4.23.0</spec2.version>
@@ -400,7 +400,7 @@
           <plugin>
             <groupId>org.owasp</groupId>
             <artifactId>dependency-check-maven</artifactId>
-            <version>12.2.0</version>
+            <version>12.2.1</version>
             <configuration>
               <suppressionFiles>
                 <suppressionFile>owasp-dependency-check-suppressions.xml</suppressionFile>
