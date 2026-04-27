@@ -1,17 +1,17 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`StudentInfo should be rendered 1`] = `
 [
   <h3
-    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 cVeiUL fWRwCz"
+    className="typography__H3-sc-1yq3b4j-2 StudentInfo__Student-sc-8zvgal-0 fmdeqB fbaGZq"
   >
     <span
-      className="StudentInfo__Name-sc-8zvgal-1 AUEOO"
+      className="StudentInfo__Name-sc-8zvgal-1 cGltbj"
     >
       Onni Oskari Oppija
     </span>
     <span
-      className="StudentInfo__Birthday-sc-8zvgal-2 hZmHBl"
+      className="StudentInfo__Birthday-sc-8zvgal-2 iRFxdM"
     >
        s. 
       1.2.1980
@@ -19,12 +19,12 @@ exports[`StudentInfo should be rendered 1`] = `
   </h3>,
   <div>
     <b
-      className="typography__Bold-sc-1yq3b4j-6 haiWbX"
+      className="typography__Bold-sc-1yq3b4j-6 kfOwlK"
     >
       Tarkasteltava henkilö:
     </b>
     <select
-      className="typography__Select-sc-1yq3b4j-7 bgiqrT"
+      className="typography__Select-sc-1yq3b4j-7 bwtlbG"
       onChange={[Function]}
     >
       <option

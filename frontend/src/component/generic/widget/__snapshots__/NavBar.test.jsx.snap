@@ -1,26 +1,26 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`NavBar should be rendered 1`] = `
 <div
-  className="NavBar__Navigation-sc-18mzj0n-0 gcAHEi"
+  className="NavBar__Navigation-sc-18mzj0n-0 hKBBgT"
 >
   <a
-    className="NavBar__Link-sc-18mzj0n-5 xsGtP"
+    className="NavBar__Link-sc-18mzj0n-5 hlRMdh"
     href="/koski/omadata/kayttooikeudet"
   >
     <span
-      className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 iWojaZ ejlEFl"
+      className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 htkMuN jqtRyM"
     >
       Annetut suostumukset
     </span>
   </a>
   <span
-    className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 iWojaZ hppvAv"
+    className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 htkMuN czCeky"
   >
     Tietojani käyttäneet toimijat
   </span>
   <span
-    className="NavBar__Filler-sc-18mzj0n-4 bzdCLW"
+    className="NavBar__Filler-sc-18mzj0n-4 kgwvAA"
   />
 </div>
 `;

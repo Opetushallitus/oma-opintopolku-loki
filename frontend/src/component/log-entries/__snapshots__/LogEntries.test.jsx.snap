@@ -1,15 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`LogEntries should render with empty timestamp list 1`] = `
 <div
-  className="LogEntries__Container-sc-ufvf4x-0 jIcutE"
+  className="LogEntries__Container-sc-ufvf4x-0 ODETR"
+  showList={false}
 >
   <div
-    className="LogEntries__TopRow-sc-ufvf4x-1 ekwEvt"
+    className="LogEntries__TopRow-sc-ufvf4x-1 gWfhTU"
   >
     <button
       aria-pressed={false}
-      className="ButtonSmall__TextButton-sc-r8zxw8-0 fKtihz"
+      className="ButtonSmall__TextButton-sc-r8zxw8-0 jJgOBK"
       onClick={[Function]}
     >
       Näytä tietojen käyttökerrat
@@ -20,14 +21,15 @@ exports[`LogEntries should render with empty timestamp list 1`] = `
 
 exports[`LogEntries should render with non-empty timestamp list, and toggle expansion of timestamps when link is clicked 1`] = `
 <div
-  className="LogEntries__Container-sc-ufvf4x-0 jIcutE"
+  className="LogEntries__Container-sc-ufvf4x-0 ODETR"
+  showList={false}
 >
   <div
-    className="LogEntries__TopRow-sc-ufvf4x-1 ekwEvt"
+    className="LogEntries__TopRow-sc-ufvf4x-1 gWfhTU"
   >
     <button
       aria-pressed={false}
-      className="ButtonSmall__TextButton-sc-r8zxw8-0 fKtihz"
+      className="ButtonSmall__TextButton-sc-r8zxw8-0 jJgOBK"
       onClick={[Function]}
     >
       Näytä tietojen käyttökerrat
@@ -38,27 +40,28 @@ exports[`LogEntries should render with non-empty timestamp list, and toggle expa
 
 exports[`LogEntries should render with non-empty timestamp list, and toggle expansion of timestamps when link is clicked 2`] = `
 <div
-  className="LogEntries__Container-sc-ufvf4x-0 eRuOKW"
+  className="LogEntries__Container-sc-ufvf4x-0 fdqjUT"
+  showList={true}
 >
   <div
-    className="LogEntries__TopRow-sc-ufvf4x-1 ekwEvt"
+    className="LogEntries__TopRow-sc-ufvf4x-1 gWfhTU"
   >
     <button
       aria-pressed={true}
-      className="ButtonSmall__TextButton-sc-r8zxw8-0 fKtihz"
+      className="ButtonSmall__TextButton-sc-r8zxw8-0 jJgOBK"
       onClick={[Function]}
     >
       Piilota käyttökerrat
     </button>
     <b
-      className="typography__Bold-sc-1yq3b4j-6 haiWbX"
+      className="typography__Bold-sc-1yq3b4j-6 kfOwlK"
     >
       Näytetään käyttökerrat
        1–2 / 2
     </b>
   </div>
   <table
-    className="DateList__DateTable-sc-9hn0em-0 dOMHeP"
+    className="DateList__DateTable-sc-9hn0em-0 iYaOtp"
   >
     <tbody>
       <tr>
@@ -78,14 +81,15 @@ exports[`LogEntries should render with non-empty timestamp list, and toggle expa
 
 exports[`LogEntries should render with non-empty timestamp list, and toggle expansion of timestamps when link is clicked 3`] = `
 <div
-  className="LogEntries__Container-sc-ufvf4x-0 jIcutE"
+  className="LogEntries__Container-sc-ufvf4x-0 ODETR"
+  showList={false}
 >
   <div
-    className="LogEntries__TopRow-sc-ufvf4x-1 ekwEvt"
+    className="LogEntries__TopRow-sc-ufvf4x-1 gWfhTU"
   >
     <button
       aria-pressed={false}
-      className="ButtonSmall__TextButton-sc-r8zxw8-0 fKtihz"
+      className="ButtonSmall__TextButton-sc-r8zxw8-0 jJgOBK"
       onClick={[Function]}
     >
       Näytä tietojen käyttökerrat
@@ -96,27 +100,28 @@ exports[`LogEntries should render with non-empty timestamp list, and toggle expa
 
 exports[`LogEntries should render with timestamp list of over 10 entries, expanding 10 timestamps at a time 1`] = `
 <div
-  className="LogEntries__Container-sc-ufvf4x-0 eRuOKW"
+  className="LogEntries__Container-sc-ufvf4x-0 fdqjUT"
+  showList={true}
 >
   <div
-    className="LogEntries__TopRow-sc-ufvf4x-1 ekwEvt"
+    className="LogEntries__TopRow-sc-ufvf4x-1 gWfhTU"
   >
     <button
       aria-pressed={true}
-      className="ButtonSmall__TextButton-sc-r8zxw8-0 fKtihz"
+      className="ButtonSmall__TextButton-sc-r8zxw8-0 jJgOBK"
       onClick={[Function]}
     >
       Piilota käyttökerrat
     </button>
     <b
-      className="typography__Bold-sc-1yq3b4j-6 haiWbX"
+      className="typography__Bold-sc-1yq3b4j-6 kfOwlK"
     >
       Näytetään käyttökerrat
        1–10 / 15
     </b>
   </div>
   <table
-    className="DateList__DateTable-sc-9hn0em-0 dOMHeP"
+    className="DateList__DateTable-sc-9hn0em-0 iYaOtp"
   >
     <tbody>
       <tr>
@@ -172,10 +177,10 @@ exports[`LogEntries should render with timestamp list of over 10 entries, expand
     </tbody>
   </table>
   <div
-    className="LogEntries__BottomRow-sc-ufvf4x-2 ksUUKr"
+    className="LogEntries__BottomRow-sc-ufvf4x-2 SuvdB"
   >
     <button
-      className="ButtonSmall__TextButton-sc-r8zxw8-0 fKtihz"
+      className="ButtonSmall__TextButton-sc-r8zxw8-0 jJgOBK"
       onClick={[Function]}
     >
       Näytä lisää käyttökertoja
@@ -186,27 +191,28 @@ exports[`LogEntries should render with timestamp list of over 10 entries, expand
 
 exports[`LogEntries should render with timestamp list of over 10 entries, expanding 10 timestamps at a time 2`] = `
 <div
-  className="LogEntries__Container-sc-ufvf4x-0 eRuOKW"
+  className="LogEntries__Container-sc-ufvf4x-0 fdqjUT"
+  showList={true}
 >
   <div
-    className="LogEntries__TopRow-sc-ufvf4x-1 ekwEvt"
+    className="LogEntries__TopRow-sc-ufvf4x-1 gWfhTU"
   >
     <button
       aria-pressed={true}
-      className="ButtonSmall__TextButton-sc-r8zxw8-0 fKtihz"
+      className="ButtonSmall__TextButton-sc-r8zxw8-0 jJgOBK"
       onClick={[Function]}
     >
       Piilota käyttökerrat
     </button>
     <b
-      className="typography__Bold-sc-1yq3b4j-6 haiWbX"
+      className="typography__Bold-sc-1yq3b4j-6 kfOwlK"
     >
       Näytetään käyttökerrat
        1–15 / 15
     </b>
   </div>
   <table
-    className="DateList__DateTable-sc-9hn0em-0 dOMHeP"
+    className="DateList__DateTable-sc-9hn0em-0 iYaOtp"
   >
     <tbody>
       <tr>
