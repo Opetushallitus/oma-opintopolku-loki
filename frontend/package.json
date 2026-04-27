@@ -39,7 +39,7 @@
     "eslint-plugin-jest": "29.15.2",
     "eslint-plugin-react": "7.37.5",
     "eslint-webpack-plugin": "5.0.3",
-    "globals": "17.4.0",
+    "globals": "17.5.0",
     "html-webpack-plugin": "5.6.7",
     "http-server": "14.1.1",
     "jest": "30.3.0",
@@ -48,9 +48,9 @@
     "jest-puppeteer": "11.0.0",
     "json-server": "0.17.4",
     "minimist": "1.2.8",
-    "puppeteer": "24.40.0",
+    "puppeteer": "24.42.0",
     "react-test-renderer": "17.0.2",
-    "webpack": "5.105.4",
+    "webpack": "5.106.2",
     "webpack-cli": "7.0.2",
     "webpack-dev-server": "5.2.3",
     "webpack-merge": "6.0.1"
@@ -65,7 +65,7 @@
     "ramda": "0.32.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "styled-components": "6.3.12"
+    "styled-components": "6.4.1"
   },
   "snyk": true
 }
