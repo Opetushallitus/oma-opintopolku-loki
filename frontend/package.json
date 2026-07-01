@@ -59,7 +59,7 @@
     "@babel/runtime": "7.29.2",
     "core-js": "3.49.0",
     "dotenv": "17.4.2",
-    "js-cookie": "3.0.5",
+    "js-cookie": "3.0.7",
     "merge": "2.1.1",
     "prop-types": "15.8.1",
     "ramda": "0.32.0",
