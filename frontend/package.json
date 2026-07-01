@@ -48,7 +48,7 @@
     "jest-puppeteer": "11.0.0",
     "json-server": "0.17.4",
     "minimist": "1.2.8",
-    "puppeteer": "24.42.0",
+    "puppeteer": "25.2.1",
     "react-test-renderer": "17.0.2",
     "webpack": "5.106.2",
     "webpack-cli": "7.0.2",
