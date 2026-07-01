@@ -2,25 +2,25 @@
 
 exports[`NavBar should be rendered 1`] = `
 <div
-  className="NavBar__Navigation-sc-18mzj0n-0 hKBBgT"
+  className="NavBar__Navigation-sc-18mzj0n-0 ejDhUp"
 >
   <a
-    className="NavBar__Link-sc-18mzj0n-5 hlRMdh"
+    className="NavBar__Link-sc-18mzj0n-5 ixtsGH"
     href="/koski/omadata/kayttooikeudet"
   >
     <span
-      className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 htkMuN jqtRyM"
+      className="NavBar__Tab-sc-18mzj0n-1 NavBar__InactiveTab-sc-18mzj0n-2 bdxJEn cbXCdy"
     >
       Annetut suostumukset
     </span>
   </a>
   <span
-    className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 htkMuN czCeky"
+    className="NavBar__Tab-sc-18mzj0n-1 NavBar__ActiveTab-sc-18mzj0n-3 bdxJEn iZqKic"
   >
     Tietojani käyttäneet toimijat
   </span>
   <span
-    className="NavBar__Filler-sc-18mzj0n-4 kgwvAA"
+    className="NavBar__Filler-sc-18mzj0n-4 gZjJgi"
   />
 </div>
 `;
