@@ -26,9 +26,9 @@
     "prepare": "node update_nvmrc.js"
   },
   "devDependencies": {
-    "@babel/core": "7.29.6",
-    "@babel/plugin-transform-runtime": "7.29.0",
-    "@babel/preset-env": "7.29.3",
+    "@babel/core": "7.29.7",
+    "@babel/plugin-transform-runtime": "7.29.7",
+    "@babel/preset-env": "7.29.7",
     "@babel/preset-react": "7.28.5",
     "@eslint/js": "9.39.4",
     "@svgr/webpack": "8.1.0",
@@ -36,7 +36,7 @@
     "babel-loader": "10.1.1",
     "babel-plugin-styled-components": "2.1.4",
     "eslint": "9.39.4",
-    "eslint-plugin-jest": "29.15.2",
+    "eslint-plugin-jest": "29.15.3",
     "eslint-plugin-react": "7.37.5",
     "eslint-webpack-plugin": "5.0.3",
     "globals": "17.5.0",
@@ -56,16 +56,16 @@
     "webpack-merge": "6.0.1"
   },
   "dependencies": {
-    "@babel/runtime": "7.29.2",
+    "@babel/runtime": "7.29.7",
     "core-js": "3.49.0",
     "dotenv": "17.4.2",
-    "js-cookie": "3.0.7",
+    "js-cookie": "3.0.8",
     "merge": "2.1.1",
     "prop-types": "15.8.1",
     "ramda": "0.32.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "styled-components": "6.4.1"
+    "styled-components": "6.4.3"
   },
   "snyk": true
 }
