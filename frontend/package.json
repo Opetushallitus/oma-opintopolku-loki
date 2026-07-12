@@ -26,10 +26,10 @@
     "prepare": "node update_nvmrc.js"
   },
   "devDependencies": {
-    "@babel/core": "7.29.7",
-    "@babel/plugin-transform-runtime": "7.29.7",
-    "@babel/preset-env": "7.29.7",
-    "@babel/preset-react": "7.28.5",
+    "@babel/core": "8.0.1",
+    "@babel/plugin-transform-runtime": "8.0.1",
+    "@babel/preset-env": "8.0.2",
+    "@babel/preset-react": "8.0.1",
     "@eslint/js": "9.39.4",
     "@svgr/webpack": "8.1.0",
     "babel-core": "7.0.0-bridge.0",
@@ -56,7 +56,7 @@
     "webpack-merge": "6.0.1"
   },
   "dependencies": {
-    "@babel/runtime": "7.29.7",
+    "@babel/runtime": "8.0.0",
     "core-js": "3.49.0",
     "dotenv": "17.4.2",
     "js-cookie": "3.0.8",
