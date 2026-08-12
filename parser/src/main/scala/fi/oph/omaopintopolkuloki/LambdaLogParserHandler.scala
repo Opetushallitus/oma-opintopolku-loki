@@ -70,7 +70,7 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
     val entry = EntryParser(entryBody)
 
     if (entry.shouldStore) {
-      val studentOid = entry.target.getOrElse(throw new RuntimeException("No student oid found for log entry")).oppijaHenkiloOid
+      val studentOid = entry.studentOid.getOrElse(throw new RuntimeException("No student oid found for log entry"))
       val viewerOid = entry.user.getOrElse(throw new RuntimeException("No viewer oid found for log entry")).oid
 
       val viewerOrganizations: List[String] = if (studentOid == viewerOid) {

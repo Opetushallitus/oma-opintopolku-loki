@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "logSeq": 849867,
+  "type": "log",
+  "bootTime": "2026-07-29T15:21:05.007+03",
+  "hostname": "",
+  "timestamp": "2026-08-04T22:29:37.522+03",
+  "serviceName": "koski",
+  "applicationType": "backend",
+  "user": {
+    "oid": "1.2.246.562.24.00000000002",
+    "ip": "127.0.0.1",
+    "session": "",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  "operation": "VALPAS_OPPIJA_KATSOMINEN",
+  "target": {
+    "oppijaHenkilöOid": "1.2.246.562.24.00000000001"
+  },
+  "changes": []
+}

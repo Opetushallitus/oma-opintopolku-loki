@@ -126,7 +126,9 @@ https://github.com/Opetushallitus/auditlogger library.
     operation         String        Operation that was done, e.g. "READ_PERSON_DATA".
     user              User          User, with oppijanumero in field oid, who did the operation.
                                     E.g. {"oid": "1.2.246.562.24.22846384298"}.
-    target            Student       Target, with oppijanumero in field oppijaHenkiloOid, whose data was accessed.
+    target            Student       Target, with oppijanumero in field oppijaHenkiloOid or oppijaHenkilöOid,
+                                    whose data was accessed. Koski uses the latter spelling for some
+                                    operations, e.g. VALPAS_OPPIJA_KATSOMINEN; both are accepted.
                                     E.g. {"oppijaHenkiloOid": "1.2.246.562.24.10000001224"}.
     organizationOid   String        Organization OID, e.g. "1.2.246.562.10.00000000001".
                                     Used for kitu and varda entries to define the organization of the user.

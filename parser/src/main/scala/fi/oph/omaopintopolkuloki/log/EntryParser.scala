@@ -24,10 +24,20 @@ case class Entry(
   organizationOid: Option[String]
 ) {
 
-  lazy val shouldStore: Boolean = target.nonEmpty && user.nonEmpty && operation.nonEmpty
+  lazy val studentOid: Option[String] = target.flatMap(_.oid)
+
+  lazy val shouldStore: Boolean = studentOid.nonEmpty && user.nonEmpty && operation.nonEmpty
 
   lazy val getKey: String = bootTime + ";" + logSeq + ";" + hostname // this makes the log entry unique
 }
 
 case class User(oid: String)
-case class Student(oppijaHenkiloOid: String)
+
+/**
+  * Koski writes the oid of the student whose data was accessed under `oppijaHenkiloOid` for some
+  * operations and under `oppijaHenkilöOid` (with ö) for others. Both spellings are accepted.
+  */
+case class Student(oppijaHenkiloOid: Option[String], oppijaHenkilöOid: Option[String]) {
+
+  lazy val oid: Option[String] = oppijaHenkiloOid.orElse(oppijaHenkilöOid)
+}
