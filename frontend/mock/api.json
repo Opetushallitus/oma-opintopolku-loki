@@ -137,6 +137,20 @@
       ],
       "timestamps": ["2024-09-25T12:01:02.542+03"],
       "serviceName": "kitu"
+    },
+    {
+      "organizations": [
+        {
+          "oid": "5.5.555.555.55.55555555555",
+          "name": {
+            "fi": "Testikunta 5",
+            "sv": "Test kommun 5",
+            "en": "Test municipality 5"
+          }
+        }
+      ],
+      "timestamps": ["2026-08-04T22:29:37.522+03"],
+      "serviceName": "valpas"
     }
   ],
   "auditlogs-huollettava": [
