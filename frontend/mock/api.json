@@ -143,13 +143,27 @@
         {
           "oid": "5.5.555.555.55.55555555555",
           "name": {
-            "fi": "Testikunta 5",
-            "sv": "Test kommun 5",
-            "en": "Test municipality 5"
+            "fi": "Testiorganisaatio 5",
+            "sv": "Test organisation 5",
+            "en": "Test organization 5"
           }
         }
       ],
       "timestamps": ["2026-08-04T22:29:37.522+03"],
+      "serviceName": "valpas"
+    },
+    {
+      "organizations": [
+        {
+          "oid": "tuntematon",
+          "name": {
+            "fi": "Organisaatiotieto ei saatavilla",
+            "sv": "Organisationsuppgift inte tillgänglig",
+            "en": "Organisation information not available"
+          }
+        }
+      ],
+      "timestamps": ["2026-08-05T13:43:37.522+03"],
       "serviceName": "valpas"
     }
   ],
