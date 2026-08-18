@@ -65,6 +65,10 @@ exports[`Log should render with empty log 1`] = `
       Kielitutkintorekisteri
        - 
       15.9.2025 alkaen
+      <br />
+      Oppivelvollisuuden seuranta- ja valvontapalvelu (Valpas)
+       - 
+      8.3.2021 alkaen
     </div>
   </div>
 </div>
@@ -155,6 +159,29 @@ exports[`Log should render with non-empty log 1`] = `
     </button>
   </div>,
   <div
+    className="Expander__ExpanderContainer-sc-fukmjx-0 bLmZjX"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-sc-fukmjx-2 bRQZon"
+      expanded={false}
+      onClick={[Function]}
+    >
+      <div
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 egdSZH"
+      >
+        +
+      </div>
+      Kunta 5
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 cnZUIp"
+      >
+        Oppivelvollisuuden seuranta- ja valvontapalvelu (Valpas)
+      </div>
+    </button>
+  </div>,
+  <div
     className="Footnote__Container-sc-x809r1-0 kMCgzs"
   >
     *
@@ -199,6 +226,10 @@ exports[`Log should render with non-empty log 1`] = `
       Kielitutkintorekisteri
        - 
       15.9.2025 alkaen
+      <br />
+      Oppivelvollisuuden seuranta- ja valvontapalvelu (Valpas)
+       - 
+      8.3.2021 alkaen
     </div>
   </div>,
 ]
@@ -289,6 +320,29 @@ exports[`Log should render with non-empty log and language en 1`] = `
     </button>
   </div>,
   <div
+    className="Expander__ExpanderContainer-sc-fukmjx-0 bLmZjX"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-sc-fukmjx-2 bRQZon"
+      expanded={false}
+      onClick={[Function]}
+    >
+      <div
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 egdSZH"
+      >
+        +
+      </div>
+      Municipality 5
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 cnZUIp"
+      >
+        Monitoring and Tracking Service for Compulsory Education (Valpas)
+      </div>
+    </button>
+  </div>,
+  <div
     className="Footnote__Container-sc-x809r1-0 kMCgzs"
   >
     *
@@ -333,6 +387,10 @@ exports[`Log should render with non-empty log and language en 1`] = `
       Register of Language Proficiency Certificates
        - 
       starting from 15.9.2025
+      <br />
+      Monitoring and Tracking Service for Compulsory Education (Valpas)
+       - 
+      starting from 8.3.2021
     </div>
   </div>,
 ]
@@ -423,6 +481,29 @@ exports[`Log should render with non-empty log and language sv 1`] = `
     </button>
   </div>,
   <div
+    className="Expander__ExpanderContainer-sc-fukmjx-0 bLmZjX"
+  >
+    <button
+      aria-pressed={false}
+      className="Expander__ExpanderTitle-sc-fukmjx-2 bRQZon"
+      expanded={false}
+      onClick={[Function]}
+    >
+      <div
+        aria-hidden="true"
+        className="Expander__ExpanderPrefix-sc-fukmjx-1 egdSZH"
+      >
+        +
+      </div>
+      Kommun 5
+      <div
+        className="Expander__ExpanderSuffix-sc-fukmjx-3 cnZUIp"
+      >
+        Uppföljnings- och tillsynstjänsten (Valpas)
+      </div>
+    </button>
+  </div>,
+  <div
     className="Footnote__Container-sc-x809r1-0 kMCgzs"
   >
     *
@@ -467,6 +548,10 @@ exports[`Log should render with non-empty log and language sv 1`] = `
       Språkexamensregister
        - 
       fr.o.m. 15.9.2025
+      <br />
+      Uppföljnings- och tillsynstjänsten (Valpas)
+       - 
+      fr.o.m. 8.3.2021
     </div>
   </div>,
 ]
@@ -555,6 +640,10 @@ exports[`Log should render with non-empty log and organization with no English n
       Register of Language Proficiency Certificates
        - 
       starting from 15.9.2025
+      <br />
+      Monitoring and Tracking Service for Compulsory Education (Valpas)
+       - 
+      starting from 8.3.2021
     </div>
   </div>,
 ]
@@ -643,6 +732,10 @@ exports[`Log should render with organization with no translated name 1`] = `
       Kielitutkintorekisteri
        - 
       15.9.2025 alkaen
+      <br />
+      Oppivelvollisuuden seuranta- ja valvontapalvelu (Valpas)
+       - 
+      8.3.2021 alkaen
     </div>
   </div>,
 ]

@@ -52,6 +52,8 @@ const Footnotes = ({ noEntries }) => (
       {t('Varhaiskasvatuksen tietovaranto (Varda)')} - {t('28.4.2023 alkaen')}
       <br />
       {t('Kielitutkintorekisteri')} - {t('15.9.2025 alkaen')}
+      <br />
+      {t('Oppivelvollisuuden seuranta- ja valvontapalvelu (Valpas)')} - {t('8.3.2021 alkaen')}
     </Footnote>
   </React.Fragment>
 )

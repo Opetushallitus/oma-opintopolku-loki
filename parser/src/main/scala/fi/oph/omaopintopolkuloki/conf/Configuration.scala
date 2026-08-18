@@ -46,6 +46,8 @@ object Configuration {
 
   lazy val dbHost: String = config.getString("auditlog.db.host")
 
+  lazy val organizationLookupCutoff: String = config.getString("auditlog.organizationLookupCutoff")
+
   lazy val SQSHost: String = if (config.hasPath("auditlog.sqs.host")) {
     s"${config.getString("auditlog.sqs.host")}/000000000000"
   } else {

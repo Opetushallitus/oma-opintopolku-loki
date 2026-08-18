@@ -35,6 +35,16 @@ describe('Log', () => {
       ],
       timestamps: ['2024-07-19T21:38:35.104+03', '2024-08-26T18:56:17.437+03', '2024-06-07T23:58:55.136+03'],
       serviceName: 'kitu'
+    },
+    {
+      organizations: [
+        {
+          oid: '5.5.555.555.55.55555555555',
+          name: { fi: 'Kunta 5', sv: 'Kommun 5', en: 'Municipality 5' }
+        }
+      ],
+      timestamps: ['2026-08-04T22:29:37.522+03'],
+      serviceName: 'valpas'
     }
   ]
 

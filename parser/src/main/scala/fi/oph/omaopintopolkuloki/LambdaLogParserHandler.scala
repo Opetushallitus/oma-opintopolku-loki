@@ -2,6 +2,7 @@ package fi.oph.omaopintopolkuloki
 
 import com.amazonaws.services.lambda.runtime.events.SQSEvent
 import com.amazonaws.services.lambda.runtime.{Context, RequestHandler}
+import fi.oph.omaopintopolkuloki.conf.Configuration
 import fi.oph.omaopintopolkuloki.db.{DB, LogEntry}
 import fi.oph.omaopintopolkuloki.log.EntryParser
 import fi.oph.omaopintopolkuloki.repository.{RemoteOrganizationRepository, RemoteSQSRepository}
@@ -11,10 +12,15 @@ import scala.util.Try
 import scala.io.Source
 import scala.jdk.CollectionConverters._
 
-class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrganizationRepository: RemoteOrganizationRepository)
-  extends RequestHandler[SQSEvent, ProcessResult] {
+class LambdaLogParserHandler(
+  sqsRepository: RemoteSQSRepository.type,
+  remoteOrganizationRepository: RemoteOrganizationRepository,
+  organizationLookupCutoff: String = Configuration.organizationLookupCutoff
+) extends RequestHandler[SQSEvent, ProcessResult] {
 
   private val logger = LoggerFactory.getLogger(this.getClass)
+
+  private val unknownOrganization = "tuntematon"
 
   logger.info("Log parser created, version: " + buildVersion)
 
@@ -70,7 +76,7 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
     val entry = EntryParser(entryBody)
 
     if (entry.shouldStore) {
-      val studentOid = entry.target.getOrElse(throw new RuntimeException("No student oid found for log entry")).oppijaHenkiloOid
+      val studentOid = entry.studentOid.getOrElse(throw new RuntimeException("No student oid found for log entry"))
       val viewerOid = entry.user.getOrElse(throw new RuntimeException("No viewer oid found for log entry")).oid
 
       val viewerOrganizations: List[String] = if (studentOid == viewerOid) {
@@ -81,6 +87,8 @@ class LambdaLogParserHandler(sqsRepository: RemoteSQSRepository.type, remoteOrga
         entry.organizationOid.toList
       } else if (entry.serviceName == "kitu") {
         entry.organizationOid.toList
+      } else if (entry.serviceName == "koski" && entry.timestamp < organizationLookupCutoff) {
+        List(unknownOrganization)
       } else {
         remoteOrganizationRepository.getOrganizationIdsForUser(viewerOid).map(permission => permission.organisaatioOid).toList
       }

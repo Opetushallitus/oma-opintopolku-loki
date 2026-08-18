@@ -102,6 +102,29 @@ class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFacto
       assert(dbVardaEntry.raw.length > 100, "Raw Varda log entry data stored to DB")
     }
 
+    it("Should store unknown organization instead of looking it up for entries older than the cutoff") {
+
+      val katsominenEntry = Source.fromResource("opiskeluoikeus-katsominen-entry.log").mkString // timestamp 2018-08-24
+
+      RemoteSQSRepository invokePrivate sendMessage(katsominenEntry)
+
+      while (!RemoteSQSRepository.hasMessages) Thread.sleep(1000)
+
+      val remoteOrganizationRepository: RemoteOrganizationRepository = mock[RemoteOrganizationRepository]
+      (remoteOrganizationRepository.getOrganizationIdsForUser(_: String)(_: Flags)).expects(*, *).never()
+
+      val parser = new LambdaLogParserHandler(RemoteSQSRepository, remoteOrganizationRepository, "2026-08-01")
+      val result = parser.handleRequest(mock[SQSEvent], mock[Context])
+
+      assert(result.stored == 1, "Entry older than the cutoff was stored")
+      assert(result.skipped == 0, "No skipped entries")
+      assert(result.failed == 0, "No failed entries")
+
+      val dbEntries = DB.getAllItems
+      assert(dbEntries.size() == 1, "Entry was stored to DB")
+      assert(dbEntries.get(0).organizationOid.get(0) == "tuntematon", "Unknown organization was stored")
+    }
+
     it("Should store logs when student viewed own data") {
      verifySingleLogEntry("opiskeluoikeus-katsominen-self.log", "self")
     }

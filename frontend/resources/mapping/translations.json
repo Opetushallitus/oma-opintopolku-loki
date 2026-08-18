@@ -117,10 +117,10 @@
     "sv": "Språkexamensregister",
     "en": "Register of Language Proficiency Certificates"
   },
-  "14.11.2018 alkaen": {
-    "fi": "14.11.2018 alkaen",
-    "sv": "fr.o.m. 14.11.2018",
-    "en": "starting from 14.11.2018"
+  "Oppivelvollisuuden seuranta- ja valvontapalvelu (Valpas)": {
+    "fi": "Oppivelvollisuuden seuranta- ja valvontapalvelu (Valpas)",
+    "sv": "Uppföljnings- och tillsynstjänsten (Valpas)",
+    "en": "Monitoring and Tracking Service for Compulsory Education (Valpas)"
   },
   "14.11.2018 alkaen": {
     "fi": "14.11.2018 alkaen",
@@ -136,6 +136,11 @@
     "fi": "28.4.2023 alkaen",
     "sv": "fr.o.m. 28.4.2023",
     "en": "starting from 28.4.2023"
+  },
+  "8.3.2021 alkaen": {
+    "fi": "8.3.2021 alkaen",
+    "sv": "fr.o.m. 8.3.2021",
+    "en": "starting from 8.3.2021"
   },
   "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opinto- ja varhaiskasvatustietojasi.": {
     "fi": "Tällä sivulla näytetään toimijat, jotka ovat käyttäneet opinto- ja varhaiskasvatustietojasi.",

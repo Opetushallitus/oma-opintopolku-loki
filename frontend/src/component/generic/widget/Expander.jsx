@@ -46,6 +46,14 @@ const ExpandedContents = styled.div`
   `}
 `
 
+const registerNameKeys = {
+  varda: 'Varhaiskasvatuksen tietovaranto (Varda)',
+  kitu: 'Kielitutkintorekisteri',
+  valpas: 'Oppivelvollisuuden seuranta- ja valvontapalvelu (Valpas)'
+}
+
+const registerName = serviceName => t(registerNameKeys[serviceName] || 'Opintosuoritukset (KOSKI)')
+
 const Expander = ({ title, serviceName, children }) => {
   const [expanded, setExpanded] = useState(false)
 
@@ -59,11 +67,7 @@ const Expander = ({ title, serviceName, children }) => {
         <ExpanderPrefix aria-hidden={'true'}>{expanded ? '-' : '+'}</ExpanderPrefix>
         {title}
         <ExpanderSuffix>
-          {serviceName === 'varda'
-            ? t('Varhaiskasvatuksen tietovaranto (Varda)')
-            : serviceName === 'kitu'
-              ? t('Kielitutkintorekisteri')
-              : t('Opintosuoritukset (KOSKI)')}
+          {registerName(serviceName)}
         </ExpanderSuffix>
       </ExpanderTitle>
       {expanded && <ExpandedContents>{children}</ExpandedContents>}
