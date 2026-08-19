@@ -22,6 +22,10 @@ class LambdaLogParserHandler(
 
   private val unknownOrganization = "tuntematon"
 
+  private val timeReserveMillis = Configuration.requestTimeout.toMillis * 2
+
+  private def hasTimeLeft(context: Context): Boolean = context.getRemainingTimeInMillis > timeReserveMillis
+
   logger.info("Log parser created, version: " + buildVersion)
 
   def this(remoteOrganizationRepository: RemoteOrganizationRepository) = this(RemoteSQSRepository, remoteOrganizationRepository)
@@ -34,7 +38,7 @@ class LambdaLogParserHandler(
     *
     * @param sqsEvent Triggering events
     * @param context Triggering context
-    * @return 0 if whole SQS queue was processed or != 0 otherwise
+    * @return Counts of processed events, with stoppedEarly set if the time budget ran out before the queue was drained
     */
   def handleRequest(sqsEvent: SQSEvent, context: Context): ProcessResult = {
     logger.info(s"Starting to process SQS queue")
@@ -42,33 +46,40 @@ class LambdaLogParserHandler(
     var failureCount = 0
     var storedCount = 0
     var skippedCount = 0
+    var timeLeft = true
 
     do {
-      sqsRepository.getMessages.asScala.foreach(message => {
-        try {
-          val stored = storeLogEntry(message.getBody)
-          sqsRepository.deleteMessage(message.getReceiptHandle)
-          if (stored) {
-            storedCount += 1
-          } else {
-            skippedCount += 1
+      sqsRepository.getMessages.asScala.iterator
+        .takeWhile(_ => hasTimeLeft(context))
+        .foreach(message => {
+          try {
+            val stored = storeLogEntry(message.getBody)
+            sqsRepository.deleteMessage(message.getReceiptHandle)
+            if (stored) {
+              storedCount += 1
+            } else {
+              skippedCount += 1
+            }
+          } catch {
+            case t: Throwable => logger.error(s"Failed to process SQS message ${message.getBody}", t) ; failureCount += 1
           }
-        } catch {
-          case t: Throwable => logger.error(s"Failed to process SQS message ${message.getBody}", t) ; failureCount += 1
-        }
-      })
-    } while (sqsRepository.hasMessages)
+        })
+      timeLeft = hasTimeLeft(context)
+    } while (timeLeft && sqsRepository.hasMessages)
     try {
       MDC.put("storedCount", storedCount.toString)
       MDC.put("skippedCount", skippedCount.toString)
       MDC.put("failureCount", failureCount.toString)
-      logger.info(s"Stored ${storedCount} events, skipped ${skippedCount}, failed to process ${failureCount} events")
+      MDC.put("stoppedEarly", (!timeLeft).toString)
+      logger.info(s"Stored ${storedCount} events, skipped ${skippedCount}, failed to process ${failureCount} events" +
+        (if (timeLeft) "" else ", stopped early to avoid timeout"))
     } finally {
       MDC.remove("storedCount")
       MDC.remove("skippedCount")
       MDC.remove("failureCount")
+      MDC.remove("stoppedEarly")
     }
-    ProcessResult(storedCount, skippedCount, failureCount)
+    ProcessResult(storedCount, skippedCount, failureCount, !timeLeft)
   }
 
   private def storeLogEntry(entryBody: String): Boolean = {
@@ -110,4 +121,4 @@ class LambdaLogParserHandler(
   private lazy val buildVersion: String = Try(Source.fromResource("buildversion.txt").getLines().mkString(", ")).getOrElse("unknown")
 }
 
-case class ProcessResult(stored: Int, skipped: Int, failed: Int)
+case class ProcessResult(stored: Int, skipped: Int, failed: Int, stoppedEarly: Boolean)
