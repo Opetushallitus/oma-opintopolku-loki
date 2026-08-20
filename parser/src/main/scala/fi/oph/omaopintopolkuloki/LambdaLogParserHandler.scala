@@ -2,6 +2,7 @@ package fi.oph.omaopintopolkuloki
 
 import com.amazonaws.services.lambda.runtime.events.SQSEvent
 import com.amazonaws.services.lambda.runtime.{Context, RequestHandler}
+import com.amazonaws.services.sqs.model.Message
 import fi.oph.omaopintopolkuloki.conf.Configuration
 import fi.oph.omaopintopolkuloki.db.{DB, LogEntry}
 import fi.oph.omaopintopolkuloki.log.EntryParser
@@ -49,21 +50,29 @@ class LambdaLogParserHandler(
     var timeLeft = true
 
     do {
-      sqsRepository.getMessages.asScala.iterator
+      val prepared = sqsRepository.getMessages.asScala.iterator
         .takeWhile(_ => hasTimeLeft(context))
-        .foreach(message => {
-          try {
-            val stored = storeLogEntry(message.getBody)
-            sqsRepository.deleteMessage(message.getReceiptHandle)
-            if (stored) {
-              storedCount += 1
-            } else {
-              skippedCount += 1
-            }
-          } catch {
-            case t: Throwable => logger.error(s"Failed to process SQS message ${message.getBody}", t) ; failureCount += 1
-          }
-        })
+        .map(prepareMessage)
+        .toList
+
+      val storable = prepared.collect { case s: Storable => s }
+      val skippable = prepared.collect { case Skippable(message) => message }
+
+      skippedCount += skippable.size
+      failureCount += prepared.count(_ == Unprocessable)
+
+      val failedBatches = if (storable.isEmpty) Nil else DB.saveAll(distinctEntries(storable))
+
+      if (failedBatches.isEmpty) {
+        storedCount += storable.size
+        sqsRepository.deleteMessages(skippable ++ storable.map(_.message))
+      } else {
+        failedBatches.foreach(batch =>
+          logger.error(s"Failed to store a batch of ${storable.size} log entries, they will be redelivered", batch.getException))
+        failureCount += storable.size
+        sqsRepository.deleteMessages(skippable)
+      }
+
       timeLeft = hasTimeLeft(context)
     } while (timeLeft && sqsRepository.hasMessages)
     try {
@@ -82,7 +91,23 @@ class LambdaLogParserHandler(
     ProcessResult(storedCount, skippedCount, failureCount, !timeLeft)
   }
 
-  private def storeLogEntry(entryBody: String): Boolean = {
+  private def prepareMessage(message: Message): PreparedMessage =
+    try {
+      prepareLogEntry(message.getBody) match {
+        case Some(logEntry) => Storable(message, logEntry)
+        case None => Skippable(message)
+      }
+    } catch {
+      case t: Throwable =>
+        logger.error(s"Failed to process SQS message ${message.getBody}", t)
+        Unprocessable
+    }
+
+  // BatchWriteItem rejects a request containing the same key twice
+  private def distinctEntries(storable: List[Storable]): Seq[LogEntry] =
+    storable.map(_.logEntry).groupBy(logEntry => (logEntry.studentOid, logEntry.id)).values.map(_.head).toSeq
+
+  private def prepareLogEntry(entryBody: String): Option[LogEntry] = {
 
     val entry = EntryParser(entryBody)
 
@@ -104,17 +129,16 @@ class LambdaLogParserHandler(
         remoteOrganizationRepository.getOrganizationIdsForUser(viewerOid).map(permission => permission.organisaatioOid).toList
       }
 
-      DB.save(new LogEntry(
+      Some(new LogEntry(
         entry.getKey,
         entry.timestamp,
         studentOid,
         viewerOrganizations.asJava,
         entryBody
       ))
-      true
     } else {
       logger.debug(s"Skipping log entry ${entry.operation.getOrElse(entry.`type`)}")
-      false
+      None
     }
   }
 
@@ -122,3 +146,8 @@ class LambdaLogParserHandler(
 }
 
 case class ProcessResult(stored: Int, skipped: Int, failed: Int, stoppedEarly: Boolean)
+
+private sealed trait PreparedMessage
+private case class Storable(message: Message, logEntry: LogEntry) extends PreparedMessage
+private case class Skippable(message: Message) extends PreparedMessage
+private case object Unprocessable extends PreparedMessage
