@@ -19,6 +19,14 @@ class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFacto
   private val createTable = PrivateMethod[Unit]('createTable)
   private val deleteTable = PrivateMethod[Unit]('deleteTable)
 
+  private def contextWithRemainingTime(millis: Int): Context = {
+    val context = mock[Context]
+    (() => context.getRemainingTimeInMillis).expects().returning(millis).anyNumberOfTimes()
+    context
+  }
+
+  private def contextWithTimeLeft: Context = contextWithRemainingTime(900000)
+
   private def purge(): Unit = {
     // Remove all previous entries from SQS
     RemoteSQSRepository invokePrivate purgeQueue()
@@ -74,11 +82,12 @@ class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFacto
         .repeat(amountOfValidKoskiEntries)
 
       val parser = new LambdaLogParserHandler(remoteOrganizationRepository)
-      val result = parser.handleRequest(mock[SQSEvent], mock[Context])
+      val result = parser.handleRequest(mock[SQSEvent], contextWithTimeLeft)
 
       assert(result.stored == 7, "Stored correct amount of log entries (Koski + Varda + Kitu)")
       assert(result.skipped == 2, "Skipped entries")
       assert(result.failed == 1, "Non-parsable entries reported as failed")
+      assert(!result.stoppedEarly, "Whole queue was drained within the time budget")
 
       val dbEntries = DB.getAllItems
       assert(dbEntries.size() == 3, "No duplicate entries were stored to DB") // All 5 of our valid entries were identical except for Varda and Kitu entry
@@ -114,7 +123,7 @@ class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFacto
       (remoteOrganizationRepository.getOrganizationIdsForUser(_: String)(_: Flags)).expects(*, *).never()
 
       val parser = new LambdaLogParserHandler(RemoteSQSRepository, remoteOrganizationRepository, "2026-08-01")
-      val result = parser.handleRequest(mock[SQSEvent], mock[Context])
+      val result = parser.handleRequest(mock[SQSEvent], contextWithTimeLeft)
 
       assert(result.stored == 1, "Entry older than the cutoff was stored")
       assert(result.skipped == 0, "No skipped entries")
@@ -123,6 +132,29 @@ class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFacto
       val dbEntries = DB.getAllItems
       assert(dbEntries.size() == 1, "Entry was stored to DB")
       assert(dbEntries.get(0).organizationOid.get(0) == "tuntematon", "Unknown organization was stored")
+    }
+
+    it("Should not consume any messages when the time budget is already exhausted") {
+
+      val katsominenEntry = Source.fromResource("opiskeluoikeus-katsominen-entry.log").mkString
+
+      RemoteSQSRepository invokePrivate sendMessage(katsominenEntry)
+
+      while (!RemoteSQSRepository.hasMessages) Thread.sleep(1000)
+
+      val remoteOrganizationRepository: RemoteOrganizationRepository = mock[RemoteOrganizationRepository]
+      (remoteOrganizationRepository.getOrganizationIdsForUser(_: String)(_: Flags)).expects(*, *).never()
+
+      val parser = new LambdaLogParserHandler(RemoteSQSRepository, remoteOrganizationRepository)
+      val result = parser.handleRequest(mock[SQSEvent], contextWithRemainingTime(0))
+
+      assert(result.stoppedEarly, "Reported stopping early")
+      assert(result.stored == 0, "Nothing was stored")
+      assert(result.skipped == 0, "Nothing was skipped")
+      assert(result.failed == 0, "Nothing failed")
+
+      val dbEntries = DB.getAllItems
+      assert(dbEntries.size() == 0, "Nothing was written to DB")
     }
 
     it("Should store logs when student viewed own data") {
@@ -142,7 +174,7 @@ class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFacto
     while (!RemoteSQSRepository.hasMessages) Thread.sleep(1000)
 
     val parser = new LambdaLogParserHandler
-    val result = parser.handleRequest(mock[SQSEvent], mock[Context])
+    val result = parser.handleRequest(mock[SQSEvent], contextWithTimeLeft)
 
     assert(result.stored == 1, "Was able to process self view entry")
     assert(result.skipped == 0, "No skipped entries")

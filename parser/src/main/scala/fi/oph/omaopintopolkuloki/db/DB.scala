@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory
 
 import scala.annotation.meta.beanGetter
 import scala.beans.BeanProperty
+import scala.jdk.CollectionConverters._
 
 
 object DB {
@@ -24,7 +25,8 @@ object DB {
 
   private lazy val mapper = new DynamoDBMapper(dynamo)
 
-  def save(logEntry: LogEntry): Unit = mapper.save(logEntry)
+  def saveAll(logEntries: Seq[LogEntry]): Seq[DynamoDBMapper.FailedBatch] =
+    mapper.batchSave(logEntries.asJava).asScala.toSeq
 
   // Methods for facilitating testing
   private def createTable = {
