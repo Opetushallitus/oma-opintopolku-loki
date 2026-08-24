@@ -51,8 +51,7 @@ const OrganizationDetails = ({ isMyDataUse }) => (
 )
 
 OrganizationDetails.propTypes = {
-  isMyDataUse: PropTypes.bool,
-  isJakolinkkiUse: PropTypes.bool
+  isMyDataUse: PropTypes.bool
 }
 
 export default OrganizationDetails

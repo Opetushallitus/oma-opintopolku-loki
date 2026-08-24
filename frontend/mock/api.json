@@ -27,15 +27,13 @@
       ],
       "timestamps": ["2018-09-19T12:05:26.432+03", "2018-09-20T16:01:44.543+03"],
       "serviceName": "koski",
-      "isMyDataUse": true,
-      "isJakolinkkiUse": false
+      "isMyDataUse": true
     },
     {
       "organizations": [],
       "timestamps": ["2023-09-16T12:05:26.432+03", "2023-09-20T16:01:44.543+03"],
       "serviceName": "koski",
-      "isMyDataUse": true,
-      "isJakolinkkiUse": true
+      "isMyDataUse": true
     },
     {
       "organizations": [
@@ -99,8 +97,7 @@
         "2018-06-27T00:47:38.321+03"
       ],
       "serviceName": "koski",
-      "isMyDataUse": false,
-      "isJakolinkkiUse": false
+      "isMyDataUse": false
     },
     {
       "organizations": [
