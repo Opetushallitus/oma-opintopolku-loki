@@ -27,8 +27,8 @@ functions:
     events:
         - schedule:
             name: oma-opintopolku-loki-parser-scheduled-event
-            description: 'Trigger oma-opintopolku-loki-parser every minute'
-            rate: rate(1 minute)
+            description: 'Trigger oma-opintopolku-loki-parser every 5 minutes'
+            rate: rate(5 minutes)
             enabled:  true
 
 resources:
