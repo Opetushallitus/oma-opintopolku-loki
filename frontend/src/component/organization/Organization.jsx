@@ -12,9 +12,9 @@ const nameLens = lensPath(['0', 'name'])
 
 const title = organizations => view(nameLens, organizations)
 
-const Organization = ({ organizationAlternatives, timestamps, serviceName, isMyDataUse, isJakolinkkiUse }) => (
+const Organization = ({ organizationAlternatives, timestamps, serviceName, isMyDataUse }) => (
   <Expander title={title(organizationAlternatives)} serviceName={serviceName}>
-    <OrganizationDetails isMyDataUse={isMyDataUse} isJakolinkkiUse={isJakolinkkiUse}/>
+    <OrganizationDetails isMyDataUse={isMyDataUse}/>
     <LogEntries timestamps={timestamps}/>
   </Expander>
 )
@@ -23,8 +23,7 @@ Organization.propTypes = {
   organizationAlternatives: PropTypes.array.isRequired,
   timestamps: PropTypes.array.isRequired,
   serviceName: PropTypes.string.isRequired,
-  isMyDataUse: PropTypes.bool,
-  isJakolinkkiUse: PropTypes.bool
+  isMyDataUse: PropTypes.bool
 }
 
 export default Organization

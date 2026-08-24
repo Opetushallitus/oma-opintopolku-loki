@@ -181,15 +181,5 @@
     "fi": "Tarkasteltava henkilö:",
     "sv": "Person vars uppgifter granskas",
     "en": "Person who’s data is being viewed"
-  },
-  "Opintosuorituksista tehdyn jakolinkin tuntematon käyttäjä": {
-    "fi": "Opintosuorituksista tehdyn jakolinkin tuntematon käyttäjä",
-    "sv": "Okänd användare av delningslänken för studieprestationer",
-    "en": "Anonymous user of the link to share information about your studies"
-  },
-  "Oma opintopolku -palvelussa luomiesi omien opintosuoritusten jakolinkkien käyttökerrat": {
-    "fi": "Oma opintopolku -palvelussa luomiesi omien opintosuoritusten jakolinkkien käyttökerrat",
-    "sv": "Användningstillfällen för egna studieprestationer som du skapat i tjänsten Min Studieinfo",
-    "en": "The use of the links to share information about your studies that you have created in the My Studyinfo service."
   }
 }
