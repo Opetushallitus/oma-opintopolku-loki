@@ -157,6 +157,31 @@ class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFacto
       assert(dbEntries.size() == 0, "Nothing was written to DB")
     }
 
+    it("Should skip an entry with an empty student oid without failing the rest of the batch") {
+      // DynamoDB rejects the whole batch when one of its items has an empty hash key
+      val selfEntry = Source.fromResource("opiskeluoikeus-katsominen-self.log").mkString
+      val emptyStudentOidEntry = Source.fromResource("empty-student-oid-entry.log").mkString
+
+      RemoteSQSRepository invokePrivate sendMessage(selfEntry)
+      RemoteSQSRepository invokePrivate sendMessage(emptyStudentOidEntry)
+
+      while (!RemoteSQSRepository.hasMessages) Thread.sleep(1000)
+
+      val remoteOrganizationRepository: RemoteOrganizationRepository = mock[RemoteOrganizationRepository]
+      (remoteOrganizationRepository.getOrganizationIdsForUser(_: String)(_: Flags)).expects(*, *).never()
+
+      val parser = new LambdaLogParserHandler(remoteOrganizationRepository)
+      val result = parser.handleRequest(mock[SQSEvent], contextWithTimeLeft)
+
+      assert(result.stored == 1, "Entry with a student oid was stored")
+      assert(result.skipped == 1, "Entry with an empty student oid was skipped")
+      assert(result.failed == 0, "No failed entries")
+
+      val dbEntries = DB.getAllItems
+      assert(dbEntries.size() == 1, "Only the entry with a student oid was stored to DB")
+      assert(dbEntries.get(0).organizationOid.get(0) == "self", "Stored entry is the self view entry")
+    }
+
     it("Should store logs when student viewed own data") {
      verifySingleLogEntry("opiskeluoikeus-katsominen-self.log", "self")
     }

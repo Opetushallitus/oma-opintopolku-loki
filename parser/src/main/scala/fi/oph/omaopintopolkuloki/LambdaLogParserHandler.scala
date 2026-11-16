@@ -137,7 +137,11 @@ class LambdaLogParserHandler(
         entryBody
       ))
     } else {
-      logger.debug(s"Skipping log entry ${entry.operation.getOrElse(entry.`type`)}")
+      if (entry.hasBlankStudentOid) {
+        logger.debug(s"Skipping log entry with an empty student oid: $entryBody")
+      } else {
+        logger.debug(s"Skipping log entry ${entry.operation.getOrElse(entry.`type`)}")
+      }
       None
     }
   }

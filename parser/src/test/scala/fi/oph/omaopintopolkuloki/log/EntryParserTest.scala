@@ -50,7 +50,32 @@ class EntryParserTest extends AnyFunSpec with Matchers {
       val entry = EntryParser(Source.fromResource("oppija-haku-entry.log").mkString)
 
       assert(entry.studentOid.isEmpty, "Target carrying no oppija oid yields no student oid")
+      assert(!entry.hasBlankStudentOid, "Target without an oid key is not reported as a blank oid")
       assert(!entry.shouldStore, "Entry without a student oid should not be stored to database")
+    }
+
+    it("Should skip an entry whose target oid is blank") {
+      // studentOid is the DynamoDB hash key. An empty value is dropped by DynamoDBMapper and the
+      // whole BatchWriteItem fails with "The provided key element does not match the schema".
+      Seq(
+        """{"oppijaHenkiloOid": ""}""",
+        """{"oppijaHenkilöOid": ""}""",
+        """{"oppijaHenkiloOid": "  ", "oppijaHenkilöOid": ""}"""
+      ).foreach { target =>
+        val entry = EntryParser(koskiEntryWithTarget(target))
+
+        assert(entry.studentOid.isEmpty, s"Blank target oid yields no student oid: $target")
+        assert(entry.hasBlankStudentOid, s"Blank target oid is reported: $target")
+        assert(!entry.shouldStore, s"Entry with a blank student oid should not be stored to database: $target")
+      }
+    }
+
+    it("Should fall back to oppijaHenkilöOid when oppijaHenkiloOid is blank") {
+      val entry = EntryParser(koskiEntryWithTarget("""{"oppijaHenkiloOid": "", "oppijaHenkilöOid": "1.2.246.562.24.00000000001"}"""))
+
+      assert(entry.studentOid.contains("1.2.246.562.24.00000000001"), "Student oid taken from the non-blank spelling")
+      assert(!entry.hasBlankStudentOid, "A usable oid is not reported as a blank oid")
+      assert(entry.shouldStore, "Entry with a student oid should be stored to database")
     }
 
     it("Should not fail when parsing health check entry") {
@@ -89,4 +114,13 @@ class EntryParserTest extends AnyFunSpec with Matchers {
       assert(entry.shouldStore, "Valid entry should be stored to database")
     }
   }
+
+  private def koskiEntryWithTarget(target: String): String =
+    s"""{
+       |  "version": 1, "logSeq": 1, "type": "log", "bootTime": "2026-07-29T15:21:05.007+03", "hostname": "",
+       |  "timestamp": "2026-08-04T22:29:37.522+03", "serviceName": "koski", "applicationType": "backend",
+       |  "user": {"oid": "1.2.246.562.24.00000000002"},
+       |  "operation": "OPISKELUOIKEUS_KATSOMINEN",
+       |  "target": $target
+       |}""".stripMargin
 }
