@@ -129,6 +129,7 @@ https://github.com/Opetushallitus/auditlogger library.
     target            Student       Target, with oppijanumero in field oppijaHenkiloOid or oppijaHenkilöOid,
                                     whose data was accessed. Koski uses the latter spelling for some
                                     operations, e.g. VALPAS_OPPIJA_KATSOMINEN; both are accepted.
+                                    A blank oid counts as missing, and the entry is skipped.
                                     E.g. {"oppijaHenkiloOid": "1.2.246.562.24.10000001224"}.
     organizationOid   String        Organization OID, e.g. "1.2.246.562.10.00000000001".
                                     Used for kitu and varda entries to define the organization of the user.

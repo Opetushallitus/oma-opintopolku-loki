@@ -26,6 +26,8 @@ case class Entry(
 
   lazy val studentOid: Option[String] = target.flatMap(_.oid)
 
+  lazy val hasBlankStudentOid: Boolean = target.exists(_.hasBlankOid)
+
   lazy val shouldStore: Boolean = studentOid.nonEmpty && user.nonEmpty && operation.nonEmpty
 
   lazy val getKey: String = bootTime + ";" + logSeq + ";" + hostname // this makes the log entry unique
@@ -36,8 +38,14 @@ case class User(oid: String)
 /**
   * Koski writes the oid of the student whose data was accessed under `oppijaHenkiloOid` for some
   * operations and under `oppijaHenkilöOid` (with ö) for others. Both spellings are accepted.
+  *
+  * A blank oid counts as missing, since studentOid is the DynamoDB hash key and can't be empty.
   */
 case class Student(oppijaHenkiloOid: Option[String], oppijaHenkilöOid: Option[String]) {
 
-  lazy val oid: Option[String] = oppijaHenkiloOid.orElse(oppijaHenkilöOid)
+  private lazy val values: List[String] = oppijaHenkiloOid.toList ++ oppijaHenkilöOid.toList
+
+  lazy val oid: Option[String] = values.find(_.trim.nonEmpty)
+
+  lazy val hasBlankOid: Boolean = values.nonEmpty && oid.isEmpty
 }
