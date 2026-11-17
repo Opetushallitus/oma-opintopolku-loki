@@ -182,6 +182,32 @@ class LambdaLogParserHandlerTest extends AnyFunSpec with Matchers with MockFacto
       assert(dbEntries.get(0).organizationOid.get(0) == "self", "Stored entry is the self view entry")
     }
 
+    it("Should store the rest of a failed batch one entry at a time") {
+      // DynamoDB rejects the whole batch, because this entry's range key id (bootTime;logSeq;hostname) exceeds 1024 bytes
+      val selfEntry = Source.fromResource("opiskeluoikeus-katsominen-self.log").mkString
+      val oversizedKeyEntry = Source.fromResource("varda-log-entry.log").mkString
+        .replace("backend-testing.varda-db.csc.fi", "x" * 1100)
+
+      RemoteSQSRepository invokePrivate sendMessage(selfEntry)
+      RemoteSQSRepository invokePrivate sendMessage(oversizedKeyEntry)
+
+      while (!RemoteSQSRepository.hasMessages) Thread.sleep(1000)
+
+      val remoteOrganizationRepository: RemoteOrganizationRepository = mock[RemoteOrganizationRepository]
+      (remoteOrganizationRepository.getOrganizationIdsForUser(_: String)(_: Flags)).expects(*, *).never()
+
+      val parser = new LambdaLogParserHandler(remoteOrganizationRepository)
+      val result = parser.handleRequest(mock[SQSEvent], contextWithTimeLeft)
+
+      assert(result.stored == 1, "Entry with a valid key was stored")
+      assert(result.skipped == 0, "No skipped entries")
+      assert(result.failed == 1, "Entry with an oversized key failed")
+
+      val dbEntries = DB.getAllItems
+      assert(dbEntries.size() == 1, "Only the entry with a valid key was stored to DB")
+      assert(dbEntries.get(0).organizationOid.get(0) == "self", "Stored entry is the self view entry")
+    }
+
     it("Should store logs when student viewed own data") {
      verifySingleLogEntry("opiskeluoikeus-katsominen-self.log", "self")
     }

@@ -25,6 +25,8 @@ object DB {
 
   private lazy val mapper = new DynamoDBMapper(dynamo)
 
+  def save(logEntry: LogEntry): Unit = mapper.save(logEntry)
+
   def saveAll(logEntries: Seq[LogEntry]): Seq[DynamoDBMapper.FailedBatch] =
     mapper.batchSave(logEntries.asJava).asScala.toSeq
 

@@ -63,15 +63,17 @@ class LambdaLogParserHandler(
 
       val failedBatches = if (storable.isEmpty) Nil else DB.saveAll(distinctEntries(storable))
 
-      if (failedBatches.isEmpty) {
-        storedCount += storable.size
-        sqsRepository.deleteMessages(skippable ++ storable.map(_.message))
-      } else {
-        failedBatches.foreach(batch =>
-          logger.error(s"Failed to store a batch of ${storable.size} log entries, they will be redelivered", batch.getException))
-        failureCount += storable.size
-        sqsRepository.deleteMessages(skippable)
-      }
+      val (saved, failed) =
+        if (failedBatches.isEmpty) (storable, Nil)
+        else {
+          failedBatches.foreach(batch =>
+            logger.warn(s"Failed to store a batch of ${storable.size} log entries, storing them one at a time", batch.getException))
+          saveOneByOne(storable, context)
+        }
+
+      storedCount += saved.size
+      failureCount += failed.size
+      sqsRepository.deleteMessages(skippable ++ saved.map(_.message))
 
       timeLeft = hasTimeLeft(context)
     } while (timeLeft && sqsRepository.hasMessages)
@@ -106,6 +108,25 @@ class LambdaLogParserHandler(
   // BatchWriteItem rejects a request containing the same key twice
   private def distinctEntries(storable: List[Storable]): Seq[LogEntry] =
     storable.map(_.logEntry).groupBy(logEntry => (logEntry.studentOid, logEntry.id)).values.map(_.head).toSeq
+
+  // Like reading the queue, stop when time runs out. Entries not tried count as failed and are redelivered.
+  private def saveOneByOne(storable: List[Storable], context: Context): (List[Storable], List[Storable]) = {
+    val saved = storable.iterator
+      .takeWhile(_ => hasTimeLeft(context))
+      .filter(saveOne)
+      .toList
+    (saved, storable.diff(saved))
+  }
+
+  private def saveOne(storable: Storable): Boolean =
+    try {
+      DB.save(storable.logEntry)
+      true
+    } catch {
+      case t: Throwable =>
+        logger.error(s"Failed to store log entry, it will be redelivered: ${storable.message.getBody}", t)
+        false
+    }
 
   private def prepareLogEntry(entryBody: String): Option[LogEntry] = {
 
